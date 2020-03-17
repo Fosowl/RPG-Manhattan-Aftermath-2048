@@ -2,7 +2,7 @@
 ## EPITECH PROJECT, 2019
 ## Makefile
 ## File description:
-## Makefile
+## Makefile for RPG
 ##
 
 # color codes
