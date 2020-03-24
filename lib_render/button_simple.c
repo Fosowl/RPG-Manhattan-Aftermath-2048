@@ -19,7 +19,6 @@ button_t *create_simple_button(char *path, sfVector2f position, char *text)
     origin.x = button->size.x / 2;
     origin.y = button->size.y / 2;
     button->position.x = position.x;
-    printf("debug sprite>>>%d\n", button->sprite);
     button->position.y = position.y;
     button->text = load_text(text, button->size.x / 3, position, BLACK);
     sfSprite_setOrigin(button->sprite, origin);
@@ -43,7 +42,6 @@ int simple_button_render_and_check(sfRenderWindow *window, sfEvent *event
     && mouse.y < button->position.y + button->size.y - 90) {
         center_top = 1;
     }
-    printf("debug sprite>>>%d\n", button->sprite);
     sfRenderWindow_drawSprite(window, button->sprite, NULL);
     sfRenderWindow_drawText(window, button->text, NULL);
     if (center_left == 1 && center_top == 1 && event->type == 9)
