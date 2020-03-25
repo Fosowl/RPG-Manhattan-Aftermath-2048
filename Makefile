@@ -33,7 +33,7 @@ _IWHITE=$'\x1b[47m'
 
 TEST_NAME	=	unit_tests
 
-LIB_NAME	 = warlock-lib.a
+LIB_NAME	 = warlock.a
 
 BIN_NAME	= name
 
@@ -43,121 +43,50 @@ LIB_DIR	= warlock/
 
 SRC_DIR = src/
 
-LIB_FILES	= gather/count.c\
-			  gather/get.c\
-			  gather/get_next_line.c\
-			  gather/letter_info.c\
-			  gather/buffer_info.c\
-			  number/base.c\
-			  number/convertion.c\
-			  number/sort.c\
-			  output/converter.c\
-			  output/call_function.c\
-			  output/error.c\
-			  output/handle_case.c\
-			  output/my_printf.c\
-			  output/my_putchar.c\
-			  output/my_putnbr.c\
-			  output/my_putstr.c\
-			  output/print_float.c\
-			  parsing/cut.c\
-			  parsing/letter.c\
-			  parsing/light_python.c\
-			  parsing/parsing.c\
-			  parsing/replace.c\
-			  string/initialize.c\
-			  string/initialize_more.c\
-			  string/array.c\
-			  string/copy.c\
-			  debug/debug.c
-
 SRC_FILES	= main.c
 
-TEST_1	 = tests/gather_test.c\
-		   tests/gather_test_2.c
-
-TEST_2	 = tests/number_test.c
-
-TEST_3	 = tests/output_test.c\
-		   tests/output_test_2.c
-
-TEST_4	 = tests/parsing_test.c\
-		   tests/parsing_test_2.c\
-		   tests/parsing_test_3.c
+TEST	 = tests/test.c
 
 CFLAGS	+= -I $(IDIR) -Wall -Wextra -lm
 
-LIB		= $(addprefix $(LIB_DIR), $(LIB_FILES))
-
 SRC		= $(addprefix $(SRC_DIR), $(SRC_FILES))
 
-OBJS		 = $(LIB:.c=.o)
-
-all: $(LIB_NAME) $(BIN_NAME)
-
-$(LIB_NAME): $(OBJS)
-	@ar rc $(LIB_NAME) $(OBJS)
-	@echo -e "${_BOLD}${_ICYAN}libraries compilation complete !${_END}${_WHITE}"
-
-%.o : %.c
-	@$(CC) $(CFLAGS) -c $< -o $@
-	@printf "${_CYAN}<Compiled>${_END} % 31s\n" $<
+all: $(BIN_NAME)
 
 $(BIN_NAME):
+		@cd $(LIB_DIR) ; make re
+		@cp $(LIB_DIR)/$(LIB_NAME) ./$(LIB_NAME)
 		@gcc -o $(BIN_NAME) $(SRC) $(LIB_NAME) $(CFLAGS)
 		@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 		@echo -e "${_END}${_BOLD}${_ICYAN}binary compilation complete !${_END}"
 		@make clean
 
 debug:
-	@gcc -o $(BIN_NAME) $(SRC) $(LIB_NAME) $(CFLAGS) -g3 -fsanitize=address
+	@gcc -o $(BIN_NAME) $(SRC) $(LIB_NAME) $(CFLAGS) -g3
 	@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 	@echo -e "${_END}${_BOLD}${_IYELLOW}\033[5mDEBUG MODE READY !\033[0m${_END}"
 	@make clean
 
+sanitize:
+	@gcc -o $(BIN_NAME) $(SRC) $(LIB_NAME) $(CFLAGS) -g3 -fsanitize=address
+	@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
+	@echo -e "${_END}${_BOLD}${_IYELLOW}\033[5mADRESS SANITIZER MODE READY !\033[0m${_END}"
+	@make clean
+
 clean:
 	@echo -e "${_BOLD}${_IRED}removing compilation files !${_END}"
-	@rm -f $(OBJS) *.gcda *.gcno
+	@cd $(LIB_DIR) ; make clean
+	@rm -f $(LIB_NAME)
 
 tests_run: fclean all
-	@gcc -o $(TEST_NAME) $(TEST_1) $(LIB_NAME) $(CFLAGS) --coverage -lcriterion
-	@echo -e "${_BOLD}${_IGREEN}test 1 compiled !${_END}\n"
+	@gcc -o $(TEST_NAME) $(TEST) $(LIB_NAME) $(CFLAGS) --coverage -lcriterion
+	@echo -e "${_BOLD}${_IGREEN}program test compiled !${_END}\n"
 	./$(TEST_NAME)
-	@rm $(TEST_NAME)
-	@echo -e "${_BOLD}${_WHITE}gather test function...[${_GREEN}OK${_END}] !${_END}\n"
-	@gcc -o $(TEST_NAME) $(TEST_2) $(LIB_NAME) $(CFLAGS) --coverage -lcriterion
-	@echo -e "${_BOLD}${_IGREEN}test 2 compiled !${_END}"
-	@./$(TEST_NAME)
-	@rm $(TEST_NAME)
-	@echo -e "${_BOLD}${_WHITE}number test function...[${_GREEN}OK${_END}] !${_END}\n"
-	@gcc -o $(TEST_NAME) $(TEST_3) $(LIB_NAME) $(CFLAGS) --coverage -lcriterion
-	@echo -e "${_BOLD}${_IGREEN}test 3 compiled ! !${_END}"
-	@./$(TEST_NAME)
-	@rm $(TEST_NAME)
-	@echo -e "${_BOLD}${_WHITE}output test function...[${_GREEN}OK${_END}] !${_END}\n"
-	@gcc -o $(TEST_NAME) $(TEST_4) $(LIB_NAME) $(CFLAGS) --coverage -lcriterion
-	@echo -e "${_BOLD}${_IGREEN}test 4 compiled !${_END}"
-	@./$(TEST_NAME)
-	@rm $(TEST_NAME)
-	@echo -e "${_BOLD}${_WHITE}parsing test function...[${_GREEN}OK${_END}] !${_END}\n"
 	@make clean
 
 fclean: clean
 	@echo -e "${_BOLD}${_IRED}removing binary files !${_END}${_CYAN}"
-	@rm -f $(LIB_NAME)
 	@rm -f $(BIN_NAME)
-
-import:
-	@echo -e "${_BOLD}${_PURPLE}cloning libraries !${_END}"
-	git clone https://github.com/Fosowl/warlock-C-libraries.git
-	@echo -e "${_BOLD}${_YELLOW}copy include !${_END}"
-	@cp -r ./warlock-C-libraries/include/ ./include
-	@echo -e "${_BOLD}${_YELLOW}copy warlock lib !${_END}"
-	@cp -r ./warlock-C-libraries/warlock ./warlock
-	@echo -e "${_BOLD}${_YELLOW}copy source!${_END}"
-	@cp -r ./warlock-C-libraries/src ./src
-	@echo -e "${_BOLD}${_PURPLE}remove libraries folder !${_END}"
-	@rm -rf ./warlock-C-libraries
 
 re:	fclean all
 

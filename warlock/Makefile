@@ -100,7 +100,6 @@ $(LIB_NAME): $(OBJS)
 clean:
 	@echo -e "${_BOLD}${_IRED}removing compilation files !${_END}"
 	@rm -f $(OBJS) *.gcda *.gcno
-	@rm -f $(LIB_NAME)
 
 tests: fclean all
 	@gcc -o $(TEST_NAME) $(TEST_1) $(LIB_NAME) $(CFLAGS) --coverage -lcriterion
