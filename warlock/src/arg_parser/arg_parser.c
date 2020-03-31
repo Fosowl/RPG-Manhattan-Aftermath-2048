@@ -5,10 +5,7 @@
 ** arg_parser
 */
 
-#include "warlock/arg_parser.h"
-#include "warlock/string.h"
-#include "warlock/gather.h"
-#include "warlock/parsing.h"
+#include "warlock.h"
 #include <stdlib.h>
 
 static void load_parser_content(adapter_t *a, int *current, arg_t **list)

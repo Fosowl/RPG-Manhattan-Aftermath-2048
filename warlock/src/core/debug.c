@@ -5,8 +5,7 @@
 ** debug
 */
 
-#include "warlock/core.h"
-#include "warlock/output.h"
+#include "warlock.h"
 
 void debug_log(char *text, void *adress)
 {

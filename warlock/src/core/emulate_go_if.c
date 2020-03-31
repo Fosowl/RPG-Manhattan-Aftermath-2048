@@ -5,7 +5,7 @@
 ** emulate_go_if
 */
 
-#include "warlock/core.h"
+#include "warlock.h"
 
 int emulate_else_if(int *pass, int true_condition)
 {

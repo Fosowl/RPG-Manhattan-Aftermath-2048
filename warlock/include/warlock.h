@@ -19,13 +19,13 @@
 #include <fcntl.h>
 #include <stdarg.h>
 
-#include "warlock/gather.h"
-#include "warlock/number.h"
-#include "warlock/output.h"
-#include "warlock/parsing.h"
-#include "warlock/string.h"
-#include "warlock/core.h"
-#include "warlock/arg_parser.h"
+#include "gather.h"
+#include "number.h"
+#include "output.h"
+#include "parsing.h"
+#include "string.h"
+#include "core.h"
+#include "arg_parser.h"
 
 #define DEBUG_MODE 0
 
