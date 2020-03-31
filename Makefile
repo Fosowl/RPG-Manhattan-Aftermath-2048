@@ -37,6 +37,8 @@ LIB_NAME	 = warlock.a
 
 BIN_NAME	= name
 
+LIB_I_DIR	= warlock/include/
+
 IDIR	= include/
 
 LIB_DIR	= warlock/
@@ -47,28 +49,29 @@ SRC_FILES	= main.c
 
 TEST	 = tests/test.c
 
-CFLAGS	+= -I $(IDIR) -Wall -Wextra -lm
+CFLAGS	+= -I $(IDIR) -I $(LIB_I_DIR) -Wall -Wextra -lm
 
 SRC		= $(addprefix $(SRC_DIR), $(SRC_FILES))
+
+LIB		= $(addprefix $(LIB_DIR), $(LIB_NAME))
 
 all: $(BIN_NAME)
 
 $(BIN_NAME):
 		@cd $(LIB_DIR) ; make re
-		@cp $(LIB_DIR)/$(LIB_NAME) ./$(LIB_NAME)
-		@gcc -o $(BIN_NAME) $(SRC) $(LIB_NAME) $(CFLAGS)
+		@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(CFLAGS)
 		@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 		@echo -e "${_END}${_BOLD}${_ICYAN}binary compilation complete !${_END}"
 		@make clean
 
 debug:
-	@gcc -o $(BIN_NAME) $(SRC) $(LIB_NAME) $(CFLAGS) -g3
+	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(CFLAGS) -g3
 	@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 	@echo -e "${_END}${_BOLD}${_IYELLOW}\033[5mDEBUG MODE READY !\033[0m${_END}"
 	@make clean
 
 sanitize:
-	@gcc -o $(BIN_NAME) $(SRC) $(LIB_NAME) $(CFLAGS) -g3 -fsanitize=address
+	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(CFLAGS) -g3 -fsanitize=address
 	@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 	@echo -e "${_END}${_BOLD}${_IYELLOW}\033[5mADRESS SANITIZER MODE READY !\033[0m${_END}"
 	@make clean
@@ -79,7 +82,7 @@ clean:
 	@rm -f $(LIB_NAME)
 
 tests_run: fclean all
-	@gcc -o $(TEST_NAME) $(TEST) $(LIB_NAME) $(CFLAGS) --coverage -lcriterion
+	@gcc -o $(TEST_NAME) $(TEST) $(LIB) $(CFLAGS) --coverage -lcriterion
 	@echo -e "${_BOLD}${_IGREEN}program test compiled !${_END}\n"
 	./$(TEST_NAME)
 	@make clean

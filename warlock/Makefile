@@ -127,14 +127,8 @@ tests: fclean all
 import:
 	@echo -e "${_BOLD}${_PURPLE}cloning libraries !${_END}"
 	git clone https://github.com/Fosowl/warlock-C-libraries.git
-	@echo -e "${_BOLD}${_YELLOW}copy include !${_END}"
-	@cp -r ./warlock-C-libraries/include/ ./include
-	@echo -e "${_BOLD}${_YELLOW}copy warlock lib !${_END}"
-	@cp -r ./warlock-C-libraries/warlock ./warlock
-	@echo -e "${_BOLD}${_YELLOW}copy source!${_END}"
-	@cp -r ./warlock-C-libraries/src ./src
-	@echo -e "${_BOLD}${_PURPLE}remove libraries folder !${_END}"
-	@rm -rf ./warlock-C-libraries
+	@echo -e "${_BOLD}${_YELLOW}cloning success !${_END}"
+	@mv warlock-C-libraries warlock
 
 re:	fclean all
 
