@@ -5,7 +5,7 @@
 ** text
 */
 
-#include "render.h"
+#include "../include/render.h"
 
 sfText *load_text(char *string, int size, sfVector2f vector, sfColor color)
 {

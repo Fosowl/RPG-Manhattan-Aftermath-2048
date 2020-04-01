@@ -5,7 +5,7 @@
 ** function to generate stuff like random number
 */
 
-#include "render.h"
+#include "../include/render.h"
 
 int real_random(int max, sfClock *clock)
 {

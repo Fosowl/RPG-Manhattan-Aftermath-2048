@@ -5,7 +5,7 @@
 ** sound
 */
 
-#include "render.h"
+#include "../include/render.h"
 
 sound_t *create_sound(char *file, int loud)
 {

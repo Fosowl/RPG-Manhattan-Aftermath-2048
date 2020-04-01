@@ -5,7 +5,7 @@
 ** reproduce physics like gravity, wind ...
 */
 
-#include "render.h"
+#include "../include/render.h"
 
 void simulate_wind(object_t *object, float direction, int force)
 {

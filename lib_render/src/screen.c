@@ -5,7 +5,7 @@
 ** screen
 */
 
-#include "render.h"
+#include "../include/render.h"
 
 int outside_screen(sfVector2f position, float x, float y)
 {

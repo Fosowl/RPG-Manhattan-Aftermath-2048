@@ -5,7 +5,7 @@
 ** interact
 */
 
-#include "render.h"
+#include "../include/render.h"
 
 button_t *create_button(char *path, sfVector2f position, char *text, int s)
 {

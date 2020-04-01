@@ -5,7 +5,7 @@
 ** ui
 */
 
-#include "render.h"
+#include "../include/render.h"
 
 void life_bar(sfRenderWindow *window, sfVector2u position, int life
 , sfVector2i screen_size)
