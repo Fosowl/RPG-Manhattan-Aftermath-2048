@@ -41,13 +41,13 @@ BIN_NAME	= name
 
 LIB_I_DIR	= warlock/include/
 
-RENDER_I_DIR	= render/include
+RENDER_I_DIR	= lib_render/include
 
 IDIR	= include/
 
 LIB_DIR	= warlock/
 
-RENDER_DIR	=	render/
+RENDER_DIR	=	lib_render/
 
 SRC_DIR = src/
 
