@@ -10,23 +10,4 @@
 
 #include "dependancies.h"
 
-typedef struct basic_object_s {
-    sfTexture *texture;
-    sfSprite *sprite;
-    sfVector2f vector;
-    sfIntRect rect;
-} basic_object_t;
-
-typedef struct dialog_s {
-    char ***text;
-    basic_object_t *obj;
-    sfText *script;
-    sfText *person;
-    sfText *next;
-} dialog_t;
-
-typedef struct game_s {
-    dialog_t *dialog;
-} game_t;
-
 #endif /* !GAME_STRUCT_H_ */
