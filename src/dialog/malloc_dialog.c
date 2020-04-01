@@ -5,7 +5,7 @@
 ** malloc_dialog.c
 */
 
-#include "dependancies.h"
+#include "dialog.h"
 
 int malloc_char_of_dialog(dialog_t *dialog, int i)
 {
@@ -17,7 +17,7 @@ int malloc_char_of_dialog(dialog_t *dialog, int i)
     return (0);
 }
 
-int malloc_dialog(dialog_t *dialog)
+int malloc_dialog_text(dialog_t *dialog)
 {
     dialog->obj = malloc(sizeof(basic_object_t));
     dialog->text = malloc(sizeof(char *) * (PERSONAGE + 1));
@@ -30,5 +30,14 @@ int malloc_dialog(dialog_t *dialog)
         if (malloc_char_of_dialog(dialog, i) == 84)
             return (84);
     }
+    return (0);
+}
+
+int malloc_dialog(game_t *game)
+{
+    game->dialog = malloc(sizeof(dialog_t));
+    if (malloc_dialog(game->dialog) == 84)
+        return (84);
+    game->dialog->text[0][0] = "Salut Leo, pour rappel t'es vraiment nul a WZ";
     return (0);
 }

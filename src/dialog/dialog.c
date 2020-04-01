@@ -5,9 +5,9 @@
 ** dialog.c
 */
 
-#include "dependancies.h"
+#include "dialog.h"
 
-basicobject_t *init_dialog(dialog_t *dialog)
+basic_object_t *init_dialog(dialog_t *dialog)
 {
     dialog->obj->texture = sfTexture_createFromFile("assets/dialog.png", NULL);
     dialog->obj->sprite = sfSprite_create();
