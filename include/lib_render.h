@@ -128,7 +128,7 @@ float angle_to_sprite(sfVector2f from, sfVector2f to);
 float move_sprite(sfVector2f *from, sfVector2f *to, float average_speed);
 void move_sprite_invert_angle(sfVector2f *from, sfVector2f *to
 , int *revert_angle, sfVector2f *vector);
-    
+
 // physics.c
 
 void simulate_wind(object_t *object, float direction, int force);

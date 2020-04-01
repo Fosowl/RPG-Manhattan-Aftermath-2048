@@ -5,6 +5,7 @@
 ** main
 */
 
+#include "dependancies.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include "warlock.h"
@@ -15,12 +16,14 @@
 
 int main (int ac, char **argv)
 {
-    arg_t **arg = argument_parser(ac, argv);
+   /* arg_t **arg = argument_parser(ac, argv);
 
     for (int i = 0; arg[i] != NULL; i++) {
         my_printf("argument : %s", arg[i]->option);
         for (int k = 0; arg[i]->content[k] != NULL; k++)
             my_printf(" value : %s", arg[i]->content[k]);
         my_putstr("\n");
-    }
+    }*/
+    if (starting_the_game() == 84)
+        return (84);
 }

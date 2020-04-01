@@ -35,7 +35,7 @@ TEST_NAME	=	unit_tests
 
 LIB_NAME	 = warlock.a
 
-BIN_NAME	= name
+BIN_NAME	= my_rpg
 
 LIB_I_DIR	= warlock/include/
 
@@ -45,11 +45,17 @@ LIB_DIR	= warlock/
 
 SRC_DIR = src/
 
-SRC_FILES	= main.c
+SRC_FILES	= 		main.c										\
+					game.c										\
+					malloc_game.c								\
+					malloc_dialog.c								\
+					dialog.c									\
+					manage_event.c								\
 
 TEST	 = tests/test.c
 
 CFLAGS	+= -I $(IDIR) -I $(LIB_I_DIR) -Wall -Wextra -lm
+CFLAGS	+= -lcsfml-window -lcsfml-graphics -lcsfml-audio -lcsfml-system -g3
 
 SRC		= $(addprefix $(SRC_DIR), $(SRC_FILES))
 
