@@ -5,7 +5,7 @@
 ** function to create / set CSFML structure
 */
 
-#include "render.h"
+#include "../include/render.h"
 
 framebuffer_t *framebuffer_create(unsigned int width, unsigned int height)
 {

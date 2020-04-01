@@ -5,7 +5,7 @@
 ** function to move sprite
 */
 
-#include "render.h"
+#include "../include/render.h"
 
 float angle_to_sprite(sfVector2f from, sfVector2f to)
 {

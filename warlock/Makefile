@@ -31,6 +31,8 @@ _IPURPLE=$'\x1b[45m'
 _ICYAN=$'\x1b[46m'
 _IWHITE=$'\x1b[47m'
 
+cc=gcc
+
 TEST_NAME	=	unit_tests
 
 LIB_NAME	 = warlock.a

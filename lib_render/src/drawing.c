@@ -5,7 +5,7 @@
 ** function to print on screen with pixel
 */
 
-#include "render.h"
+#include "../include/render.h"
 
 int my_put_pixel(framebuffer_t *buffer, unsigned int x, unsigned int y
 , sfColor color)

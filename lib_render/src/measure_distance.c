@@ -5,7 +5,7 @@
 ** measure distance between coordonate
 */
 
-#include "render.h"
+#include "../include/render.h"
 
 float distance(sfVector2f *from, sfVector2f *to)
 {

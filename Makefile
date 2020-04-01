@@ -35,13 +35,19 @@ TEST_NAME	=	unit_tests
 
 LIB_NAME	 = warlock.a
 
-BIN_NAME	= my_rpg
+RENDER_NAME		= render.a
+
+BIN_NAME	= name
 
 LIB_I_DIR	= warlock/include/
+
+RENDER_I_DIR	= render/include
 
 IDIR	= include/
 
 LIB_DIR	= warlock/
+
+RENDER_DIR	=	render/
 
 SRC_DIR = src/
 
@@ -61,11 +67,14 @@ SRC		= $(addprefix $(SRC_DIR), $(SRC_FILES))
 
 LIB		= $(addprefix $(LIB_DIR), $(LIB_NAME))
 
+RENDER	= $(addprefix $(RENDER_DIR), $(RENDER_NAME))
+
 all: $(BIN_NAME)
 
 $(BIN_NAME):
 		@cd $(LIB_DIR) ; make re
-		@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(CFLAGS)
+		@cd $(RENDER_DIR) ; make re
+		@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(RENDER) $(CFLAGS)
 		@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 		@echo -e "${_END}${_BOLD}${_ICYAN}binary compilation complete !${_END}"
 		@make clean
