@@ -9,7 +9,7 @@
 
 basicobject_t *init_dialog(dialog_t *dialog)
 {
-    dialog->obj->texture = sfTexture_createFromFile("picture/dialog.png", NULL);
+    dialog->obj->texture = sfTexture_createFromFile("assets/dialog.png", NULL);
     dialog->obj->sprite = sfSprite_create();
     sfSprite_setTexture(dialog->obj->sprite, dialog->obj->texture, 1);
     return (dialog->obj);

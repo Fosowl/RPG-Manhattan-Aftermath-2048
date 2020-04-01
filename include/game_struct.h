@@ -10,16 +10,16 @@
 
 #include "dependancies.h"
 
-typedef struct basicobject_s {
+typedef struct basic_object_s {
     sfTexture *texture;
     sfSprite *sprite;
     sfVector2f vector;
     sfIntRect rect;
-} basicobject_t;
+} basic_object_t;
 
 typedef struct dialog_s {
     char ***text;
-    basicobject_t *obj;
+    basic_object_t *obj;
     sfText *script;
     sfText *person;
     sfText *next;

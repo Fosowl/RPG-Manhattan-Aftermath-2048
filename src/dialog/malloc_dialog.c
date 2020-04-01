@@ -19,11 +19,11 @@ int malloc_char_of_dialog(dialog_t *dialog, int i)
 
 int malloc_dialog(dialog_t *dialog)
 {
-    dialog->obj = malloc(sizeof(basicobject_t));
-    dialog->text = malloc(sizeof(char *) * (PERSONNAGE + 1));
+    dialog->obj = malloc(sizeof(basic_object_t));
+    dialog->text = malloc(sizeof(char *) * (PERSONAGE + 1));
     if (dialog->text == NULL)
         return (84);
-    for (int i = 0; i != PERSONNAGE; i++) {
+    for (int i = 0; i != PERSONAGE; i++) {
         dialog->text[i] = malloc(sizeof(char *) * (TEXT + 1));
         if (dialog->text[i] == NULL)
             return (84);

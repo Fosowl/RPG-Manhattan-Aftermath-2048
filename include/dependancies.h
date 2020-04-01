@@ -17,7 +17,7 @@
 #include "game_struct.h"
 
 
-#define PERSONNAGE (1)
+#define PERSONAGE (1)
 #define TEXT (1)
 
 //INIT GAME

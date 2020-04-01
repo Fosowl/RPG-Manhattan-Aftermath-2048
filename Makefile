@@ -52,11 +52,8 @@ RENDER_DIR	=	render/
 SRC_DIR = src/
 
 SRC_FILES	= 		main.c										\
-					game.c										\
-					malloc_game.c								\
-					malloc_dialog.c								\
-					dialog.c									\
-					manage_event.c								\
+					dialog/malloc_dialog.c						\
+					dialog/dialog.c								\
 
 TEST	 = tests/test.c
 
