@@ -8,6 +8,10 @@
 #ifndef GAME_STRUCT_H_
 #define GAME_STRUCT_H_
 
-#include "dependancies.h"
+#include "dialog.h"
+
+typedef struct game_s {
+    dialog_t *dialog;
+} game_t;
 
 #endif /* !GAME_STRUCT_H_ */

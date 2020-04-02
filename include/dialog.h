@@ -8,14 +8,8 @@
 #ifndef DIALOG_H_
 #define DIALOG_H_
 
-
-#include "dependancies.h"
-#include "game_struct.h"
-
-
 #define PERSONAGE (1)
 #define TEXT (1)
-
 
 typedef struct basic_object_s {
     sfTexture *texture;
@@ -32,6 +26,7 @@ typedef struct dialog_s {
     sfText *next;
 } dialog_t;
 
+#include "game_struct.h"
 
 //INIT
 int malloc_dialog(game_t *);

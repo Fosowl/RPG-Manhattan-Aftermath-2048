@@ -5,7 +5,7 @@
 ** malloc_dialog.c
 */
 
-#include "dialog.h"
+#include "dependancies.h"
 
 int malloc_char_of_dialog(dialog_t *dialog, int i)
 {
@@ -36,7 +36,7 @@ int malloc_dialog_text(dialog_t *dialog)
 int malloc_dialog(game_t *game)
 {
     game->dialog = malloc(sizeof(dialog_t));
-    if (malloc_dialog(game->dialog) == 84)
+    if (malloc_dialog_text(game->dialog) == 84)
         return (84);
     game->dialog->text[0][0] = "Salut Leo, pour rappel t'es vraiment nul a WZ";
     return (0);

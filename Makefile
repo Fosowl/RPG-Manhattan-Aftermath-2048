@@ -54,6 +54,8 @@ SRC_DIR = src/
 SRC_FILES	= 		main.c										\
 					dialog/malloc_dialog.c						\
 					dialog/dialog.c								\
+					game.c \
+					manage_event.c \
 
 TEST	 = tests/test.c
 
