@@ -7,11 +7,6 @@
 
 #include "dependancies.h"
 
-/*void event_dialog(sfRenderWindow *window, game_t *game)
-{
-
-}*/
-
 void manage_event(sfRenderWindow *window, game_t *game)
 {
     sfEvent event;

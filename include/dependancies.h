@@ -25,5 +25,7 @@ int malloc_dialog(game_t *);
 //EVENT
 void manage_event(sfRenderWindow *, game_t *);
 
+//FREE - DESTROY
+void destroy_game(game_t *game, sfRenderWindow *window);
 
 #endif /* !DEPENDANCIES_H_ */

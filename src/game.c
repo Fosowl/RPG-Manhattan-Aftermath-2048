@@ -26,10 +26,10 @@ void game_loop(sfRenderWindow *window, game_t *game)
     }
 }
 
-/*void destroy_game(game_t *game, sfRenderWindow *window)
+void destroy_game(game_t *game, sfRenderWindow *window)
 {
 
-}*/
+}
 
 int starting_the_game(void)
 {
@@ -41,6 +41,6 @@ int starting_the_game(void)
     if (init_game(window, &game) == 84)
         return (84);
     game_loop(window, &game);
-    //destroy_game(&game, window);
+    destroy_game(&game, window);
     return (0);
 }
