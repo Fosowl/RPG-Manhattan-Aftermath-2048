@@ -53,9 +53,12 @@ SRC_DIR = src/
 
 SRC_FILES	= 		main.c										\
 					dialog/malloc_dialog.c						\
+					dialog/init_reply_dialog.c					\
+					dialog/parsing_reply.c						\
 					dialog/create_dialog.c						\
 					dialog/event_dialog.c						\
 					dialog/display_dialog.c						\
+					dialog/destroy_dialog.c						\
 					game.c \
 					manage_event.c \
 

@@ -26,6 +26,6 @@ int main (int ac, char **argv)
             my_printf(" value : %s", arg[i]->content[k]);
         my_putstr("\n");
     }
-    if (starting_the_game() == 84)
-        return (84);
+    if (starting_the_game() == FAILURE)
+        return (FAILURE);
 }

@@ -1,0 +1,18 @@
+{
+    "JULIE": {
+        "1": "!!! EXPLICATION !!!\nIl faut bien respecter les indentations ainsi, que les virgules.",
+        "2": "Si votre ligne de texte fait plus de 137 caractères ajouter un '\n' au 138 caractères"
+    },
+    "LEO": {
+        "1": "Si vous ajouter une personne allez dans dialog.h et augmenter la valeur du define PERSONAGE de 1,",
+        "2": "et augmenter la valeur du define PERSONAGE de 1."
+    },
+    "MARTIN": {
+        "1": "Pour appeler les différents dialogues il faut appeler la fonction display_dialog.",
+        "2": "Fonctionnement :\ndisplay_dialog(window, dialog, numero de la personne (faire un define par personage), numero du texte)"
+    },
+    "WILFRIED": {
+        "1": "Un nom ne peux pas depasser 10 caractères (on peux le modifier).",
+        "2": "Merci de me contacter pour toutes questions ^_^"
+    }
+}

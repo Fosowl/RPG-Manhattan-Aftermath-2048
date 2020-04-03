@@ -16,7 +16,9 @@
 #include <unistd.h>
 #include "dialog.h"
 #include "game_struct.h"
+#include "warlock.h"
 
+#define FAILURE (84)
 
 //INIT GAME
 int starting_the_game(void);
