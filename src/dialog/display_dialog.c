@@ -29,14 +29,23 @@ char *choice_person(int personage)
     return (name);
 }
 
-void display_dialog(sfRenderWindow *window, dialog_t *dialog,
-                                                    int personage, int text)
+void display_dialog(game_t *game, int personage, int text, int nb_text)
 {
     char *name = choice_person(personage);
+    static int a = 0;
 
-    sfRenderWindow_drawSprite(window, dialog->obj->sprite, NULL);
-    sfText_setString(dialog->script, dialog->text[personage][text]);
-    sfText_setString(dialog->person, name);
-    sfRenderWindow_drawText(window, dialog->script, NULL);
-    sfRenderWindow_drawText(window, dialog->person, NULL);
+    game->dialog->nb = (personage * TEXT) + game->dialog->next;
+    if (game->dialog->next == 0 && a == 0)
+        game->dialog->check[game->dialog->nb].draw = 1;
+    if (game->dialog->check[game->dialog->nb].draw == 1) {
+        game->dialog->nb_text = (personage * TEXT) + nb_text;
+        sfRenderWindow_drawSprite(game->window, game->dialog->obj->sprite,
+                                                                        NULL);
+        sfText_setString(game->dialog->script,
+                    game->dialog->text[personage][text + game->dialog->next]);
+        sfText_setString(game->dialog->person, name);
+        sfRenderWindow_drawText(game->window, game->dialog->script, NULL);
+        sfRenderWindow_drawText(game->window, game->dialog->person, NULL);
+    }
+    a++;
 }

@@ -9,7 +9,9 @@
 #define DIALOG_H_
 
 #define PERSONAGE (4)
-#define TEXT (1)
+#define TEXT (2)
+
+#include <stdbool.h>
 
 typedef struct basic_object_s {
     sfTexture *texture;
@@ -18,12 +20,21 @@ typedef struct basic_object_s {
     sfIntRect rect;
 } basic_object_t;
 
+typedef struct check_text_s{
+    int draw;
+    int person;
+    int text;
+} check_text_t;
+
 typedef struct dialog_s {
     char ***text;
     basic_object_t *obj;
+    check_text_t *check;
     sfText *script;
     sfText *person;
-    sfText *next;
+    int next;
+    int nb_text;
+    int nb;
     int nb_speech;
     int personage;
 } dialog_t;
@@ -43,9 +54,9 @@ int loop_index(dialog_t *, char *, int);
 
 //DIALOG
 void create_dialog(dialog_t *);
-void display_dialog(sfRenderWindow *, dialog_t *, int, int);
+void display_dialog(game_t *, int, int, int);
 
 //DESTROY
-void destroy_dialog(dialog_t *dialog);
+void destroy_dialog(dialog_t *);
 
 #endif /* !DEPENDANCIES_H_ */

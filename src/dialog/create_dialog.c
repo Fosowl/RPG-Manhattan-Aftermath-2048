@@ -22,7 +22,7 @@ void create_dialog(dialog_t *dialog)
     sfVector2f vector_person = {230, 770};
 
     dialog->script = sfText_create();
-    font = sfFont_createFromFile("font/8.ttf");
+    font = sfFont_createFromFile("font/11.ttf");
     sfText_setFont(dialog->script, font);
     sfText_setPosition(dialog->script, vector_script);
     dialog->person = sfText_create();

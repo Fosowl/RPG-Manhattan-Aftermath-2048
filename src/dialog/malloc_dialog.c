@@ -36,6 +36,9 @@ int malloc_dialog_text(dialog_t *dialog)
 int malloc_dialog(game_t *game)
 {
     game->dialog = malloc(sizeof(dialog_t));
+    game->dialog->check = malloc(sizeof(check_text_t) * (PERSONAGE * TEXT));
+    for (int i = 0; i != (PERSONAGE * TEXT); i++)
+        game->dialog->check[i].draw = 0;
     if (malloc_dialog_text(game->dialog) == FAILURE)
         return (FAILURE);
     if (read_file(game->dialog) == FAILURE)

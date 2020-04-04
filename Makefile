@@ -59,8 +59,6 @@ SRC_FILES	= 		main.c										\
 					dialog/event_dialog.c						\
 					dialog/display_dialog.c						\
 					dialog/destroy_dialog.c						\
-					game.c \
-					manage_event.c \
 
 TEST	 = tests/test.c
 

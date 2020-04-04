@@ -7,15 +7,17 @@
 
 #include "dependancies.h"
 
-void manage_event(sfRenderWindow *window, game_t *game)
+void manage_event(game_t *game)
 {
     sfEvent event;
 
-    while (sfRenderWindow_pollEvent(window, &event)) {
+    while (sfRenderWindow_pollEvent(game->window, &event)) {
         if (event.type == sfEvtClosed) {
-            sfRenderWindow_close(window);
+            destroy_game(game);
+            sfRenderWindow_close(game->window);
         }
-        //if (event.type == )
-        //    event_dialog(window, game);
+        if (event.type == sfEvtKeyPressed
+                                    && sfKeyboard_isKeyPressed(sfKeySpace) == 1)
+            event_dialog(game->dialog);
     }
 }

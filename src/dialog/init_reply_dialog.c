@@ -44,17 +44,17 @@ int manage_reply(dialog_t *dialog, char *reply)
         if (i == FAILURE)
             return (FAILURE);
     }
+    dialog->personage = 0;
     return (0);
 }
 
 int read_file(dialog_t *dialog)
 {
     int fd = 0;
-    int len = 0;
     char *reply = NULL;
     int size = 0;
+    int len = def_sizemap("reply.json");
 
-    len = def_sizemap("reply.json");
     reply = malloc(sizeof(char) * len + 1);
     if (reply == NULL)
         return (84);
@@ -68,7 +68,6 @@ int read_file(dialog_t *dialog)
     if (manage_reply(dialog, reply) == FAILURE)
         return (FAILURE);
     close(fd);
-    free(reply);
     return (0);
 }
 
@@ -77,7 +76,11 @@ char *recover_strings(char *reply, int i, char *add)
     int a = 0;
 
     for (; reply[i] != '"'; i++) {
-        add[a] = reply[i];
+        if ((reply[i] == '\\') && (reply[i + 1] == 'n')) {
+            add[a] = '\n';
+            i++;
+        } else
+            add[a] = reply[i];
         a++;
     }
     return (add);

@@ -14,6 +14,7 @@ int find_speech(dialog_t *dialog, char *reply, int i)
     speech = malloc(sizeof(char) * 256);
     if (speech == NULL)
         return (FAILURE);
+    speech[255] = '\0';
     if (reply[i] != '"') {
         write(0, "ERROR 5 in reply.json: expected '""' around the speech\n",
                                                                         56);
@@ -75,10 +76,9 @@ int check_index(dialog_t *dialog, char *reply, int i)
         i = find_index(dialog, reply, i);
         if (i == FAILURE)
             return (FAILURE);
-        i += 3;
-        if (reply[i + 8] == '\0')
+        i += 6;
+        if (reply[i + 5] == '\0')
             return (i);
-        i += 3;
         if (reply[i + 6] != '\n' && reply[i + 5] == '}')
             return (i);
     }
@@ -95,9 +95,10 @@ int loop_index(dialog_t *dialog, char *reply, int i)
         i = check_index(dialog, reply, i);
         if (i == FAILURE)
             return (FAILURE);
-        if (reply[i + 8] == '\0')
+        if (reply[i + 5] == '\0')
             break;
         if (reply[i + 6] != '\n' && reply[i + 5] == '}')
             break;
     }
+    return (i);
 }
