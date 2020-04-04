@@ -10,10 +10,4 @@
 
 #include "dialog.h"
 
-typedef struct game_s {
-    dialog_t *dialog;
-    basic_object_t *back;
-    sfRenderWindow *window;
-} game_t;
-
 #endif /* !GAME_STRUCT_H_ */
