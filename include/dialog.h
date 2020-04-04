@@ -22,8 +22,6 @@ typedef struct basic_object_s {
 
 typedef struct check_text_s{
     int draw;
-    int person;
-    int text;
 } check_text_t;
 
 typedef struct dialog_s {

@@ -43,5 +43,6 @@ int malloc_dialog(game_t *game)
         return (FAILURE);
     if (read_file(game->dialog) == FAILURE)
         return (FAILURE);
+    game->dialog->next = 0;
     return (0);
 }
