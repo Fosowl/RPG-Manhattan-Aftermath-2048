@@ -74,35 +74,38 @@ RENDER	= $(addprefix $(RENDER_DIR), $(RENDER_NAME))
 all: $(BIN_NAME)
 
 $(BIN_NAME):
+		@make fclean
 		@cd $(LIB_DIR) ; make re
 		@cd $(RENDER_DIR) ; make re
 		@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(RENDER) $(CFLAGS)
 		@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 		@echo -e "${_END}${_BOLD}${_ICYAN}binary compilation complete !${_END}"
-		@make clean
 
 debug:
 	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(CFLAGS) -g3
 	@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 	@echo -e "${_END}${_BOLD}${_IYELLOW}\033[5mDEBUG MODE READY !\033[0m${_END}"
-	@make clean
+
+f:
+	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(CFLAGS)
+	@echo -e "${_END}${_BOLD}${_IYELLOW}\033[5mFAST COMPIL DONE !\033[0m${_END}"
 
 sanitize:
 	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(CFLAGS) -g3 -fsanitize=address
 	@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 	@echo -e "${_END}${_BOLD}${_IYELLOW}\033[5mADRESS SANITIZER MODE READY !\033[0m${_END}"
-	@make clean
 
 clean:
 	@echo -e "${_BOLD}${_IRED}removing compilation files !${_END}"
 	@cd $(LIB_DIR) ; make clean
+	@cd $(RENDER_DIR) ; make clean
 	@rm -f $(LIB_NAME)
 
 tests_run: fclean all
+	@make clean
 	@gcc -o $(TEST_NAME) $(TEST) $(LIB) $(CFLAGS) --coverage -lcriterion
 	@echo -e "${_BOLD}${_IGREEN}program test compiled !${_END}\n"
 	./$(TEST_NAME)
-	@make clean
 
 fclean: clean
 	@echo -e "${_BOLD}${_IRED}removing binary files !${_END}${_CYAN}"
