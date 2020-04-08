@@ -20,4 +20,14 @@
 
 #define FAILURE (84)
 
+//INIT GAME
+int starting_the_game(game_t *);
+int malloc_dialog(game_t *);
+
+//EVENT
+void manage_event(game_t *);
+
+//FREE - DESTROY
+void destroy_game(game_t *);
+
 #endif /* !DEPENDANCIES_H_ */
