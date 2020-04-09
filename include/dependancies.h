@@ -17,6 +17,7 @@
 #include "dialog.h"
 #include "game_struct.h"
 #include "warlock.h"
+#include "menu.h"
 
 #define FAILURE (84)
 

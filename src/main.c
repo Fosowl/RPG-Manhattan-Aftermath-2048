@@ -6,9 +6,6 @@
 */
 
 #include "dependancies.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include "warlock.h"
 
 // main function, use make tests_run to test
 // the libraries after making change
@@ -19,8 +16,10 @@ int main (int ac, char **argv)
     (void) ac;
     (void) argv;
     arg_t **arg = argument_parser(ac, argv);
-    game_t game = {0};
+    game_t *game = malloc(sizeof(game_t));
 
+    init_struct(game);
+    menu_loop(game);
     for (int i = 0; arg[i] != NULL; i++) {
         my_printf("argument : %s", arg[i]->option);
         for (int k = 0; arg[i]->content[k] != NULL; k++)
