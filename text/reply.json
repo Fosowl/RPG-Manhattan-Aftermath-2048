@@ -1,0 +1,18 @@
+{
+    "JULIE": {
+        "1": "!!! EXPLICATION !!!\nIl faut bien respecter les indentations ainsi, que les virgules.\nMax 4 retours a la ligne par replique",
+        "2": "Si votre ligne de texte fait plus de 137 caracteres ajouter un 'retour a la ligne' aux 138 caracteres"
+    },
+    "LEO": {
+        "1": "Si vous ajoutez une personne aller dans dialog.h et augmenter la valeur du define PERSONAGE de 1,",
+        "2": "et augmenter la valeur du define PERSONAGE de 1."
+    },
+    "MARTIN": {
+        "1": "Pour appeler les différents dialogues il faut appeler la fonction display_dialog.",
+        "2": "Fonctionnement :\ndisplay_dialog(window, dialog, numero de la personne (faire un define par personage), numero du texte)"
+    },
+    "WILFRIED": {
+        "1": "blablabla",
+        "2": "Merci de me contacter pour toutes questions ^_^"
+    }
+}
