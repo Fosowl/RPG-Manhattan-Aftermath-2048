@@ -6,6 +6,7 @@
 */
 
 #include "dependancies.h"
+#include "menu.h"
 
 int check_press(sfEvent event)
 {

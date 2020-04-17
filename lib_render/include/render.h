@@ -45,11 +45,11 @@
 #define GLASS_BROWN (sfColor){102, 51, 0, 70}
 #define GLASS_CYAN (sfColor){4, 204, 255, 70}
 
-typedef struct screen_t {
+typedef struct w_t {
     sfRenderWindow *window;
     sfVector2i size;
     sfVideoMode mode;
-} screen_t;
+} w_t;
 
 typedef struct myframebuffer {
     sfInt8 *pixels;
@@ -98,6 +98,8 @@ typedef struct button_t {
     sfIntRect rect;
     sfText *text;
 } button_t;
+
+sfSound *create_sound_from(char *path);
 
 int my_strlen(char *str);
 

@@ -6,6 +6,7 @@
 */
 
 #include "dependancies.h"
+#include "menu.h"
 
 int main (int ac, char **argv)
 {

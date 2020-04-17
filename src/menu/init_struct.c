@@ -6,6 +6,7 @@
 */
 
 #include "dependancies.h"
+#include "menu.h"
 
 void init_struct(game_t *game)
 {

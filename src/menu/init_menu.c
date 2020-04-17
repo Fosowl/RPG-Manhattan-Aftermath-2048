@@ -5,8 +5,10 @@
 ** init_menu.c
 */
 
+#include "render.h"
 #include "dependancies.h"
 #include "game_struct.h"
+#include "menu.h"
 
 void init_menu_pos(menu_t *menu)
 {
@@ -18,6 +20,8 @@ void init_menu_pos(menu_t *menu)
 
 void init_menu(menu_t *menu)
 {
+    menu->menu_music = create_sound_from("./music/music_menu.ogg");
+    sfSound_setLoop(menu->menu_music, sfTrue);
     init_menu_pos(menu);
     menu->menu_texture = sfTexture_createFromFile("assets/back.jpg",
     NULL);
@@ -33,9 +37,6 @@ void init_menu(menu_t *menu)
     menu->quit_sprite = sfSprite_create();
     sfSprite_setTexture(menu->quit_sprite, menu->quit_texture, sfTrue);
     sfSprite_setPosition(menu->quit_sprite, menu->quit_pos);
-    menu->menu_music = sfMusic_createFromFile("music/music_menu.ogg");
-    sfMusic_setLoop(menu->menu_music, sfTrue);
-    sfMusic_play(menu->menu_music);
 }
 
 void init_screen(screen_t *screen)

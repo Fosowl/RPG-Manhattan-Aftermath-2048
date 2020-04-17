@@ -74,7 +74,7 @@ SRC_FILES	= 		main.c										\
 
 TEST	 = tests/test.c
 
-CFLAGS	+= -I $(IDIR) -I $(LIB_I_DIR) -I $(I_ENGINE_DIR) -Wall -Wextra -lm
+CFLAGS	+= -I $(IDIR) -I $(LIB_I_DIR) -I $(RENDER_I_DIR) -I $(I_ENGINE_DIR) -Wall -Wextra -lm
 CFLAGS	+= -lcsfml-window -lcsfml-graphics -lcsfml-audio -lcsfml-system -g3
 
 SRC		= $(addprefix $(SRC_DIR), $(SRC_FILES))

@@ -7,6 +7,22 @@
 
 #include "../include/render.h"
 
+
+sfSound *create_sound_from(char *path)
+{
+    sfSoundBuffer *buffer = NULL;
+    sfSound *sound = sfSound_create();
+
+    if (!sound)
+        return (NULL);
+    buffer = sfSoundBuffer_createFromFile(path);
+    if (!buffer) {
+        return (NULL);
+    }
+    sfSound_setBuffer(sound, buffer);
+    return (sound);
+}
+
 sound_t *create_sound(char *file, int loud)
 {
     sound_t *audio = malloc(sizeof(sound_t));
