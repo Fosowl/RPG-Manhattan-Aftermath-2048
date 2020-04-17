@@ -33,22 +33,28 @@ _IWHITE=$'\x1b[47m'
 
 TEST_NAME	=	unit_tests
 
-LIB_NAME	 = warlock.a
+# engine var
 
-RENDER_NAME		= render.a
+ENGINE_NAME		= starset.a
+I_ENGINE_DIR	= engine/include/
+ENGINE_DIR	= engine
 
-BIN_NAME	= name
-
-LIB_I_DIR	= warlock/include/
-
-RENDER_I_DIR	= lib_render/include
-
-IDIR	= include/
+# lib warlock var
 
 LIB_DIR	= warlock/
+LIB_I_DIR	= warlock/include/
+LIB_NAME	 = warlock.a
 
+# lib render var
+
+RENDER_NAME		= render.a
+RENDER_I_DIR	= lib_render/include
 RENDER_DIR	=	lib_render/
 
+# game var
+
+BIN_NAME	= my_rpg
+IDIR	= include/
 SRC_DIR = src/
 
 SRC_FILES	= 		main.c										\
@@ -64,9 +70,11 @@ SRC_FILES	= 		main.c										\
 					dialog/display_dialog.c						\
 					dialog/destroy_dialog.c						\
 
+# test var
+
 TEST	 = tests/test.c
 
-CFLAGS	+= -I $(IDIR) -I $(LIB_I_DIR) -Wall -Wextra -lm
+CFLAGS	+= -I $(IDIR) -I $(LIB_I_DIR) -I $(I_ENGINE_DIR) -Wall -Wextra -lm
 CFLAGS	+= -lcsfml-window -lcsfml-graphics -lcsfml-audio -lcsfml-system -g3
 
 SRC		= $(addprefix $(SRC_DIR), $(SRC_FILES))
@@ -81,21 +89,22 @@ $(BIN_NAME):
 		@make fclean
 		@cd $(LIB_DIR) ; make re
 		@cd $(RENDER_DIR) ; make re
-		@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(RENDER) $(CFLAGS)
+		@cd $(ENGINE_DIR) ; make
+		@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(RENDER) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS)
 		@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 		@echo -e "${_END}${_BOLD}${_ICYAN}binary compilation complete !${_END}"
 
 debug:
-	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(CFLAGS) -g3
+	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(RENDER) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS) -g3
 	@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 	@echo -e "${_END}${_BOLD}${_IYELLOW}\033[5mDEBUG MODE READY !\033[0m${_END}"
 
 f:
-	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(CFLAGS)
+	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(RENDER) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS)
 	@echo -e "${_END}${_BOLD}${_IYELLOW}\033[5mFAST COMPIL DONE !\033[0m${_END}"
 
 sanitize:
-	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(CFLAGS) -g3 -fsanitize=address
+	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(RENDER) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS) -g3 -fsanitize=address
 	@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 	@echo -e "${_END}${_BOLD}${_IYELLOW}\033[5mADRESS SANITIZER MODE READY !\033[0m${_END}"
 
@@ -103,11 +112,12 @@ clean:
 	@echo -e "${_BOLD}${_IRED}removing compilation files !${_END}"
 	@cd $(LIB_DIR) ; make clean
 	@cd $(RENDER_DIR) ; make clean
+	@cd $(ENGINE_DIR) ; make clean
 	@rm -f $(LIB_NAME)
 
 tests_run: fclean all
 	@make clean
-	@gcc -o $(TEST_NAME) $(TEST) $(LIB) $(CFLAGS) --coverage -lcriterion
+	@gcc -o $(TEST_NAME) $(TEST) $(LIB) $(RENDER) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS) --coverage -lcriterion
 	@echo -e "${_BOLD}${_IGREEN}program test compiled !${_END}\n"
 	./$(TEST_NAME)
 
