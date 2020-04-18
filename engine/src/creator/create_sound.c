@@ -15,7 +15,7 @@ static audio_t *internal__create_new_audio(char *name, char *path)
 
     if (!audio)
         return (NULL);
-    audio->name = fill(name);
+    audio->name = fill_e(name);
     audio->loop = false;
     audio->playing = false;
     audio->volume = 70;
@@ -54,11 +54,11 @@ void starset_add_entities_sound(entities_t *entities, char *name
     char **get = internal__get_class(name);
 
     for (entities_t *copy = entities; copy != NULL; copy = copy->next) {
-        if (search(get[0], copy->name) != -1 || search(copy->name
+        if (search_e(get[0], copy->name) != -1 || search_e(copy->name
         , get[1]) != -1) {
             copy->audio = internal__push_audio(copy->audio, sound_name, path);
             ok = true;
         }
     }
-    (!ok && !!LOG) ? put_error("bad entities in starset_add_sound()\n") : 0;
+    (!ok && !!LOG) ? put_err("bad entities in starset_add_sound()\n") : 0;
 }

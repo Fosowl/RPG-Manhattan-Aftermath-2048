@@ -24,7 +24,7 @@ void internal__dynamic_engine(void *ptr)
             entitie->terrain = component__terrain_scanner(entitie
             , pass->image);
         }
-        search("player", entitie->name) != -1 ? player = entitie : 0;
+        search_e("player", entitie->name) != -1 ? player = entitie : 0;
         internal__dynamic_sound(entitie, player);
         starset_entities_render_single(entitie, pass->window);
     }
@@ -66,7 +66,7 @@ int starset_update_engine(entities_t *entities, sfRenderWindow *window
     core[0] = sfThread_create(&internal__collider_call, &pass);
     core[1] = sfThread_create(&internal__dynamic_engine, &pass);
     if (!core[0] || !core[1]) {
-        put_error("thread creation failure !\n");
+        put_err("thread creation failure !\n");
         return (1);
     }
     sfThread_launch(core[0]);

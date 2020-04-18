@@ -15,7 +15,7 @@ static void internal__play_animation_frame(aspect_t *aspect
     sfBool ok = false;
 
     while (copy != NULL) {
-        if (compare(copy->name, a_name) == true) {
+        if (compare_e(copy->name, a_name) == true) {
             aspect->sheet->current.x = copy->position[*frame].x;
             aspect->sheet->current.y = copy->position[*frame].y;
             ok = true;
@@ -23,7 +23,7 @@ static void internal__play_animation_frame(aspect_t *aspect
         tmp = copy;
         copy = copy->next;
     }
-    (!ok && !!LOG) ? put_error("bad animation name in play_animation()\n") : 0;
+    (!ok && !!LOG) ? put_err("bad animation name in play_animation()\n") : 0;
     aspect->sheet->rect.left = aspect->sheet->current.x;
     aspect->sheet->rect.top = aspect->sheet->current.y;
     aspect->sheet->rect.width = tmp->size.x;
@@ -47,12 +47,12 @@ void starset_play_animation(entities_t *entitie, char *e_name
         return;
     sfClock_restart(delay);
     for (entities_t *copy = entitie; copy != NULL; copy = copy->next) {
-        if (search(get[0],copy->name) != -1 ||
-        search(get[1], copy->name) != -1) {
+        if (search_e(get[0],copy->name) != -1 ||
+        search_e(get[1], copy->name) != -1) {
             (frame > copy->aspect->sheet->a->max) ? frame = 0 : 0;
             internal__play_animation_frame(copy->aspect, a_name, &frame);
         }
         ok = true;
     }
-    (!ok && !!LOG) ? put_error("bad entities name in play_animation()\n") : 0;
+    (!ok && !!LOG) ? put_err("bad entities name in play_animation()\n") : 0;
 }

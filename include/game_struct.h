@@ -8,6 +8,8 @@
 #ifndef GAME_STRUCT_H_
 #define GAME_STRUCT_H_
 
+#include "starset_engine.h"
+
 typedef struct basic_object_s {
     sfTexture *texture;
     sfSprite *sprite;
@@ -54,6 +56,10 @@ typedef struct game_s {
     menu_t *menu;
     dialog_t *dialog;
     sfRenderWindow *window;
+    sfEvent event;
+    entities_t *entities_list;
+    sfTime runtime;
+    int mode;
 } game_t;
 
 #endif /* !GAME_STRUCT_H_ */

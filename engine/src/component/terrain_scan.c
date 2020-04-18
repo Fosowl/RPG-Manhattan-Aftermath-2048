@@ -50,17 +50,17 @@ sfColor internal__image_average_color(sfImage *image, sfVector2i vector
 
 static void internal__analyser_set_reference(color_ref_t **reference)
 {
-    reference[0]->name = fill("grass");
+    reference[0]->name = fill_e("grass");
     reference[0]->color = (sfColor){0, 86, 111, 27};
-    reference[1]->name = fill("water");
+    reference[1]->name = fill_e("water");
     reference[1]->color = (sfColor){0, 38, 68, 92};
-    reference[2]->name = fill("dirt");
+    reference[2]->name = fill_e("dirt");
     reference[2]->color = (sfColor){0, 83, 60, 44};
-    reference[3]->name = fill("road");
+    reference[3]->name = fill_e("road");
     reference[3]->color = (sfColor){0, 70, 70, 70};
-    reference[4]->name = fill("black");
+    reference[4]->name = fill_e("black");
     reference[4]->color = (sfColor){0, 0, 0, 0};
-    reference[5]->name = fill("blood");
+    reference[5]->name = fill_e("blood");
     reference[5]->color = (sfColor){0, 116, 30, 12};
     reference[6] = NULL;
 }
@@ -97,7 +97,7 @@ char *component__terrain_scanner(entities_t *entitie, ...)
     char *terrain = NULL;
 
     if (entitie->position.x <= 0 || entitie->position.y <= 0)
-        return (fill("error"));
+        return (fill_e("error_e"));
     vector.x = (int)entitie->position.x;
     vector.y = (int)entitie->position.y;
     va_start(list, entitie);

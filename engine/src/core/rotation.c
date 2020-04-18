@@ -17,7 +17,7 @@ float starset_entities_rotate_to(entities_t *entitie, char *name
     char **get = internal__get_class(name);
 
     while (copy != NULL) {
-        if (search(get[0], copy->name) != -1 || search(copy->name
+        if (search_e(get[0], copy->name) != -1 || search_e(copy->name
         , get[0]) != -1) {
             x = target.x - copy->position.x;
             y = target.y - copy->position.y;
@@ -28,7 +28,7 @@ float starset_entities_rotate_to(entities_t *entitie, char *name
         }
         copy = copy->next;
     }
-    (!ok && !!LOG) ? put_error("bad entitie in entities_teleport()\n") : 0;
+    (!ok && !!LOG) ? put_err("bad entitie in entities_teleport()\n") : 0;
     return (copy != NULL ? copy->angle : 0);
 }
 
@@ -41,7 +41,7 @@ float starset_entitites_rotate_to_other(entities_t *entitie, char *name
     entities_t *copy = NULL;
 
     while (copy != NULL) {
-        if (search(get_other[0], copy->name) != -1 || search(copy->name
+        if (search_e(get_other[0], copy->name) != -1 || search_e(copy->name
         , get_other[1]) != -1) {
             starset_entities_rotate_to(entitie, name, copy->position);
         }
@@ -49,6 +49,6 @@ float starset_entitites_rotate_to_other(entities_t *entitie, char *name
         ok = true;
     }
     if (!ok && !!LOG)
-        put_error("bad entities name in rotate_move_to_other\n");
+        put_err("bad entities name in rotate_move_to_other\n");
     return (angle);
 }

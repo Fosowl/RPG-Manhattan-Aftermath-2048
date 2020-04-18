@@ -7,6 +7,7 @@
 
 #include "dependancies.h"
 #include "menu.h"
+#include "scene.h"
 
 int check_press(sfEvent event)
 {
@@ -48,13 +49,12 @@ int menu_loop(game_t *game)
     init_screen(game->screen);
     init_menu(game->menu);
     while (sfRenderWindow_isOpen(game->screen->window)) {
-        while (sfRenderWindow_pollEvent(game->screen->window, &event))
-            close_menu_screen(game->screen->window, event);
+        while (sfRenderWindow_pollEvent(game->screen->window, &event));
         if (event.type == sfEvtMouseButtonPressed) {
             check_click = check_press(event);
         }
         if (check_click == 1) {
-            destroy_menu(game);
+            main_scene_load(game);
             return (1);
         } else if (check_click == 2) {
             destroy_menu(game);
@@ -62,6 +62,7 @@ int menu_loop(game_t *game)
         }
         display_menu(game);
     }
+    close_menu_screen(game->screen->window, event);
     destroy_menu(game);
     return (0);
 }

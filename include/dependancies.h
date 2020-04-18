@@ -20,7 +20,5 @@
 #include "menu.h"
 
 #define FAILURE (84)
-#define ALLOC_FAIL (1)
-#define RESSOURCE_MISSING (404)
 
 #endif /* !DEPENDANCIES_H_ */

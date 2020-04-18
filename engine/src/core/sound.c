@@ -60,7 +60,7 @@ void starset_single_play_sound(entities_t *entitie, char *sound_name
         timer = sfClock_create();
     delay = sfClock_getElapsedTime(timer);
     for (audio_t *copy = entitie->audio; copy != NULL; copy = copy->next) {
-        if (compare(copy->name, sound_name) == true) {
+        if (compare_e(copy->name, sound_name) == true) {
             internal__apply_sound(copy, loop);
             if (sfTime_asMilliseconds(delay) > sfTime_asMilliseconds
             (copy->duration)) {
@@ -71,7 +71,7 @@ void starset_single_play_sound(entities_t *entitie, char *sound_name
         }
     }
     if (!ok && !!LOG)
-        put_error ("bad sound name pass\n");
+        put_err ("bad sound name pass\n");
 }
 
 void starset_entities_play_sound(entities_t *entities, char *name
@@ -82,7 +82,7 @@ void starset_entities_play_sound(entities_t *entities, char *name
     char **get = internal__get_class(name);
 
     while (copy != NULL) {
-        if (search(get[0], copy->name) != -1 || search(copy->name
+        if (search_e(get[0], copy->name) != -1 || search_e(copy->name
         , get[1]) != -1) {
             starset_single_play_sound(copy, sound_name, loop);
             ok = true;
@@ -90,5 +90,5 @@ void starset_entities_play_sound(entities_t *entities, char *name
         copy = copy->next;
     }
     if (!ok && !!LOG)
-        put_error("bad entities name in starset_play_sound()\n");
+        put_err("bad entities name in starset_play_sound()\n");
 }

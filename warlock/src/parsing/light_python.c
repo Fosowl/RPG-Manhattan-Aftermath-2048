@@ -31,8 +31,6 @@ char *append(char *origin, char *added)
     for (int i = 0; added != NULL && added[i] != '\0'; i++, d++)
         fusioned[d] = added[i];
     fusioned[d] = '\0';
-    if (origin)
-        free(origin);
     return (fusioned);
 }
 

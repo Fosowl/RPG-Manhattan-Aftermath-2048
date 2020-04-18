@@ -63,7 +63,7 @@ void internal__collider_update(entities_t *entities, sfRenderWindow *window)
             copy->mouse_hover = true;
         for (entities_t *sub_copy = entities; sub_copy != NULL
         ; sub_copy = sub_copy->next) {
-            if (compare(copy->name, sub_copy->name) == true)
+            if (compare_e(copy->name, sub_copy->name) == true)
                 continue;
             collision_vector = internal__entities_collide(copy, sub_copy);
             if (copy->is_trigger != true && sub_copy->is_trigger != true)

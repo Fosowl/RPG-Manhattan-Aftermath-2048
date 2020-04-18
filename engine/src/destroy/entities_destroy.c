@@ -52,8 +52,8 @@ entities_t *starset_entities_destroy(entities_t *entities, char *name)
 
     while (copy->next != NULL) {
         tmp = copy;
-        if (search(get[0], copy->name) != -1 ||
-        search(get[1], copy->name) != -1) {
+        if (search_e(get[0], copy->name) != -1 ||
+        search_e(get[1], copy->name) != -1) {
             if (copy->back != NULL) {
                 copy->back->next = copy->next;
                 copy->next->back = copy->back;
@@ -65,6 +65,6 @@ entities_t *starset_entities_destroy(entities_t *entities, char *name)
         } else
             copy = copy->next;
     }
-    (!ok && !!LOG) ? put_error("bad name in entities_destroy()\n") : 0;
+    (!ok && !!LOG) ? put_err("bad name in entities_destroy()\n") : 0;
     return (entities);
 }

@@ -10,12 +10,12 @@
 
 char **internal__get_class(char *name)
 {
-    char **all = clean_double_alloc(2, 10);
+    char **all = clean_double_alloc_e(2, 10);
 
     if (!all)
         return NULL;
-    if (search(":", name) == true) {
-        all = divide_array(name, ':');
+    if (search_e(":", name) == true) {
+        all = divide_array_e(name, ':');
     } else {
         all[0] = name;
         all[1] = name;
@@ -43,7 +43,7 @@ sfRenderWindow *starset_set_window(sfVector2u size, char *name
     sfVideoMode mode = {size.x, size.y, 32};
 
     if (size.x < 20 || size.y < 20)
-        put_error("that's really small for a window..\n");
+        put_err("that's really small for a window..\n");
     window = sfRenderWindow_create(mode, name, sfResize | sfClose, NULL);
     if (!window)
         return (NULL);
@@ -59,7 +59,7 @@ entities_t *starset_set_background(entities_t *list, char *path)
 
     if (texture != NULL)
         size = sfTexture_getSize(texture);
-    new = starset_entities_add(list, path, fill("reserved:background"), true);
+    new = starset_entities_add(list, path, fill_e("reserved:background"), true);
     starset_entities_get_propreties(new, "background")->is_trigger = true;
     starset_entities_get_propreties(new, "background")->restitution = 0.0f;
     starset_entities_get_propreties(new, "background")->id = -1;
