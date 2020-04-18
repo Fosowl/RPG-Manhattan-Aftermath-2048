@@ -29,7 +29,7 @@ int main_scene_load(game_t *game)
 int main_scene_loop(game_t *game, sfClock *timer)
 {
     game->window = game->screen->window;
-
+    srand(64886);
     while (game->window) {
         if (!starset_running(game->window, &game->event))
             return EXIT_CLOSE;
@@ -45,5 +45,6 @@ int main_scene_loop(game_t *game, sfClock *timer)
 
 void main_scene_update(game_t *game)
 {
-
+    starset_play_animation(game->entities_list, "zombie", "move", 10);
+    starset_play_animation(game->entities_list, "player", "move", 10);
 }

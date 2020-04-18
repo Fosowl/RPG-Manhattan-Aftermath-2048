@@ -48,8 +48,7 @@ int menu_loop(game_t *game)
 
     init_screen(game->screen);
     init_menu(game->menu);
-    while (sfRenderWindow_isOpen(game->screen->window)) {
-        while (sfRenderWindow_pollEvent(game->screen->window, &event));
+    while (starset_running(game->screen->window, &event)) {
         if (event.type == sfEvtMouseButtonPressed) {
             check_click = check_press(event);
         }
