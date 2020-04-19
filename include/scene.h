@@ -30,9 +30,9 @@ void set_zombie_key_attack(entities_t *entities);
 // set_player_animation.c
 
 void set_player_animation(entities_t *entities);
-void set_player_key_static(entities_t *entities);
-void set_player_key_move(entities_t *entities);
-void set_player_key_knife(entities_t *entities);
-void set_player_key_rifle(entities_t *entities);
+void set_player_key_torch_static(entities_t *entities);
+void set_player_key_pistol_static(entities_t *entities);
+void set_player_key_rifle_static(entities_t *entities);
+void set_player_key_knife_static(entities_t *entities);
 
 #endif /* !SCENE_H_ */

@@ -26,9 +26,9 @@ entities_t *load_entities_scene(int zombie)
         starset_entities_teleport(entities, name, x, y);
     }
     set_zombie_animation(entities);
-    set_player_animation(entities);
     entities = starset_entities_add(entities, PLAYER_PATH, "player", false);
-     starset_entities_teleport(entities, "player", 400, 400);
+    set_player_animation(entities);
+    starset_entities_teleport(entities, "player", 400, 900);
     if (!entities)
         return (NULL);
     return (entities);

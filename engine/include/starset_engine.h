@@ -37,6 +37,9 @@ typedef struct animator_t {
     sfVector2u size;
     int max;
     int index;
+    int frame;
+    sfClock *delay;
+    sfTime t;
     sfVector2f position[50];
     struct animator_t *next;
 } animator_t;

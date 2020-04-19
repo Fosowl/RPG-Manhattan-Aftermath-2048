@@ -16,4 +16,10 @@
 #define MEDIUM 1
 #define HARD 2
 
+#define v_2f (sfVector2f)
+#define v_2u (sfVector2u)
+
+#define P "player"
+#define add_key starset_add_animation_key
+
 #endif /* !MACRO_H_ */

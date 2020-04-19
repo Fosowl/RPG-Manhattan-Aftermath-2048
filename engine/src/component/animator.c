@@ -32,25 +32,31 @@ static void internal__play_animation_frame(aspect_t *aspect
     *frame += 1;
 }
 
-void starset_play_animation(entities_t *entitie, char *e_name
+static void internal__update_animation_clock(entities_t *entitie, int fps)
+{
+    if (!entitie->aspect->sheet->a->delay)
+        entitie->aspect->sheet->a->delay = sfClock_create();
+    entitie->aspect->sheet->a->t = sfClock_getElapsedTime
+    (entitie->aspect->sheet->a->delay);
+    if (sfTime_asMilliseconds
+    (entitie->aspect->sheet->a->t) < (1.0f / fps) * 1000.0f)
+        return;
+    sfClock_restart(entitie->aspect->sheet->a->delay);
+}
+
+void starset_play_animation(entities_t *entities, char *e_name
 , char *a_name, int fps)
 {
     sfBool ok = false;
     char **get = internal__get_class(e_name);
     static int frame = 0;
-    sfTime t;
-    static sfClock *delay = NULL;
 
-    (!delay) ? delay = sfClock_create() : 0;
-    t = sfClock_getElapsedTime(delay);
-    if (sfTime_asMilliseconds(t) < (1.0f / fps) * 1000.0f)
-        return;
-    sfClock_restart(delay);
-    for (entities_t *copy = entitie; copy != NULL; copy = copy->next) {
-        if (search_e(get[0],copy->name) != -1 ||
-        search_e(get[1], copy->name) != -1) {
-            (frame > copy->aspect->sheet->a->max) ? frame = 0 : 0;
-            internal__play_animation_frame(copy->aspect, a_name, &frame);
+    for (entities_t *entitie = entities; entitie != NULL; entitie = entitie->next) {
+        if (search_e(get[0], entitie->name) != -1 ||
+        search_e(get[1], entitie->name) != -1) {
+            internal__update_animation_clock(entitie, fps);
+            (frame > entitie->aspect->sheet->a->max) ? frame = 0 : 0;
+            internal__play_animation_frame(entitie->aspect, a_name, &frame);
         }
         ok = true;
     }

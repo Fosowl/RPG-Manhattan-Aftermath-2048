@@ -19,6 +19,7 @@ static animator_t *internal__create_animation(char *a_name, sfVector2u size)
     animator->next = NULL;
     animator->index = 0;
     animator->max = 0;
+    animator->delay = NULL;
     return (animator);
 }
 

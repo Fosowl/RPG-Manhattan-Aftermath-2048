@@ -9,12 +9,12 @@
 #include "scene.h"
 #include "starset_engine.h"
 #include "render.h"
-#include "macro.h"
+#include "game_macro.h"
 
 int main_scene_load(game_t *game)
 {
     sfClock *timer = sfClock_create();
-    game->entities_list = load_entities_scene(35);
+    game->entities_list = load_entities_scene(4);
 
     if (!game->entities_list)
         return EXIT_FAILURE;
@@ -45,6 +45,6 @@ int main_scene_loop(game_t *game, sfClock *timer)
 
 void main_scene_update(game_t *game)
 {
-    starset_play_animation(game->entities_list, "zombie", "move", 10);
-    starset_play_animation(game->entities_list, "player", "move", 10);
+    starset_play_animation(game->entities_list, "player", "knife:static", 2);
+    starset_play_animation(game->entities_list, "zombie", "static", 2);
 }
