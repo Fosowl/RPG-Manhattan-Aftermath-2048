@@ -22,6 +22,7 @@ void set_player_animation(entities_t *entities)
 {
     starset_add_animation(entities, "player", "torch:static", v_2u{95, 80});
     starset_add_animation(entities, "player", "pistol:static", v_2u{95, 80});
+    starset_add_animation(entities, "player", "pistol:move", v_2u{95, 80});
     starset_add_animation(entities, "player", "pistol:fire", v_2u{95, 80});
     starset_add_animation(entities, "player", "pistol:reload", v_2u{95, 80});
     starset_add_animation(entities, "player", "rifle:static", v_2u{95, 80});
@@ -35,6 +36,16 @@ void set_player_animation(entities_t *entities)
     set_player_key_pistol_static(entities);
     set_player_key_rifle_static(entities);
     set_player_key_knife_static(entities);
+
+    set_player_key_pistol_move(entities);
+    set_player_key_rifle_move(entities);
+    set_player_key_knife_move(entities);
+
+    set_player_key_pistol_attack(entities);
+    set_player_key_rifle_attack(entities);
+    set_player_key_knife_attack(entities);
+    set_player_key_pistol_reload(entities);
+    set_player_key_rifle_reload(entities);
 }
 
 void set_player_key_torch_static(entities_t *entities)
@@ -67,10 +78,6 @@ void set_player_key_rifle_static(entities_t *entities)
     add_key(entities, "player", "rifle:static", v_2f{6.0f, 580.0f});
     add_key(entities, "player", "rifle:static", v_2f{102.0f, 580.0f});
     add_key(entities, "player", "rifle:static", v_2f{212.0f, 580.0f});
-    add_key(entities, "player", "rifle:static", v_2f{318.0f, 580.0f});
-    add_key(entities, "player", "rifle:static", v_2f{422.0f, 580.0f});
-    add_key(entities, "player", "rifle:static", v_2f{518.0f, 580.0f});
-    add_key(entities, "player", "rifle:static", v_2f{623.0f, 580.0f});
     add_key(entities, "player", "rifle:static", v_2f{734.0f, 580.0f});
     add_key(entities, "player", "rifle:static", v_2f{833.0f, 580.0f});
     add_key(entities, "player", "rifle:static", v_2f{935.0f, 580.0f});

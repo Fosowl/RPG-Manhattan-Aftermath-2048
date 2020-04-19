@@ -72,7 +72,7 @@ static void internal__add_keyframe_to(sheet_t *this, char *a_name
         }
     }
     if (!ok && !!LOG)
-        put_err("bad animation name in add_keyframe_to()");
+        put_err("bad animation name in add_keyframe()\n");
 }
 
 void starset_add_animation_key(entities_t *entities, char *e_name

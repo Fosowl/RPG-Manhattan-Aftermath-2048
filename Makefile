@@ -57,22 +57,27 @@ BIN_NAME	= my_rpg
 IDIR	= include/
 SRC_DIR = src/
 
-SRC_FILES	= 		main.c									\
-					menu/init_menu.c						\
-					menu/menu_loop.c						\
-					menu/destroy_menu.c						\
-					menu/init_struct.c						\
-					dialog/malloc_dialog.c					\
-					dialog/init_reply_dialog.c				\
-					dialog/parsing_reply.c					\
-					dialog/create_dialog.c					\
-					dialog/event_dialog.c					\
-					dialog/display_dialog.c					\
-					dialog/destroy_dialog.c					\
-					main_scene/main_scene.c					\
-					main_scene/load_entities.c				\
-					main_scene/set_player_anim.c			\
-					main_scene/set_zombie_anim.c
+SRC_FILES	= 		main.c								\
+					menu/init_menu.c					\
+					menu/menu_loop.c					\
+					menu/destroy_menu.c					\
+					menu/init_struct.c					\
+					dialog/malloc_dialog.c				\
+					dialog/init_reply_dialog.c			\
+					dialog/parsing_reply.c				\
+					dialog/create_dialog.c				\
+					dialog/event_dialog.c				\
+					dialog/display_dialog.c				\
+					dialog/destroy_dialog.c				\
+					main_scene/main_scene.c				\
+					main_scene/load_entities.c			\
+					main_scene/set_player_anim.c		\
+					main_scene/set_zombie_anim.c		\
+					main_scene/set_sound.c				\
+					main_scene/control.c				\
+					main_scene/toggle_object.c			\
+					main_scene/p_attack_anim.c			\
+					main_scene/p_move_anim.c
 
 # test var
 

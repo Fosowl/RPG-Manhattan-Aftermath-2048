@@ -51,6 +51,24 @@ typedef struct screen_s {
     sfRenderWindow *window;
 } screen_t;
 
+typedef struct control_t {
+    int key_up;
+    int key_down;
+    int key_left;
+    int key_right;
+    int key_weapon[5];
+    int key_map;
+    int key_inventory;
+    int key_reload;
+} control_t;
+
+typedef struct player_t {
+    char *selected;
+    control_t control;
+    entities_t *save;
+    float angle;
+} player_t;
+
 typedef struct game_s {
     screen_t *screen;
     menu_t *menu;
@@ -60,6 +78,7 @@ typedef struct game_s {
     entities_t *entities_list;
     sfTime runtime;
     int mode;
+    player_t player;
 } game_t;
 
 #endif /* !GAME_STRUCT_H_ */

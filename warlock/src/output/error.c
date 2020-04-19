@@ -36,3 +36,9 @@ int error(long long int check, char *text)
     return (0);
 }
 
+void put_success(char *str)
+{
+    write(2, "\x1b[32m[SUCCESS] \033[1;39m", 23);
+    write(2, str, my_strlen(str));
+}
+

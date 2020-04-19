@@ -56,7 +56,7 @@ static void internal__set_entities_value(entities_t *entitie
     srand((unsigned long long int)malloc(1));
     entitie->position.x = rand() % 200;
     entitie->position.y = rand() % 200;
-    entitie->speed = 1.0f;
+    entitie->speed = 2.0f;
     entitie->previous = NULL;
     entitie->next = NULL;
     entitie->component = NULL;

@@ -41,7 +41,7 @@ static audio_t *internal__push_audio(audio_t *audio, char *name, char *path)
         audio = internal__create_new_audio(name, path);
         return (audio);
     } else {
-        for (copy = audio; copy != NULL; copy = copy->next);
+        for (copy = audio; copy->next != NULL; copy = copy->next);
         copy->next = internal__create_new_audio(name, path);
     }
     return (audio);

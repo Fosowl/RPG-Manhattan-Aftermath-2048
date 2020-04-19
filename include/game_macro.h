@@ -21,5 +21,6 @@
 
 #define P "player"
 #define add_key starset_add_animation_key
+#define press sfKeyboard_isKeyPressed
 
 #endif /* !MACRO_H_ */

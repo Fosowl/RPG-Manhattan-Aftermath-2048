@@ -135,4 +135,6 @@ on standard output.
 
 int my_print_float(float percent);
 
+void put_success(char *str);
+
 #endif /* !OUTPUT_H_ */
