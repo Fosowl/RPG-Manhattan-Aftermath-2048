@@ -11,34 +11,6 @@
 #include "warlock.h"
 #include "game_macro.h"
 
-static int teleport_player_up(entities_t *entities, entities_t *save)
-{
-    starset_entities_teleport(entities, "player"
-    , save->position.x, save->position.y - 1);
-    return (1);
-}
-
-static int teleport_player_down(entities_t *entities, entities_t *save)
-{
-    starset_entities_teleport(entities, "player"
-    , save->position.x, save->position.y + 1);
-    return (1);
-}
-
-static int teleport_player_left(entities_t *entities, entities_t *save)
-{
-    starset_entities_teleport(entities, "player"
-    , save->position.x - 1, save->position.y);
-    return (1);
-}
-
-static int teleport_player_right(entities_t *entities, entities_t *save)
-{
-    starset_entities_teleport(entities, "player"
-    , save->position.x + 1, save->position.y);
-    return (1);
-}
-
 static float point_toward_mouse(entities_t *entities, sfRenderWindow *window)
 {
     float angle;
@@ -60,18 +32,20 @@ void player_controller(entities_t *entities, player_t *player
 
     player->save = starset_entities_get_propreties(entities, "player");
     player->angle = point_toward_mouse(entities, window);
-    r += attack_entities(player, event, window);
     if (press(sfKeyUp) || press(player->control.key_up))
-        r += teleport_player_up(entities, player->save);
+        r = teleport_player_up(entities, player->save);
     if (press(sfKeyDown) || press(player->control.key_down))
-        r += teleport_player_down(entities, player->save);
+        r = teleport_player_down(entities, player->save);
     if (press(sfKeyLeft) || press(player->control.key_left))
-        r += teleport_player_left(entities, player->save);
+        r = teleport_player_left(entities, player->save);
     if (press(sfKeyRight) || press(player->control.key_right))
-        r += teleport_player_right(entities, player->save);
+        r = teleport_player_right(entities, player->save);
+    r = attack_entities(player, event, window);
     if (r == 0)
         animation = append(player->selected, ":static");
-    else if (r > 0)
+    if (r == 1)
         animation = append(player->selected, ":move");
-    starset_play_animation(entities, "player", animation, 2);
+    if (r == 0 || r == 1)
+        starset_play_animation(entities, "player", animation, 3);
+    free(animation);
 }

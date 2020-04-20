@@ -75,6 +75,7 @@ SRC_FILES	= 		main.c								\
 					main_scene/set_zombie_anim.c		\
 					main_scene/set_sound.c				\
 					main_scene/control.c				\
+					main_scene/control_direction.c		\
 					main_scene/toggle_object.c			\
 					main_scene/p_attack_anim.c			\
 					main_scene/p_move_anim.c			\

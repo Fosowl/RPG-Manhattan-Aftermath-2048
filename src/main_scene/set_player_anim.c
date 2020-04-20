@@ -29,11 +29,11 @@ void set_player_animation(entities_t *entities)
     starset_add_animation(player, "player", "pistol:reload", v_2u{95, 80});
     starset_add_animation(player, "player", "rifle:static", v_2u{95, 80});
     starset_add_animation(player, "player", "rifle:move", v_2u{95, 80});
-    starset_add_animation(player, "player", "rifle:attack", v_2u{95, 80});
+    starset_add_animation(player, "player", "rifle:attack", v_2u{98, 80});
     starset_add_animation(player, "player", "rifle:reload", v_2u{95, 80});
     starset_add_animation(player, "player", "knife:static", v_2u{95, 80});
     starset_add_animation(player, "player", "knife:move", v_2u{95, 80});
-    starset_add_animation(player, "player", "knife:attack", v_2u{95, 80});
+    starset_add_animation(player, "player", "knife:attack", v_2u{95, 95});
     set_player_key_torch_static(player);
     set_player_key_pistol_static(player);
     set_player_key_rifle_static(player);

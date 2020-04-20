@@ -46,6 +46,10 @@ void set_player_sound(entities_t *entities);
 
 void player_controller(entities_t *entities, player_t *player
 , sfEvent *event, sfRenderWindow * window);
+int teleport_player_up(entities_t *entities, entities_t *save);
+int teleport_player_down(entities_t *entities, entities_t *save);
+int teleport_player_left(entities_t *entities, entities_t *save);
+int teleport_player_right(entities_t *entities, entities_t *save);
 
 // toggle_object.c
 
