@@ -121,7 +121,7 @@ entities_t *starset_entities_destroy(entities_t *entities, char *name);
 
 // ANIMATE
 
-void starset_play_animation(entities_t *entitie, char *e_name
+int starset_play_animation(entities_t *entitie, char *e_name
 , char *a_name, int fps);
 
 // RENDER
@@ -135,6 +135,8 @@ void starset_single_play_sound(entities_t *entitie, char *sound_name
 , sfBool loop);
 void starset_entities_play_sound(entities_t *entities, char *name
 , char *sound_name, sfBool loop);
+void starset_set_sound_volume(entities_t *entities, char *name
+, char *sound_name, int volume);
 
 // MOVE
 

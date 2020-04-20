@@ -47,11 +47,13 @@ int main_scene_load(game_t *game)
 
 void play_music(void)
 {
-    sfSoundBuffer *buffer = sfSoundBuffer_createFromFile("assets/audio/days_later.ogg");
+    sfSoundBuffer *buffer = sfSoundBuffer_createFromFile
+    ("assets/audio/days_later.ogg");
     sfSound *sound = sfSound_create();
 
     sfSound_setBuffer(sound, buffer);
     sfSound_setLoop(sound, true);
+    sfSound_setVolume(sound, 75);
     sfSound_play(sound);
 }
 
@@ -75,9 +77,9 @@ int main_scene_loop(game_t *game, sfClock *timer)
 
 void main_scene_update(game_t *game)
 {
-    player_controller(game->entities_list, game->player
+    player_controller(game->entities_list, &game->player
     , &game->event, game->window);
     player_switch_object(game->entities_list, game->player, &game->event);
-    starset_entities_play_sound(game->entities_list, "zombie", "breath", true);
-    starset_play_animation(game->entities_list, "zombie", "static", 2);
+    handle_zombie_sound(game);
+    starset_play_animation(game->entities_list, "zombie", "static", 4);
 }

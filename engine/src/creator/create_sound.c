@@ -62,3 +62,38 @@ void starset_add_entities_sound(entities_t *entities, char *name
     }
     (!ok && !!LOG) ? put_err("bad entities in starset_add_sound()\n") : 0;
 }
+
+static audio_t *internal__get_audio(audio_t *audio, char *name)
+{
+    sfBool ok = false;
+    char **get = internal__get_class(name);
+    audio_t *tmp = NULL;
+
+    for (audio_t *copy = audio; copy != NULL; copy = copy->next) {
+        if (search_e(get[0], copy->name) != -1 || search_e(copy->name
+        , get[1]) != -1) {
+            tmp = copy;
+            ok = true;
+        }
+    }
+    (!ok && !!LOG) ? put_err("bad sound name in starset_set_sound_volume()\n") : 0;
+    return (tmp);
+}
+
+void starset_set_sound_volume(entities_t *entities, char *name
+, char *sound_name, int volume)
+{
+    sfBool ok = false;
+    char **get = internal__get_class(name);
+    audio_t *audio = NULL;
+
+    for (entities_t *copy = entities; copy != NULL; copy = copy->next) {
+        if (search_e(get[0], copy->name) != -1 || search_e(copy->name
+        , get[1]) != -1) {
+            audio = internal__get_audio(copy->audio, sound_name);
+            ok = true;
+        }
+    }
+    audio->volume = volume;
+    (!ok && !!LOG) ? put_err("bad entities in starset_set_sound_volume()\n") : 0;
+}

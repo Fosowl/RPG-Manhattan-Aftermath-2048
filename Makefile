@@ -77,7 +77,9 @@ SRC_FILES	= 		main.c								\
 					main_scene/control.c				\
 					main_scene/toggle_object.c			\
 					main_scene/p_attack_anim.c			\
-					main_scene/p_move_anim.c
+					main_scene/p_move_anim.c			\
+					main_scene/player_attack.c			\
+					main_scene/zombie_sound.c
 
 # test var
 

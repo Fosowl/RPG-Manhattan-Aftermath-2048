@@ -66,6 +66,7 @@ typedef struct player_t {
     char *selected;
     control_t control;
     entities_t *save;
+    int status;
     float angle;
 } player_t;
 

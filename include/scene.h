@@ -44,7 +44,7 @@ void set_player_sound(entities_t *entities);
 
 // control.c
 
-void player_controller(entities_t *entities, player_t player
+void player_controller(entities_t *entities, player_t *player
 , sfEvent *event, sfRenderWindow * window);
 
 // toggle_object.c
@@ -65,5 +65,14 @@ void set_player_key_rifle_attack(entities_t *entities);
 void set_player_key_knife_attack(entities_t *entities);
 void set_player_key_pistol_reload(entities_t *entities);
 void set_player_key_rifle_reload(entities_t *entities);
+
+// player_attack.c
+
+int attack_entities(player_t *player, sfEvent *event
+, sfRenderWindow *window);
+
+// zombie_sound.c
+
+void handle_zombie_sound(game_t *game);
 
 #endif /* !SCENE_H_ */
