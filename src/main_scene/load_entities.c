@@ -37,14 +37,14 @@ entities_t *load_entities_scene(int zombie)
     entities_t *entities = NULL;
 
     entities = create_zombie_scene(entities, zombie);
+    entities = starset_entities_add(entities, PLAYER_PATH, "player", false);
+    if (!entities)
+        return (NULL);
     set_zombie_animation(entities);
     set_zombie_sound(entities, zombie);
-    entities = starset_entities_add(entities, PLAYER_PATH, "player", false);
-    starset_entities_get_propreties(entities, "player")->speed = 4;
     set_player_animation(entities);
     set_player_sound(entities);
     starset_entities_teleport(entities, "player", 400, 900);
-    if (!entities)
-        return (NULL);
+    starset_entities_get_propreties(entities, "player")->speed = 3;
     return (entities);
 }

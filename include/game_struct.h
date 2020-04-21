@@ -68,6 +68,8 @@ typedef struct player_t {
     entities_t *save;
     int status;
     float angle;
+    sfBool ear_off;
+    float noise;
 } player_t;
 
 typedef struct game_s {

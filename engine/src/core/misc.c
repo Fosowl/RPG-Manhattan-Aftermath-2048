@@ -8,23 +8,6 @@
 #include "../../include/internal.h"
 #include "../../include/dependancies.h"
 
-char **internal__get_class(char *name)
-{
-    char **all = clean_double_alloc_e(2, 10);
-
-    if (!all)
-        return NULL;
-    if (search_e(":", name) == true) {
-        all = divide_array_e(name, ':');
-    } else {
-        all[0] = name;
-        all[1] = name;
-    }
-    if (!all)
-        return NULL;
-    return (all);
-}
-
 sfBool starset_running(sfRenderWindow *window, sfEvent *event)
 {
     if (!sfRenderWindow_isOpen(window))
@@ -71,4 +54,18 @@ entities_t *starset_set_background(entities_t *list, char *path)
     starset_entities_get_propreties(new, "background")->position = (sfVector2f)
     {size.x / 2, size.y / 2};
     return (new);
+}
+
+void starset_reset_value(float *value, float timeout, float reset)
+{
+    static sfClock *timer = NULL;
+    sfTime delay = sfTime_Zero;
+
+    if (!timer)
+        timer = sfClock_create();
+    delay = sfClock_getElapsedTime(timer);
+    if (sfTime_asMilliseconds(delay) / 1000 < timeout)
+        return;
+    *value = reset;
+    sfClock_restart(timer);
 }

@@ -32,7 +32,7 @@ static component_t *internal__add_component(component_t *component
     if (component == NULL)
         new = internal__create_new_component(pointer, ptr_name, id);
     else {
-        for (copy_component = component; copy_component != NULL
+        for (copy_component = component; copy_component->next != NULL
         ; copy_component = copy_component->next);
         copy_component->next = internal__create_new_component(pointer
         , ptr_name, id);

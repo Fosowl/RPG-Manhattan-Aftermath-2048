@@ -16,7 +16,7 @@ void handle_zombie_sound(game_t *game)
 {
     static sfClock *timer = NULL;
     sfTime delay;
-    static int r = 7;
+    static int r = 2;
 
     if (!timer)
         timer = sfClock_create();

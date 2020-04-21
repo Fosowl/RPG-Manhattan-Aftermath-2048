@@ -8,6 +8,17 @@
 #include "../../include/macro.h"
 #include "../../include/internal.h"
 
+static void internal__set_value_audio(audio_t *audio, char *name)
+{
+    audio->name = fill_e(name);
+    audio->loop = false;
+    audio->playing = false;
+    audio->volume = 70;
+    audio->next = NULL;
+    audio->timer = sfClock_create();
+    audio->sound = sfSound_create();
+}
+
 static audio_t *internal__create_new_audio(char *name, char *path)
 {
     audio_t *audio = malloc(sizeof(audio_t));
@@ -15,20 +26,18 @@ static audio_t *internal__create_new_audio(char *name, char *path)
 
     if (!audio)
         return (NULL);
-    audio->name = fill_e(name);
-    audio->loop = false;
-    audio->playing = false;
-    audio->volume = 70;
-    audio->next = NULL;
-    audio->sound = sfSound_create();
+    internal__set_value_audio(audio, name);
     sfSound_setRelativeToListener(audio->sound, true);
     sfListener_setPosition(audio->binaural);
-    if (!audio->sound)
+    if (!audio->sound || !audio->timer || !audio->sound)
         return (NULL);
     buffer = sfSoundBuffer_createFromFile(path);
-    if (!buffer)
+    if (!buffer) {
+        put_err("failed to load audio file\n");
         return (NULL);
+    }
     audio->duration = sfSoundBuffer_getDuration(buffer);
+    audio->delay = audio->duration;
     sfSound_setBuffer(audio->sound, buffer);
     return (audio);
 }

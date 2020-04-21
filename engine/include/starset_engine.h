@@ -20,6 +20,8 @@ typedef struct audio_t {
     sfBool playing;
     sfBool loop;
     sfTime duration;
+    sfClock *timer;
+    sfTime delay;
     struct audio_t *next;
 } audio_t;
 
@@ -93,6 +95,8 @@ int starset_update_engine(entities_t *entities, sfRenderWindow *window
 , sfImage *image);
 entities_t *starset_entities_get_propreties(entities_t *entities, char *name);
 entities_t *starset_set_background(entities_t *list, char *path);
+entities_t *starset_get_next(entities_t *entities, char *name);
+void starset_reset_value(float *value, float timeout, float reset);
 
 // MATH
 

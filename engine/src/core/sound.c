@@ -2,52 +2,10 @@
 ** EPITECH PROJECT, 2020
 ** engine
 ** File description:
-** sound player for engine
+** set sound during runtime to be play by engine later
 */
 
 #include "../../include/internal.h"
-
-static void internal__set_binaural_effect(audio_t *audio, sfVector3f *vector)
-{
-    audio_t *copy = audio;
-
-    while (copy != NULL) {
-        copy->binaural.x = vector->x;
-        copy->binaural.y = vector->y;
-        copy->binaural.z = vector->z;
-        copy = copy->next;
-    }
-}
-
-void internal__dynamic_sound(entities_t *this, entities_t *player)
-{
-    sfVector3f vector = (sfVector3f){0.0f, 0.0f, 0.0f};
-
-    if (!player || !this)
-        return;
-    if (starset_get_distance(player->position, this->position) < 70)
-        vector = (sfVector3f){0.0f, 0.0f, 0.0f};
-    else {
-        if (player->position.x < this->position.x)
-            vector.x = -30.0f;
-        else
-            vector.x = -0.0f;
-        if (player->position.y < this->position.y)
-            vector.z = -30.0f;
-        else
-            vector.z = 30.0f;
-    }
-    internal__set_binaural_effect(this->audio, &vector);
-}
-
-static void internal__apply_sound(audio_t *copy, sfBool loop)
-{
-    sfSound_setLoop(copy->sound, loop);
-    sfSound_setPosition(copy->sound, copy->binaural);
-    sfSound_setMinDistance(copy->sound, copy->volume);
-    sfSound_setAttenuation(copy->sound, 20.0f);
-    sfSound_setVolume(copy->sound, copy->volume);
-}
 
 void starset_single_play_sound(entities_t *entitie, char *sound_name
 , sfBool loop)
@@ -61,12 +19,8 @@ void starset_single_play_sound(entities_t *entitie, char *sound_name
     delay = sfClock_getElapsedTime(timer);
     for (audio_t *copy = entitie->audio; copy != NULL; copy = copy->next) {
         if (compare_e(copy->name, sound_name) == true) {
-            internal__apply_sound(copy, loop);
-            if (sfTime_asMilliseconds(delay) > sfTime_asMilliseconds
-            (copy->duration)) {
-                sfSound_play(copy->sound);
-                sfClock_restart(timer);
-            }
+            copy->playing = 1;
+            copy->loop = loop;
             ok = true;
         }
     }

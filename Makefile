@@ -80,7 +80,10 @@ SRC_FILES	= 		main.c								\
 					main_scene/p_attack_anim.c			\
 					main_scene/p_move_anim.c			\
 					main_scene/player_attack.c			\
-					main_scene/zombie_sound.c
+					main_scene/zombie_sound.c			\
+					main_scene/zombie_ai.c				\
+					main_scene/player_sound.c			\
+					main_scene/reset.c
 
 # test var
 
@@ -105,6 +108,9 @@ $(BIN_NAME):
 		@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(RENDER) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS)
 		@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 		@echo -e "${_END}${_BOLD}${_ICYAN}binary compilation complete !${_END}"
+
+engine:
+	@cd $(ENGINE_DIR) ; make clean ; make
 
 debug:
 	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(RENDER) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS) -g3

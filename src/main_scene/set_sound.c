@@ -55,6 +55,6 @@ void set_player_sound(entities_t *entities)
     starset_set_sound_volume(player, "player", "pistol", 100);
     starset_set_sound_volume(player, "player", "rifle", 100);
     starset_set_sound_volume(player, "player", "collide", 70);
-    starset_set_sound_volume(player, "player", "knife", 100);
     starset_set_sound_volume(player, "player", "reload", 80);
+    starset_set_sound_volume(player, "player", "knife", 100);
 }

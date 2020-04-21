@@ -27,6 +27,8 @@ static void load_value(game_t *game)
     game->player.control.key_weapon[1] = sfKeyNum2;
     game->player.control.key_weapon[2] = sfKeyNum3;
     game->player.control.key_weapon[3] = sfKeyNum4;
+    game->player.selected = fill("pistol");
+    game->player.ear_off = false;
 }
 
 int main_scene_load(game_t *game)
@@ -53,7 +55,7 @@ void play_music(void)
 
     sfSound_setBuffer(sound, buffer);
     sfSound_setLoop(sound, true);
-    sfSound_setVolume(sound, 75);
+    sfSound_setVolume(sound, 55);
     sfSound_play(sound);
 }
 
@@ -77,9 +79,13 @@ int main_scene_loop(game_t *game, sfClock *timer)
 
 void main_scene_update(game_t *game)
 {
+    reset_value(game);
     player_controller(game->entities_list, &game->player
     , &game->event, game->window);
     player_switch_object(game->entities_list, game->player, &game->event);
-    handle_zombie_sound(game);
-    starset_play_animation(game->entities_list, "zombie", "static", 4);
+    handle_player_sound(game);
+    zombie_ai(game->entities_list, &game->player);
+    if (game->player.ear_off != true) {
+        handle_zombie_sound(game);
+    }
 }

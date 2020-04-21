@@ -79,4 +79,12 @@ int attack_entities(player_t *player, sfEvent *event
 
 void handle_zombie_sound(game_t *game);
 
+// zombie_ai.c
+
+void zombie_ai(entities_t *entities, player_t *player);
+
+// player_sound.c
+
+void handle_player_sound(game_t *game);
+
 #endif /* !SCENE_H_ */

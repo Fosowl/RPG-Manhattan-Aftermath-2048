@@ -18,6 +18,8 @@ static int switch_animation(player_t *player, int *r)
     if (*r == 2) {
         animation = append(player->selected, ":attack");
         *r = starset_play_animation(player->save, "player", animation, 3);
+        if (!compare(player->selected, "knife"))
+            player->noise = 2.5;
         if (*r == 1)
             *r = 2;
         return (7);
@@ -25,6 +27,8 @@ static int switch_animation(player_t *player, int *r)
     if (*r == 3) {
         animation = append(player->selected, ":reload");
         *r = starset_play_animation(player->save, "player", animation, 3);
+        if (!compare(player->selected, "knife"))
+            player->noise = 1.3;
         if (*r == 1)
             *r = 3;
         return (7);
