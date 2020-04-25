@@ -48,10 +48,5 @@ void internal__collision_physics(entities_t *entitie_1
         , entitie_2, impulse);
         if (normal > 0)
             return;
-        entitie_1->collision = true;
-        entitie_2->collision = true;
-    } else {
-        entitie_1->collision = false;
-        entitie_2->collision = false;
     }
 }

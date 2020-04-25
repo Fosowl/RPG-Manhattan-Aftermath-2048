@@ -84,3 +84,19 @@ void starset_entities_move_to_other(entities_t *entities, char *first
         put_err("bad entities name in starset_entities_move_to_other\n");
 }
 
+
+void starset_move_from_angle(entities_t *entities, char *name
+, float angle, int speed)
+{
+    entities_t *copy = entities;
+    char **get = internal__get_class(name);
+
+    while (copy != NULL) {
+        if (search_e(get[0], copy->name) != -1 || search_e(copy->name
+        , get[1]) != -1) {
+            copy->position.x += (float)speed * cos((angle / 57));
+            copy->position.y += (float)speed * sin((angle / 57));
+        }
+        copy = copy->next;
+    }
+}

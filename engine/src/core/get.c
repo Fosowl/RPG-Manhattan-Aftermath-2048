@@ -38,5 +38,7 @@ entities_t *starset_get_next(entities_t *entities, char *name)
         return (NULL);
     else
         tmp = tmp->next;
+    if (!tmp)
+        return (NULL);
     return (back);
 }

@@ -11,8 +11,9 @@ static void internal__apply_sound(audio_t *copy)
 {
     if (sfTime_asMilliseconds(copy->delay) > sfTime_asMilliseconds
     (copy->duration)) {
-        if (copy->playing == true)
+        if (copy->playing == true) {
             sfSound_play(copy->sound);
+        }
         sfClock_restart(copy->timer);
         if (copy->loop == false)
             copy->playing = 0;

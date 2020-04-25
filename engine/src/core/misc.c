@@ -15,11 +15,6 @@ sfBool starset_running(sfRenderWindow *window, sfEvent *event)
     while (sfRenderWindow_pollEvent(window, event)) {
         if (event->type == sfEvtClosed)
                 return (false);
-        if (event->type == sfEvtResized) {
-            sfView *view = sfView_createFromRect((sfFloatRect){0, 0
-            , event->size.width, event->size.height});
-            sfRenderWindow_setView(window, view);
-        }
     }
     return (true);
 }

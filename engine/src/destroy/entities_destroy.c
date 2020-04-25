@@ -43,6 +43,23 @@ void starset_entities_destroy_all(entities_t *entities)
     }
 }
 
+static entities_t *internal__reconnect_link(entities_t *copy, entities_t *tmp
+, entities_t *entities, int *ok)
+{
+    if (copy->back != NULL) {
+        copy->back->next = copy->next;
+        if (copy->next != NULL)
+            copy->next->back = copy->back;
+    } else {
+        entities = copy->next;
+        entities->back = NULL;
+    }
+    copy = copy->next;
+    internal__entities_destroy(tmp);
+    *ok = true;
+    return (entities);
+}
+
 entities_t *starset_entities_destroy(entities_t *entities, char *name)
 {
     entities_t *tmp = NULL;
@@ -50,18 +67,11 @@ entities_t *starset_entities_destroy(entities_t *entities, char *name)
     char **get = internal__get_class(name);
     sfBool ok = false;
 
-    while (copy->next != NULL) {
+    while (copy != NULL) {
         tmp = copy;
         if (search_e(get[0], copy->name) != -1 ||
         search_e(get[1], copy->name) != -1) {
-            if (copy->back != NULL) {
-                copy->back->next = copy->next;
-                copy->next->back = copy->back;
-            } else
-                entities = copy->next;
-            copy = copy->next;
-            internal__entities_destroy(tmp);
-            ok = true;
+            entities = internal__reconnect_link(copy, tmp, entities, &ok);
         } else
             copy = copy->next;
     }

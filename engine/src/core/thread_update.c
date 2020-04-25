@@ -16,7 +16,7 @@ void internal__dynamic_engine(void *ptr)
 
     if (!mutex)
         return;
-    sfMutex_lock(mutex);
+    //sfMutex_lock(mutex);
     for (entities_t *entitie = pass->entities; entitie != NULL
     ; entitie = entitie->next) {
         if (pass->image != NULL) {
@@ -26,7 +26,8 @@ void internal__dynamic_engine(void *ptr)
         }
         search_e("player", entitie->name) != -1 ? player = entitie : 0;
         internal__dynamic_sound(entitie, player);
-        starset_entities_render_single(entitie, pass->window);
+        if (entitie)
+            starset_entities_render_single(entitie, pass->window);
     }
     sfMutex_destroy(mutex);
 }
@@ -38,7 +39,7 @@ void internal__collider_call(void *ptr)
 
     if (!mutex)
         return;
-    sfMutex_lock(mutex);
+    //sfMutex_lock(mutex);
     internal__collider_update(pass->entities, pass->window);
     sfMutex_destroy(mutex);
 }

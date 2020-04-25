@@ -9,6 +9,7 @@
 #include "scene.h"
 #include "starset_engine.h"
 #include "game_macro.h"
+#include "warlock.h"
 
 static void zombie_visit_area(entities_t *tmp, int *c)
 {
@@ -36,20 +37,29 @@ static void zombie_attack_player(entities_t *tmp, int *pass, player_t *player)
         player->save->life -= 1;
 }
 
-void zombie_ai(entities_t *entities, player_t *player)
+void zombie_ai(entities_t **entities, player_t *player)
 {
     int distance = 0;
     entities_t *tmp = NULL;
+    entities_t *tmp2 = NULL;
     int c = 0;
     int pass = 0;
 
-    while ((tmp = starset_get_next(entities, "zombie"))) {
+    while ((tmp = starset_get_next(*entities, "zombie"))) {
         distance = starset_get_distance(tmp->position, player->save->position);
+        if (tmp->collision != NULL && tmp->collision->name &&
+        compare(tmp->collision->name, "bullet")) {
+            tmp->life -= 50;
+        }
+        if (tmp->life <= 0 && search("zombie", tmp->name) != -1) {
+            *entities = starset_entities_destroy(*entities, tmp->name);
+            continue;
+        }
         if (distance < 100) {
             zombie_attack_player(tmp, &pass, player);
         } else if (distance < 350 * player->noise && distance > 80 * player->noise) {
             starset_play_animation(tmp, tmp->name, "static", 6);
-            starset_entities_move_to_other(entities, tmp->name, player->save->name);
+            starset_entities_move_to_other(*entities, tmp->name, player->save->name);
             starset_entities_rotate_to(tmp, tmp->name, player->save->position);
         } else {
             zombie_visit_area(tmp, &c);

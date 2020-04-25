@@ -44,8 +44,7 @@ void set_player_sound(entities_t *entities);
 
 // control.c
 
-void player_controller(entities_t *entities, player_t *player
-, sfEvent *event, sfRenderWindow * window);
+void player_controller(game_t *game);
 int teleport_player_up(entities_t *entities, entities_t *save);
 int teleport_player_down(entities_t *entities, entities_t *save);
 int teleport_player_left(entities_t *entities, entities_t *save);
@@ -72,19 +71,21 @@ void set_player_key_rifle_reload(entities_t *entities);
 
 // player_attack.c
 
-int attack_entities(player_t *player, sfEvent *event
+int attack_entities(game_t *game, sfEvent *event
 , sfRenderWindow *window);
 
-// zombie_sound.c
+// object_sound.c
 
 void handle_zombie_sound(game_t *game);
+void handle_player_sound(game_t *game);
 
 // zombie_ai.c
 
-void zombie_ai(entities_t *entities, player_t *player);
+void zombie_ai(entities_t **entities, player_t *player);
 
-// player_sound.c
+// update_object.c
 
-void handle_player_sound(game_t *game);
+void update_object(game_t *game);
+void reset_value(game_t *game);
 
 #endif /* !SCENE_H_ */

@@ -51,6 +51,7 @@ static void internal__set_entities_value(entities_t *entitie
     entitie->id = new_id;
     entitie->life = 100;
     entitie->name = name;
+    entitie->collision = NULL;
     entitie->terrain = fill_e("unknown");
     entitie->restitution = 1;
     srand((unsigned long long int)malloc(1));

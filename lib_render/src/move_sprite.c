@@ -23,10 +23,10 @@ void move_from_angle(sfVector2f *vector, float angle, float average_speed)
     float distance = 100.0f;
     sfVector2f speed = (sfVector2f){0.0f, 0.0f};
 
-    speed.x = 2 * cos(angle) * average_speed;
-    speed.y = 2 * sin(180 - (angle + 90)) * average_speed;
-    vector->y += speed.y;
-    vector->x += speed.x;
+    speed.x = 2 * cos(angle) * -1;
+    speed.y = 2 * sin(180 - (angle + 90));
+    vector->y += speed.y * average_speed;
+    vector->x += speed.x * average_speed;
 }
 
 float move_sprite(sfVector2f *from, sfVector2f *to, float average_speed)

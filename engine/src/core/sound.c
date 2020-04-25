@@ -11,12 +11,7 @@ void starset_single_play_sound(entities_t *entitie, char *sound_name
 , sfBool loop)
 {
     sfBool ok = false;
-    sfTime delay;
-    static sfClock *timer = NULL;
 
-    if (!timer)
-        timer = sfClock_create();
-    delay = sfClock_getElapsedTime(timer);
     for (audio_t *copy = entitie->audio; copy != NULL; copy = copy->next) {
         if (compare_e(copy->name, sound_name) == true) {
             copy->playing = 1;

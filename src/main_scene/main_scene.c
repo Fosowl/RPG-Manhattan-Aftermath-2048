@@ -34,7 +34,7 @@ static void load_value(game_t *game)
 int main_scene_load(game_t *game)
 {
     sfClock *timer = sfClock_create();
-    game->entities_list = load_entities_scene(20);
+    game->entities_list = load_entities_scene(40);
 
     if (!game->entities_list)
         return EXIT_FAILURE;
@@ -55,7 +55,7 @@ void play_music(void)
 
     sfSound_setBuffer(sound, buffer);
     sfSound_setLoop(sound, true);
-    sfSound_setVolume(sound, 55);
+    sfSound_setVolume(sound, 65);
     sfSound_play(sound);
 }
 
@@ -80,11 +80,11 @@ int main_scene_loop(game_t *game, sfClock *timer)
 void main_scene_update(game_t *game)
 {
     reset_value(game);
-    player_controller(game->entities_list, &game->player
-    , &game->event, game->window);
+    update_object(game);
+    player_controller(game);
     player_switch_object(game->entities_list, game->player, &game->event);
     handle_player_sound(game);
-    zombie_ai(game->entities_list, &game->player);
+    zombie_ai(&game->entities_list, &game->player);
     if (game->player.ear_off != true) {
         handle_zombie_sound(game);
     }

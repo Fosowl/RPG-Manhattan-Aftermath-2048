@@ -66,7 +66,7 @@ typedef struct entities_t {
     int id;
     char *name;
     float restitution;
-    sfBool collision;
+    struct entities_t *collision;
     sfBool is_trigger;
     sfBool fixed;
     sfBool mouse_hover;
@@ -153,5 +153,7 @@ float starset_entities_rotate_to(entities_t *entitie, char *name
 , sfVector2f target);
 float starset_entitites_rotate_to_other(entities_t *entitie, char *name
 , char *name_other);
+void starset_move_from_angle(entities_t *entities, char *name, float angle
+, int speed);
 
 #endif /* !STARTSET_ENGINE_H_ */

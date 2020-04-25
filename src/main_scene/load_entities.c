@@ -15,8 +15,8 @@ static entities_t *create_zombie_scene(entities_t *entities, int zombie)
 {
     int x = 0;
     int y = 0;
-    entities_t *tmp = NULL;
     char *name = NULL;
+    entities_t *tmp = NULL;
 
     for (int i = 0; i < zombie; i++) {
         name = my_itoa(i);
@@ -38,6 +38,7 @@ entities_t *load_entities_scene(int zombie)
 
     entities = create_zombie_scene(entities, zombie);
     entities = starset_entities_add(entities, PLAYER_PATH, "player", false);
+    entities = starset_entities_add(entities, "./assets/effect/bullet.png", "bullet", false);
     if (!entities)
         return (NULL);
     set_zombie_animation(entities);
@@ -46,5 +47,10 @@ entities_t *load_entities_scene(int zombie)
     set_player_sound(entities);
     starset_entities_teleport(entities, "player", 400, 900);
     starset_entities_get_propreties(entities, "player")->speed = 3;
+    starset_entities_get_propreties(entities, "bullet")->is_trigger = true;
+    starset_entities_get_propreties(entities, "bullet")->speed = 9;
+    starset_entities_get_propreties(entities, "bullet")->visible = false;
+    starset_entities_get_propreties(entities
+    , "bullet")->position = (sfVector2f){ -100.0f, -100.0f};
     return (entities);
 }
