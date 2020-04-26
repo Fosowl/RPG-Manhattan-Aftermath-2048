@@ -67,11 +67,9 @@ void internal__collider_update(entities_t *entities, sfRenderWindow *window)
                 continue;
             collision_vector = internal__entities_collide(copy, sub_copy);
             if (collision_vector.x != 0 && collision_vector.y != 0) {
-                copy->collision = copy;
-                sub_copy->collision = copy;
+                copy->collision = sub_copy;
             } else {
                 copy->collision = NULL;
-                sub_copy->collision = NULL;
             }
             if (copy->is_trigger != true && sub_copy->is_trigger != true)
                 internal__collision_physics(copy, sub_copy, collision_vector);

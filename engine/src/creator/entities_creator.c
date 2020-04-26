@@ -75,6 +75,8 @@ static entities_t *internal__create_entities(char *source, char *name
     entities->aspect = internal__create_aspect(source);
     entities->size = sfTexture_getSize(entities->aspect->texture);
     entities->mass = sqrt((entities->size.x * entities->size.y)) / 2;
+    entities->control.timer = NULL;
+    entities->control.delay = sfTime_Zero;
     new_id++;
     return (entities);
 }

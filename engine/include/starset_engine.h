@@ -61,6 +61,12 @@ typedef struct aspect_t {
     struct aspect_t *next;
 } aspect_t;
 
+typedef struct sound_control_t {
+    int wait;
+    sfTime delay;
+    sfClock *timer;
+} sound_control_t;
+
 typedef struct entities_t {
     sfBool visible;
     int id;
@@ -81,6 +87,7 @@ typedef struct entities_t {
     aspect_t *aspect;
     component_t *component;
     audio_t *audio;
+    sound_control_t control;
     struct entities_t *next;
     struct entities_t *back;
     struct entities_t *previous;
@@ -97,6 +104,7 @@ entities_t *starset_entities_get_propreties(entities_t *entities, char *name);
 entities_t *starset_set_background(entities_t *list, char *path);
 entities_t *starset_get_next(entities_t *entities, char *name);
 void starset_reset_value(float *value, float timeout, float reset);
+entities_t *starset_get_closest(entities_t *entities, char *name);
 
 // MATH
 

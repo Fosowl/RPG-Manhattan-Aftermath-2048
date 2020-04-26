@@ -14,7 +14,6 @@ void handle_player_sound(game_t *game)
 {
     static int pass = 0;
 
-
     if (game->player.save->life < 40 && pass == 0) {
         game->player.ear_off = true;
         starset_entities_play_sound(game->entities_list, "player", "heart", false);
@@ -27,16 +26,24 @@ void handle_player_sound(game_t *game)
 
 void handle_zombie_sound(game_t *game)
 {
-    static sfClock *timer = NULL;
-    sfTime delay;
-    static int r = 2;
+    entities_t *tmp = NULL;
+    int volume = 5;
+    int distance;
 
-    if (!timer)
-        timer = sfClock_create();
-    delay = sfClock_getElapsedTime(timer);
-    if (sfTime_asMilliseconds(delay) / 1000 < r)
-        return;
-    starset_entities_play_sound(game->entities_list, "zombie", "breath", true);
-    sfClock_restart(timer);
-    r = rand() % 10;
+    while((tmp = starset_get_next(game->entities_list, "zombie"))) {
+        if (!tmp->control.timer)
+            tmp->control.timer = sfClock_create();
+        tmp->control.delay = sfClock_getElapsedTime(tmp->control.timer);
+        if (sfTime_asMilliseconds(tmp->control.delay) / 1000 < tmp->control.wait)
+            continue;
+        starset_entities_play_sound(tmp, tmp->name, "breath", false);
+        distance = starset_get_distance(tmp->position, game->player.save->position);
+        if (distance < 700)
+            volume = (1 - (distance / 700)) * 7;
+        else
+            volume = 0;
+        starset_set_sound_volume(tmp, tmp->name, "breath", volume);
+        sfClock_restart(tmp->control.timer);
+        tmp->control.wait = rand() % 35;
+    }
 }

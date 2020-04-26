@@ -42,19 +42,21 @@ void internal__dynamic_sound(entities_t *this, entities_t *player)
 {
     sfVector3f vector = (sfVector3f){0.0f, 0.0f, 0.0f};
 
-    if (!player || !this)
+    if (!this)
         return;
-    if (starset_get_distance(player->position, this->position) < 70)
-        vector = (sfVector3f){0.0f, 0.0f, 0.0f};
-    else {
-        if (player->position.x < this->position.x)
-            vector.x = -30.0f;
-        else
-            vector.x = -0.0f;
-        if (player->position.y < this->position.y)
-            vector.z = -30.0f;
-        else
-            vector.z = 30.0f;
+    if (player != NULL) {
+        if (starset_get_distance(player->position, this->position) < 70)
+            vector = (sfVector3f){0.0f, 0.0f, 0.0f};
+        else {
+            if (player->position.x < this->position.x)
+                vector.x = -30.0f;
+            else
+                vector.x = -0.0f;
+            if (player->position.y < this->position.y)
+                vector.z = -30.0f;
+            else
+                vector.z = 30.0f;
+        }
     }
     internal__set_binaural_effect(this->audio, &vector);
 }

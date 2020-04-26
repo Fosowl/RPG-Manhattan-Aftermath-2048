@@ -41,9 +41,9 @@ ENGINE_DIR	= engine
 
 # lib warlock var
 
-LIB_DIR	= warlock/
-LIB_I_DIR	= warlock/include/
 LIB_NAME	 = warlock.a
+LIB_I_DIR	= warlock/include/
+LIB_DIR	= warlock/
 
 # lib render var
 
@@ -80,16 +80,16 @@ SRC_FILES	= 		main.c								\
 					main_scene/p_attack_anim.c			\
 					main_scene/p_move_anim.c			\
 					main_scene/player_attack.c			\
-					main_scene/zombie_sound.c			\
 					main_scene/zombie_ai.c				\
-					main_scene/player_sound.c			\
-					main_scene/reset.c
+					main_scene/object_sound.c			\
+					main_scene/update_object.c
 
 # test var
 
 TEST	 = tests/test.c
 
 CFLAGS	+= -I $(IDIR) -I $(LIB_I_DIR) -I $(RENDER_I_DIR) -I $(I_ENGINE_DIR) -Wall -Wextra -lm
+CFLAGS	+= -pedantic -fstack-protector-all
 CFLAGS	+= -lcsfml-window -lcsfml-graphics -lcsfml-audio -lcsfml-system -g3
 
 SRC		= $(addprefix $(SRC_DIR), $(SRC_FILES))

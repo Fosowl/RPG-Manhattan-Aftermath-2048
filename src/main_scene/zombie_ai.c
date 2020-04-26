@@ -34,14 +34,13 @@ static void zombie_attack_player(entities_t *tmp, int *pass, player_t *player)
     starset_entities_rotate_to(tmp, tmp->name
     , player->save->position);
     if (*pass == 0)
-        player->save->life -= 1;
+        player->save->life -= 2;
 }
 
 void zombie_ai(entities_t **entities, player_t *player)
 {
     int distance = 0;
     entities_t *tmp = NULL;
-    entities_t *tmp2 = NULL;
     int c = 0;
     int pass = 0;
 
@@ -50,6 +49,7 @@ void zombie_ai(entities_t **entities, player_t *player)
         if (tmp->collision != NULL && tmp->collision->name &&
         compare(tmp->collision->name, "bullet")) {
             tmp->life -= 50;
+            tmp->collision->visible = false;
         }
         if (tmp->life <= 0 && search("zombie", tmp->name) != -1) {
             *entities = starset_entities_destroy(*entities, tmp->name);

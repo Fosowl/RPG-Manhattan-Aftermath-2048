@@ -70,6 +70,10 @@ typedef struct player_t {
     float angle;
     sfBool ear_off;
     float noise;
+    int ammo_gun;
+    int ammo_rifle;
+    int nb_magazine_gun;
+    int nb_magazine_rifle;
 } player_t;
 
 typedef struct game_s {
