@@ -10,7 +10,7 @@
 sfText *load_text(char *string, int size, sfVector2f vector, sfColor color)
 {
     sfText *text = sfText_create();
-    sfFont *font = sfFont_createFromFile("assets/police1.ttf");
+    sfFont *font = sfFont_createFromFile("font/11.ttf");
     sfVector2f origin = (sfVector2f){0, 0};
 
     if (text == NULL || font == NULL)

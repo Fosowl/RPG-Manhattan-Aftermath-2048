@@ -16,7 +16,7 @@ void internal__dynamic_engine(void *ptr)
 
     if (!mutex)
         return;
-    //sfMutex_lock(mutex);
+    sfMutex_lock(mutex);
     for (entities_t *entitie = pass->entities; entitie != NULL
     ; entitie = entitie->next) {
         if (pass->image != NULL) {
@@ -39,7 +39,7 @@ void internal__collider_call(void *ptr)
 
     if (!mutex)
         return;
-    //sfMutex_lock(mutex);
+    sfMutex_lock(mutex);
     internal__collider_update(pass->entities, pass->window);
     sfMutex_destroy(mutex);
 }

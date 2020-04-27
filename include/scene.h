@@ -19,8 +19,7 @@ void main_scene_update(game_t *game);
 
 // load_entities.c
 
-entities_t *load_entities_scene(int zombie);
-entities_t *load_entities_scene(int zombie);
+entities_t *load_entities_scene(int zombie, sfRenderWindow *window);
 
 // set_zombie_anim.c
 

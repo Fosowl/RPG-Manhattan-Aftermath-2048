@@ -10,8 +10,22 @@
 #include "scene.h"
 #include "path.h"
 #include "game_macro.h"
+#include "render.h"
 
-static entities_t *create_zombie_scene(entities_t *entities, int zombie)
+static void update_zombie_loading(sfRenderWindow *window, int v, int max_v)
+{
+    sfVector2u screen_size = sfRenderWindow_getSize(window);
+    sfVector2u bar_position = (sfVector2u){(float)screen_size.x / 3
+    , (float)screen_size.y / 2};
+
+    sfRenderWindow_clear(window, sfBlack);
+    load_bar(window, bar_position, ((float)v / (float)max_v) * 100, (sfVector2i)
+    {screen_size.x, screen_size.y});
+    sfRenderWindow_display(window);
+}
+
+static entities_t *create_zombie_scene(entities_t *entities, int zombie
+, sfRenderWindow *window)
 {
     int x = 0;
     int y = 0;
@@ -20,6 +34,7 @@ static entities_t *create_zombie_scene(entities_t *entities, int zombie)
 
     for (int i = 0; i < zombie; i++) {
         name = my_itoa(i);
+        update_zombie_loading(window, i, zombie);
         entities = starset_entities_add(entities, ZOMBIE_PATH
         , append("zombie:", name), false);
         tmp = starset_entities_get_propreties(entities, name);
@@ -28,17 +43,41 @@ static entities_t *create_zombie_scene(entities_t *entities, int zombie)
             y = rand() % 1000;
             starset_entities_teleport(entities, name, x, y);
         }
+        usleep(10000);
     }
     return (entities);
 }
 
-entities_t *load_entities_scene(int zombie)
+static void draw_loading_text(sfRenderWindow *window)
+{
+    sfText *text_load = NULL;
+    sfVector2f position;
+    sfVector2u bar_position;
+    sfVector2u screen_size;
+
+    screen_size = sfRenderWindow_getSize(window);
+    position.x = screen_size.x / 2;
+    position.y = screen_size.y / 2;
+    bar_position.x = screen_size.x / 3;
+    bar_position.y = screen_size.y / 2;
+    text_load = load_text("loading...", 15, position, RED);
+    if (!text_load)
+        return;
+    sfRenderWindow_drawText(window, text_load, NULL);
+    load_bar(window, bar_position, 10, (sfVector2i){screen_size.x, screen_size.y});
+    sfRenderWindow_display(window);
+}
+
+entities_t *load_entities_scene(int zombie, sfRenderWindow *window)
 {
     entities_t *entities = NULL;
 
-    entities = create_zombie_scene(entities, zombie);
+    sfRenderWindow_clear(window, sfBlack);
+    draw_loading_text(window);
+    entities = create_zombie_scene(entities, zombie, window);
     entities = starset_entities_add(entities, PLAYER_PATH, "player", false);
-    entities = starset_entities_add(entities, "./assets/effect/bullet.png", "bullet", false);
+    entities = starset_entities_add(entities, "./assets/effect/bullet.png"
+    , "bullet", false);
     if (!entities)
         return (NULL);
     set_zombie_animation(entities);

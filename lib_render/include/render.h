@@ -151,6 +151,7 @@ int button_render_and_check(sfRenderWindow *window, sfEvent *ev
 , button_t *button);
 
 // button_simple.c
+
 button_t *create_simple_button(char *path, sfVector2f position, char *text);
 int simple_button_render_and_check(sfRenderWindow *window, sfEvent *event
 , button_t *button);
@@ -159,15 +160,12 @@ int simple_button_render_and_check(sfRenderWindow *window, sfEvent *event
 
 void life_bar(sfRenderWindow *window, sfVector2u position, int life
 , sfVector2i screen_size);
+void load_bar(sfRenderWindow *window, sfVector2u position, int life
+, sfVector2i screen_size);
 
 // text.c
 
 sfText *load_text(char *string, int size, sfVector2f vector, sfColor color);
-
-// loading_bar.c
-
-void loading_bar(sfRenderWindow *window, sfVector2u position
-, int life, char *resource);
 
 // screen.c
 

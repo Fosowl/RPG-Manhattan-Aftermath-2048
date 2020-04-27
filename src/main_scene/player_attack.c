@@ -18,8 +18,8 @@ static void attack_knife(game_t *game)
     , player->save->name);
 
     if (closest && starset_get_distance(closest->position
-    , player->save->position) < 150) {
-        closest->life -= 50;
+    , player->save->position) < 150 && closest != player->save) {
+        closest->life -= 3;
     }
 }
 
@@ -34,6 +34,10 @@ static void attack_gun(game_t *game)
         bullet->position.y = game->player.save->position.y;
         bullet->angle = game->player.angle;
         bullet->visible = true;
+        if (compare(game->player.selected, "rifle"))
+            bullet->life = 40;
+        else
+            bullet->life = 25;
     }
 }
 

@@ -48,11 +48,14 @@ entities_t *starset_get_closest(entities_t *entities, char *name)
     entities_t *closest = entities;
     entities_t *copy = entities;
     entities_t *from = starset_entities_get_propreties(entities, name);
+    char **get = internal__get_class(name);
     int distance = 21470000;
 
     while (copy != NULL) {
-        if (compare_e(copy->name, "bullet"))
+        if (!compare_e(get[0], copy->name)) {
+             copy = copy->next;
             continue;
+        }
         if (from != copy && starset_get_distance
         (from->position, copy->position) < distance) {
             distance = starset_get_distance(closest->position, copy->position);
