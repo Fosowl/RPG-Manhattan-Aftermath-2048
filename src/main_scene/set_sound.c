@@ -8,6 +8,7 @@
 #include "starset_engine.h"
 #include "game_macro.h"
 #include "warlock.h"
+#include "path.h"
 
 void set_zombie_sound(entities_t *entities, int nb_zombie)
 {
@@ -17,39 +18,28 @@ void set_zombie_sound(entities_t *entities, int nb_zombie)
         str = my_itoa(i);
         srand(i);
         if (rand() % 2 == 1) {
-            starset_add_entities_sound(entities, str, "breath"
-            , "assets/audio/zombie_moan.ogg");
+            starset_add_entities_sound(entities, str, "breath", MOAN_PATH);
             starset_set_sound_volume(entities, str, "breath", 5);
         } else {
-            starset_add_entities_sound(entities, str, "breath"
-            , "assets/audio/zombie_talking.ogg");
+            starset_add_entities_sound(entities, str, "breath", TALK_PATH);
             starset_set_sound_volume(entities, str, "breath", 100);
         }
     }
-    starset_add_entities_sound(entities, "zombie", "death"
-    , "assets/audio/zombie_death.ogg");
-    starset_add_entities_sound(entities, "zombie", "pain"
-    , "assets/audio/zombie_pain.ogg");
+    starset_add_entities_sound(entities, "zombie", "death", ZOMBIE_DEATH_PATH);
+    starset_add_entities_sound(entities, "zombie", "pain", ZOMBIE_PAIN_PATH);
 }
 
 void set_player_sound(entities_t *entities)
 {
     entities_t *player = starset_entities_get_propreties(entities, "player");
 
-    starset_add_entities_sound(player, "player", "pain"
-    , "assets/audio/pain.ogg");
-    starset_add_entities_sound(player, "player", "heart"
-    , "assets/audio/heart.ogg");
-    starset_add_entities_sound(player, "player", "pistol"
-    , "assets/audio/gun.ogg");
-    starset_add_entities_sound(player, "player", "rifle"
-    , "assets/audio/rifle.ogg");
-    starset_add_entities_sound(player, "player", "collide"
-    , "assets/audio/bang.ogg");
-    starset_add_entities_sound(player, "player", "reload"
-    , "assets/audio/reload.ogg");
-    starset_add_entities_sound(player, "player", "knife"
-    , "assets/audio/knife.ogg");
+    starset_add_entities_sound(player, "player", "pain", PLAYER_PAIN_PATH);
+    starset_add_entities_sound(player, "player", "heart", HEARTH_PATH);
+    starset_add_entities_sound(player, "player", "pistol", PISTOL_SOUND_PATH);
+    starset_add_entities_sound(player, "player", "rifle", RIFLE_SOUND_PATH);
+    starset_add_entities_sound(player, "player", "collide", BANG_SOUND);
+    starset_add_entities_sound(player, "player", "reload", RELOAD_SOUND);
+    starset_add_entities_sound(player, "player", "knife", KNIFE_SOUND);
     starset_set_sound_volume(player, "player", "pain", 70);
     starset_set_sound_volume(player, "player", "heart", 100);
     starset_set_sound_volume(player, "player", "pistol", 100);

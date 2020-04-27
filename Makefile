@@ -82,7 +82,9 @@ SRC_FILES	= 		main.c								\
 					main_scene/player_attack.c			\
 					main_scene/zombie_ai.c				\
 					main_scene/object_sound.c			\
-					main_scene/update_object.c
+					main_scene/update_object.c			\
+					main_scene/spawn_point.c			\
+					main_scene/dog_set.c
 
 # test var
 

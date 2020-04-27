@@ -31,18 +31,19 @@ static entities_t *create_zombie_scene(entities_t *entities, int zombie
     int y = 0;
     char *name = NULL;
     entities_t *tmp = NULL;
+    sfVector2f *spawn;
+    sfSprite *prefab = starset_create_prefab(ZOMBIE_PATH);
 
+    spawn = zombie_spawn_point(zombie);
     for (int i = 0; i < zombie; i++) {
         name = my_itoa(i);
         update_zombie_loading(window, i, zombie);
-        entities = starset_entities_add(entities, ZOMBIE_PATH
+        entities = starset_entities_add_from_prefab(entities, prefab
         , append("zombie:", name), false);
         tmp = starset_entities_get_propreties(entities, name);
-        for ( ; starset_get_distance(tmp->position, v_2f{400, 900}) < 300 ; ) {
-            x = rand() % 1000;
-            y = rand() % 1000;
-            starset_entities_teleport(entities, name, x, y);
-        }
+        x = spawn[i].x;
+        y = spawn[i].y;
+        starset_entities_teleport(entities, name, x, y);
         usleep(10000);
     }
     return (entities);
@@ -68,22 +69,8 @@ static void draw_loading_text(sfRenderWindow *window)
     sfRenderWindow_display(window);
 }
 
-entities_t *load_entities_scene(int zombie, sfRenderWindow *window)
+static void set_player_propreties(entities_t *entities)
 {
-    entities_t *entities = NULL;
-
-    sfRenderWindow_clear(window, sfBlack);
-    draw_loading_text(window);
-    entities = create_zombie_scene(entities, zombie, window);
-    entities = starset_entities_add(entities, PLAYER_PATH, "player", false);
-    entities = starset_entities_add(entities, "./assets/effect/bullet.png"
-    , "bullet", false);
-    if (!entities)
-        return (NULL);
-    set_zombie_animation(entities);
-    set_zombie_sound(entities, zombie);
-    set_player_animation(entities);
-    set_player_sound(entities);
     starset_entities_teleport(entities, "player", 400, 900);
     starset_entities_get_propreties(entities, "player")->speed = 3;
     starset_entities_get_propreties(entities, "bullet")->is_trigger = true;
@@ -91,5 +78,25 @@ entities_t *load_entities_scene(int zombie, sfRenderWindow *window)
     starset_entities_get_propreties(entities, "bullet")->visible = false;
     starset_entities_get_propreties(entities
     , "bullet")->position = (sfVector2f){ -100.0f, -100.0f};
+}
+
+entities_t *load_entities_scene(int zombie, sfRenderWindow *window)
+{
+    entities_t *entities = NULL;
+
+    sfRenderWindow_clear(window, sfBlack);
+    draw_loading_text(window);
+    //entities = starset_entities_add(entities, DOG_PATH, "dog", false);
+    entities = create_zombie_scene(entities, zombie, window);
+    entities = starset_entities_add(entities, PLAYER_PATH, "player", false);
+    entities = starset_entities_add(entities, BULLET_PATH, "bullet", false);
+    if (!entities)
+        return (NULL);
+    //set_dog(entities);
+    set_zombie_animation(entities);
+    set_zombie_sound(entities, zombie);
+    set_player_animation(entities);
+    set_player_sound(entities);
+    set_player_propreties(entities);
     return (entities);
 }
