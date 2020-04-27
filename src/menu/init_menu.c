@@ -20,8 +20,9 @@ void init_menu_pos(menu_t *menu)
 
 void init_menu(menu_t *menu)
 {
-    menu->menu_music = create_sound_from("./music/music_menu.ogg");
-    sfSound_setLoop(menu->menu_music, sfTrue);
+    menu->menu_music = sfMusic_createFromFile("./music/music_menu.ogg");
+    sfMusic_setLoop(menu->menu_music, sfTrue);
+    sfMusic_play(menu->menu_music);
     init_menu_pos(menu);
     menu->menu_texture = sfTexture_createFromFile("assets/back.jpg",
     NULL);
@@ -45,6 +46,6 @@ void init_screen(screen_t *screen)
     screen->mode.height = 1080;
     screen->mode.bitsPerPixel = 32;
     screen->window = sfRenderWindow_create(screen->mode,
-    "Manhattan Aftermath 2050", sfResize | sfClose, NULL);
+    "Manhattan Aftermath 2048", sfResize | sfClose, NULL);
     sfRenderWindow_setFramerateLimit(screen->window, 60);
 }
