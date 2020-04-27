@@ -60,9 +60,11 @@ int starset_update_engine(entities_t *entities, sfRenderWindow *window
         put_err("thread creation failure !\n");
         return (1);
     }
-    sfThread_launch(core[0]);
-    sfThread_launch(core[1]);
-    sfThread_wait(core[0]);
-    sfThread_wait(core[1]);
+    internal__collider_call(&pass);
+    internal__dynamic_engine(&pass);
+    //sfThread_launch(core[0]);
+    //sfThread_launch(core[1]);
+    //sfThread_wait(core[0]);
+    //sfThread_wait(core[1]);
     return (0);
 }

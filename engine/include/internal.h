@@ -41,4 +41,8 @@ char **internal__get_class(char *name);
 
 void internal__dynamic_sound(entities_t *this, entities_t *player);
 
+sheet_t *internal__create_sheet(sfVector2u size);
+void internal__set_entities_value(entities_t *entitie
+, int new_id, char *name, sfBool fixed);
+
 #endif /* !INTERNAL_H_ */

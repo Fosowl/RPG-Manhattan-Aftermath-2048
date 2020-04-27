@@ -6,9 +6,10 @@
 */
 
 #include "../../include/macro.h"
+#include "../../include/internal.h"
 #include "../../include/starset_engine.h"
 
-static sheet_t *internal__create_sheet(sfVector2u size)
+sheet_t *internal__create_sheet(sfVector2u size)
 {
     sheet_t *sheet = malloc(sizeof(sheet_t));
 
@@ -39,7 +40,7 @@ static aspect_t *internal__create_aspect(char *source)
     return (aspect);
 }
 
-static void internal__set_entities_value(entities_t *entitie
+void internal__set_entities_value(entities_t *entitie
 , int new_id, char *name, sfBool fixed)
 {
     entitie->angle = 0.0f;

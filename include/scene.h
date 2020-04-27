@@ -13,9 +13,9 @@
 // main_scene.c
 
 int main_scene_load(game_t *game);
-void play_music(void);
 int main_scene_loop(game_t *game, sfClock *timer);
 void main_scene_update(game_t *game);
+void play_music(char *path);
 
 // load_entities.c
 
@@ -86,5 +86,14 @@ void zombie_ai(entities_t **entities, player_t *player);
 
 void update_object(game_t *game);
 void reset_value(game_t *game);
+
+// spawn_point.c
+
+sfVector2f *zombie_spawn_point(int nb_zombie);
+
+// dog_anim.c
+
+void set_dog(entities_t *entities);
+void move_dog(entities_t *entities, entities_t *player);
 
 #endif /* !SCENE_H_ */

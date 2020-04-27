@@ -64,6 +64,7 @@ ENGINE_FILES	= core/calculation.c\
 				  creator/create_component.c\
 				  creator/create_animator.c\
 				  creator/create_sound.c\
+				  creator/prefab.c\
 				  destroy/audio_destroy.c\
 				  destroy/component_destroy.c\
 				  destroy/entities_destroy.c\

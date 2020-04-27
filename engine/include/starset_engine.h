@@ -125,6 +125,9 @@ void starset_add_animation_key(entities_t *entities, char *e_name
 , char *a_name, sfVector2f keyframe);
 void starset_add_entities_sound(entities_t *entities, char *name
 , char *sound_name, char *path);
+entities_t *starset_entities_add_from_prefab(entities_t *entities_list
+, sfSprite *prefab, char *name, sfBool fixed);
+sfSprite *starset_create_prefab(char *source);
 
 // DESTROY
 
