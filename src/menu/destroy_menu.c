@@ -10,7 +10,7 @@
 
 void destroy_menu(game_t *game)
 {
-    sfSound_destroy(game->menu->menu_music);
+    sfMusic_destroy(game->menu->menu_music);
     sfSprite_destroy(game->menu->menu_sprite);
     sfTexture_destroy(game->menu->menu_texture);
     sfSprite_destroy(game->menu->play_sprite);

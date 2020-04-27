@@ -24,7 +24,7 @@ typedef struct check_text_s{
 typedef struct menu_s {
     sfTexture *menu_texture;
     sfSprite *menu_sprite;
-    sfSound *menu_music;
+    sfMusic *menu_music;
     sfTexture *play_texture;
     sfSprite *play_sprite;
     sfVector2f play_pos;
