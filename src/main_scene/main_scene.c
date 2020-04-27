@@ -38,7 +38,7 @@ static void load_value(game_t *game)
 int main_scene_load(game_t *game)
 {
     sfClock *timer = sfClock_create();
-    game->entities_list = load_entities_scene(2, game->screen->window);
+    game->entities_list = load_entities_scene(60, game->screen->window);
 
     if (!game->entities_list)
         return EXIT_FAILURE;
@@ -75,7 +75,7 @@ int main_scene_loop(game_t *game, sfClock *timer)
         sfRenderWindow_display(game->window);
         sfRenderWindow_clear(game->window, BROWN);
         my_sleep(10000);
-        game->runtime = sfClock_getElapsedTime(timer);
+        game->runtime = sfClock_getElapsedTime(timer);   
     }
     return EXIT_SUCCESS;
 }

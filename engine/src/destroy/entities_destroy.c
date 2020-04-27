@@ -14,10 +14,6 @@ static void internal__destroy_aspect(aspect_t *aspect)
     while (aspect != NULL) {
         tmp = aspect;
         aspect = aspect->next;
-        if (tmp->sprite != NULL && tmp->texture != NULL) {
-            sfSprite_destroy(tmp->sprite);
-            sfTexture_destroy(tmp->texture);
-        }
         if (tmp->sheet == NULL)
             continue;
         free(tmp->sheet);
