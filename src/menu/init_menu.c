@@ -45,6 +45,6 @@ void init_screen(screen_t *screen)
     screen->mode.height = 1080;
     screen->mode.bitsPerPixel = 32;
     screen->window = sfRenderWindow_create(screen->mode,
-    "Manhattan Aftermath 2048", sfResize | sfClose, NULL);
+    "Manhattan Aftermath 2050", sfResize | sfClose, NULL);
     sfRenderWindow_setFramerateLimit(screen->window, 60);
 }
