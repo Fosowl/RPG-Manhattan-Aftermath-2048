@@ -12,7 +12,9 @@
 #define TEXT (2)
 
 #include <stdbool.h>
-
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include "game_struct.h"
 
 //INIT

@@ -52,6 +52,6 @@ Mkfile.old
 dkms.conf
 
 # Epitech related
-name
+my_rpg
 vgcore.*
 .vscode

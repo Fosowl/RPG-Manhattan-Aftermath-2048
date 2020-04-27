@@ -5,7 +5,7 @@
 ** destroy_dialog.c
 */
 
-#include "dependancies.h"
+#include "dialog.h"
 
 void destroy_obj_dialog(dialog_t *dialog)
 {

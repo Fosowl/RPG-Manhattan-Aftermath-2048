@@ -5,7 +5,7 @@
 ** event_dialog.c
 */
 
-#include "dependancies.h"
+#include "dialog.h"
 
 void event_dialog(dialog_t *dialog)
 {

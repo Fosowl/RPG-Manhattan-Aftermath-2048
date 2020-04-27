@@ -5,7 +5,7 @@
 ** parsing_reply.c
 */
 
-#include "dependancies.h"
+#include "dialog.h"
 
 int find_speech(dialog_t *dialog, char *reply, int i)
 {
@@ -13,12 +13,12 @@ int find_speech(dialog_t *dialog, char *reply, int i)
 
     speech = malloc(sizeof(char) * 256);
     if (speech == NULL)
-        return (FAILURE);
+        return (84);
     speech[255] = '\0';
     if (reply[i] != '"') {
         write(0, "ERROR 5 in reply.json: expected '""' around the speech\n",
                                                                         56);
-        return (FAILURE);
+        return (84);
     } else {
         i++;
         speech = recover_strings(reply, i, speech);
@@ -36,8 +36,8 @@ int loop_speech(dialog_t *dialog, char *reply, int i)
         for (; reply[i] != '"'; i++);
         i += 3;
         i = find_speech(dialog, reply, i);
-        if (i == FAILURE)
-            return (FAILURE);
+        if (i == 84)
+            return (84);
         i++;
         if (reply[i] == ',')
             i += 2;
@@ -55,12 +55,12 @@ int find_index(dialog_t *dialog, char *reply, int i)
 {
     if (reply[i] != '"') {
         write(0, "ERROR 4 in reply.json: expected '""' around the index\n", 55);
-        return (FAILURE);
+        return (84);
     } else {
         dialog->nb_speech = -1;
         i = loop_speech(dialog, reply, i);
-        if (i == FAILURE)
-            return (FAILURE);
+        if (i == 84)
+            return (84);
     }
     return (i);
 }
@@ -70,12 +70,12 @@ int check_index(dialog_t *dialog, char *reply, int i)
     if (reply[i] != '{') {
         write(0, "ERROR 2 in reply.json: expected '{' in start of speech", 53);
         write(0, " or there is no speech\n", 22);
-        return (FAILURE);
+        return (84);
     } else {
         for (; reply[i] != '"'; i++);
         i = find_index(dialog, reply, i);
-        if (i == FAILURE)
-            return (FAILURE);
+        if (i == 84)
+            return (84);
         i += 6;
         if (reply[i + 5] == '\0')
             return (i);
@@ -93,8 +93,8 @@ int loop_index(dialog_t *dialog, char *reply, int i)
         for (; reply[i] != '"'; i++);
         i += 3;
         i = check_index(dialog, reply, i);
-        if (i == FAILURE)
-            return (FAILURE);
+        if (i == 84)
+            return (84);
         if (reply[i + 5] == '\0')
             break;
         if (reply[i + 6] != '\n' && reply[i + 5] == '}')

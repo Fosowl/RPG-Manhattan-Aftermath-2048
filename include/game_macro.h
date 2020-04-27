@@ -12,9 +12,9 @@
 #define RESSOURCE_MISSING (404)
 #define EXIT_CLOSE (7)
 
-#define EASY 0
-#define MEDIUM 1
-#define HARD 2
+#define EASY (0)
+#define MEDIUM (1)
+#define HARD (2)
 
 #define v_2f (sfVector2f)
 #define v_2u (sfVector2u)

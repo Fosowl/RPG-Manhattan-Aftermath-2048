@@ -5,7 +5,7 @@
 ** create_dialog.c
 */
 
-#include "dependancies.h"
+#include "dialog.h"
 
 basic_object_t *init_dialog(dialog_t *dialog)
 {

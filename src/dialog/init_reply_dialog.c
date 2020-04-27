@@ -5,7 +5,7 @@
 ** init_reply.c
 */
 
-#include "dependancies.h"
+#include "dialog.h"
 
 int def_sizemap(char *name)
 {
@@ -21,12 +21,12 @@ int name(dialog_t *dialog, char *reply, int i)
 {
     if (reply[i + 1] != '"') {
         write(0, "ERROR 1 in reply.json: expected '""' around the name\n", 54);
-        return (FAILURE);
+        return (84);
     } else {
         dialog->personage = -1;
         i = loop_index(dialog, reply, i);
-        if (i == FAILURE)
-            return (FAILURE);
+        if (i == 84)
+            return (84);
     }
     return (i);
 }
@@ -37,12 +37,12 @@ int manage_reply(dialog_t *dialog, char *reply)
 
     if (reply[i] != '{')  {int parsing_reply(dialog_t *dialog, char *reply);
         write(0, "ERROR 0 in reply.json: expected '{' in start of file\n", 51);
-        return (FAILURE);
+        return (84);
     } else {
         i += 5;
         i = name(dialog, reply, i);
-        if (i == FAILURE)
-            return (FAILURE);
+        if (i == 84)
+            return (84);
     }
     dialog->personage = 0;
     return (0);
@@ -65,8 +65,8 @@ int read_file(dialog_t *dialog)
     if (size == 0)
         return (84);
     reply[len] = '\0';
-    if (manage_reply(dialog, reply) == FAILURE)
-        return (FAILURE);
+    if (manage_reply(dialog, reply) == 84)
+        return (84);
     close(fd);
     return (0);
 }

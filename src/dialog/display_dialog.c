@@ -5,7 +5,7 @@
 ** dialog.c
 */
 
-#include "dependancies.h"
+#include "dialog.h"
 
 char *choice_person(int personage)
 {
