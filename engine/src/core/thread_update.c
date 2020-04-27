@@ -11,12 +11,8 @@
 void internal__dynamic_engine(void *ptr)
 {
     thread_pass_t *pass = (thread_pass_t *)ptr;
-    sfMutex *mutex = sfMutex_create();
     entities_t *player = NULL;
 
-    if (!mutex)
-        return;
-    sfMutex_lock(mutex);
     for (entities_t *entitie = pass->entities; entitie != NULL
     ; entitie = entitie->next) {
         if (pass->image != NULL) {
@@ -29,19 +25,13 @@ void internal__dynamic_engine(void *ptr)
         if (entitie)
             starset_entities_render_single(entitie, pass->window);
     }
-    sfMutex_destroy(mutex);
 }
 
 void internal__collider_call(void *ptr)
 {
     thread_pass_t *pass = (thread_pass_t *)ptr;
-    sfMutex *mutex = sfMutex_create();
 
-    if (!mutex)
-        return;
-    sfMutex_lock(mutex);
     internal__collider_update(pass->entities, pass->window);
-    sfMutex_destroy(mutex);
 }
 
 static void internal__update_random(void)
