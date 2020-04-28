@@ -13,8 +13,9 @@ int main (int ac, char **argv)
     (void) ac;
     (void) argv;
     arg_t **arg = argument_parser(ac, argv);
-    game_t *game = malloc(sizeof(game_t));
+    game_t game = {0};
 
-    init_struct(game);
-    menu_loop(game);
+    if (init_struct(&game) == 84)
+        return (84);
+    menu_loop(&game);
 }

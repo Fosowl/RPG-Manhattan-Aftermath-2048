@@ -57,35 +57,41 @@ BIN_NAME	= my_rpg
 IDIR	= include/
 SRC_DIR = src/
 
-SRC_FILES	= 		main.c								\
-					menu/init_menu.c					\
-					menu/menu_loop.c					\
-					menu/destroy_menu.c					\
-					menu/init_struct.c					\
-					dialog/malloc_dialog.c				\
-					dialog/init_reply_dialog.c			\
-					dialog/parsing_reply.c				\
-					dialog/create_dialog.c				\
-					dialog/event_dialog.c				\
-					dialog/display_dialog.c				\
-					dialog/destroy_dialog.c				\
-					main_scene/main_scene.c				\
-					main_scene/load_entities.c			\
-					main_scene/set_player_anim.c		\
-					main_scene/set_zombie_anim.c		\
-					main_scene/set_sound.c				\
-					main_scene/control.c				\
-					main_scene/control_direction.c		\
-					main_scene/toggle_object.c			\
-					main_scene/p_attack_anim.c			\
-					main_scene/p_move_anim.c			\
-					main_scene/player_attack.c			\
-					main_scene/zombie_ai.c				\
-					main_scene/object_sound.c			\
-					main_scene/update_object.c			\
-					main_scene/spawn_point.c			\
-					main_scene/dog_set.c				\
-					main_scene/ui.c
+SRC_FILES	= 		main.c											\
+					menu/init_menu.c								\
+					menu/menu_loop.c								\
+					menu/destroy_menu.c								\
+					menu/init_struct.c								\
+					dialog/malloc_dialog.c							\
+					dialog/init_reply_dialog.c						\
+					dialog/parsing_reply.c							\
+					dialog/create_dialog.c							\
+					dialog/event_dialog.c							\
+					dialog/display_dialog.c							\
+					dialog/destroy_dialog.c							\
+					main_scene/main_scene.c							\
+					main_scene/load_entities.c						\
+					main_scene/set_player_anim.c					\
+					main_scene/set_zombie_anim.c					\
+					main_scene/set_sound.c							\
+					main_scene/control.c							\
+					main_scene/control_direction.c					\
+					main_scene/toggle_object.c						\
+					main_scene/p_attack_anim.c						\
+					main_scene/p_move_anim.c						\
+					main_scene/player_attack.c						\
+					main_scene/zombie_ai.c							\
+					main_scene/object_sound.c						\
+					main_scene/update_object.c						\
+					main_scene/spawn_point.c						\
+					main_scene/dog_set.c							\
+					main_scene/ui.c									\
+					inventory/create_button_all_inventory.c 		\
+					inventory/create_case_element_inventory.c 		\
+					inventory/create_element_inventory.c 			\
+					inventory/destroy_inventory.c 					\
+					inventory/malloc_inventory.c 					\
+					inventory/event_inventory.c
 
 # test var
 

@@ -6,6 +6,7 @@
 */
 
 #include "game_struct.h"
+#include "inventory.h"
 #include "scene.h"
 #include "starset_engine.h"
 #include "render.h"
@@ -66,15 +67,17 @@ int main_scene_loop(game_t *game, sfClock *timer)
     game->window = game->screen->window;
     srand(64886);
     play_music("assets/audio/days_later.ogg");
+    create_case_element(game->inventory);
     while (game->window) {
         if (!starset_running(game->window, &game->event))
             return EXIT_CLOSE;
         main_scene_update(game);
         starset_update_engine(game->entities_list, game->window, NULL);
+        display_case_element(game);
         sfRenderWindow_display(game->window);
         sfRenderWindow_clear(game->window, BROWN);
         my_sleep(10000);
-        game->runtime = sfClock_getElapsedTime(timer);   
+        game->runtime = sfClock_getElapsedTime(timer);
     }
     return EXIT_SUCCESS;
 }
