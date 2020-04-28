@@ -41,8 +41,8 @@ void starset_entities_move(entities_t *entities, char *name, float x, float y)
     char **get = internal__get_class(name);
 
     while (copy != NULL) {
-        if (search_e(get[0], copy->name) != -1 || search_e(copy->name
-        , get[1]) != -1) {
+        if (search_e(get[0], copy->name) != -1 || search_e(get[1]
+        , copy->name) != -1) {
             copy->direction = internal__follow_vector(&copy->position, &vector
             , copy->speed);
             ok = true;

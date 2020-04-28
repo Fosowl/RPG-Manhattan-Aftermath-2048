@@ -30,7 +30,6 @@ static entities_t *create_zombie_scene(entities_t *entities, int zombie
     int x = 0;
     int y = 0;
     char *name = NULL;
-    entities_t *tmp = NULL;
     sfVector2f *spawn;
     sfSprite *prefab = starset_create_prefab(ZOMBIE_PATH);
 
@@ -40,7 +39,6 @@ static entities_t *create_zombie_scene(entities_t *entities, int zombie
         update_zombie_loading(window, i, zombie);
         entities = starset_entities_add_from_prefab(entities, prefab
         , append("zombie:", name), false);
-        tmp = starset_entities_get_propreties(entities, name);
         x = spawn[i].x;
         y = spawn[i].y;
         starset_entities_teleport(entities, name, x, y);
@@ -86,13 +84,13 @@ entities_t *load_entities_scene(int zombie, sfRenderWindow *window)
 
     sfRenderWindow_clear(window, sfBlack);
     draw_loading_text(window);
-    //entities = starset_entities_add(entities, DOG_PATH, "dog", false);
+    entities = starset_entities_add(entities, DOG_PATH, "dog", false);
     entities = create_zombie_scene(entities, zombie, window);
     entities = starset_entities_add(entities, PLAYER_PATH, "player", false);
     entities = starset_entities_add(entities, BULLET_PATH, "bullet", false);
     if (!entities)
         return (NULL);
-    //set_dog(entities);
+    set_dog(entities);
     set_zombie_animation(entities);
     set_zombie_sound(entities, zombie);
     set_player_animation(entities);

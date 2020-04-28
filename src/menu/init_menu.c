@@ -18,7 +18,7 @@ void init_menu_pos(menu_t *menu)
     menu->quit_pos.y = 800;
 }
 
-static void play_music_menu(char *path)
+static sfSound *play_music_menu(char *path)
 {
     sfSoundBuffer *buffer = sfSoundBuffer_createFromFile(path);
     sfSound *sound = sfSound_create();
@@ -27,12 +27,13 @@ static void play_music_menu(char *path)
     sfSound_setLoop(sound, true);
     sfSound_setVolume(sound, 65);
     sfSound_play(sound);
+    return (sound);
 }
 
 void init_menu(menu_t *menu)
 {
     init_menu_pos(menu);
-    play_music_menu("./music/music_menu.ogg");
+    menu->menu_music = play_music_menu("./music/music_menu.ogg");
     menu->menu_texture = sfTexture_createFromFile("assets/back.jpg",
     NULL);
     menu->menu_sprite = sfSprite_create();

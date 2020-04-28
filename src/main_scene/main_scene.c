@@ -38,7 +38,7 @@ static void load_value(game_t *game)
 int main_scene_load(game_t *game)
 {
     sfClock *timer = sfClock_create();
-    game->entities_list = load_entities_scene(60, game->screen->window);
+    game->entities_list = load_entities_scene(6, game->screen->window);
 
     if (!game->entities_list)
         return EXIT_FAILURE;
@@ -83,7 +83,7 @@ int main_scene_loop(game_t *game, sfClock *timer)
 void main_scene_update(game_t *game)
 {
     reset_value(game);
-    //move_dog(game->entities_list, game->player.save);
+    move_dog(game->entities_list, game->player.save);
     update_object(game);
     player_controller(game);
     player_switch_object(game->entities_list, game->player, &game->event);

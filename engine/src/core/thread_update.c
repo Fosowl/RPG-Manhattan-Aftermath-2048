@@ -47,24 +47,13 @@ static void internal__update_random(void)
 int starset_update_engine(entities_t *entities, sfRenderWindow *window
 , sfImage *image)
 {
-    sfThread *core[3];
     thread_pass_t pass;
 
     internal__update_random();
     pass.entities = entities;
     pass.window = window;
     pass.image = image;
-    core[0] = sfThread_create(&internal__collider_call, &pass);
-    core[1] = sfThread_create(&internal__dynamic_engine, &pass);
-    if (!core[0] || !core[1]) {
-        put_err("thread creation failure !\n");
-        return (1);
-    }
     internal__collider_call(&pass);
     internal__dynamic_engine(&pass);
-    //sfThread_launch(core[0]);
-    //sfThread_launch(core[1]);
-    //sfThread_wait(core[0]);
-    //sfThread_wait(core[1]);
     return (0);
 }
