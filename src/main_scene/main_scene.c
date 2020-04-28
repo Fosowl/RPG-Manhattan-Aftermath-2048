@@ -43,6 +43,7 @@ int main_scene_load(game_t *game)
     if (!game->entities_list)
         return EXIT_FAILURE;
     load_value(game);
+    create_case_element(game->inventory);
     if (main_scene_loop(game, timer) == EXIT_CLOSE) {
         starset_entities_destroy_all(game->entities_list);
         return EXIT_CLOSE;
@@ -67,13 +68,11 @@ int main_scene_loop(game_t *game, sfClock *timer)
     game->window = game->screen->window;
     srand(64886);
     play_music("assets/audio/days_later.ogg");
-    create_case_element(game->inventory);
     while (game->window) {
         if (!starset_running(game->window, &game->event))
             return EXIT_CLOSE;
         main_scene_update(game);
         starset_update_engine(game->entities_list, game->window, NULL);
-        display_case_element(game);
         sfRenderWindow_display(game->window);
         sfRenderWindow_clear(game->window, BROWN);
         my_sleep(10000);
@@ -85,6 +84,7 @@ int main_scene_loop(game_t *game, sfClock *timer)
 void main_scene_update(game_t *game)
 {
     reset_value(game);
+        display_case_element(game);
     move_dog(game->entities_list, game->player.save);
     update_object(game);
     event_button_inventory(game);
