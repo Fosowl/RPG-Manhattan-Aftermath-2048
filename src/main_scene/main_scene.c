@@ -14,7 +14,6 @@
 
 static void load_value(game_t *game)
 {
-    game->player.selected = fill("rifle");
     game->player.angle = 0.0f;
     game->player.control.key_up = sfKeyZ;
     game->player.control.key_down = sfKeyS;
@@ -38,7 +37,7 @@ static void load_value(game_t *game)
 int main_scene_load(game_t *game)
 {
     sfClock *timer = sfClock_create();
-    game->entities_list = load_entities_scene(6, game->screen->window);
+    game->entities_list = load_entities_scene(10, game->screen->window);
 
     if (!game->entities_list)
         return EXIT_FAILURE;
@@ -92,4 +91,5 @@ void main_scene_update(game_t *game)
     if (game->player.ear_off != true) {
         handle_zombie_sound(game);
     }
+    update_ui(game);
 }

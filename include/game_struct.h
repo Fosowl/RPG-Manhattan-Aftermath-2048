@@ -76,6 +76,13 @@ typedef struct player_t {
     int nb_magazine_rifle;
 } player_t;
 
+typedef struct ui_ammo_t {
+    char *str_mag;
+    char *str_total;
+    sfVector2u s;
+    sfVector2f p_ui[2];
+} ui_ammo_t;
+
 typedef struct game_s {
     screen_t *screen;
     menu_t *menu;

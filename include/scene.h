@@ -96,4 +96,8 @@ sfVector2f *zombie_spawn_point(int nb_zombie);
 void set_dog(entities_t *entities);
 void move_dog(entities_t *entities, entities_t *player);
 
+// ui.c
+
+void update_ui(game_t *game);
+
 #endif /* !SCENE_H_ */

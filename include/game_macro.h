@@ -23,4 +23,7 @@
 #define add_key starset_add_animation_key
 #define press sfKeyboard_isKeyPressed
 
+#define MAG 0
+#define TOTAL 1
+
 #endif /* !MACRO_H_ */

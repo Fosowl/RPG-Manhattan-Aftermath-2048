@@ -34,18 +34,26 @@ static void attack_gun(game_t *game)
         bullet->position.y = game->player.save->position.y;
         bullet->angle = game->player.angle;
         bullet->visible = true;
-        if (compare(game->player.selected, "rifle"))
+        if (compare(game->player.selected, "rifle")) {
             bullet->life = 40;
-        else
+            game->player.ammo_rifle -= 1;
+        } else {
             bullet->life = 25;
+            game->player.ammo_gun -= 1;
+        }
     }
 }
 
 static int on_attack(game_t *game, sfRenderWindow *window
 , char *animation, int *r)
 {
+    if (compare(game->player.selected, "rifle") && game->player.ammo_rifle <= 0)
+        return (7);
+    if (compare(game->player.selected, "pistol") && game->player.ammo_gun <= 0)
+        return (7);
     animation = append(game->player.selected, ":attack");
     *r = starset_play_animation(game->player.save, "player", animation, 3);
+    starset_single_play_sound(game->player.save, game->player.selected, false);
     if (!compare(game->player.selected, "knife"))
         game->player.noise = 2.2;
     if (*r == 1)
@@ -61,11 +69,14 @@ static int switch_attack(game_t *game, int *r, sfRenderWindow *window)
 {
     char *animation = NULL;
 
-    if (*r == 2) {
+    if (*r == 2)
         return(on_attack(game, window, animation, r));
-    }
     if (*r == 3) {
         animation = append(game->player.selected, ":reload");
+        if (compare(game->player.selected, "rifle"))
+            game->player.ammo_rifle = 30;
+        else
+            game->player.ammo_gun = 11;
         *r = starset_play_animation(game->player.save, "player", animation, 1);
         if (!compare(game->player.selected, "knife"))
             game->player.noise = 1.3;
@@ -84,7 +95,6 @@ int attack_entities(game_t *game, sfEvent *event
 
     if (event->mouseButton.button == sfMouseLeft && !compare(game->player.selected
     , "torch")) {
-        starset_single_play_sound(game->player.save, game->player.selected, false);
         r = 2;
         event->mouseButton.button = -1;
     }
