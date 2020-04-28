@@ -21,6 +21,22 @@ typedef struct check_text_s{
     int draw;
 } check_text_t;
 
+typedef struct element_inventory_s {
+    basic_object_t *init;
+    int status;
+    int draw;
+    sfText *number;
+    int type;
+    int nb;
+} element_inventory_t;
+
+typedef struct inventory_s {
+    basic_object_t *background;
+    element_inventory_t *element;
+    basic_object_t *button_all;
+    int button;
+} inventory_t;
+
 typedef struct menu_s {
     sfTexture *menu_texture;
     sfSprite *menu_sprite;
@@ -87,6 +103,7 @@ typedef struct game_s {
     screen_t *screen;
     menu_t *menu;
     dialog_t *dialog;
+    inventory_t *inventory;
     sfRenderWindow *window;
     sfEvent event;
     entities_t *entities_list;

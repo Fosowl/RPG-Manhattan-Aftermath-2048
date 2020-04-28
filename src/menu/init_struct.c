@@ -8,8 +8,13 @@
 #include "dependancies.h"
 #include "menu.h"
 
-void init_struct(game_t *game)
+int init_struct(game_t *game)
 {
     game->screen = malloc(sizeof(screen_t));
+    if (game->screen == NULL)
+        return (84);
     game->menu = malloc(sizeof(menu_t));
+    if (game->menu == NULL)
+        return (84);
+    malloc_inventory(game);
 }

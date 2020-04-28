@@ -13,7 +13,7 @@
 void init_menu(menu_t *menu);
 int menu_loop(game_t *game);
 void destroy_menu(game_t *game);
-void init_struct(game_t *game);
+int init_struct(game_t *game);
 void init_screen(screen_t *screen);
 
 #endif /* !MENU_H_ */
