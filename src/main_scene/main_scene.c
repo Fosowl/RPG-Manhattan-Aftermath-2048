@@ -87,6 +87,7 @@ void main_scene_update(game_t *game)
     reset_value(game);
     move_dog(game->entities_list, game->player.save);
     update_object(game);
+    event_button_inventory(game);
     player_controller(game);
     player_switch_object(game->entities_list, game->player, &game->event);
     handle_player_sound(game);

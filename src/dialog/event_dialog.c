@@ -5,17 +5,22 @@
 ** event_dialog.c
 */
 
+#include "game_macro.h"
 #include "dialog.h"
 
-void event_dialog(dialog_t *dialog)
+void event_dialog(game_t *game)
 {
-    if (dialog->check[dialog->nb].draw == 1
-        && dialog->nb_text >= dialog->nb / PERSONAGE) {
-        dialog->next++;
-        dialog->check[dialog->nb].draw = 2;
-        if (dialog->check[(dialog->nb + dialog->next)].draw == 0
-            && dialog->nb_text > dialog->nb / PERSONAGE) {
-            dialog->check[(dialog->nb + dialog->next)].draw = 1;
+    if (press(sfKeySpace)) {
+        if (game->dialog->check[game->dialog->nb].draw == 1
+            && game->dialog->nb_text >= game->dialog->nb / PERSONAGE) {
+            game->dialog->next++;
+            game->dialog->check[game->dialog->nb].draw = 2;
+            if (game->dialog->check[(game->dialog->nb
+                                                + game->dialog->next)].draw == 0
+                && game->dialog->nb_text > game->dialog->nb / PERSONAGE) {
+                game->dialog->check[(game->dialog->nb
+                                                + game->dialog->next)].draw = 1;
+            }
         }
     }
 }

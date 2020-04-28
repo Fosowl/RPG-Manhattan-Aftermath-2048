@@ -21,7 +21,7 @@
 int malloc_dialog(game_t *);
 
 //EVENT
-void event_dialog(dialog_t *);
+void event_dialog(game_t *);
 
 //REPLY
 int read_file(dialog_t *);
