@@ -14,7 +14,7 @@ void handle_player_sound(game_t *game)
 {
     static int pass = 0;
 
-    if (game->player.save->life < 40 && pass == 0) {
+    if (game->player.save->life < 40) {
         game->player.ear_off = true;
         starset_entities_play_sound(game->entities_list, "player", "heart", false);
         pass = 1;

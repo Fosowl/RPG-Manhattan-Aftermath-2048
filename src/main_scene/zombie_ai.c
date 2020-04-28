@@ -34,7 +34,7 @@ static void zombie_attack_player(entities_t *tmp, int *pass, player_t *player)
     starset_entities_rotate_to(tmp, tmp->name
     , player->save->position);
     if (*pass == 0)
-        player->save->life -= 5;
+        player->save->life -= 1;
 }
 
 static int handle_zombie_damage(entities_t **entities, entities_t *tmp)

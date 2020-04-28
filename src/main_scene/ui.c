@@ -25,7 +25,7 @@ static void show_ammo_ui(ui_ammo_t *a, game_t *game, sfText **text_ui)
     free(a->str_total);
 }
 
-void update_ui(game_t *game)
+static void ammo_ui(game_t *game)
 {
     static sfText *text_ui[2];
     ui_ammo_t a;
@@ -34,14 +34,54 @@ void update_ui(game_t *game)
     a.p_ui[MAG] = (sfVector2f){a.s.x - (a.s.x / 6), a.s.y - (a.s.y / 5)};
     a.p_ui[TOTAL] = (sfVector2f){a.s.x - (a.s.x / 6), a.s.y - (a.s.y / 5) + 50};
     if (compare(game->player.selected, "rifle")) {
-        a.str_mag = my_itoa(game->player.ammo_rifle);
-        a.str_total = my_itoa(game->player.nb_magazine_rifle);
+        a.str_mag = append("magazine : ", my_itoa(game->player.ammo_rifle));
+        a.str_total = append("total : "
+        , my_itoa(game->player.nb_magazine_rifle));
     } else if (compare(game->player.selected, "pistol")) {
-        a.str_mag = my_itoa(game->player.ammo_gun);
-        a.str_total = my_itoa(game->player.nb_magazine_gun);
-    } else {
-        a.str_mag = fill("inf");
-        a.str_total = fill("inf");
-    }
+        a.str_mag = append("magazine : ", my_itoa(game->player.ammo_gun));
+        a.str_total = append("total : ", my_itoa(game->player.nb_magazine_gun));
+    } else
+        return;
     show_ammo_ui(&a, game, &text_ui);
+}
+
+static void reload_ui(sfRenderWindow *window)
+{
+    static sfText *text_ui;
+    sfVector2u screen_size = sfRenderWindow_getSize(window);
+    sfVector2f position;
+
+    position.x = screen_size.x / 2;
+    position.y = screen_size.y / 2;
+    if (!text_ui) {
+        text_ui = load_text("reload", 70, position, WHITE);
+    }
+    sfRenderWindow_drawText(window, text_ui, NULL);
+}
+
+static void critical_ui(sfRenderWindow *window)
+{
+    static sfText *text_ui;
+    sfVector2u screen_size = sfRenderWindow_getSize(window);
+    sfVector2f position;
+
+    position.x = screen_size.x / 2;
+    position.y = screen_size.y / 2;
+    if (!text_ui) {
+        text_ui = load_text("C R I T I C A L   L I F E", 70, position, RED);
+    }
+    sfRenderWindow_drawText(window, text_ui, NULL);
+}
+
+void update_ui(game_t *game)
+{
+    ammo_ui(game);
+    if (compare(game->player.selected, "rifle") &&
+    game->player.ammo_rifle <= 0)
+        reload_ui(game->window);
+    else if (compare(game->player.selected, "pistol") &&
+    game->player.ammo_gun <= 0)
+        reload_ui(game->window);
+    else if (game->player.save->life <= 25)
+        critical_ui(game->window);
 }
