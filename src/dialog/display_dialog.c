@@ -43,9 +43,9 @@ void display_dialog(game_t *game, int person, int text, int nb_text)
                                                                         NULL);
         sfText_setString(game->dialog->script,
                     game->dialog->text[person][text + game->dialog->next]);
-        sfText_setString(game->dialog->person_nb, name);
+        sfText_setString(game->dialog->person, name);
         sfRenderWindow_drawText(game->window, game->dialog->script, NULL);
-        sfRenderWindow_drawText(game->window, game->dialog->person_nb, NULL);
+        sfRenderWindow_drawText(game->window, game->dialog->person, NULL);
     }
     a++;
 }

@@ -7,6 +7,7 @@
 
 #include "dependancies.h"
 #include "menu.h"
+#include "game_struct.h"
 
 int init_struct(game_t *game)
 {
@@ -17,4 +18,5 @@ int init_struct(game_t *game)
     if (game->menu == NULL)
         return (84);
     malloc_inventory(game);
+    return (0);
 }

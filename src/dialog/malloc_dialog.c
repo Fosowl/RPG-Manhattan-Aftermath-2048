@@ -20,10 +20,10 @@ int malloc_char_of_dialog(dialog_t *dialog, int i)
 int malloc_dialog_text(dialog_t *dialog)
 {
     dialog->obj = malloc(sizeof(basic_object_t));
-    dialog->text = malloc(sizeof(char *) * (PERSONAGE + 1));
+    dialog->text = malloc(sizeof(char *) * (MACRO_TALK + 1));
     if (dialog->text == NULL)
         return (84);
-    for (int i = 0; i != PERSONAGE; i++) {
+    for (int i = 0; i != MACRO_TALK; i++) {
         dialog->text[i] = malloc(sizeof(char *) * (TEXT + 1));
         if (dialog->text[i] == NULL)
             return (84);
@@ -36,8 +36,8 @@ int malloc_dialog_text(dialog_t *dialog)
 int malloc_dialog(game_t *game)
 {
     game->dialog = malloc(sizeof(dialog_t));
-    game->dialog->check = malloc(sizeof(check_text_t) * (PERSONAGE * TEXT));
-    for (int i = 0; i != (PERSONAGE * TEXT); i++)
+    game->dialog->check = malloc(sizeof(check_text_t) * (MACRO_TALK * TEXT));
+    for (int i = 0; i != (MACRO_TALK * TEXT); i++)
         game->dialog->check[i].draw = 0;
     if (malloc_dialog_text(game->dialog) == 84)
         return (84);

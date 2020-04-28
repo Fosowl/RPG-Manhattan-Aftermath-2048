@@ -14,6 +14,7 @@
 #define PLAYER_PATH "./assets/sheet_player.png"
 #define BULLET_PATH "./assets/effect/bullet.png"
 #define DOG_PATH "./assets/wolf.png"
+#define GIRL_PATH "./assets/sheet_girl.png"
 
 // sound
 

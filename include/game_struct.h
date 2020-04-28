@@ -59,7 +59,7 @@ typedef struct dialog_s {
     int nb_text;
     int nb;
     int nb_speech;
-    int person_nb;
+    int talk;
 } dialog_t;
 
 typedef struct screen_s {

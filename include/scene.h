@@ -40,6 +40,7 @@ void set_player_key_knife_static(entities_t *entities);
 
 void set_zombie_sound(entities_t *entities, int nb_zombie);
 void set_player_sound(entities_t *entities);
+void set_girl_sound(entities_t *entities);
 
 // control.c
 
@@ -99,5 +100,22 @@ void move_dog(entities_t *entities, entities_t *player);
 // ui.c
 
 void update_ui(game_t *game);
+
+// set_girl.c
+
+void set_girl_animation(entities_t *entities);
+
+// zombie_loading.c
+
+void update_zombie_loading(sfRenderWindow *window, int v, int max_v);
+
+entities_t *create_zombie_scene(entities_t *entities, int zombie
+, sfRenderWindow *window);
+
+void draw_loading_text(sfRenderWindow *window);
+
+// girl_ai.c
+
+void girl_ai(game_t *game);
 
 #endif /* !SCENE_H_ */

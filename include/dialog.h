@@ -8,7 +8,7 @@
 #ifndef DIALOG_H_
 #define DIALOG_H_
 
-#define PERSONAGE (4)
+#define MACRO_TALK (4)
 #define TEXT (2)
 
 #include <stdbool.h>

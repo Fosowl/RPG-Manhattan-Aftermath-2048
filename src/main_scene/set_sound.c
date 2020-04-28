@@ -48,3 +48,16 @@ void set_player_sound(entities_t *entities)
     starset_set_sound_volume(player, "player", "reload", 80);
     starset_set_sound_volume(player, "player", "knife", 100);
 }
+
+void set_girl_sound(entities_t *entities)
+{
+    entities_t *player = starset_entities_get_propreties(entities, "sora");
+
+    starset_add_entities_sound(player, "sora", "pain", PLAYER_PAIN_PATH);
+    starset_add_entities_sound(player, "sora", "pistol", PISTOL_SOUND_PATH);
+    starset_add_entities_sound(player, "sora", "collide", BANG_SOUND);
+    starset_set_sound_volume(player, "sora", "pain", 80);
+    starset_set_sound_volume(player, "sora", "pistol", 90);
+    starset_set_sound_volume(player, "sora", "collide", 70);
+    sfSound_setPitch(player->audio->sound, 1.4);
+}
