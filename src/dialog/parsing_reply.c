@@ -23,7 +23,7 @@ int find_speech(dialog_t *dialog, char *reply, int i)
         i++;
         speech = recover_strings(reply, i, speech);
         for (; reply[i] != '"'; i++);
-        dialog->text[dialog->personage][dialog->nb_speech] = speech;
+        dialog->text[dialog->person_nb][dialog->nb_speech] = speech;
     }
     return (i);
 }
@@ -88,7 +88,7 @@ int check_index(dialog_t *dialog, char *reply, int i)
 int loop_index(dialog_t *dialog, char *reply, int i)
 {
     while (reply[i] != '\0') {
-        dialog->personage++;
+        dialog->person_nb++;
         i += 2;
         for (; reply[i] != '"'; i++);
         i += 3;
