@@ -20,7 +20,7 @@ static void internal__apply_sound(audio_t *copy)
     }
     copy->delay = sfClock_getElapsedTime(copy->timer);
     sfSound_setLoop(copy->sound, copy->loop);
-    sfSound_setspot(copy->sound, copy->binaural);
+    sfSound_setPosition(copy->sound, copy->binaural);
     sfSound_setVolume(copy->sound, copy->volume);
 }
 

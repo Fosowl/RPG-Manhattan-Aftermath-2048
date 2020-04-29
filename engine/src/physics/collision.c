@@ -15,7 +15,7 @@ typedef struct point_t {
 static sfBool internal__mouse_hover(entities_t *entitie_1
 , sfRenderWindow *window)
 {
-    sfVector2i mouse = sfMouse_getspotRenderWindow(window);
+    sfVector2i mouse = sfMouse_getPositionRenderWindow(window);
     point_t Ax;
     point_t Ay;
 

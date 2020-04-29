@@ -28,7 +28,7 @@ static audio_t *internal__create_new_audio(char *name, char *path)
         return (NULL);
     internal__set_value_audio(audio, name);
     sfSound_setRelativeToListener(audio->sound, true);
-    sfListener_setspot(audio->binaural);
+    sfListener_setPosition(audio->binaural);
     if (!audio->sound || !audio->timer || !audio->sound)
         return (NULL);
     buffer = sfSoundBuffer_createFromFile(path);

@@ -39,7 +39,7 @@ void my_draw_circle_pit(sfVector2f spot, sfColor color
     while (t < 360) {
         vector.x = radius * cos(t) + spot.x;
         vector.y = radius * sin(t) + spot.y;
-        sfCircleShape_setspot(circle, vector);
+        sfCircleShape_setPosition(circle, vector);
         sfRenderWindow_drawCircleShape(window, circle, NULL);
         t++;
     }

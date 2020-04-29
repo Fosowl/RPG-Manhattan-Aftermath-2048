@@ -17,7 +17,7 @@ basic_object_t *init_case_element(inventory_t *inventory, int i, int x, int y)
                                         inventory->element[i].init->texture, 1);
     inventory->element[i].init->vector.x = x;
     inventory->element[i].init->vector.y = y;
-    sfSprite_setspot(inventory->element[i].init->sprite,
+    sfSprite_setPosition(inventory->element[i].init->sprite,
                                             inventory->element[i].init->vector);
     return (inventory->element[i].init);
 }
@@ -34,7 +34,7 @@ void create_case(inventory_t *inventory, int width)
                                                         460.5 + length, width);
         length += 95;
         nb_element.x = 372 + length;
-        sfText_setspot(inventory->element[i].number, nb_element);
+        sfText_setPosition(inventory->element[i].number, nb_element);
         sfText_setCharacterSize(inventory->element[i].number, 20);
         sfText_setString(inventory->element[i].number, "50");
     }

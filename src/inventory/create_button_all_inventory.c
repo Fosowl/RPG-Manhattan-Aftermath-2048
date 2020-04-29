@@ -17,7 +17,7 @@ void create_button_inventory(inventory_t *inventory)
                                         inventory->button_all->texture, 1);
     inventory->button_all->vector.x = 1280;
     inventory->button_all->vector.y = 835;
-    sfSprite_setspot(inventory->button_all->sprite,
+    sfSprite_setPosition(inventory->button_all->sprite,
                                             inventory->button_all->vector);
 }
 

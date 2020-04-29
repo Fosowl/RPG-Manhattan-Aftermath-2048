@@ -26,7 +26,7 @@ button_t *create_button(char *path, sfVector2f spot, char *text, int s)
     text_spot.y = button->spot.y - s * 2;
     button->text_size = s * 10;
     button->text = load_text(text, size, text_spot, color);
-    sfSprite_setspot(button->sprite, button->spot);
+    sfSprite_setPosition(button->sprite, button->spot);
     return (button);
 }
 
@@ -59,7 +59,7 @@ int button_render_and_check(sfRenderWindow *window, sfEvent *event
     int center_left = 0;
     int center_top = 0;
 
-    mouse = sfMouse_getspotRenderWindow(window);
+    mouse = sfMouse_getPositionRenderWindow(window);
     if (mouse.x > button->spot.x &&
     mouse.x < button->spot.x + button->rect.width)
         center_left = 1;

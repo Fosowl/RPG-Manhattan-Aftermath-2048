@@ -20,6 +20,6 @@ sfText *load_text(char *string, int size, sfVector2f vector, sfColor color)
     sfText_setCharacterSize(text, size);
     sfText_setColor(text, color);
     sfText_setOrigin(text, origin);
-    sfText_setspot(text, vector);
+    sfText_setPosition(text, vector);
     return (text);
 }

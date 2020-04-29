@@ -35,7 +35,7 @@ object_t *create_object(char *path, float x, float y, float angle)
     object->hitbox.top = object->spot.y - object->origin.y;
     object->hitbox.width = size.x;
     sfSprite_setOrigin(object->sprite, object->origin);
-    sfSprite_setspot(object->sprite, object->spot);
+    sfSprite_setPosition(object->sprite, object->spot);
     sfSprite_setRotation(object->sprite, angle);
     return (object);
 }

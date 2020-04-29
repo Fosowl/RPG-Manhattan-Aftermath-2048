@@ -17,7 +17,7 @@ static float point_toward_mouse(entities_t *entities, sfRenderWindow *window)
     sfVector2f mouse;
     sfVector2i mouse_i;
 
-    mouse_i = sfMouse_getspotRenderWindow(window);
+    mouse_i = sfMouse_getPositionRenderWindow(window);
     mouse.x = (float)mouse_i.x;
     mouse.y = (float)mouse_i.y;
     angle = starset_entities_rotate_to(entities, "player", mouse);
