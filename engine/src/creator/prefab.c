@@ -44,6 +44,15 @@ static entities_t *internal__create_entities(sfSprite *prefab, char *name
     return (entities);
 }
 
+static void interal__switch_back_link(entities_t *entities_list
+, entities_t *copy, entities_t *tmp)
+{
+    if (entities_list == NULL)
+        copy->next->back = entities_list;
+    else
+        copy->next->back = tmp;
+}
+
 entities_t *starset_entities_add_from_prefab(entities_t *entities_list
 , sfSprite *prefab, char *name, sfBool fixed)
 {
@@ -59,7 +68,7 @@ entities_t *starset_entities_add_from_prefab(entities_t *entities_list
     } else {
         for (copy = entities_list; copy->next != NULL; copy = copy->next);
         copy->next = internal__create_entities(prefab, name, fixed);
-        copy->next->back = tmp;
+        interal__switch_back_link(entities_list, copy, tmp);
         tmp = copy->next;
     }
     new_entities = entities_list;

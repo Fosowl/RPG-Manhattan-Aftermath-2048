@@ -10,6 +10,24 @@
 #include "starset_engine.h"
 #include "warlock.h"
 #include "game_macro.h"
+#include "path.h"
+
+static int limit_rate_gun(int wait)
+{
+    static sfClock *timer;
+    sfTime delay;
+    static int pass = 1;
+
+    if (!timer)
+        timer = sfClock_create();
+    delay = sfClock_getElapsedTime(timer);
+    if (sfTime_asMilliseconds(delay) < wait || pass == 1) {
+        pass = 0;
+        return (1);
+    }
+    sfClock_restart(timer);
+    return (0);
+}
 
 static void attack_knife(game_t *game)
 {
@@ -17,37 +35,47 @@ static void attack_knife(game_t *game)
     entities_t *closest = starset_get_closest(game->entities_list
     , player->save->name);
 
-    if (closest && starset_get_distance(closest->position
-    , player->save->position) < 150 && closest != player->save) {
-        closest->life -= 3;
+    if (closest && starset_get_distance(closest->spot
+    , player->save->spot) < 90 && closest != player->save) {
+        closest->life -= 1;
+        starset_entities_play_sound(closest, closest->name, "pain", false);
     }
 }
 
 static void attack_gun(game_t *game)
 {
     entities_t *bullet = NULL;
+    char *name = NULL;
+    static int id = 0;
 
-    bullet = starset_entities_get_propreties(game->player.save, "bullet");
-    if (bullet->visible == false) {
-        bullet->position.x = game->player.save->position.x+
-        90 * cos((game->player.angle / 57));
-        bullet->position.y = game->player.save->position.y;
-        bullet->angle = game->player.angle;
-        bullet->visible = true;
-        if (compare(game->player.selected, "rifle")) {
-            bullet->life = 40;
-            game->player.ammo_rifle -= 1;
-        } else {
-            bullet->life = 25;
-            game->player.ammo_gun -= 1;
-        }
+    name = append("bullet:", my_itoa(id));
+    game->entities_list = starset_entities_add(game->entities_list
+    , BULLET_PATH, name, false);
+    game->bullet = starset_entities_get_propreties(game->entities_list
+    , "bullet");
+    bullet = starset_entities_get_propreties(game->bullet, name);
+    starset_entities_get_propreties(bullet, "bullet")->is_trigger = true;
+    starset_entities_get_propreties(bullet, "bullet")->speed = 9;
+    bullet->spot.x = game->player.save->spot.x+
+    90 * cos((game->player.angle / 57));
+    bullet->spot.y = game->player.save->spot.y;
+    bullet->angle = game->player.save->angle;
+    if (compare(game->player.selected, "rifle")) {
+        bullet->life = 40;
+        game->player.ammo_rifle -= 1;
+    } else {
+        bullet->life = 25;
+        game->player.ammo_gun -= 1;
     }
+    id++;
 }
 
 static int on_attack(game_t *game, sfRenderWindow *window
 , char *animation, int *r)
 {
-    if (compare(game->player.selected, "rifle") && game->player.ammo_rifle <= 0)
+    if (limit_rate_gun(400) == 1)
+        return (7);
+    if (compare(game->player.selected, "rifle") && game->player.ammo_rifle < 0)
         return (7);
     if (compare(game->player.selected, "pistol") && game->player.ammo_gun <= 0)
         return (7);

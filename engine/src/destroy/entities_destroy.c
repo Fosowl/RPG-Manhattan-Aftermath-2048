@@ -52,10 +52,11 @@ static entities_t *internal__reconnect_link(entities_t **real_copy
     } else {
         entities = entities->next;
         *real_copy = entities;
+        internal__entities_destroy(entities->back);
         entities->back = NULL;
         return (entities);
     }
-    copy = copy->next;
+    *real_copy = copy->next;
     internal__entities_destroy(tmp);
     return (entities);
 }

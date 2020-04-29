@@ -19,8 +19,8 @@ float starset_entities_rotate_to(entities_t *entitie, char *name
     while (copy != NULL) {
         if (search_e(get[0], copy->name) != -1 || search_e(copy->name
         , get[0]) != -1) {
-            x = target.x - copy->position.x;
-            y = target.y - copy->position.y;
+            x = target.x - copy->spot.x;
+            y = target.y - copy->spot.y;
             if (sqrt(pow(y, 2) + pow(x, 2)) >= (copy->size.x / 2))
                 copy->angle = atan2(y, x) * 57;
             ok = true;
@@ -28,7 +28,7 @@ float starset_entities_rotate_to(entities_t *entitie, char *name
         }
         copy = copy->next;
     }
-    (!ok && !!LOG) ? put_err("bad entitie in entities_teleport()\n") : 0;
+    (!ok && !!LOG) ? put_err("bad entitie in entities_rotate_to()\n") : 0;
     return (copy->angle);
 }
 
@@ -43,7 +43,7 @@ float starset_entitites_rotate_to_other(entities_t *entitie, char *name
     while (copy != NULL) {
         if (search_e(get_other[0], copy->name) != -1 || search_e(copy->name
         , get_other[1]) != -1) {
-            starset_entities_rotate_to(entitie, name, copy->position);
+            starset_entities_rotate_to(entitie, name, copy->spot);
         }
         copy = copy->next;
         ok = true;

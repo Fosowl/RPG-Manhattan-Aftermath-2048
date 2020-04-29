@@ -27,15 +27,15 @@ object_t *create_object(char *path, float x, float y, float angle)
     size = sfTexture_getSize(object->texture);
     object->visible = 1;
     object->rotation = angle;
-    object->position = (sfVector2f){x, y};
+    object->spot = (sfVector2f){x, y};
     object->origin = (sfVector2f){size.x / 2, size.y / 2};
     object->weight = sqrt((size.x * size.y)) / 2;
-    object->hitbox.left = object->position.x - object->origin.x;
+    object->hitbox.left = object->spot.x - object->origin.x;
     object->hitbox.height = size.y;
-    object->hitbox.top = object->position.y - object->origin.y;
+    object->hitbox.top = object->spot.y - object->origin.y;
     object->hitbox.width = size.x;
     sfSprite_setOrigin(object->sprite, object->origin);
-    sfSprite_setPosition(object->sprite, object->position);
+    sfSprite_setspot(object->sprite, object->spot);
     sfSprite_setRotation(object->sprite, angle);
     return (object);
 }

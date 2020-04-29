@@ -74,14 +74,14 @@ typedef struct object_t {
     int visible;
     int weight;
     sfFloatRect hitbox;
-    sfVector2f position;
+    sfVector2f spot;
     sfVector2f goal;
     sfVector2f origin;
 } object_t;
 
 typedef struct view_t {
     sfView *view;
-    sfVector2f position;
+    sfVector2f spot;
     float zoom;
     sfWindow *sfWindow;
 } view_t;
@@ -90,7 +90,7 @@ typedef struct button_t {
     int text_size;
     int start_size;
     sfVector2u size;
-    sfVector2f position;
+    sfVector2f spot;
     sfTexture *texture;
     sfTexture *texture_box;
     sfSprite *sprite;
@@ -113,10 +113,10 @@ object_t *create_object(char *path, float x, float y, float angle);
 int my_put_pixel(framebuffer_t *buffer, unsigned int x, unsigned int y
 , sfColor color);
 
-void my_draw_square(framebuffer_t *framebuffer, sfVector2u position,
+void my_draw_square(framebuffer_t *framebuffer, sfVector2u spot,
 sfVector2f size, sfColor color);
 
-void my_draw_circle_pit(sfVector2f position, sfColor color
+void my_draw_circle_pit(sfVector2f spot, sfColor color
 , float radius, sfRenderWindow *window);
 
 // measure_distance.c
@@ -145,22 +145,22 @@ void my_sleep(int wait);
 
 // button_classic.c
 
-button_t *create_button(char *path, sfVector2f position, char *text, int s);
+button_t *create_button(char *path, sfVector2f spot, char *text, int s);
 void resize_button(int center_left, int center_top, button_t *button);
 int button_render_and_check(sfRenderWindow *window, sfEvent *ev
 , button_t *button);
 
 // button_simple.c
 
-button_t *create_simple_button(char *path, sfVector2f position, char *text);
+button_t *create_simple_button(char *path, sfVector2f spot, char *text);
 int simple_button_render_and_check(sfRenderWindow *window, sfEvent *event
 , button_t *button);
 
 // ui.c
 
-void life_bar(sfRenderWindow *window, sfVector2u position, int life
+void life_bar(sfRenderWindow *window, sfVector2u spot, int life
 , sfVector2i screen_size);
-void load_bar(sfRenderWindow *window, sfVector2u position, int life
+void load_bar(sfRenderWindow *window, sfVector2u spot, int life
 , sfVector2i screen_size);
 
 // text.c
@@ -169,7 +169,7 @@ sfText *load_text(char *string, int size, sfVector2f vector, sfColor color);
 
 // screen.c
 
-int outside_screen(sfVector2f position, float x, float y);
+int outside_screen(sfVector2f spot, float x, float y);
 
 // sound_creator.c
 

@@ -46,7 +46,7 @@ entities_t *starset_set_background(entities_t *list, char *path)
     starset_entities_get_propreties(new, "background")->is_trigger = true;
     starset_entities_get_propreties(new, "background")->restitution = 0.0f;
     starset_entities_get_propreties(new, "background")->id = -1;
-    starset_entities_get_propreties(new, "background")->position = (sfVector2f)
+    starset_entities_get_propreties(new, "background")->spot = (sfVector2f)
     {size.x / 2, size.y / 2};
     return (new);
 }

@@ -42,12 +42,12 @@ void init_menu(menu_t *menu)
     NULL);
     menu->play_sprite = sfSprite_create();
     sfSprite_setTexture(menu->play_sprite, menu->play_texture, sfTrue);
-    sfSprite_setPosition(menu->play_sprite, menu->play_pos);
+    sfSprite_setspot(menu->play_sprite, menu->play_pos);
     menu->quit_texture = sfTexture_createFromFile("assets/menu/quit.png",
     NULL);
     menu->quit_sprite = sfSprite_create();
     sfSprite_setTexture(menu->quit_sprite, menu->quit_texture, sfTrue);
-    sfSprite_setPosition(menu->quit_sprite, menu->quit_pos);
+    sfSprite_setspot(menu->quit_sprite, menu->quit_pos);
 }
 
 void init_screen(screen_t *screen)

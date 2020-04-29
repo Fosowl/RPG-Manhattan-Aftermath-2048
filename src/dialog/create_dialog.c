@@ -24,9 +24,9 @@ void create_dialog(dialog_t *dialog)
     dialog->script = sfText_create();
     font = sfFont_createFromFile("font/11.ttf");
     sfText_setFont(dialog->script, font);
-    sfText_setPosition(dialog->script, vector_script);
+    sfText_setspot(dialog->script, vector_script);
     dialog->person = sfText_create();
     sfText_setFont(dialog->person, font);
-    sfText_setPosition(dialog->person, vector_person);
+    sfText_setspot(dialog->person, vector_person);
     dialog->obj = init_dialog(dialog);
 }

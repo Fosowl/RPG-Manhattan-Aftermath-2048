@@ -92,6 +92,7 @@ typedef struct player_t {
     int nb_magazine_rifle;
 } player_t;
 
+
 typedef struct ui_ammo_t {
     char *str_mag;
     char *str_total;
@@ -109,6 +110,8 @@ typedef struct game_s {
     entities_t *entities_list;
     sfTime runtime;
     int mode;
+    entities_t *girl;
+    entities_t *bullet;
     player_t player;
 } game_t;
 

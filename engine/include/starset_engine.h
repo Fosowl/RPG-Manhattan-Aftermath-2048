@@ -10,7 +10,7 @@
 
 #include "dependancies.h"
 
-#define LOG 1
+#define LOG 0
 
 typedef struct audio_t {
     char *name;
@@ -42,7 +42,7 @@ typedef struct animator_t {
     int frame;
     sfClock *delay;
     sfTime t;
-    sfVector2f position[50];
+    sfVector2f spot[50];
     struct animator_t *next;
 } animator_t;
 
@@ -76,7 +76,7 @@ typedef struct entities_t {
     sfBool is_trigger;
     sfBool fixed;
     sfBool mouse_hover;
-    sfVector2f position;
+    sfVector2f spot;
     sfVector2u size;
     int life;
     float speed;
@@ -108,7 +108,7 @@ entities_t *starset_get_closest(entities_t *entities, char *name);
 
 // MATH
 
-sfVector2f starset_random_position(int nb_1, int nb_2, int nb_3, int nb_4);
+sfVector2f starset_random_spot(int nb_1, int nb_2, int nb_3, int nb_4);
 int starset_get_distance(sfVector2f vector_1, sfVector2f vector_2);
 
 // CREATE
@@ -116,7 +116,7 @@ int starset_get_distance(sfVector2f vector_1, sfVector2f vector_2);
 entities_t *starset_entities_add(entities_t *entities_list
 , char *source, char *name, sfBool fixed);
 entities_t *starset_add_obstacle_entities(entities_t *entities_list
-, sfVector2f position, sfVector2f size);
+, sfVector2f spot, sfVector2f size);
 void starset_add_component(entities_t *entities, char *name
 , int (*pointer)(), char *ptr_name);
 void starset_add_animation(entities_t *entities, char *e_name, char *a_name

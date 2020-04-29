@@ -20,7 +20,7 @@ static void internal__apply_sound(audio_t *copy)
     }
     copy->delay = sfClock_getElapsedTime(copy->timer);
     sfSound_setLoop(copy->sound, copy->loop);
-    sfSound_setPosition(copy->sound, copy->binaural);
+    sfSound_setspot(copy->sound, copy->binaural);
     sfSound_setVolume(copy->sound, copy->volume);
 }
 
@@ -45,14 +45,14 @@ void internal__dynamic_sound(entities_t *this, entities_t *player)
     if (!this)
         return;
     if (player != NULL) {
-        if (starset_get_distance(player->position, this->position) < 70)
+        if (starset_get_distance(player->spot, this->spot) < 70)
             vector = (sfVector3f){0.0f, 0.0f, 0.0f};
         else {
-            if (player->position.x < this->position.x)
+            if (player->spot.x < this->spot.x)
                 vector.x = -30.0f;
             else
                 vector.x = -0.0f;
-            if (player->position.y < this->position.y)
+            if (player->spot.y < this->spot.y)
                 vector.z = -30.0f;
             else
                 vector.z = 30.0f;

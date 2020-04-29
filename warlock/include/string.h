@@ -84,7 +84,7 @@ int my_strcpy(char *dest, char *src);
 
 /*
 \fn int locate_array_element(char **p, char *keyword)
-\brief determine the position of a string in an array
+\brief determine the spot of a string in an array
 of string according to a corresponding keyword.
 \param p : array of string to search in.
 \param keyboard : keyword to find in the array.

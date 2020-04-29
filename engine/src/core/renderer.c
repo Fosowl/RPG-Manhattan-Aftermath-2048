@@ -21,7 +21,7 @@ void starset_entities_render_single(entities_t *copy, sfRenderWindow *window)
     }
     sfSprite_setOrigin(copy->aspect->sprite, (sfVector2f){width, height});
     sfSprite_setTextureRect(copy->aspect->sprite, copy->aspect->sheet->rect);
-    sfSprite_setPosition(copy->aspect->sprite, copy->position);
+    sfSprite_setspot(copy->aspect->sprite, copy->spot);
     rotation = copy->angle + copy->aspect->rotation;
     sfSprite_setRotation(copy->aspect->sprite, rotation);
     if (copy->visible == true)

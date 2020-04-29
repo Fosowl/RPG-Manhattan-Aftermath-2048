@@ -37,8 +37,8 @@ void handle_zombie_sound(game_t *game)
         if (sfTime_asMilliseconds(tmp->control.delay) / 1000 < tmp->control.wait)
             continue;
         starset_entities_play_sound(tmp, tmp->name, "breath", false);
-        distance = starset_get_distance(tmp->position
-        , game->player.save->position);
+        distance = starset_get_distance(tmp->spot
+        , game->player.save->spot);
         if (distance < 700)
             volume = (1 - (distance / 700)) * 7;
         else

@@ -7,10 +7,10 @@
 
 #include "../include/render.h"
 
-button_t *create_button(char *path, sfVector2f position, char *text, int s)
+button_t *create_button(char *path, sfVector2f spot, char *text, int s)
 {
     button_t *button = malloc(sizeof(button_t));
-    sfVector2f text_position;
+    sfVector2f text_spot;
     sfColor color = GLASS_RED;
     int size = (my_strlen(text) * s) * 6;
 
@@ -20,13 +20,13 @@ button_t *create_button(char *path, sfVector2f position, char *text, int s)
     button->rect.width = size;
     button->start_size = size;
     button->rect.height = s * 10;
-    button->position.x = position.x - (button->rect.width / 2);
-    button->position.y = position.y - (button->rect.height / 2);
-    text_position.x = button->position.x + s * 2;
-    text_position.y = button->position.y - s * 2;
+    button->spot.x = spot.x - (button->rect.width / 2);
+    button->spot.y = spot.y - (button->rect.height / 2);
+    text_spot.x = button->spot.x + s * 2;
+    text_spot.y = button->spot.y - s * 2;
     button->text_size = s * 10;
-    button->text = load_text(text, size, text_position, color);
-    sfSprite_setPosition(button->sprite, button->position);
+    button->text = load_text(text, size, text_spot, color);
+    sfSprite_setspot(button->sprite, button->spot);
     return (button);
 }
 
@@ -59,12 +59,12 @@ int button_render_and_check(sfRenderWindow *window, sfEvent *event
     int center_left = 0;
     int center_top = 0;
 
-    mouse = sfMouse_getPositionRenderWindow(window);
-    if (mouse.x > button->position.x &&
-    mouse.x < button->position.x + button->rect.width)
+    mouse = sfMouse_getspotRenderWindow(window);
+    if (mouse.x > button->spot.x &&
+    mouse.x < button->spot.x + button->rect.width)
         center_left = 1;
-    if (mouse.y > button->position.y &&
-    mouse.y < button->position.y + button->rect.height)
+    if (mouse.y > button->spot.y &&
+    mouse.y < button->spot.y + button->rect.height)
         center_top = 1;
     resize_button(center_left, center_top, button);
     sfSprite_setTextureRect(button->sprite, button->rect);

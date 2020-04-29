@@ -15,14 +15,14 @@ typedef struct point_t {
 static sfBool internal__mouse_hover(entities_t *entitie_1
 , sfRenderWindow *window)
 {
-    sfVector2i mouse = sfMouse_getPositionRenderWindow(window);
+    sfVector2i mouse = sfMouse_getspotRenderWindow(window);
     point_t Ax;
     point_t Ay;
 
-    Ax.first = entitie_1->position.x - (entitie_1->size.x / 2);
-    Ax.second = entitie_1->position.x + (entitie_1->size.x / 2);
-    Ay.first = entitie_1->position.y - (entitie_1->size.y / 2);
-    Ay.second = entitie_1->position.y + (entitie_1->size.y / 2);
+    Ax.first = entitie_1->spot.x - (entitie_1->size.x / 2);
+    Ax.second = entitie_1->spot.x + (entitie_1->size.x / 2);
+    Ay.first = entitie_1->spot.y - (entitie_1->size.y / 2);
+    Ay.second = entitie_1->spot.y + (entitie_1->size.y / 2);
     if ((float)mouse.x > Ax.first && (float)mouse.x < Ax.second &&
     (float)mouse.y > Ay.first && (float)mouse.y < Ay.second)
         return (true);
@@ -38,14 +38,14 @@ static sfVector2i internal__entities_collide(entities_t *entitie_1
     point_t Bx;
     point_t By;
 
-    Ax.first = entitie_1->position.x - (entitie_1->size.x / 2);
-    Ax.second = entitie_1->position.x + (entitie_1->size.x / 2);
-    Ay.first = entitie_1->position.y - (entitie_1->size.y / 2);
-    Ay.second = entitie_1->position.y + (entitie_1->size.y / 2);
-    Bx.first = entitie_2->position.x - (entitie_2->size.x / 2);
-    Bx.second = entitie_2->position.x + (entitie_2->size.x / 2);
-    By.first = entitie_2->position.y - (entitie_2->size.y / 2);
-    By.second = entitie_2->position.y + (entitie_2->size.y / 2);
+    Ax.first = entitie_1->spot.x - (entitie_1->size.x / 2);
+    Ax.second = entitie_1->spot.x + (entitie_1->size.x / 2);
+    Ay.first = entitie_1->spot.y - (entitie_1->size.y / 2);
+    Ay.second = entitie_1->spot.y + (entitie_1->size.y / 2);
+    Bx.first = entitie_2->spot.x - (entitie_2->size.x / 2);
+    Bx.second = entitie_2->spot.x + (entitie_2->size.x / 2);
+    By.first = entitie_2->spot.y - (entitie_2->size.y / 2);
+    By.second = entitie_2->spot.y + (entitie_2->size.y / 2);
     (Ax.first < Bx.first && Bx.first < Ax.second) ? vector.x = 1 : 0;
     (Ax.first < Bx.second && Bx.second < Ax.second) ? vector.x = -1 : 0;
     (By.second > Ay.first && By.second < Ay.second) ? vector.y = -1 : 0;

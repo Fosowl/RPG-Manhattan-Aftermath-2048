@@ -64,8 +64,8 @@ static void internal__add_keyframe_to(sheet_t *this, char *a_name
 
     for ( ; copy != NULL; copy = copy->next) {
         if (compare_e(copy->name, a_name) == true) {
-            copy->position[copy->index].x = keyframe.x;
-            copy->position[copy->index].y = keyframe.y;
+            copy->spot[copy->index].x = keyframe.x;
+            copy->spot[copy->index].y = keyframe.y;
             if (copy->index < 50)
                 copy->index += 1;
             ok = true;

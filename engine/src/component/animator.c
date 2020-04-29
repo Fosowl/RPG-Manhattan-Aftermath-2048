@@ -16,8 +16,8 @@ static void internal__play_animation_frame(aspect_t *aspect
 
     while (copy != NULL) {
         if (compare_e(copy->name, a_name) == true) {
-            aspect->sheet->current.x = (float)copy->position[*frame].x;
-            aspect->sheet->current.y = (float)copy->position[*frame].y;
+            aspect->sheet->current.x = (float)copy->spot[*frame].x;
+            aspect->sheet->current.y = (float)copy->spot[*frame].y;
             ok = true;
         }
         tmp = copy;

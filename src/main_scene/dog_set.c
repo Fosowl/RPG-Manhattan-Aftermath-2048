@@ -23,8 +23,8 @@ void set_dog(entities_t *entities)
     starset_add_animation_key(dog, "dog", "move"
     , (sfVector2f){261.0f, 134.0f});
     dog->speed = 3;
-    dog->position.x = 400.0f;
-    dog->position.y = 300.0f;
+    dog->spot.x = 400.0f;
+    dog->spot.y = 300.0f;
 }
 
 void move_dog(entities_t *entities, entities_t *player)
@@ -37,12 +37,12 @@ void move_dog(entities_t *entities, entities_t *player)
         dog = starset_entities_get_propreties(entities, "dog");
     if (!player || !dog)
         return;
-    distance = starset_get_distance(dog->position, player->position);
+    distance = starset_get_distance(dog->spot, player->spot);
     if (distance < 230) {
         target = (sfVector2f){1500, 300};
     } else if (distance > 600) {
-        target.x = player->position.x;
-        target.y = player->position.y;
+        target.x = player->spot.x;
+        target.y = player->spot.y;
     }
     dog->aspect->rotation = 90;
     starset_entities_move(dog, "dog", target.x, target.y);

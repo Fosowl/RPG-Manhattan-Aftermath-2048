@@ -17,16 +17,16 @@ int my_put_pixel(framebuffer_t *buffer, unsigned int x, unsigned int y
     return (0);
 }
 
-void my_draw_square(framebuffer_t *framebuffer, sfVector2u position,
+void my_draw_square(framebuffer_t *framebuffer, sfVector2u spot,
 sfVector2f size, sfColor color)
 {
-    for (unsigned int i = position.y; i < size.y + position.y; i++) {
-        for (unsigned int k = position.x; k < size.x + position.x; k++)
+    for (unsigned int i = spot.y; i < size.y + spot.y; i++) {
+        for (unsigned int k = spot.x; k < size.x + spot.x; k++)
             my_put_pixel(framebuffer, k, i, color);
     }
 }
 
-void my_draw_circle_pit(sfVector2f position, sfColor color
+void my_draw_circle_pit(sfVector2f spot, sfColor color
 , float radius, sfRenderWindow *window)
 {
     sfCircleShape *circle;
@@ -37,9 +37,9 @@ void my_draw_circle_pit(sfVector2f position, sfColor color
     sfCircleShape_setFillColor(circle, color);
     sfCircleShape_setRadius(circle, radius / 20);
     while (t < 360) {
-        vector.x = radius * cos(t) + position.x;
-        vector.y = radius * sin(t) + position.y;
-        sfCircleShape_setPosition(circle, vector);
+        vector.x = radius * cos(t) + spot.x;
+        vector.y = radius * sin(t) + spot.y;
+        sfCircleShape_setspot(circle, vector);
         sfRenderWindow_drawCircleShape(window, circle, NULL);
         t++;
     }

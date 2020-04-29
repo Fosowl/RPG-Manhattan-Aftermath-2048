@@ -15,7 +15,7 @@ void simulate_wind(object_t *object, float direction, int force)
         object->weight = 1;
     add_force.x = 2 * cos(direction) * (force / object->weight);
     add_force.y = 2 * sin(180 - (direction + 90)) * (force / object->weight);
-    object->position.y += add_force.y;
-    object->position.x += add_force.x;
+    object->spot.y += add_force.y;
+    object->spot.x += add_force.x;
 }
 

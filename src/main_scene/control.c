@@ -17,7 +17,7 @@ static float point_toward_mouse(entities_t *entities, sfRenderWindow *window)
     sfVector2f mouse;
     sfVector2i mouse_i;
 
-    mouse_i = sfMouse_getPositionRenderWindow(window);
+    mouse_i = sfMouse_getspotRenderWindow(window);
     mouse.x = (float)mouse_i.x;
     mouse.y = (float)mouse_i.y;
     angle = starset_entities_rotate_to(entities, "player", mouse);
@@ -29,7 +29,6 @@ void player_controller(game_t *game)
     int r = 0;
     char *animation = NULL;
 
-    game->player.save = starset_entities_get_propreties(game->entities_list, "player");
     game->player.angle = point_toward_mouse(game->entities_list, game->window);
     if (press(sfKeyUp) || press(game->player.control.key_up))
         r = teleport_player_up(game->entities_list, game->player.save);

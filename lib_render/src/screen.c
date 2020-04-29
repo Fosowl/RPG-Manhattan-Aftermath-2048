@@ -7,13 +7,13 @@
 
 #include "../include/render.h"
 
-int outside_screen(sfVector2f position, float x, float y)
+int outside_screen(sfVector2f spot, float x, float y)
 {
     int outside = 0;
 
-    if (position.x > x || position.x < 0)
+    if (spot.x > x || spot.x < 0)
         outside = 1;
-    if (position.y > y || position.y < 0)
+    if (spot.y > y || spot.y < 0)
         outside = 1;
     return (outside);
 }

@@ -15,11 +15,11 @@
 void update_zombie_loading(sfRenderWindow *window, int v, int max_v)
 {
     sfVector2u screen_size = sfRenderWindow_getSize(window);
-    sfVector2u bar_position = (sfVector2u){(float)screen_size.x / 3
+    sfVector2u bar_spot = (sfVector2u){(float)screen_size.x / 3
     , (float)screen_size.y / 2};
 
     sfRenderWindow_clear(window, sfBlack);
-    load_bar(window, bar_position, ((float)v / (float)max_v) * 100, (sfVector2i)
+    load_bar(window, bar_spot, ((float)v / (float)max_v) * 100, (sfVector2i)
     {screen_size.x, screen_size.y});
     sfRenderWindow_display(window);
 }
@@ -50,19 +50,19 @@ entities_t *create_zombie_scene(entities_t *entities, int zombie
 void draw_loading_text(sfRenderWindow *window)
 {
     sfText *text_load = NULL;
-    sfVector2f position;
-    sfVector2u bar_position;
+    sfVector2f spot;
+    sfVector2u bar_spot;
     sfVector2u screen_size;
 
     screen_size = sfRenderWindow_getSize(window);
-    position.x = screen_size.x / 2;
-    position.y = screen_size.y / 2;
-    bar_position.x = screen_size.x / 3;
-    bar_position.y = screen_size.y / 2;
-    text_load = load_text("loading...", 15, position, RED);
+    spot.x = screen_size.x / 2;
+    spot.y = screen_size.y / 2;
+    bar_spot.x = screen_size.x / 3;
+    bar_spot.y = screen_size.y / 2;
+    text_load = load_text("loading...", 15, spot, RED);
     if (!text_load)
         return;
     sfRenderWindow_drawText(window, text_load, NULL);
-    load_bar(window, bar_position, 10, (sfVector2i){screen_size.x, screen_size.y});
+    load_bar(window, bar_spot, 10, (sfVector2i){screen_size.x, screen_size.y});
     sfRenderWindow_display(window);
 }

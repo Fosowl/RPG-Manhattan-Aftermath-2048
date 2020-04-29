@@ -22,6 +22,8 @@
 #define P "player"
 #define add_key starset_add_animation_key
 #define press sfKeyboard_isKeyPressed
+#define s_ starset_
+#define s_e_ starset_entities_
 
 #define MAG 0
 #define TOTAL 1

@@ -31,8 +31,8 @@ sfColor internal__image_average_color(sfImage *image, sfVector2i vector
 , sfVector2i size);
 
 float internal__get_magnitude(sfVector2f vector);
-float internal__vector_angle(sfVector2f position_1, sfVector2f position_2);
-float internal__dot_product(sfVector2f position_1, sfVector2f position_2);
+float internal__vector_angle(sfVector2f spot_1, sfVector2f spot_2);
+float internal__dot_product(sfVector2f spot_1, sfVector2f spot_2);
 
 void internal__dynamic_engine(void *ptr);
 void internal__collider_call(void *pass);

@@ -18,11 +18,6 @@ static void set_propreties(entities_t *entities)
     starset_entities_teleport(entities, "sora", 1500, 300);
     starset_entities_get_propreties(entities, "player")->speed = 3;
     starset_entities_get_propreties(entities, "sora")->life = 300;
-    starset_entities_get_propreties(entities, "bullet")->is_trigger = true;
-    starset_entities_get_propreties(entities, "bullet")->speed = 9;
-    starset_entities_get_propreties(entities, "bullet")->visible = false;
-    starset_entities_get_propreties(entities
-    , "bullet")->position = (sfVector2f){ -100.0f, -100.0f};
 }
 
 entities_t *load_entities_scene(int zombie, sfRenderWindow *window)
@@ -31,11 +26,10 @@ entities_t *load_entities_scene(int zombie, sfRenderWindow *window)
 
     sfRenderWindow_clear(window, sfBlack);
     draw_loading_text(window);
-    entities = starset_entities_add(entities, DOG_PATH, "dog", false);
     entities = create_zombie_scene(entities, zombie, window);
-    entities = starset_entities_add(entities, PLAYER_PATH, "player", false);
+    entities = starset_entities_add(entities, DOG_PATH, "dog", false);
     entities = starset_entities_add(entities, GIRL_PATH, "sora", false);
-    entities = starset_entities_add(entities, BULLET_PATH, "bullet", false);
+    entities = starset_entities_add(entities, PLAYER_PATH, "player", false);
     set_dog(entities);
     set_zombie_animation(entities);
     set_zombie_sound(entities, zombie);

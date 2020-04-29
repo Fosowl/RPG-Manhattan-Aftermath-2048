@@ -4,12 +4,12 @@
         "2": "Si votre ligne de texte fait plus de 137 caracteres ajouter un 'retour a la ligne' aux 138 caracteres"
     },
     "LEO": {
-        "1": "Si vous ajoutez une personne aller dans dialog.h et augmenter la valeur du define PERSONAGE de 1,",
-        "2": "et augmenter la valeur du define PERSONAGE de 1."
+        "1": "Si vous ajoutez une personne aller dans dialog.h et augmenter la valeur du define talk de 1,",
+        "2": "et augmenter la valeur du define talk de 1."
     },
     "MARTIN": {
         "1": "Pour appeler les différents dialogues il faut appeler la fonction display_dialog.",
-        "2": "Fonctionnement :\ndisplay_dialog(window, dialog, numero de la personne (faire un define par personage), numero du texte)"
+        "2": "Fonctionnement :\ndisplay_dialog(window, dialog, numero de la personne (faire un define par person), numero du texte)"
     },
     "WILFRIED": {
         "1": "blablabla",

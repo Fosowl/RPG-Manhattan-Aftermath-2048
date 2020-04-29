@@ -49,12 +49,12 @@ static void reload_ui(sfRenderWindow *window)
 {
     static sfText *text_ui;
     sfVector2u screen_size = sfRenderWindow_getSize(window);
-    sfVector2f position;
+    sfVector2f spot;
 
-    position.x = screen_size.x / 2;
-    position.y = screen_size.y / 2;
+    spot.x = screen_size.x / 2;
+    spot.y = screen_size.y / 2;
     if (!text_ui) {
-        text_ui = load_text("reload", 70, position, WHITE);
+        text_ui = load_text("reload", 70, spot, WHITE);
     }
     sfRenderWindow_drawText(window, text_ui, NULL);
 }
@@ -63,12 +63,12 @@ static void critical_ui(sfRenderWindow *window)
 {
     static sfText *text_ui;
     sfVector2u screen_size = sfRenderWindow_getSize(window);
-    sfVector2f position;
+    sfVector2f spot;
 
-    position.x = screen_size.x / 2;
-    position.y = screen_size.y / 2;
+    spot.x = screen_size.x / 2;
+    spot.y = screen_size.y / 2;
     if (!text_ui) {
-        text_ui = load_text("C R I T I C A L   L I F E", 70, position, RED);
+        text_ui = load_text("C R I T I C A L   L I F E", 70, spot, RED);
     }
     sfRenderWindow_drawText(window, text_ui, NULL);
 }
