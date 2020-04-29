@@ -72,7 +72,7 @@ int load_map(char **av, entities_t *object_list)
                 starset_entities_teleport(object_list, "down_right",
                 x * 150, y * 150);
                 break;
-               case '4':
+                case '4':
                 object_list = starset_entities_add(object_list,
                 "assets/building/Walls/Z.png", "map:down_left", false);
                 starset_entities_teleport(object_list, "down_left",
