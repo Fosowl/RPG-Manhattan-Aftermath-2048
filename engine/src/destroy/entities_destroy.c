@@ -22,6 +22,10 @@ static void internal__destroy_aspect(aspect_t *aspect)
 
 static void internal__entities_destroy(entities_t *entities)
 {
+    if (entities == NULL) {
+        put_err("unexpected NULL value in internal destroy func\n");
+        return;
+    }
     internal__destroy_audio(entities->audio);
     internal__destroy_aspect(entities->aspect);
     internal__destroy_component(entities->component);

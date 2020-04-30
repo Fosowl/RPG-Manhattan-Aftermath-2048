@@ -34,17 +34,16 @@ static void zombie_attack_player(entities_t *tmp, int *pass, player_t *player)
     starset_entities_rotate_to(tmp, tmp->name
     , player->save->spot);
     if (*pass == 0)
-        player->save->life -= 1;
+        player->save->life -= 2;
 }
 
 static int handle_zombie_damage(entities_t **entities, entities_t *tmp)
 {
-    if (tmp->collision != NULL && tmp->collision->name &&
-    search("bullet", tmp->collision->name) != -1) {
+    if (tmp->collision && search("bullet", tmp->collision->name) != -1
+    && tmp->collision->visible == true) {
         tmp->life -= tmp->collision->life;
+        tmp->collision->visible = false;
         starset_entities_play_sound(tmp, tmp->name, "pain", false);
-        starset_entities_get_propreties(tmp, tmp->name)->life = 0;
-        starset_entities_get_propreties(tmp, tmp->name)->visible = 0;
     }
     if (tmp->life <= 5 && search("zombie", tmp->name) != -1)
         starset_entities_play_sound(tmp, tmp->name, "death", false);

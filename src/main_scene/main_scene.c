@@ -38,14 +38,16 @@ static void load_value(game_t *game)
 int main_scene_load(game_t *game)
 {
     sfClock *timer = sfClock_create();
-    game->entities_list = load_entities_scene(15, game->screen->window);
+    game->entities_list = load_entities_scene(5, game->screen->window);
 
     if (!game->entities_list)
         return EXIT_FAILURE;
     load_value(game);
     game->girl = starset_entities_get_propreties(game->entities_list, "sora");
-    game->bullet = starset_entities_get_propreties(game->entities_list, "bullet");
-    game->player.save = starset_entities_get_propreties(game->entities_list, "player");
+    game->bullet = starset_entities_get_propreties(game->entities_list
+    , "bullet");
+    game->player.save = starset_entities_get_propreties(game->entities_list
+    , "player");
     create_case_element(game->inventory);
     if (main_scene_loop(game, timer) == EXIT_SUCCESS) {
         starset_entities_destroy_all(game->entities_list);
@@ -78,7 +80,7 @@ int main_scene_loop(game_t *game, sfClock *timer)
         starset_update_engine(game->entities_list, game->window, NULL);
         sfRenderWindow_display(game->window);
         sfRenderWindow_clear(game->window, BROWN);
-        my_sleep(5000);
+        my_sleep(1000);
         game->runtime = sfClock_getElapsedTime(timer);
     }
     return EXIT_SUCCESS;
@@ -86,7 +88,7 @@ int main_scene_loop(game_t *game, sfClock *timer)
 
 void main_scene_update(game_t *game)
 {
-    reset_value(game);
+    update_value(game);
     display_case_element(game);
     move_dog(game->entities_list, game->player.save);
     update_object(game);

@@ -73,6 +73,8 @@ void set_player_key_rifle_reload(entities_t *entities);
 
 int attack_entities(game_t *game, sfEvent *event
 , sfRenderWindow *window);
+int on_attack(game_t *game, sfRenderWindow *window
+, char *animation, int *r);
 
 // object_sound.c
 
@@ -86,7 +88,7 @@ void zombie_ai(entities_t **entities, player_t *player);
 // update_object.c
 
 void update_object(game_t *game);
-void reset_value(game_t *game);
+void update_value(game_t *game);
 
 // spawn_point.c
 

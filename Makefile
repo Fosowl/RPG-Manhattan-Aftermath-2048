@@ -87,6 +87,7 @@ SRC_FILES	= 		main.c											\
 					main_scene/toggle_object.c						\
 					main_scene/ui.c									\
 					main_scene/update_object.c						\
+					main_scene/weapon_strike.c						\
 					main_scene/zombie_ai.c							\
 					main_scene/zombie_loading.c						\
 					inventory/create_button_all_inventory.c 		\
@@ -128,6 +129,15 @@ debug:
 	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(RENDER) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS) -g3
 	@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 	@echo -e "${_END}${_BOLD}${_IYELLOW}\033[5mDEBUG MODE READY !\033[0m${_END}"
+
+
+change:
+		@make fclean
+		@cd $(RENDER_DIR) ; make
+		@cd $(ENGINE_DIR) ; make
+		@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(RENDER) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS)
+		@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
+		@echo -e "${_END}${_BOLD}${_ICYAN}binary compilation complete !${_END}"
 
 f:
 	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(RENDER) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS)
