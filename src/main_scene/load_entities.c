@@ -30,6 +30,19 @@ entities_t *load_entities_scene(int zombie, sfRenderWindow *window)
     entities = starset_entities_add(entities, DOG_PATH, "dog", false);
     entities = starset_entities_add(entities, GIRL_PATH, "sora", false);
     entities = starset_entities_add(entities, PLAYER_PATH, "player", false);
+    entities = starset_entities_add(entities, BULLET_PATH, "bullet", false);
+    entities = starset_entities_add(entities, "assets/building/Walls/1.png",
+                                                    "border_right", false);
+    entities = starset_entities_add(entities, "assets/building/Walls/2.png",
+                                                    "wall", false);
+    entities = starset_entities_add(entities, "assets/building/Walls/3.png",
+                                                    "down_right", false);
+    entities = starset_entities_add(entities, "assets/building/Walls/4.png",
+                                                    "down_wall", false);
+    entities = starset_entities_add(entities, "assets/building/Walls/X.png",
+                                                    "border_left", false);
+    entities = starset_entities_add(entities, "assets/building/Walls/Z.png",
+                                                    "down_left", false);
     set_dog(entities);
     set_zombie_animation(entities);
     set_zombie_sound(entities, zombie);

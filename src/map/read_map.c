@@ -5,91 +5,81 @@
 ** background_map.c
 */
 
-#include "fonctions.h"
+#include "dependancies.h"
+#include "game_struct.h"
 
-int read_map(char **argv, sfRenderWindow *window, game_t *game,
-                sfClock *clock)
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+
+int def_sizemap(char ** av)
+{
+    struct stat size;
+    int len = 0;
+
+    stat(av[1], &size);
+    len = size.st_size;
+    return (len);
+}
+
+char *read_map(char **av)
 {
     int fd = 0;
-    int len = def_sizemap(argv);
+    int len = def_sizemap(av);
     char *buffer = malloc(sizeof(char) * len + 1);
     int size = 0;
 
-    fd = open(argv[1], O_RDONLY);
+    fd = open(av[1], O_RDONLY);
     if (fd == 0 || fd == -1)
         return (84);
     size = read(fd, buffer, len);
     if (size == 0)
         return (84);
     buffer[size] = '\0';
-    if (game_loop(window, game, clock, buffer) == 84)
-        return (84);
     close(fd);
-    return (0);
+    return (buffer);
 }
 
-int def_sizemap(char ** argv)
+int load_map(char **av, entities_t *object_list)
 {
-    struct stat size;
-    int len = 0;
+    char *stock_map = read_map(av);
+    char **map = NULL; //fonction lib martin
 
-    stat(argv[1], &size);
-    len = size.st_size;
-    return (len);
-}
-
-int parsing_map(char *buffer, game_t *game)
-{
-    int nb_ground = 0;
-
-    for (int i = 0; buffer[i] != '\0'; i++) {
-        if (buffer[i] == '1')
-            nb_ground++;
-    }
-    game->ground = malloc(sizeof(basicobject_t) * nb_ground);
-    if (game->ground == NULL)
-        return (84);
-    game->ground->pg_x = malloc(sizeof(int) * nb_ground);
-    if (game->ground->pg_x == NULL)
-        return (84);
-    game->ground->pg_y = malloc(sizeof(int) * nb_ground);
-    if (game->ground->pg_y == NULL)
-        return (84);
-    game->ground->nb = nb_ground;
-    map_option(buffer, game);
-    pos_object(game);
-    create_map(game);
-    return (0);
-}
-
-void map_option(char *buffer, game_t *game)
-{
-    int a = 0;
-    int index = 0;
-    int x = 0;
-
-    for (int i = 0; buffer[i] != '\0'; i++) {
-        if (buffer[i] == '\n') {
-            index++;
-            a = 0;
-        }
-        if (buffer[i] == '0')
-            a++;
-        if (buffer[i] == '1') {
-            game->ground->pg_x[x] = 100 * a;
-            game->ground->pg_y[x] = 60 * index;
-            a++;
-            x++;
+    for (int y = 0; map[y] != NULL; y++) {
+        for (int x = 0; map[y][x] != '\0'; x++) {
+            switch (map[y][x]) {
+                case '0':
+                object_list = starset_entities_add(object_list,
+                "assets/building/Walls/X.png", "map:border_left", false);
+                starset_entities_teleport(object_list, "border_left",
+                x * 150, y * 150);
+                break;
+                case '1':
+                object_list = starset_entities_add(object_list,
+                "assets/building/Walls/4.png", "map:down_wall", false);
+                starset_entities_teleport(object_list, "down_wall",
+                x * 150, y * 150);
+                break;
+                case '2':
+                object_list = starset_entities_add(object_list,
+                "assets/building/Walls/1.png", "map:border_right", false);
+                starset_entities_teleport(object_list, "border_right",
+                x * 150, y * 150);
+                break;
+                case '3':
+                object_list = starset_entities_add(object_list,
+                "assets/building/Walls/3.png", "map:down_right", false);
+                starset_entities_teleport(object_list, "down_right",
+                x * 150, y * 150);
+                break;
+                case '4':
+                object_list = starset_entities_add(object_list,
+                "assets/building/Walls/Z.png", "map:down_left", false);
+                starset_entities_teleport(object_list, "down_left",
+                x * 150, y * 150);
+                break;
+            }
         }
     }
-}
-
-void pos_object(game_t *game)
-{
-    game->ennemie->vector.x = game->ground->pg_x[game->ground->min + 5];
-    game->ennemie->vector.y = game->ground->pg_y[game->ground->min + 5] - 80;
-    sfSprite_setPosition(game->ennemie->sprite, game->ennemie->vector);
-    game->ennemie->vector.x = game->ground->pg_x[game->ground->min + 7];
-    game->ennemie->vector.y = game->ground->pg_y[game->ground->min + 1] - 80;
-    sfSprite_setPosition(game->ennemie->sprite, game->ennemie->vector);
+    return (0);
 }
