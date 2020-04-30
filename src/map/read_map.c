@@ -13,27 +13,16 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-int def_sizemap(char ** av)
-{
-    struct stat size;
-    int len = 0;
-
-    stat(av[1], &size);
-    len = size.st_size;
-    return (len);
-}
-
-char *read_map(char **av)
+char *read_map(void)
 {
     int fd = 0;
-    int len = def_sizemap(av);
-    char *buffer = malloc(sizeof(char) * len + 1);
+    char *buffer = malloc(sizeof(char) * 1000);
     int size = 0;
 
-    fd = open(av[1], O_RDONLY);
+    fd = open("map.txt", O_RDONLY);
     if (fd == 0 || fd == -1)
         return (84);
-    size = read(fd, buffer, len);
+    size = read(fd, buffer, 1000);
     if (size == 0)
         return (84);
     buffer[size] = '\0';
@@ -41,9 +30,9 @@ char *read_map(char **av)
     return (buffer);
 }
 
-int load_map(char **av, entities_t *object_list)
+int load_map(entities_t *object_list)
 {
-    char *stock_map = read_map(av);
+    char *stock_map = read_map();
     char **map = divide_array(stock_map, "\n");
 
     for (int y = 0; map[y] != NULL; y++) {
