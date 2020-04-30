@@ -7,6 +7,7 @@
 
 #include "dependancies.h"
 #include "game_struct.h"
+#include "warlock.h"
 
 #include <sys/types.h>
 #include <sys/stat.h>
@@ -43,7 +44,7 @@ char *read_map(char **av)
 int load_map(char **av, entities_t *object_list)
 {
     char *stock_map = read_map(av);
-    char **map = divi
+    char **map = divide_array(stock_map, "\n");
 
     for (int y = 0; map[y] != NULL; y++) {
         for (int x = 0; map[y][x] != '\0'; x++) {
