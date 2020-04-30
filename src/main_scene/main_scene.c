@@ -89,7 +89,6 @@ int main_scene_loop(game_t *game, sfClock *timer)
 void main_scene_update(game_t *game)
 {
     update_value(game);
-    display_case_element(game);
     move_dog(game->entities_list, game->player.save);
     update_object(game);
     update_element(game);
