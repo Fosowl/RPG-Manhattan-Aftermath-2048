@@ -10,6 +10,7 @@
 #include "starset_engine.h"
 #include "game_macro.h"
 #include "warlock.h"
+#include "path.h"
 
 static void zombie_visit_area(entities_t *tmp, int *c)
 {
@@ -34,7 +35,15 @@ static void zombie_attack_player(entities_t *tmp, int *pass, player_t *player)
     starset_entities_rotate_to(tmp, tmp->name
     , player->save->spot);
     if (*pass == 0)
-        player->save->life -= 2;
+        player->save->life -= 1;
+}
+
+static void blood_effect(entities_t *entities, entities_t *tmp)
+{
+    entities_t *blood = NULL;
+
+    blood = starset_entities_get_propreties(entities, "blood");
+    starset_entities_teleport(blood, "blood", tmp->spot.x, tmp->spot.y);
 }
 
 static int handle_zombie_damage(entities_t **entities, entities_t *tmp)
@@ -44,6 +53,7 @@ static int handle_zombie_damage(entities_t **entities, entities_t *tmp)
         tmp->life -= tmp->collision->life;
         tmp->collision->visible = false;
         starset_entities_play_sound(tmp, tmp->name, "pain", false);
+        blood_effect(*entities, tmp);
     }
     if (tmp->life <= 5 && search("zombie", tmp->name) != -1)
         starset_entities_play_sound(tmp, tmp->name, "death", false);

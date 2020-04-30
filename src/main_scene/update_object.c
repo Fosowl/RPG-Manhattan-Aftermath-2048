@@ -23,6 +23,7 @@ void update_value(game_t *game)
         if (game->bullet != NULL)
             ok = 1;
     }
+    starset_play_animation(game->entities_list, "blood", "simple", 1);
 }
 
 //game->entities_list = starset_entities_destroy(game->entities_list, tmp->name);
