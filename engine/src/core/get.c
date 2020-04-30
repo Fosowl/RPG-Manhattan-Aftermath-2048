@@ -48,7 +48,6 @@ entities_t *starset_get_closest(entities_t *entities, char *name)
     entities_t *closest = entities;
     entities_t *copy = entities;
     entities_t *from = starset_entities_get_propreties(entities, name);
-    char **get = internal__get_class(name);
     int distance = 21470000;
 
     (!from) ? put_err("bad name in get_closest()\n") : 0;

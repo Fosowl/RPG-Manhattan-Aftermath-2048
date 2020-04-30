@@ -8,6 +8,7 @@
 #include "dependancies.h"
 #include "menu.h"
 #include "game_struct.h"
+#include "inventory.h"
 
 int init_struct(game_t *game)
 {

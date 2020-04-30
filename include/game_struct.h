@@ -121,6 +121,7 @@ typedef struct game_s {
     entities_t *entities_list;
     sfTime runtime;
     int mode;
+    int delay;
     entities_t *girl;
     entities_t *bullet;
     player_t player;

@@ -52,8 +52,7 @@ int teleport_player_right(entities_t *entities, entities_t *save);
 
 // toggle_object.c
 
-void player_switch_object(entities_t *entities
-, player_t player, sfEvent *event);
+void player_switch_object(entities_t *entities, player_t player);
 
 // p_move_anim.c
 

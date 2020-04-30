@@ -22,20 +22,14 @@ static void set_propreties(entities_t *entities)
 
 static entities_t *load_object(entities_t *entities)
 {
-    entities_t *blood = NULL;
-
     entities = starset_entities_add(entities, DOG_PATH, "dog", false);
     entities = starset_entities_add(entities, GIRL_PATH, "sora", false);
     entities = starset_entities_add(entities, BULLET_PATH
     , "bullet_2", false);
     entities = starset_entities_add(entities, BULLET_PATH
     , "bullet_1", false);
-    entities = starset_entities_add(entities, BLOOD_PATH, "blood", true);
-    blood = starset_entities_get_propreties(entities, "blood");
-    starset_add_animation(blood, "blood", "simple", (sfVector2u){41, 49});
-    starset_add_animation_key(blood, "blood", "simple", (sfVector2f){105.0f, 101.0f});
-    starset_play_animation(blood, "blood", "simple", 1);
-    blood->is_trigger = true;
+    entities = starset_entities_add(entities, BULLET_PATH
+    , "bullet_1", false);
     return (entities);
 }
 

@@ -8,6 +8,7 @@
 #include "game_struct.h"
 #include "scene.h"
 #include "starset_engine.h"
+#include "warlock.h"
 
 static int limit_rate_gun(int wait)
 {
@@ -34,7 +35,7 @@ static void attack_knife(game_t *game)
 
     if (closest && starset_get_distance(closest->spot
     , player->save->spot) < 90 && closest != player->save) {
-        closest->life -= 20;
+        closest->life -= 40;
         starset_entities_play_sound(closest, closest->name, "pain", false);
     }
 }

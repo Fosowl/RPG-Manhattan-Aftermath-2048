@@ -38,7 +38,7 @@ static void load_value(game_t *game)
 int main_scene_load(game_t *game)
 {
     sfClock *timer = sfClock_create();
-    game->entities_list = load_entities_scene(5, game->screen->window);
+    game->entities_list = load_entities_scene(1, game->screen->window);
 
     if (!game->entities_list)
         return EXIT_FAILURE;
@@ -72,6 +72,7 @@ int main_scene_loop(game_t *game, sfClock *timer)
 {
     game->window = game->screen->window;
     srand(64886);
+    game->delay = 1000;
     play_music("assets/audio/days_later.ogg");
     while (game->window) {
         if (!starset_running(game->window, &game->event))
@@ -80,7 +81,7 @@ int main_scene_loop(game_t *game, sfClock *timer)
         starset_update_engine(game->entities_list, game->window, NULL);
         sfRenderWindow_display(game->window);
         sfRenderWindow_clear(game->window, BROWN);
-        my_sleep(1000);
+        my_sleep(game->delay);
         game->runtime = sfClock_getElapsedTime(timer);
     }
     return EXIT_SUCCESS;
@@ -96,7 +97,7 @@ void main_scene_update(game_t *game)
     event_button_inventory(game);
     girl_ai(game);
     player_controller(game);
-    player_switch_object(game->entities_list, game->player, &game->event);
+    player_switch_object(game->entities_list, game->player);
     handle_player_sound(game);
     zombie_ai(&game->entities_list, &game->player);
     if (game->player.ear_off != true) {

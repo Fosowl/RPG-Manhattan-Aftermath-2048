@@ -40,10 +40,7 @@ static void zombie_attack_player(entities_t *tmp, int *pass, player_t *player)
 
 static void blood_effect(entities_t *entities, entities_t *tmp)
 {
-    entities_t *blood = NULL;
 
-    blood = starset_entities_get_propreties(entities, "blood");
-    starset_entities_teleport(blood, "blood", tmp->spot.x, tmp->spot.y);
 }
 
 static int handle_zombie_damage(entities_t **entities, entities_t *tmp)

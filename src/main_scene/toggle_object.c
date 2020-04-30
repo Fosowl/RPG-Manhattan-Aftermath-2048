@@ -10,7 +10,7 @@
 #include "starset_engine.h"
 #include "warlock.h"
 
-void player_switch_object(entities_t *entities, player_t player, sfEvent *event)
+void player_switch_object(entities_t *entities, player_t player)
 {
     if (sfKeyboard_isKeyPressed(player.control.key_weapon[0])) {
         free(player.selected);

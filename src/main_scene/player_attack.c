@@ -9,6 +9,7 @@
 #include "scene.h"
 #include "starset_engine.h"
 #include "game_macro.h"
+#include "warlock.h"
 
 static int switch_attack(game_t *game, int *r, sfRenderWindow *window)
 {
