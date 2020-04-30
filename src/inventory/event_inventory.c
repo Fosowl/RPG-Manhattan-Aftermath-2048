@@ -11,10 +11,6 @@
 
 void event_button_inventory(game_t *game)
 {
-    sfVector2i pos_mouse;
-    sfVector2f pos_bag;
-    sfVector2f rec_bag;
-
     if (press(sfKeyI)) {
         if (game->inventory->button == 1)
             game->inventory->button = 0;

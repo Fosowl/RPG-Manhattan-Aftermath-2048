@@ -31,3 +31,18 @@ void create_nb_element(inventory_t *inventory)
         sfText_setFont(inventory->element[i].number, font);
     }
 }
+
+void display_nb_element(game_t *game, int i)
+{
+    if (game->inventory->element[i].nb > 0
+                                    && game->inventory->element[i].class != 1)
+        sfRenderWindow_drawText(game->window,
+                                    game->inventory->element[i].number, NULL);
+}
+
+void display_element(game_t *game, int i)
+{
+    if (game->inventory->element[i].draw == 1)
+        sfRenderWindow_drawSprite(game->window,
+                            game->inventory->element[i].object->sprite, NULL);
+}

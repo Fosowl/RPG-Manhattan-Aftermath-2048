@@ -95,8 +95,11 @@ SRC_FILES	= 		main.c											\
 					inventory/create_element_inventory.c 			\
 					inventory/destroy_inventory.c 					\
 					inventory/malloc_inventory.c 					\
-					inventory/event_inventory.c
-
+					inventory/event_inventory.c 					\
+					inventory/object_inventory.c 					\
+					inventory/check_object_inventory.c 				\
+					inventory/update_nb_object.c 					\
+					inventory/update_element.c 						\
 # test var
 
 TEST	 = tests/test.c

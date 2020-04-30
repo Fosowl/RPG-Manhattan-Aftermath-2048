@@ -17,6 +17,9 @@ int malloc_element(inventory_t *inventory)
         inventory->element[i].init = malloc(sizeof(basic_object_t) * (40));
         if (inventory->element[i].init == NULL)
             return (84);
+        inventory->element[i].object = malloc(sizeof(basic_object_t) * (40));
+        if (inventory->element[i].object == NULL)
+            return (84);
         inventory->element[i].number = malloc(sizeof(sfText *) * (40));
         if (inventory->element[i].number == NULL)
             return (84);
@@ -31,6 +34,9 @@ int malloc_inventory(game_t *game)
         return (84);
     game->inventory->button_all = malloc(sizeof(basic_object_t));
     if (game->inventory->button_all == NULL)
+        return (84);
+    game->inventory->contains = malloc(sizeof(contains_inventory_t) * 11);
+    if (game->inventory->contains == NULL)
         return (84);
     if (malloc_element(game->inventory) == 84)
         return (84);

@@ -23,18 +23,29 @@ typedef struct check_text_s{
 
 typedef struct element_inventory_s {
     basic_object_t *init;
+    basic_object_t *object;
     int status;
     int draw;
     sfText *number;
     int type;
+    int class;
     int nb;
 } element_inventory_t;
+
+typedef struct contains_inventory_s {
+    int nb;
+    int nb_case;
+    int max;
+    int status;
+} contains_inventory_t;
+
 
 typedef struct inventory_s {
     basic_object_t *background;
     element_inventory_t *element;
     basic_object_t *button_all;
     int button;
+    contains_inventory_t *contains;
 } inventory_t;
 
 typedef struct menu_s {

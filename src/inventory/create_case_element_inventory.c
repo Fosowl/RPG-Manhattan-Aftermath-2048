@@ -7,6 +7,7 @@
 
 #include "game_struct.h"
 #include "inventory.h"
+#include "time.h"
 
 basic_object_t *init_case_element(inventory_t *inventory, int i, int x, int y)
 {
@@ -32,16 +33,20 @@ void create_case(inventory_t *inventory, int width)
     for (; i != all; i++) {
         inventory->element[i].init = init_case_element(inventory, i,
                                                         460.5 + length, width);
+        inventory->element[i].object = init_element(inventory, i,
+                                                        461 + length, width);
         length += 95;
         nb_element.x = 372 + length;
         sfText_setPosition(inventory->element[i].number, nb_element);
         sfText_setCharacterSize(inventory->element[i].number, 20);
-        sfText_setString(inventory->element[i].number, "50");
+        sfText_setString(inventory->element[i].number,
+                                        my_itoa_e(inventory->element[i].nb));
     }
 }
 
 void create_case_element(inventory_t *inventory)
 {
+    element_for_start(inventory);
     create_button_inventory(inventory);
     create_nb_element(inventory);
     create_case(inventory, 900);
@@ -56,8 +61,8 @@ void display_case_element(game_t *game)
     for (int i = 0; i != 8; i++) {
         sfRenderWindow_drawSprite(game->window,
                                 game->inventory->element[i].init->sprite, NULL);
-        sfRenderWindow_drawText(game->window,
-                                    game->inventory->element[i].number, NULL);
+        display_nb_element(game, i);
+        display_element(game, i);
     }
     sfRenderWindow_drawSprite(game->window,
                                     game->inventory->button_all->sprite, NULL);
@@ -65,8 +70,8 @@ void display_case_element(game_t *game)
         for (int i = 8; i != 40; i++) {
             sfRenderWindow_drawSprite(game->window,
                                 game->inventory->element[i].init->sprite, NULL);
-            sfRenderWindow_drawText(game->window,
-                                    game->inventory->element[i].number, NULL);
+            display_nb_element(game, i);
+            display_element(game, i);
         }
     }
 }
