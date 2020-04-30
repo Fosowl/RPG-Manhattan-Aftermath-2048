@@ -43,7 +43,7 @@ char *read_map(char **av)
 int load_map(char **av, entities_t *object_list)
 {
     char *stock_map = read_map(av);
-    char **map = NULL; //fonction lib martin
+    char **map = divi
 
     for (int y = 0; map[y] != NULL; y++) {
         for (int x = 0; map[y][x] != '\0'; x++) {
@@ -51,31 +51,31 @@ int load_map(char **av, entities_t *object_list)
                 case '0':
                 object_list = starset_entities_add(object_list,
                 "assets/building/Walls/X.png", "map:border_left", false);
-                starset_entities_teleport(object_list, "border_left",
+                starset_entities_teleport(object_list, "map:border_left",
                 x * 150, y * 150);
                 break;
                 case '1':
                 object_list = starset_entities_add(object_list,
                 "assets/building/Walls/4.png", "map:down_wall", false);
-                starset_entities_teleport(object_list, "down_wall",
+                starset_entities_teleport(object_list, "map:down_wall",
                 x * 150, y * 150);
                 break;
                 case '2':
                 object_list = starset_entities_add(object_list,
                 "assets/building/Walls/1.png", "map:border_right", false);
-                starset_entities_teleport(object_list, "border_right",
+                starset_entities_teleport(object_list, "map:border_right",
                 x * 150, y * 150);
                 break;
                 case '3':
                 object_list = starset_entities_add(object_list,
                 "assets/building/Walls/3.png", "map:down_right", false);
-                starset_entities_teleport(object_list, "down_right",
+                starset_entities_teleport(object_list, "map:down_right",
                 x * 150, y * 150);
                 break;
                 case '4':
                 object_list = starset_entities_add(object_list,
                 "assets/building/Walls/Z.png", "map:down_left", false);
-                starset_entities_teleport(object_list, "down_left",
+                starset_entities_teleport(object_list, "map:down_left",
                 x * 150, y * 150);
                 break;
             }
