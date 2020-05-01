@@ -40,6 +40,7 @@ void set_player_sound(entities_t *entities)
     starset_add_entities_sound(player, "player", "collide", BANG_SOUND);
     starset_add_entities_sound(player, "player", "reload", RELOAD_SOUND);
     starset_add_entities_sound(player, "player", "knife", KNIFE_SOUND);
+    starset_add_entities_sound(player, "player", "empty", EMPTY_SOUND);
     starset_set_sound_volume(player, "player", "pain", 70);
     starset_set_sound_volume(player, "player", "heart", 100);
     starset_set_sound_volume(player, "player", "pistol", 100);

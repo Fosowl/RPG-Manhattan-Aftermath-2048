@@ -28,4 +28,8 @@
 #define MAG 0
 #define TOTAL 1
 
+#define NONE -1
+#define ATTACK 2
+#define RELOAD 3
+
 #endif /* !MACRO_H_ */

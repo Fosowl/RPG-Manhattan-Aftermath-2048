@@ -24,7 +24,6 @@
 #define ZOMBIE_DEATH_PATH "assets/audio/zombie_death.ogg"
 #define ZOMBIE_PAIN_PATH "assets/audio/zombie_pain.ogg"
 
-
 #define PLAYER_PAIN_PATH "assets/audio/pain.ogg"
 #define HEARTH_PATH "assets/audio/heart.ogg"
 #define PISTOL_SOUND_PATH "assets/audio/gun.ogg"
@@ -32,5 +31,8 @@
 #define BANG_SOUND "assets/audio/bang.ogg"
 #define RELOAD_SOUND "assets/audio/reload.ogg"
 #define KNIFE_SOUND "assets/audio/knife.ogg"
+#define EMPTY_SOUND "./assets/audio/empty.ogg"
+#define WALK_GRASS_SOUND "./assets/audio/walk_grass.ogg"
+#define WALK_NORMAL_SOUND "./assets/audio/walk_normal.ogg"
 
 #endif /* !PATH_H_ */

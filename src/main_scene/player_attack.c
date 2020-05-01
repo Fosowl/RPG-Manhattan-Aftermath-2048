@@ -11,6 +11,20 @@
 #include "game_macro.h"
 #include "warlock.h"
 
+static int limit_rate_reload(int wait)
+{
+    static sfClock *timer;
+    sfTime delay;
+
+    if (!timer)
+        timer = sfClock_create();
+    delay = sfClock_getElapsedTime(timer);
+    if (sfTime_asMilliseconds(delay) < wait)
+        return (1);
+    sfClock_restart(timer);
+    return (0);
+}
+
 static int switch_attack(game_t *game, int *r, sfRenderWindow *window)
 {
     char *animation = NULL;
@@ -24,8 +38,7 @@ static int switch_attack(game_t *game, int *r, sfRenderWindow *window)
         else
             game->player.ammo_gun = 11;
         *r = starset_play_animation(game->player.save, "player", animation, 1);
-        if (!compare(game->player.selected, "knife"))
-            game->player.noise = 1.3;
+        game->player.noise = 1.3;
         if (*r == 1)
             *r = 3;
         return (7);

@@ -10,9 +10,12 @@
 
 #include "game_struct.h"
 
-// main_scene.c
+// load_scene.c
 
 int main_scene_load(game_t *game);
+
+// main_scene.c
+
 int main_scene_loop(game_t *game, sfClock *timer);
 void main_scene_update(game_t *game);
 void play_music(char *path);
@@ -118,5 +121,9 @@ void draw_loading_text(sfRenderWindow *window);
 // girl_ai.c
 
 void girl_ai(game_t *game);
+
+//pause.c
+
+void check_pause(game_t *game);
 
 #endif /* !SCENE_H_ */

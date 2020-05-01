@@ -83,6 +83,6 @@ int starset_update_engine(entities_t *entities, sfRenderWindow *window
     pass.image = image;
     internal__collider_call(&pass);
     internal__dynamic_engine(&pass);
-    full_debug(&pass);
+    //full_debug(&pass);
     return (0);
 }

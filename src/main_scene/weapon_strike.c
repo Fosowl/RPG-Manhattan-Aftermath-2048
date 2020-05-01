@@ -63,14 +63,26 @@ static void attack_gun(game_t *game)
     id++;
 }
 
+static int weapon_empty(game_t *game)
+{
+    if (limit_rate_gun(1100) == 1)
+        return (7);
+    if (compare(game->player.selected, "rifle") && game->player.ammo_rifle <= 0) {
+        starset_single_play_sound(game->player.save, "empty", false);
+        starset_play_animation(game->player.save, "player", "rifle:static", 2);
+        return (7);
+    } else if (compare(game->player.selected, "pistol") && game->player.ammo_gun <= 0) {
+        starset_single_play_sound(game->player.save, "empty", false);
+        starset_play_animation(game->player.save, "player", "pistol:static", 2);
+        return (7);
+    }
+    return (0);
+}
+
 int on_attack(game_t *game, sfRenderWindow *window
 , char *animation, int *r)
 {
-    if (limit_rate_gun(700) == 1)
-        return (7);
-    if (compare(game->player.selected, "rifle") && game->player.ammo_rifle < 0)
-        return (7);
-    if (compare(game->player.selected, "pistol") && game->player.ammo_gun <= 0)
+    if (weapon_empty(game) == 7)
         return (7);
     animation = append(game->player.selected, ":attack");
     *r = starset_play_animation(game->player.save, "player", animation, 3);
