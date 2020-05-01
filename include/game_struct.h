@@ -30,6 +30,7 @@ typedef struct element_inventory_s {
     int type;
     int class;
     int nb;
+    int destroy;
 } element_inventory_t;
 
 typedef struct contains_inventory_s {
@@ -48,6 +49,21 @@ typedef struct inventory_s {
     contains_inventory_t *contains;
 } inventory_t;
 
+typedef struct hover_s {
+    sfTexture *play_texture;
+    sfSprite *play_sprite;
+    sfVector2f play_pos;
+    sfTexture *quit_texture;
+    sfSprite *quit_sprite;
+    sfVector2f quit_pos;
+    sfTexture *load_texture;
+    sfSprite *load_sprite;
+    sfVector2f load_pos;
+    sfTexture *how_texture;
+    sfSprite *how_sprite;
+    sfVector2f how_pos;
+} hover_t;
+
 typedef struct menu_s {
     sfTexture *menu_texture;
     sfSprite *menu_sprite;
@@ -58,6 +74,13 @@ typedef struct menu_s {
     sfTexture *quit_texture;
     sfSprite *quit_sprite;
     sfVector2f quit_pos;
+    sfTexture *load_texture;
+    sfSprite *load_sprite;
+    sfVector2f load_pos;
+    sfTexture *how_texture;
+    sfSprite *how_sprite;
+    sfVector2f how_pos;
+    hover_t *hover_menu;
 } menu_t;
 
 typedef struct dialog_s {

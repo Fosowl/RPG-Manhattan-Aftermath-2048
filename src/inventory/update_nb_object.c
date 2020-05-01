@@ -54,7 +54,7 @@ void check_inventory_full(inventory_t *inventory)
                                         || inventory->element[a].status == 3)
             full++;
     if (full == 36) {
-        printf("INVENTORY FULL\n"); // change fonction for putstr
+        my_printf("INVENTORY FULL\n");
         return;
     }
 }

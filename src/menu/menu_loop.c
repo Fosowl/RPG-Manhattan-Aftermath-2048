@@ -14,24 +14,42 @@ int check_press(sfEvent event)
     int x = event.mouseButton.x;
     int y = event.mouseButton.y;
 
-    if (x >= 400 && x <= 739 && y >= 800 && y <= 968) {
+    if (x >= 200 && x <= 717 && y >= 500 && y <= 631) {
         return (1);
     }
-    if (x >= 1100 && x <= 1483 && y >= 800 && y <= 969) {
+    if (x >= 1100 && x <= 1390 && y >= 800 && y <= 933) {
         return (2);
+    }
+    if (x >= 1100 && x <= 1635 && y >= 500 && y <= 632) {
+        return (3);
+    }
+    if (x >= 200 && x <= 910 && y >= 800 && y <= 932) {
+        return (4);
     }
     return (0);
 }
 
-void display_menu(game_t *game)
+void display_menu(game_t *game, int hover)
 {
     sfRenderWindow_clear(game->screen->window, sfBlack);
     sfRenderWindow_drawSprite(game->screen->window, game->menu->menu_sprite,
     NULL);
-    sfRenderWindow_drawSprite(game->screen->window, game->menu->play_sprite,
-    NULL);
-    sfRenderWindow_drawSprite(game->screen->window, game->menu->quit_sprite,
-    NULL);
+    if (hover != 1) {
+        sfRenderWindow_drawSprite(game->screen->window, game->menu->play_sprite,
+        NULL);
+    }
+    if (hover != 2) {
+        sfRenderWindow_drawSprite(game->screen->window, game->menu->quit_sprite,
+        NULL);
+    }
+    if (hover != 3) {
+        sfRenderWindow_drawSprite(game->screen->window, game->menu->load_sprite,
+        NULL);
+    }
+    if (hover != 4)
+        sfRenderWindow_drawSprite(game->screen->window, game->menu->how_sprite,
+        NULL);
+    display_hover_menu(game, hover);
     sfRenderWindow_display(game->screen->window);
 }
 
@@ -63,14 +81,16 @@ int menu_loop(game_t *game)
 {
     sfEvent event;
     int r = 0;
+    int hover = 0;
 
     init_screen(game->screen);
     init_menu(game->menu);
     while (starset_running(game->screen->window, &event)) {
         r = in_menu_loop(game, event);
+        hover = hover_menu_text(game);
         if (r != 0)
             return (r);
-        display_menu(game);
+        display_menu(game, hover);
     }
     close_menu_screen(game->screen->window, event);
     destroy_menu(game);

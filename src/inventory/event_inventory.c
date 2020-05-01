@@ -9,7 +9,7 @@
 #include "game_macro.h"
 #include "inventory.h"
 
-void event_button_inventory(game_t *game)
+int event_button_inventory(game_t *game)
 {
     if (press(sfKeyI)) {
         if (game->inventory->button == 1)
@@ -17,4 +17,5 @@ void event_button_inventory(game_t *game)
         else
             game->inventory->button = 1;
     }
+    return (game->inventory->button);
 }

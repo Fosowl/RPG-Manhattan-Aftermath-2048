@@ -50,8 +50,8 @@ void main_scene_update(game_t *game)
     update_value(game);
     move_dog(game->entities_list, game->player.save);
     update_object(game);
-    //update_element(game);
-    //event_button_inventory(game);
+    update_element(game);
+    event_button_inventory(game);
     girl_ai(game);
     player_controller(game);
     player_switch_object(game->entities_list, game->player);
