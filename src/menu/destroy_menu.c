@@ -23,7 +23,6 @@ void destroy_hover(hover_t *hover)
 
 void destroy_menu(game_t *game)
 {
-    sfSound_destroy(game->menu->menu_music);
     sfSprite_destroy(game->menu->menu_sprite);
     sfTexture_destroy(game->menu->menu_texture);
     sfSprite_destroy(game->menu->play_sprite);
