@@ -10,9 +10,14 @@
 
 basic_object_t *init_element(inventory_t *inventory, int i, int x, int y)
 {
+    if (inventory->element[i].destroy == 1) {
+        sfTexture_destroy(inventory->element[i].object->texture);
+        sfSprite_destroy(inventory->element[i].object->sprite);
+        inventory->element[i].destroy = 0;
+    }
     if (inventory->element[i].nb > 0) {
-        inventory->element[i].object->texture =
-                                            object_arms_option(inventory, i);
+        inventory->element[i].object->texture = sfTexture_createFromFile
+                                    (object_arms_option(inventory, i), NULL);
         inventory->element[i].object->sprite = sfSprite_create();
         sfSprite_setTexture(inventory->element[i].object->sprite,
                                     inventory->element[i].object->texture, 1);
@@ -20,6 +25,7 @@ basic_object_t *init_element(inventory_t *inventory, int i, int x, int y)
         inventory->element[i].object->vector.y = y;
         sfSprite_setPosition(inventory->element[i].object->sprite,
                                         inventory->element[i].object->vector);
+        inventory->element[i].destroy = 1;
     }
     return (inventory->element[i].object);
 }
@@ -35,6 +41,7 @@ int create_other(inventory_t *inventory, int width, int i)
     int length = 0;
     int all = 8 + i;
     sfVector2f nb_element = {0, width + 5};
+
     for (; i != all; i++) {
         inventory->element[i].object = init_element(inventory, i,
                                                         461 + length, width);

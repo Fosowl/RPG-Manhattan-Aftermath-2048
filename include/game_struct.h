@@ -30,6 +30,7 @@ typedef struct element_inventory_s {
     int type;
     int class;
     int nb;
+    int destroy;
 } element_inventory_t;
 
 typedef struct contains_inventory_s {

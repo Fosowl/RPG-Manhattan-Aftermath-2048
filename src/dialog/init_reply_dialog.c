@@ -23,7 +23,7 @@ int name(dialog_t *dialog, char *reply, int i)
         write(0, "ERROR 1 in reply.json: expected '""' around the name\n", 54);
         return (84);
     } else {
-        dialog->person = -1;
+        dialog->talk = -1;
         i = loop_index(dialog, reply, i);
         if (i == 84)
             return (84);

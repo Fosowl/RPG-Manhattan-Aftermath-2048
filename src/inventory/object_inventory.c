@@ -8,66 +8,58 @@
 #include "game_struct.h"
 #include "inventory.h"
 
-sfTexture *object_care_option(inventory_t *inventory, int i)
+char *object_care_option(inventory_t *inventory, int i, char *path)
 {
     switch (inventory->element[i].type)
     {
     case 10:
-        option_texture = sfTexture_createFromFile
-                                        ("assets/inventory/care1.png", NULL);
+        path = "assets/inventory/care1.png";
         break;
     case 11:
-        option_texture = sfTexture_createFromFile
-                                        ("assets/inventory/care2.png", NULL);
+        path = "assets/inventory/care2.png";
         break;
     }
-    return (option_texture);
+    return (path);
 }
 
-sfTexture *object_food_option(inventory_t *inventory, int i)
+char *object_food_option(inventory_t *inventory, int i, char *path)
 {
     switch (inventory->element[i].type)
     {
     case 7:
-        option_texture = sfTexture_createFromFile
-                                            ("assets/inventory/eat2.png", NULL);
+        path = "assets/inventory/eat2.png";
         break;
     case 8:
-        option_texture = sfTexture_createFromFile
-                                            ("assets/inventory/eat3.png", NULL);
+        path = "assets/inventory/eat3.png";
         break;
     case 9:
-        option_texture = sfTexture_createFromFile
-                                            ("assets/inventory/eat4.png", NULL);
+        path = "assets/inventory/eat4.png";
         break;
     default:
-        option_texture = object_care_option(inventory, i);
+        path = object_care_option(inventory, i, path);
         break;
     }
-    return (option_texture);
+    return (path);
 }
 
-sfTexture *object_bullet_option(inventory_t *inventory, int i)
+char *object_bullet_option(inventory_t *inventory, int i, char *path)
 {
     switch (inventory->element[i].type)
     {
     case 4:
-        option_texture = sfTexture_createFromFile
-                                        ("assets/inventory/bullet1.png", NULL);
+        path = "assets/inventory/bullet1.png";
         break;
     case 5:
-        option_texture = sfTexture_createFromFile
-                                        ("assets/inventory/bullet2.png", NULL);
+        path = "assets/inventory/bullet2.png";
         break;
     case 6:
-        option_texture = sfTexture_createFromFile
-                                        ("assets/inventory/eat1.png", NULL);
+        path = "assets/inventory/eat1.png";
         break;
     default:
-        option_texture = object_food_option(inventory, i);
+        path = object_food_option(inventory, i, path);
         break;
     }
-    return (option_texture);
+    return (path);
 }
 
 void type_of_object(inventory_t *inventory, int i)
@@ -82,26 +74,25 @@ void type_of_object(inventory_t *inventory, int i)
         inventory->element[i].class = 1;
 }
 
-sfTexture *object_arms_option(inventory_t *inventory, int i)
+char *object_arms_option(inventory_t *inventory, int i)
 {
+    char *path = NULL;
+
     type_of_object(inventory, i);
     switch (inventory->element[i].type)
     {
     case 1:
-        option_texture = sfTexture_createFromFile
-                                            ("assets/inventory/ak47.png", NULL);
+        path = "assets/inventory/ak47.png";
         break;
     case 2:
-        option_texture = sfTexture_createFromFile
-                                        ("assets/inventory/knife.png", NULL);
+        path = "assets/inventory/knife.png";
         break;
     case 3:
-        option_texture = sfTexture_createFromFile
-                                            ("assets/inventory/gun.png", NULL);
+        path = "assets/inventory/gun.png";
         break;
     default:
-        option_texture = object_bullet_option(inventory, i);
+        path = object_bullet_option(inventory, i, path);
         break;
     }
-    return (option_texture);
+    return (path);
 }
