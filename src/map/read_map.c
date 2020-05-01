@@ -13,6 +13,64 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+static int is_alpha(char a)
+{
+    if ((a <= 'Z' && a >= 'A')
+        || (a <= 'z' && a >= 'a')
+        || (a <= '9' && a >= '0'))
+        return (1);
+    else
+        return (0);
+}
+
+static int count_words(char const *str)
+{
+    int words = 0;
+    int new_word = 0;
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (is_alpha(str[i]) == 0 && new_word == 1)
+            new_word = 0;
+        else if (is_alpha(str[i]) == 1 && new_word == 0) {
+            new_word = 1;
+            words++;
+        }
+    }
+    return (words);
+}
+
+static int get_new_words(char const *str, char **tab)
+{
+    int tab_index = 0;
+    int sub_tab_index = 0;
+    int new_word = 0;
+
+    for (int i = 0; str[i] != '\0'; i++) {
+        if (is_alpha(str[i]) == 0 && new_word == 1) {
+            new_word = 0;
+            sub_tab_index = 0;
+            tab_index++;
+        }
+        else if (is_alpha(str[i]) == 1) {
+            new_word = 1;
+            tab[tab_index][sub_tab_index] = str[i];
+            sub_tab_index++;
+        }
+    }
+    return (0);
+}
+
+char **my_str_to_word_array(char const *str)
+{
+    int wc = count_words(str);
+    char **tab = malloc(sizeof(char *) * (wc + 1));
+    for (int i = 0; i < wc + 1; i++)
+        tab[i] = malloc(sizeof(char) * 100);
+    get_new_words(str, tab);
+    tab[wc] = 0;
+    return (tab);
+}
+
 char *read_map(void)
 {
     int fd = 0;
@@ -33,19 +91,10 @@ char *read_map(void)
 int load_map(entities_t *object_list)
 {
     char *stock_map = read_map();
-    char **map = divide_array(stock_map, '\n');
+    char **map = my_str_to_word_array(stock_map);
     char *name = NULL;
     int nb = 0;
     entities_t *tmp = NULL;
-
-
-
-    for (int i = 0; map[i] != NULL; i++)
-        printf("%s", map[i]);
-
-
-
-
 
     for (int y = 0; map[y] != NULL; y++) {
         for (int x = 0; map[y][x] != '\0'; x++) {

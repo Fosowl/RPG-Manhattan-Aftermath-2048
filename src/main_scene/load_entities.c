@@ -35,7 +35,8 @@ static entities_t *load_object(entities_t *entities)
 
 static entities_t *load_building(entities_t *entities)
 {
-   return (entities);
+    load_map(entities);
+    return (entities);
 }
 
 entities_t *load_entities_scene(int zombie, sfRenderWindow *window)
