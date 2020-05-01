@@ -35,7 +35,7 @@ static sfSound *play_music_menu(char *path)
     return (sound);
 }
 
-init_menu2(menu_t *menu)
+init_menu_2(menu_t *menu)
 {
     menu->load_texture = sfTexture_createFromFile("assets/menu/load_game.png",
     NULL);
@@ -67,7 +67,7 @@ void init_menu(menu_t *menu)
     menu->quit_sprite = sfSprite_create();
     sfSprite_setTexture(menu->quit_sprite, menu->quit_texture, sfTrue);
     sfSprite_setPosition(menu->quit_sprite, menu->quit_pos);
-    init_menu2(menu);
+    init_menu_2(menu);
     init_hover(menu->hover_menu);
 }
 
