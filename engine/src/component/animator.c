@@ -64,5 +64,6 @@ int starset_play_animation(entities_t *entities, char *e_name
             internal__play_animation_frame(entitie->aspect, a_name, &frame);
         }
     }
+    free_array(get);
     return (r);
 }

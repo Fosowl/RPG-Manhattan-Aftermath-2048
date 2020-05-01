@@ -36,6 +36,9 @@ static void attack_knife(game_t *game)
     if (closest && starset_get_distance(closest->spot
     , player->save->spot) < 90 && closest != player->save) {
         closest->life -= 40;
+        if (search("zombie", closest->name) != -1) {
+            blood_effect(&game->entities_runtime, closest);
+        }
         starset_entities_play_sound(closest, closest->name, "pain", false);
     }
 }
@@ -65,7 +68,9 @@ static void attack_gun(game_t *game)
 
 static int weapon_empty(game_t *game)
 {
-    if (limit_rate_gun(1100) == 1)
+    if (limit_rate_gun(1100) == 1 && !compare(game->player.selected, "knife"))
+        return (7);
+    if (limit_rate_gun(400) == 1 && compare(game->player.selected, "knife"))
         return (7);
     if (compare(game->player.selected, "rifle") && game->player.ammo_rifle <= 0) {
         starset_single_play_sound(game->player.save, "empty", false);

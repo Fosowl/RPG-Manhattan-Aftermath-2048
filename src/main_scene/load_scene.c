@@ -43,12 +43,13 @@ static void load_value_2(game_t *game)
     , "bullet");
     game->player.save = starset_entities_get_propreties(game->entities_list
     , "player");
+    game->entities_runtime = NULL;
 }
 
 int main_scene_load(game_t *game)
 {
     sfClock *timer = sfClock_create();
-    game->entities_list = load_entities_scene(10, game->screen->window);
+    game->entities_list = load_entities_scene(15, game->screen->window);
 
     if (!game->entities_list)
         return EXIT_FAILURE;

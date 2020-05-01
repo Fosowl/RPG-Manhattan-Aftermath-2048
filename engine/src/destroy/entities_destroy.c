@@ -80,5 +80,6 @@ entities_t *starset_entities_destroy(entities_t *entities, char *name)
             copy = copy->next;
     }
     (!ok && !!LOG) ? put_err("bad name in entities_destroy()\n") : 0;
+    free_array(get);
     return (entities);
 }

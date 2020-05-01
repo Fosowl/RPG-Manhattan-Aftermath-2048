@@ -33,8 +33,9 @@ int main_scene_loop(game_t *game, sfClock *timer)
     while (game->window) {
         if (!starset_running(game->window, &game->event))
             return EXIT_CLOSE;
-        main_scene_update(game);
+        starset_entities_render_all(game->entities_runtime, game->window);
         starset_update_engine(game->entities_list, game->window, NULL);
+        main_scene_update(game);
         sfRenderWindow_display(game->window);
         sfRenderWindow_clear(game->window, BROWN);
         check_pause(game);
@@ -55,7 +56,7 @@ void main_scene_update(game_t *game)
     player_controller(game);
     player_switch_object(game->entities_list, game->player);
     handle_player_sound(game);
-    zombie_ai(&game->entities_list, &game->player);
+    zombie_ai(&game->entities_list, &game->player, &game->entities_runtime);
     if (game->player.ear_off != true) {
         handle_zombie_sound(game);
     }

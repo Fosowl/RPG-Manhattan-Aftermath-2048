@@ -119,6 +119,7 @@ typedef struct game_s {
     sfRenderWindow *window;
     sfEvent event;
     entities_t *entities_list;
+    entities_t *entities_runtime;
     sfTime runtime;
     int mode;
     int delay;

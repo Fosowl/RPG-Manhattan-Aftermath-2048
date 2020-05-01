@@ -54,6 +54,7 @@ void starset_add_animation(entities_t *entities, char *e_name, char *a_name
     starset_play_animation(entities, e_name, a_name, 0);
     if (!ok && !!LOG)
         put_err("bad entities name in add_animation()\n");
+    free_array(get);
 }
 
 static void internal__add_keyframe_to(sheet_t *this, char *a_name

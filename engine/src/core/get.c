@@ -10,15 +10,18 @@
 
 char **internal__get_class(char *name)
 {
-    char **all = clean_double_alloc_e(2, 10);
+    char **all = clean_double_alloc_e(3, 10);
 
     if (!all)
         return NULL;
     if (search_e(":", name) == true) {
+        free_array(all);
         all = divide_array_e(name, ':');
+        all[2] = NULL;
     } else {
         all[0] = name;
         all[1] = name;
+        all[2] = NULL;
     }
     if (!all)
         return NULL;

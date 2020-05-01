@@ -58,5 +58,6 @@ void starset_add_component(entities_t *entities, char *name
             , ptr_name, id);
         }
     }
+    free_array(get);
 }
 

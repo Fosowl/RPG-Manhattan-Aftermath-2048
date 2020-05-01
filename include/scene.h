@@ -85,7 +85,9 @@ void handle_player_sound(game_t *game);
 
 // zombie_ai.c
 
-void zombie_ai(entities_t **entities, player_t *player);
+void zombie_ai(entities_t **entities, player_t *player
+, entities_t **entities_runtime);
+void blood_effect(entities_t **blood, entities_t *tmp);
 
 // update_object.c
 

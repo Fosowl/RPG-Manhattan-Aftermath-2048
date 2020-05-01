@@ -40,4 +40,5 @@ void starset_entities_play_sound(entities_t *entities, char *name
     }
     if (!ok && !!LOG)
         put_err("bad entities name in starset_play_sound()\n");
+    free_array(get);
 }

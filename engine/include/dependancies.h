@@ -49,13 +49,14 @@ int error_e(long long int check, char *text);
 char *my_revstr_e(char *str);
 char *fill_e(char *with);
 char *clean_alloc_e(int size);
+void free_array(char **array);
 
 // dependancies for custom switch
 
-int femulate_else_if_e(int *pass, int true_condition);
+int emulate_else_if_e(int *pass, int true_condition);
 
 #define SWITCH_E int pass = 1;
-#define CASE_E__O if (femulate_else_if_e(&pass, 
+#define CASE_E__O if (emulate_else_if_e(&pass, 
 #define CASE_E__C ))
 #define DEFAULT_E pass > 0 ? 0 :
 

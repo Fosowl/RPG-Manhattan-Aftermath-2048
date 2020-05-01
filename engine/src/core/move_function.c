@@ -29,8 +29,7 @@ void starset_entities_teleport(entities_t *entities, char *name
         }
         copy = copy->next;
     }
-    if (!ok && !!LOG)
-        put_err("bad entities name in starset_entities_teleport()\n");
+    free_array(get);
 }
 
 void starset_entities_move(entities_t *entities, char *name, float x, float y)
@@ -51,6 +50,7 @@ void starset_entities_move(entities_t *entities, char *name, float x, float y)
     }
     if (!ok && !!LOG)
         put_err("bad entities name in starset_entities_move()\n");
+    free_array(get);
 }
 
 static void internal__sub_iterate_other(entities_t *copy
@@ -82,6 +82,7 @@ void starset_entities_move_to_other(entities_t *entities, char *first
     }
     if (!ok && !!LOG)
         put_err("bad entities name in starset_entities_move_to_other\n");
+    free_array(get);
 }
 
 
@@ -99,4 +100,5 @@ void starset_move_from_angle(entities_t *entities, char *name
         }
         copy = copy->next;
     }
+    free_array(get);
 }
