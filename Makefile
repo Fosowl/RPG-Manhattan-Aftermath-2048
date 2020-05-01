@@ -74,9 +74,11 @@ SRC_FILES	= 		main.c											\
 					main_scene/dog_set.c							\
 					main_scene/girl_ai.c							\
 					main_scene/load_entities.c						\
+					main_scene/load_scene.c							\
 					main_scene/main_scene.c							\
 					main_scene/object_sound.c						\
 					main_scene/p_attack_anim.c						\
+					main_scene/pause.c								\
 					main_scene/p_move_anim.c						\
 					main_scene/player_attack.c						\
 					main_scene/set_girl.c							\
