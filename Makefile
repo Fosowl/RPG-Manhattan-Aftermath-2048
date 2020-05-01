@@ -92,6 +92,7 @@ SRC_FILES	= 		main.c											\
 					main_scene/weapon_strike.c						\
 					main_scene/zombie_ai.c							\
 					main_scene/zombie_loading.c						\
+					map/read_map.c									\
 					inventory/create_button_all_inventory.c 		\
 					inventory/create_case_element_inventory.c 		\
 					inventory/create_element_inventory.c 			\
