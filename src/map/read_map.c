@@ -33,43 +33,65 @@ char *read_map(void)
 int load_map(entities_t *object_list)
 {
     char *stock_map = read_map();
-    char **map = divide_array(stock_map, "\n");
+    char **map = divide_array(stock_map, '\n');
+    char *name = NULL;
+    int nb = 0;
+    entities_t *tmp = NULL;
+
+
+
+    for (int i = 0; map[i] != NULL; i++)
+        printf("%s", map[i]);
+
+
+
+
 
     for (int y = 0; map[y] != NULL; y++) {
         for (int x = 0; map[y][x] != '\0'; x++) {
+            nb++;
             switch (map[y][x]) {
                 case '0':
+                name = append("map:border_left", my_itoa(nb));
                 object_list = starset_entities_add(object_list,
-                "assets/building/Walls/X.png", "map:border_left", false);
-                starset_entities_teleport(object_list, "map:border_left",
+                "assets/building/Walls/X.png", name, true);
+                starset_entities_teleport(object_list, name,
                 x * 150, y * 150);
                 break;
                 case '1':
+                name = append("map:down_wall", my_itoa(nb));
                 object_list = starset_entities_add(object_list,
-                "assets/building/Walls/4.png", "map:down_wall", false);
-                starset_entities_teleport(object_list, "map:down_wall",
+                "assets/building/Walls/4.png", name, true);
+                starset_entities_teleport(object_list, name,
                 x * 150, y * 150);
                 break;
                 case '2':
+                name = append("map:border_right", my_itoa(nb));
                 object_list = starset_entities_add(object_list,
-                "assets/building/Walls/1.png", "map:border_right", false);
-                starset_entities_teleport(object_list, "map:border_right",
+                "assets/building/Walls/1.png", name, true);
+                starset_entities_teleport(object_list, name,
                 x * 150, y * 150);
                 break;
                 case '3':
+                name = append("map:down_right", my_itoa(nb));
                 object_list = starset_entities_add(object_list,
-                "assets/building/Walls/3.png", "map:down_right", false);
-                starset_entities_teleport(object_list, "map:down_right",
+                "assets/building/Walls/3.png", name, true);
+                starset_entities_teleport(object_list, name,
                 x * 150, y * 150);
                 break;
                 case '4':
+                name = append("map:down_left", my_itoa(nb));
                 object_list = starset_entities_add(object_list,
-                "assets/building/Walls/Z.png", "map:down_left", false);
-                starset_entities_teleport(object_list, "map:down_left",
+                "assets/building/Walls/Z.png", name, true);
+                starset_entities_teleport(object_list, name,
                 x * 150, y * 150);
                 break;
             }
         }
+    }
+    while ((tmp = starset_get_next(object_list, "map"))) {
+        printf("%s, %f, %f\n",tmp->name, tmp->spot.x, tmp->spot.y);
+        tmp->is_trigger = true;
     }
     return (0);
 }
