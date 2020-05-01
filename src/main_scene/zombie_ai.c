@@ -62,7 +62,8 @@ void blood_effect(entities_t **blood, entities_t *tmp)
 static int handle_zombie_damage(entities_t **entities, entities_t *tmp
 , entities_t **entities_runtime)
 {
-    if (tmp->collision && search("bullet", tmp->collision->name) != -1
+    if (tmp->collision && tmp->collision->name &&
+    search("bullet", tmp->collision->name) != -1
     && tmp->collision->visible == true) {
         tmp->life -= tmp->collision->life;
         tmp->collision->visible = false;
