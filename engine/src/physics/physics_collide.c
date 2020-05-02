@@ -24,8 +24,10 @@ static void internal__apply_impulse_law(sfVector2i collision_vector
     float velocity_2 = entitie_2->speed + (entitie_2->mass / mass_sum)
     *impulse;
 
-    entitie_1->spot.x += velocity_1 * collision_vector.x * -1;
-    entitie_1->spot.y += velocity_1 * collision_vector.y * -1;
+    if (entitie_1->fixed == false) {
+        entitie_1->spot.x += velocity_1 * collision_vector.x * -1;
+        entitie_1->spot.y += velocity_1 * collision_vector.y * -1;
+    }
     if (entitie_2->fixed == false) {
         entitie_2->spot.x += velocity_2 * collision_vector.x;
         entitie_2->spot.y += velocity_2 * collision_vector.y;

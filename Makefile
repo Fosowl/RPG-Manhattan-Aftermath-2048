@@ -141,7 +141,6 @@ debug:
 
 
 change:
-		@make fclean
 		@cd $(RENDER_DIR) ; make
 		@cd $(ENGINE_DIR) ; make
 		@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(RENDER) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS)
