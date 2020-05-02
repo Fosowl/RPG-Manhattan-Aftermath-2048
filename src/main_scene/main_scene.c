@@ -48,7 +48,7 @@ int main_scene_loop(game_t *game, sfClock *timer)
 void main_scene_update(game_t *game)
 {
     update_value(game);
-    move_dog(game->entities_list, game->player.save);
+    move_dog(game->entities_list, game->player.save, game->girl->spot);
     update_object(game);
     update_element(game);
     girl_ai(game);

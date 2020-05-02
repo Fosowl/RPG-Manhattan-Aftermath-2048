@@ -27,7 +27,7 @@ float starset_entities_rotate_to(entities_t *entitie, char *name
         copy = copy->next;
     }
     free_array(get);
-    return (copy->angle);
+    return ((copy) ? copy->angle : 0.0f);
 }
 
 float starset_entitites_rotate_to_other(entities_t *entitie, char *name
@@ -41,7 +41,7 @@ float starset_entitites_rotate_to_other(entities_t *entitie, char *name
     while (copy != NULL) {
         if (search_e(get_other[0], copy->name) != -1 || search_e(copy->name
         , get_other[1]) != -1) {
-            starset_entities_rotate_to(entitie, name, copy->spot);
+            angle = starset_entities_rotate_to(entitie, name, copy->spot);
         }
         copy = copy->next;
         ok = true;

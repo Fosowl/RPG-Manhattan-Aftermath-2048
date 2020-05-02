@@ -20,16 +20,16 @@ static void internal__destroy_aspect(aspect_t *aspect)
     }
 }
 
-static void internal__entities_destroy(entities_t *entities)
+static void internal__entities_destroy(entities_t *entitie)
 {
-    if (entities == NULL) {
+    if (entitie == NULL) {
         put_err("unexpected NULL value in internal destroy func\n");
         return;
     }
-    internal__destroy_audio(entities->audio);
-    internal__destroy_aspect(entities->aspect);
-    internal__destroy_component(entities->component);
-    free(entities);
+    internal__destroy_audio(entitie->audio);
+    internal__destroy_aspect(entitie->aspect);
+    internal__destroy_component(entitie->component);
+    free(entitie);
 }
 
 void starset_entities_destroy_all(entities_t *entities)

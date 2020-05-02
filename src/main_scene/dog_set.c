@@ -27,7 +27,7 @@ void set_dog(entities_t *entities)
     dog->spot.y = 300.0f;
 }
 
-void move_dog(entities_t *entities, entities_t *player)
+void move_dog(entities_t *entities, entities_t *player, sfVector2f girl)
 {
     static entities_t *dog = NULL;
     static sfVector2f target;
@@ -39,7 +39,7 @@ void move_dog(entities_t *entities, entities_t *player)
         return;
     distance = starset_get_distance(dog->spot, player->spot);
     if (distance < 230) {
-        target = (sfVector2f){1500, 300};
+        target = girl;
     } else if (distance > 600) {
         target.x = player->spot.x;
         target.y = player->spot.y;

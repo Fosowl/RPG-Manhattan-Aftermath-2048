@@ -23,6 +23,12 @@
 #define GRASS_3_PATH "./assets/ground/grass_3.png"
 #define BLOOD_1_PATH "./assets/ground/blood_1.png"
 
+#define PICK_RIFLE_PATH "./assets/inventory/ak47.png"
+#define PICK_AMMO_RIFLE_PATH "./assets/inventory/bullet1.png"
+#define PICK_AMMO_PISTOL_PATH "./assets/inventory/bullet2.png"
+#define PICK_PATCH_PATH "./assets/inventory/care1.png"
+#define PICK_KIT_PATH "./assets/inventory/care2.png"
+
 // sound
 
 #define MOAN_PATH "assets/audio/zombie_moan.ogg"

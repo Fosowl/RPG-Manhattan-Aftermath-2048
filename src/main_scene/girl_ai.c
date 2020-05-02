@@ -52,11 +52,12 @@ void girl_ai(game_t *game)
     sfBool attack_closest = false;
     static sfBool follow_mode = false;
 
+    if (!closest)
+        return;
     starset_play_animation(game->girl, "sora", "pistol:move", 4);
     if (search("zombie", closest->name) != -1) {
         starset_entities_rotate_to(game->girl, "sora", closest->spot);
-        if (starset_get_distance(game->girl->spot
-        , closest->spot) < 300)
+        if (starset_get_distance(game->girl->spot, closest->spot) < 300)
             attack_closest = true;
     }
     if (starset_get_distance(game->girl->spot

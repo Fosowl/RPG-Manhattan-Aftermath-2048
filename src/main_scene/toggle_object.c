@@ -22,13 +22,13 @@ void player_switch_object(entities_t *entities, player_t player)
         player.selected = fill("pistol");
         starset_entities_get_propreties(entities, "player")->speed = 3;
     }
-    if (sfKeyboard_isKeyPressed(player.control.key_weapon[2])) {
+    if (sfKeyboard_isKeyPressed(player.control.key_weapon[2]) &&
+    player.unlock_rifle == true) {
         free(player.selected);
         player.selected = fill("rifle");
         starset_entities_get_propreties(entities, "player")->speed = 2;
     }
     if (sfKeyboard_isKeyPressed(player.control.key_weapon[3])) {
-        free(player.selected);
         player.selected = fill("torch");
         starset_entities_get_propreties(entities, "player")->speed = 3;
     }

@@ -124,6 +124,7 @@ typedef struct player_t {
     int ammo_rifle;
     int nb_magazine_gun;
     int nb_magazine_rifle;
+    sfBool unlock_rifle;
 } player_t;
 
 

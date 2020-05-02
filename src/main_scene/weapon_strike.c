@@ -57,7 +57,7 @@ static void attack_gun(game_t *game)
     bullet->spot.y = game->player.save->spot.y;
     bullet->angle = game->player.angle;
     if (compare(game->player.selected, "rifle")) {
-        bullet->life = 40 + rand() % 20;
+        bullet->life = 45 + rand() % 20;
         game->player.ammo_rifle -= 1;
     } else {
         bullet->life = 30 + rand() % 10;

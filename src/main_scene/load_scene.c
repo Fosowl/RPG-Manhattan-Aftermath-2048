@@ -35,6 +35,7 @@ static void load_value(game_t *game)
     game->player.nb_magazine_rifle = 3;
     game->player.ammo_gun = 11;
     game->player.ammo_rifle = 30;
+    game->player.unlock_rifle = false;
 }
 
 static void load_ui(ui_t *ui, sfRenderWindow *window)

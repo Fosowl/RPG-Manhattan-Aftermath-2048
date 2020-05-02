@@ -105,7 +105,8 @@ void starset_set_sound_volume(entities_t *entities, char *name
             ok = true;
         }
     }
-    audio->volume = volume;
+    if (audio != NULL)
+        audio->volume = volume;
     (!ok && !!LOG) ? put_err("bad entities in set_sound_volume()\n") : 0;
     free_array(get);
 }

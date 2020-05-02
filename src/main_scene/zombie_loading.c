@@ -43,6 +43,9 @@ entities_t *create_zombie_scene(entities_t *entities, int zombie
         y = spawn[i].y;
         starset_entities_teleport(entities, name, x, y);
     }
+    starset_entities_get_propreties(entities, "zombie:0")->spot.x = -5000000;
+    starset_entities_get_propreties(entities, "zombie:0")->visible = false;
+    starset_entities_get_propreties(entities, "zombie:0")->speed = 0;
     return (entities);
 }
 

@@ -82,6 +82,7 @@ SRC_FILES	= 		main.c											\
 					main_scene/p_attack_anim.c						\
 					main_scene/p_move_anim.c						\
 					main_scene/pause.c								\
+					main_scene/pick_object.c						\
 					main_scene/player_attack.c						\
 					main_scene/set_girl.c							\
 					main_scene/set_player_anim.c					\

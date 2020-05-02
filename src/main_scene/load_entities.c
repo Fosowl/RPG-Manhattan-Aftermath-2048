@@ -14,6 +14,8 @@
 
 static void set_propreties(entities_t *entities)
 {
+    entities_t *tmp = NULL;
+
     starset_entities_teleport(entities, "player", 400, 900);
     starset_entities_teleport(entities, "sora", 1500, 300);
     starset_entities_get_propreties(entities, "player")->speed = 3;
@@ -22,6 +24,7 @@ static void set_propreties(entities_t *entities)
 
 static entities_t *load_object(entities_t *entities)
 {
+    entities = load_pick_object(entities, 10);
     entities = starset_entities_add(entities, DOG_PATH, "dog", false);
     entities = starset_entities_add(entities, GIRL_PATH, "sora", false);
     entities = starset_entities_add(entities, BULLET_PATH
@@ -47,9 +50,9 @@ entities_t *load_entities_scene(int zombie, sfRenderWindow *window)
     sfRenderWindow_clear(window, sfBlack);
     draw_loading_text(window);
     entities = load_building(entities);
+    entities = load_object(entities);
     entities = create_zombie_scene(entities, zombie, window);
     entities = starset_entities_add(entities, PLAYER_PATH, "player", false);
-    entities = load_object(entities);
     set_dog(entities);
     set_zombie_animation(entities);
     set_zombie_sound(entities, zombie);

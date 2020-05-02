@@ -104,8 +104,7 @@ sfVector2f *zombie_spawn_point(int nb_zombie);
 // dog_anim.c
 
 void set_dog(entities_t *entities);
-void move_dog(entities_t *entities, entities_t *player);
-
+void move_dog(entities_t *entities, entities_t *player, sfVector2f girl);
 // ui.c
 
 void update_ui(game_t *game);
@@ -134,5 +133,9 @@ sfBool manage_event(sfRenderWindow *window, sfEvent *event, game_t *game);
 // load_ground.c
 
 entities_t *load_ground(entities_t *entities, int nb);
+
+// PICK_OBJECT.C
+
+entities_t *load_pick_object(entities_t *entities, int nb);
 
 #endif /* !SCENE_H_ */
