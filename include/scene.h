@@ -132,4 +132,8 @@ void girl_ai(game_t *game);
 
 sfBool manage_event(sfRenderWindow *window, sfEvent *event);
 
+// load_ground.c
+
+entities_t *load_ground(entities_t *entities, int nb);
+
 #endif /* !SCENE_H_ */

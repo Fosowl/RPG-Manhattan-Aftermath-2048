@@ -42,7 +42,6 @@ entities_t *create_zombie_scene(entities_t *entities, int zombie
         x = spawn[i].x;
         y = spawn[i].y;
         starset_entities_teleport(entities, name, x, y);
-        usleep(10000);
     }
     return (entities);
 }

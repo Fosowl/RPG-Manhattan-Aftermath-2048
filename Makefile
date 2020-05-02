@@ -74,6 +74,7 @@ SRC_FILES	= 		main.c											\
 					main_scene/control.c							\
 					main_scene/dog_set.c							\
 					main_scene/girl_ai.c							\
+					main_scene/load_ground.c						\
 					main_scene/load_entities.c						\
 					main_scene/load_scene.c							\
 					main_scene/main_scene.c							\

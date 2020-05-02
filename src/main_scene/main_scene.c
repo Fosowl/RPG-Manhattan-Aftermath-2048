@@ -27,7 +27,6 @@ void play_music(char *path)
 int main_scene_loop(game_t *game, sfClock *timer)
 {
     game->window = game->screen->window;
-    srand(64886);
     game->delay = 1000;
     play_music("assets/audio/days_later.ogg");
     while (game->window) {

@@ -73,6 +73,7 @@ int main_scene_load(game_t *game)
 
     if (!game->entities_list)
         return EXIT_FAILURE;
+    srand(64886);
     load_value(game);
     load_value_2(game);
     create_case_element(game->inventory);

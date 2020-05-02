@@ -18,6 +18,11 @@
 #define BLOOD_PATH "./assets/effect/blood.png"
 #define GAME_OVER_PATH "./assets/effect/game_over.png"
 
+#define GRASS_1_PATH "./assets/ground/grass_1.png"
+#define GRASS_2_PATH "./assets/ground/grass_2.png"
+#define GRASS_3_PATH "./assets/ground/grass_3.png"
+#define BLOOD_1_PATH "./assets/ground/blood_1.png"
+
 // sound
 
 #define MOAN_PATH "assets/audio/zombie_moan.ogg"
