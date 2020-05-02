@@ -16,7 +16,7 @@ static void game_over_ui(ui_t *ui, sfRenderWindow *window)
 {
     static int v = 0;
     sfTime delay;
-    sfClock *timer;
+    sfClock *timer = NULL;
 
     if (!timer)
         timer = sfClock_create();
