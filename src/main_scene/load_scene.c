@@ -13,6 +13,7 @@
 #include "render.h"
 #include "game_macro.h"
 #include "warlock.h"
+#include "path.h"
 
 static void load_value(game_t *game)
 {
@@ -36,8 +37,27 @@ static void load_value(game_t *game)
     game->player.ammo_rifle = 30;
 }
 
+static void load_ui(ui_t *ui, sfRenderWindow *window)
+{
+    sfVector2u screen_size = sfRenderWindow_getSize(window);
+
+    ui->over_texture = sfTexture_createFromFile(GAME_OVER_PATH, NULL);
+    ui->over_sprite = sfSprite_create();
+    if (!ui->over_texture)
+        put_error("failed to load texture !\n");
+    ui->over_vector = (sfVector2f){(screen_size.x / 2) - 200
+    , (screen_size.y / 2) + 100};
+    sfSprite_setTexture(ui->over_sprite, ui->over_texture, 1);
+    ui->over_rect.width = 414;
+    ui->over_rect.height = 78;
+    ui->over_rect.left = 0;
+    ui->over_rect.top = 0;
+    sfSprite_setPosition(ui->over_sprite, ui->over_vector);
+}
+
 static void load_value_2(game_t *game)
 {
+    load_ui(&game->ui, game->screen->window);
     game->girl = starset_entities_get_propreties(game->entities_list, "sora");
     game->bullet = starset_entities_get_propreties(game->entities_list
     , "bullet");

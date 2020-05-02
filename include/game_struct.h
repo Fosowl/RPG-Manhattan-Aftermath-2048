@@ -134,6 +134,13 @@ typedef struct ui_ammo_t {
     sfVector2f p_ui[2];
 } ui_ammo_t;
 
+typedef struct ui_t {
+    sfTexture *over_texture;
+    sfSprite *over_sprite;
+    sfVector2f over_vector;
+    sfIntRect over_rect;
+} ui_t;
+
 typedef struct game_s {
     screen_t *screen;
     menu_t *menu;
@@ -149,6 +156,7 @@ typedef struct game_s {
     entities_t *girl;
     entities_t *bullet;
     player_t player;
+    ui_t ui;
 } game_t;
 
 #endif /* !GAME_STRUCT_H_ */

@@ -95,8 +95,8 @@ void blood_effect(entities_t **blood, entities_t *tmp);
 
 // update_object.c
 
+int update_value(game_t *game);
 void update_object(game_t *game);
-void update_value(game_t *game);
 
 // spawn_point.c
 
@@ -130,6 +130,6 @@ void girl_ai(game_t *game);
 
 //pause.c
 
-void check_pause(void);
+void check_pause(sfRenderWindow *window, sfEvent *event);
 
 #endif /* !SCENE_H_ */

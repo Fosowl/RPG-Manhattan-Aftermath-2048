@@ -12,7 +12,28 @@
 #include "game_macro.h"
 #include "warlock.h"
 
-void update_value(game_t *game)
+static void game_over_ui(ui_t *ui, sfRenderWindow *window)
+{
+    static int v = 0;
+    sfTime delay;
+    sfClock *timer;
+
+    if (!timer)
+        timer = sfClock_create();
+    ui->over_rect.top = v * ui->over_rect.height;
+    sfSprite_setTextureRect(ui->over_sprite, ui->over_rect);
+    sfSprite_setPosition(ui->over_sprite, ui->over_vector);
+    sfRenderWindow_drawSprite(window, ui->over_sprite, NULL);
+    delay = sfClock_getElapsedTime(timer);
+    if (sfTime_asMilliseconds(delay) >= 150000) {
+        sfClock_restart(timer);
+        v++;
+    }
+    if (v > 8)
+        v = 0;
+}
+
+int update_value(game_t *game)
 {
     static int ok = 0;
 
@@ -24,6 +45,11 @@ void update_value(game_t *game)
             ok = 1;
     }
     starset_play_animation(game->entities_runtime, "blood", "basic", 4);
+    if (game->player.save->life <= 0) {
+        game_over_ui(&game->ui, game->window);
+        return (1);
+    }
+    return (0);
 }
 
 //game->entities_list = starset_entities_destroy(game->entities_list, tmp->name);

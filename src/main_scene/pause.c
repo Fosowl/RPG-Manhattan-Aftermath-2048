@@ -13,27 +13,22 @@
 #include "game_macro.h"
 #include "warlock.h"
 
-void check_pause(void)
+void check_pause(sfRenderWindow *window, sfEvent *event)
 {
     sfBool on_pause = false;
-    sfBool protect = false;
-    sfClock *timer = NULL;
-    sfTime delay;
+    sfBool lock = true;
 
-    if (!timer)
-        timer = sfClock_create();
-    delay = sfClock_getElapsedTime(timer);
-    if (sfTime_asMilliseconds(delay) >= 100000)
-        protect = false;
-    if (sfKeyboard_isKeyPressed(sfKeyP) && on_pause == false &&
-    protect == false)
-        on_pause = true;
-    while (on_pause && protect == false) {
-        my_sleep(100000);
-        if (sfKeyboard_isKeyPressed(sfKeyP) && on_pause == true) {
+    while (sfRenderWindow_pollEvent(window, event)) {
+        if (sfKeyboard_isKeyPressed(sfKeyP))
+            on_pause = true;
+    }
+    while (on_pause == true) {
+        if (!sfKeyboard_isKeyPressed(sfKeyP))
+            lock = false;
+        if (lock == true)
+            continue;
+        if (sfKeyboard_isKeyPressed(sfKeyP)) {
             on_pause = false;
-            protect = true;
-            sfClock_restart(timer);
         }
     }
 }

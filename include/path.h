@@ -16,6 +16,7 @@
 #define DOG_PATH "./assets/wolf.png"
 #define GIRL_PATH "./assets/sheet_girl.png"
 #define BLOOD_PATH "./assets/effect/blood.png"
+#define GAME_OVER_PATH "./assets/effect/game_over.png"
 
 // sound
 
