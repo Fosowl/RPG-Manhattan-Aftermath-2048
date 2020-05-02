@@ -10,17 +10,17 @@
 
 void init_items_for_start_of_game(inventory_t *inventory)
 {
-    inventory->contains[AK47].nb = 0;
+    inventory->contains[AK47].nb = 1;
     inventory->contains[GUN].nb = 1;
     inventory->contains[KNIFE].nb = 1;
-    inventory->contains[BULLET_AK47].nb = 0;
-    inventory->contains[BULLET_GUN].nb = 19;
-    inventory->contains[STEAK].nb = 0;
-    inventory->contains[WATER].nb = 1;
-    inventory->contains[APPLE].nb = 1;
-    inventory->contains[CANNED].nb = 0;
-    inventory->contains[BANDAGE].nb = 1;
-    inventory->contains[MEDICAL_KIT].nb = 0;
+    inventory->contains[BULLET_AK47].nb = 39;
+    inventory->contains[BULLET_GUN].nb = 29;
+    inventory->contains[STEAK].nb = 19;
+    inventory->contains[WATER].nb = 19;
+    inventory->contains[APPLE].nb = 19;
+    inventory->contains[CANNED].nb = 19;
+    inventory->contains[BANDAGE].nb = 19;
+    inventory->contains[MEDICAL_KIT].nb = 19;
 }
 
 void update_element(game_t *game)

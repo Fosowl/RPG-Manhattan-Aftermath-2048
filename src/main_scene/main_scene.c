@@ -36,8 +36,7 @@ int main_scene_loop(game_t *game, sfClock *timer)
         starset_update_engine(game->entities_list, game->window, NULL);
         main_scene_update(game);
         sfRenderWindow_display(game->window);
-        //check_pause_inventory(game->window, &game->event);
-        if (!manage_event(game->window, &game->event))
+        if (!manage_event(game->window, &game->event, game))
             return EXIT_CLOSE;
         my_sleep(game->delay);
         sfRenderWindow_clear(game->window, BROWN);
@@ -52,7 +51,6 @@ void main_scene_update(game_t *game)
     move_dog(game->entities_list, game->player.save);
     update_object(game);
     update_element(game);
-    event_button_inventory(game);
     girl_ai(game);
     player_controller(game);
     player_switch_object(game->entities_list, game->player);

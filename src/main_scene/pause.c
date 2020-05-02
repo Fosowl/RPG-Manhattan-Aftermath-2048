@@ -45,11 +45,10 @@ sfBool check_pause(sfRenderWindow *window, sfEvent *event)
     return (true);
 }
 
-sfBool manage_event(sfRenderWindow *window, sfEvent *event)
+sfBool manage_event(sfRenderWindow *window, sfEvent *event, game_t *game)
 {
     sfBool on_pause = false;
     sfBool lock = true;
-    int check = 0;
 
     if (!sfRenderWindow_isOpen(window))
         return (false);
@@ -58,6 +57,8 @@ sfBool manage_event(sfRenderWindow *window, sfEvent *event)
             return (false);
         }
         if (!check_pause(window, event))
+            return (false);
+        if (!pause_inventory(window, event, game))
             return (false);
     }
     return (true);
