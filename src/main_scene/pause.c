@@ -47,9 +47,6 @@ sfBool check_pause(sfRenderWindow *window, sfEvent *event)
 
 sfBool manage_event(sfRenderWindow *window, sfEvent *event, game_t *game)
 {
-    sfBool on_pause = false;
-    sfBool lock = true;
-
     if (!sfRenderWindow_isOpen(window))
         return (false);
     while (sfRenderWindow_pollEvent(window, event)) {

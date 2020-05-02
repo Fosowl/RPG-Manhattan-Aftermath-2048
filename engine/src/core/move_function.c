@@ -13,7 +13,6 @@ void starset_entities_teleport(entities_t *entities, char *name
 {
     entities_t *copy = entities;
     sfVector2f vector;
-    int ok = false;
     char **get = internal__get_class(name);
 
     while (copy != NULL) {
@@ -25,7 +24,6 @@ void starset_entities_teleport(entities_t *entities, char *name
             , vector.y);
             copy->spot.x = x;
             copy->spot.y = y;
-            ok = true;
         }
         copy = copy->next;
     }

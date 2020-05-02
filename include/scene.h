@@ -79,8 +79,7 @@ void set_player_key_rifle_reload(entities_t *entities);
 
 int attack_entities(game_t *game, sfEvent *event
 , sfRenderWindow *window);
-int on_attack(game_t *game, sfRenderWindow *window
-, char *animation, int *r);
+int on_attack(game_t *game, char *animation, int *r);
 
 // object_sound.c
 

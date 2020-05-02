@@ -69,7 +69,7 @@ static void load_value_2(game_t *game)
 int main_scene_load(game_t *game)
 {
     sfClock *timer = sfClock_create();
-    game->entities_list = load_entities_scene(1, game->screen->window);
+    game->entities_list = load_entities_scene(5, game->screen->window);
 
     if (!game->entities_list)
         return EXIT_FAILURE;

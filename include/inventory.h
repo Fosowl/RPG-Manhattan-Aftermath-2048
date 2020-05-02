@@ -42,5 +42,6 @@ void type_of_object(inventory_t *inventory, int i);
 void new_value_contains(inventory_t *inventory);
 void destroy_inventory(game_t *game);
 sfBool pause_inventory(sfRenderWindow *window, sfEvent *event, game_t *game);
+sfBool close_window_pause(sfRenderWindow *window, sfEvent *event);
 
 #endif
