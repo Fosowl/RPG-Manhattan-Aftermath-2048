@@ -7,6 +7,7 @@
 
 #include "game_struct.h"
 #include "inventory.h"
+#include "warlock.h"
 
 void check_nb_for_class(inventory_t *inventory, int i, int max)
 {

@@ -35,11 +35,11 @@ static void ammo_ui(game_t *game)
     a.p_ui[TOTAL] = (sfVector2f){a.s.x - (a.s.x / 6), a.s.y - (a.s.y / 5) + 50};
     if (compare(game->player.selected, "rifle")) {
         a.str_mag = append("bullet left : ", my_itoa(game->player.ammo_rifle));
-        a.str_total = append("total : "
+        a.str_total = append("magazine left : "
         , my_itoa(game->player.nb_magazine_rifle));
     } else if (compare(game->player.selected, "pistol")) {
-        a.str_mag = append("magazine left : ", my_itoa(game->player.ammo_gun));
-        a.str_total = append("total : ", my_itoa(game->player.nb_magazine_gun));
+        a.str_mag = append("bullet left : ", my_itoa(game->player.ammo_gun));
+        a.str_total = append("magazine left : ", my_itoa(game->player.nb_magazine_gun));
     } else
         return;
     show_ammo_ui(&a, game, &text_ui);

@@ -13,7 +13,7 @@
 #include "game_macro.h"
 #include "warlock.h"
 
-void check_pause(game_t *game)
+void check_pause(void)
 {
     sfBool on_pause = false;
     sfBool protect = false;

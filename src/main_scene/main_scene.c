@@ -38,7 +38,7 @@ int main_scene_loop(game_t *game, sfClock *timer)
         main_scene_update(game);
         sfRenderWindow_display(game->window);
         sfRenderWindow_clear(game->window, BROWN);
-        check_pause(game);
+        check_pause();
         my_sleep(game->delay);
         game->runtime = sfClock_getElapsedTime(timer);
     }

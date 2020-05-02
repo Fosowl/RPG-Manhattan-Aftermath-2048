@@ -84,6 +84,7 @@ SRC_FILES	= 		main.c											\
 					main_scene/player_attack.c						\
 					main_scene/set_girl.c							\
 					main_scene/set_player_anim.c					\
+					main_scene/set_player_static.c					\
 					main_scene/set_sound.c							\
 					main_scene/set_zombie_anim.c					\
 					main_scene/spawn_point.c						\

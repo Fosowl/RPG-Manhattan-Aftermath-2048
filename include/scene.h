@@ -35,6 +35,9 @@ void set_zombie_key_attack(entities_t *entities);
 // set_player_animation.c
 
 void set_player_animation(entities_t *entities);
+
+// set_player_static.c
+
 void set_player_key_torch_static(entities_t *entities);
 void set_player_key_pistol_static(entities_t *entities);
 void set_player_key_rifle_static(entities_t *entities);
@@ -127,6 +130,6 @@ void girl_ai(game_t *game);
 
 //pause.c
 
-void check_pause(game_t *game);
+void check_pause(void);
 
 #endif /* !SCENE_H_ */
