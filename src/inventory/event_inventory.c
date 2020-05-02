@@ -13,18 +13,18 @@
 #include "game_macro.h"
 #include "warlock.h"
 
-int event_button_inventory(game_t *game)
+sfBool event_move(game_t *game)
 {
-    if (press(sfKeyI)) {
-        if (game->inventory->button == 1)
-            game->inventory->button = 0;
-        else
-            game->inventory->button = 1;
+    while (sfRenderWindow_pollEvent(game->window, &game->event)) {
+        display_move(game);
+        if (game->event.type == sfEvtClosed) {
+            return (false);
+        }
     }
-    return (game->inventory->button);
+    return (true);
 }
 
-sfBool pause_inventory(sfRenderWindow *window, sfEvent *event, game_t *game)
+sfBool pause_inventory(game_t *game)
 {
     static sfBool on_pause = false;
     sfBool lock = true;
@@ -42,9 +42,8 @@ sfBool pause_inventory(sfRenderWindow *window, sfEvent *event, game_t *game)
         if (sfKeyboard_isKeyPressed(sfKeyI)) {
             on_pause = false;
         }
-        if (!close_window_pause(window, event))
+        if (!event_move(game))
             return (false);
-        sfRenderWindow_display(game->window);
     }
     game->inventory->button = 0;
     return (true);
