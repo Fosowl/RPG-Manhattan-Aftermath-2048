@@ -12,14 +12,14 @@
 
 void init_menu_pos(menu_t *menu)
 {
-    menu->play_pos.x = 200;
+    menu->play_pos.x = 150;
     menu->play_pos.y = 500;
-    menu->quit_pos.x = 1100;
-    menu->quit_pos.y = 800;
-    menu->load_pos.x = 1100;
-    menu->load_pos.y = 500;
-    menu->how_pos.x = 200;
-    menu->how_pos.y = 800;
+    menu->quit_pos.x = 1650;
+    menu->quit_pos.y = 75;
+    menu->load_pos.x = 150;
+    menu->load_pos.y = 800;
+    menu->how_pos.x = 1300;
+    menu->how_pos.y = 650;
     init_hover_pos(menu->hover_menu);
 }
 
