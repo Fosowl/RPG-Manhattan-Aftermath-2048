@@ -106,6 +106,7 @@ SRC_FILES	= 		main.c											\
 					inventory/check_object_inventory.c 				\
 					inventory/update_nb_object.c 					\
 					inventory/update_element.c 						\
+					inventory/move_in_inventory.c 					\
 # test var
 
 TEST	 = tests/test.c

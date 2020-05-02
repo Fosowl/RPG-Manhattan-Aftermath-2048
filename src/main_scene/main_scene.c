@@ -36,7 +36,7 @@ int main_scene_loop(game_t *game, sfClock *timer)
         starset_update_engine(game->entities_list, game->window, NULL);
         main_scene_update(game);
         sfRenderWindow_display(game->window);
-        if (!manage_event(game->window, &game->event, game))
+        if (!manage_event(game))
             return EXIT_CLOSE;
         my_sleep(game->delay);
         sfRenderWindow_clear(game->window, BROWN);

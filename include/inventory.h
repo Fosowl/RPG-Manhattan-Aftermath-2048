@@ -41,7 +41,7 @@ void init_items_for_start_of_game(inventory_t *inventory);
 void type_of_object(inventory_t *inventory, int i);
 void new_value_contains(inventory_t *inventory);
 void destroy_inventory(game_t *game);
-sfBool pause_inventory(sfRenderWindow *window, sfEvent *event, game_t *game);
+sfBool pause_inventory(game_t *game);
 void create_move(inventory_t *inventory);
 void display_move(game_t *game);
 
