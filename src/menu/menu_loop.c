@@ -14,16 +14,16 @@ int check_press(sfEvent event)
     int x = event.mouseButton.x;
     int y = event.mouseButton.y;
 
-    if (x >= 200 && x <= 717 && y >= 500 && y <= 631) {
+    if (x >= 150 && x <= 544 && y >= 500 && y <= 603) {
         return (1);
     }
-    if (x >= 1100 && x <= 1390 && y >= 800 && y <= 933) {
+    if (x >= 1650 && x <= 1855 && y >= 75 && y <= 163) {
         return (2);
     }
-    if (x >= 1100 && x <= 1635 && y >= 500 && y <= 632) {
+    if (x >= 150 && x <= 545 && y >= 800 && y <= 900) {
         return (3);
     }
-    if (x >= 200 && x <= 910 && y >= 800 && y <= 932) {
+    if (x >= 1300 && x <= 1799 && y >= 650 && y <= 745) {
         return (4);
     }
     return (0);
