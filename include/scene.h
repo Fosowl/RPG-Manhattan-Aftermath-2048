@@ -23,7 +23,7 @@ void play_music(char *path);
 // load_entities.c
 
 entities_t *load_entities_scene(int zombie, sfRenderWindow *window);
-int load_map(entities_t *object_list);
+entities_t *load_map(entities_t *object_list);
 
 // set_zombie_anim.c
 

@@ -35,7 +35,7 @@ static entities_t *load_object(entities_t *entities)
 
 static entities_t *load_building(entities_t *entities)
 {
-    load_map(entities);
+    entities = load_map(entities);
     return (entities);
 }
 
