@@ -13,14 +13,23 @@
 #include "game_macro.h"
 #include "warlock.h"
 
-void check_pause(sfRenderWindow *window, sfEvent *event)
+sfBool close_window_pause(sfRenderWindow *window, sfEvent *event)
+{
+    while (sfRenderWindow_pollEvent(window, event)) {
+        if (event->type == sfEvtClosed) {
+            return (false);
+        }
+    }
+    return (true);
+}
+
+sfBool check_pause(sfRenderWindow *window, sfEvent *event)
 {
     sfBool on_pause = false;
     sfBool lock = true;
 
-    while (sfRenderWindow_pollEvent(window, event)) {
-        if (sfKeyboard_isKeyPressed(sfKeyP))
-            on_pause = true;
+    if (sfKeyboard_isKeyPressed(sfKeyP)) {
+        on_pause = true;
     }
     while (on_pause == true) {
         if (!sfKeyboard_isKeyPressed(sfKeyP))
@@ -30,5 +39,26 @@ void check_pause(sfRenderWindow *window, sfEvent *event)
         if (sfKeyboard_isKeyPressed(sfKeyP)) {
             on_pause = false;
         }
+        if (!close_window_pause(window, event))
+            return (false);
     }
+    return (true);
+}
+
+sfBool manage_event(sfRenderWindow *window, sfEvent *event)
+{
+    sfBool on_pause = false;
+    sfBool lock = true;
+    int check = 0;
+
+    if (!sfRenderWindow_isOpen(window))
+        return (false);
+    while (sfRenderWindow_pollEvent(window, event)) {
+        if (event->type == sfEvtClosed) {
+            return (false);
+        }
+        if (!check_pause(window, event))
+            return (false);
+    }
+    return (true);
 }

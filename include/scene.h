@@ -130,6 +130,6 @@ void girl_ai(game_t *game);
 
 //pause.c
 
-void check_pause(sfRenderWindow *window, sfEvent *event);
+sfBool manage_event(sfRenderWindow *window, sfEvent *event);
 
 #endif /* !SCENE_H_ */
