@@ -128,7 +128,7 @@ void girl_ai(game_t *game);
 
 //pause.c
 
-sfBool manage_event(sfRenderWindow *window, sfEvent *event, game_t *game);
+sfBool manage_event(game_t *game);
 
 // load_ground.c
 

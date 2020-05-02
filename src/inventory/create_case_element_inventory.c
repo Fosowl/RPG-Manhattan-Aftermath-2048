@@ -47,6 +47,7 @@ void create_case(inventory_t *inventory, int width)
 void create_case_element(inventory_t *inventory)
 {
     element_for_start(inventory);
+    create_move(inventory);
     create_button_inventory(inventory);
     create_nb_element(inventory);
     create_case(inventory, 900);

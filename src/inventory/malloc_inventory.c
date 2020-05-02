@@ -38,6 +38,9 @@ int malloc_inventory(game_t *game)
     game->inventory->contains = malloc(sizeof(contains_inventory_t) * 11);
     if (game->inventory->contains == NULL)
         return (84);
+    game->inventory->move = malloc(sizeof(basic_object_t));
+    if (game->inventory->move == NULL)
+        return (84);
     if (malloc_element(game->inventory) == 84)
         return (84);
     return (0);

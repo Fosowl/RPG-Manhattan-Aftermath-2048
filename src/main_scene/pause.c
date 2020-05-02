@@ -45,17 +45,17 @@ sfBool check_pause(sfRenderWindow *window, sfEvent *event)
     return (true);
 }
 
-sfBool manage_event(sfRenderWindow *window, sfEvent *event, game_t *game)
+sfBool manage_event(game_t *game)
 {
-    if (!sfRenderWindow_isOpen(window))
+    if (!sfRenderWindow_isOpen(game->window))
         return (false);
-    while (sfRenderWindow_pollEvent(window, event)) {
-        if (event->type == sfEvtClosed) {
+    while (sfRenderWindow_pollEvent(game->window, &game->event)) {
+        if (game->event.type == sfEvtClosed) {
             return (false);
         }
-        if (!check_pause(window, event))
+        if (!check_pause(game->window, &game->event))
             return (false);
-        if (!pause_inventory(window, event, game))
+        if (!pause_inventory(game))
             return (false);
     }
     return (true);

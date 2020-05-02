@@ -45,6 +45,7 @@ typedef struct inventory_s {
     basic_object_t *background;
     element_inventory_t *element;
     basic_object_t *button_all;
+    basic_object_t *move;
     int button;
     contains_inventory_t *contains;
 } inventory_t;
