@@ -36,7 +36,6 @@ entities_t *load_map(entities_t *object_list)
     char **map = divide_array(stock_map, '\n');
     char *name = NULL;
     int nb = 0;
-    entities_t *tmp = NULL;
 
     for (int y = 0; map[y] != NULL; y++) {
         for (int x = 0; map[y][x] != '\0'; x++) {

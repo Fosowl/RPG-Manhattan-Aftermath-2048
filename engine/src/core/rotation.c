@@ -11,7 +11,6 @@ float starset_entities_rotate_to(entities_t *entitie, char *name
 , sfVector2f target)
 {
     entities_t *copy = entitie;
-    int ok = false;
     float x = 0.0f;
     float y = 0.0f;
     char **get = internal__get_class(name);
@@ -23,7 +22,6 @@ float starset_entities_rotate_to(entities_t *entitie, char *name
             y = target.y - copy->spot.y;
             if (sqrt(pow(y, 2) + pow(x, 2)) >= (copy->size.x / 2))
                 copy->angle = atan2(y, x) * 57;
-            ok = true;
             break;
         }
         copy = copy->next;

@@ -72,20 +72,22 @@ static int weapon_empty(game_t *game)
         return (7);
     if (limit_rate_gun(400) == 1 && compare(game->player.selected, "knife"))
         return (7);
-    if (compare(game->player.selected, "rifle") && game->player.ammo_rifle <= 0) {
+    if (compare(game->player.selected, "rifle") &&
+    game->player.ammo_rifle <= 0) {
         starset_single_play_sound(game->player.save, "empty", false);
         starset_play_animation(game->player.save, "player", "rifle:static", 2);
         return (7);
-    } else if (compare(game->player.selected, "pistol") && game->player.ammo_gun <= 0) {
+    } else if (compare(game->player.selected, "pistol") &&
+    game->player.ammo_gun <= 0) {
         starset_single_play_sound(game->player.save, "empty", false);
-        starset_play_animation(game->player.save, "player", "pistol:static", 2);
+        starset_play_animation(game->player.save, "player"
+        , "pistol:static", 2);
         return (7);
     }
     return (0);
 }
 
-int on_attack(game_t *game, sfRenderWindow *window
-, char *animation, int *r)
+int on_attack(game_t *game, char *animation, int *r)
 {
     if (weapon_empty(game) == 7)
         return (7);
