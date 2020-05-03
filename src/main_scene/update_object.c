@@ -11,6 +11,7 @@
 #include "render.h"
 #include "game_macro.h"
 #include "warlock.h"
+#include "inventory.h"
 
 static void game_over_ui(ui_t *ui, sfRenderWindow *window)
 {
@@ -50,6 +51,8 @@ int update_value(game_t *game)
         return (1);
     }
     pick_item(game);
+    game->inventory->contains[AK47].nb = game->player.nb_magazine_rifle;
+    game->inventory->contains[GUN].nb = game->player.nb_magazine_gun;
     return (0);
 }
 

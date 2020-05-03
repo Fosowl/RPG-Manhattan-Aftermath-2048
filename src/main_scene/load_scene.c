@@ -31,8 +31,8 @@ static void load_value(game_t *game)
     game->player.control.key_weapon[3] = sfKeyNum4;
     game->player.selected = fill("pistol");
     game->player.ear_off = false;
-    game->player.nb_magazine_gun = 5;
-    game->player.nb_magazine_rifle = 3;
+    game->player.nb_magazine_gun = 1;
+    game->player.nb_magazine_rifle = 1;
     game->player.ammo_gun = 11;
     game->player.ammo_rifle = 30;
     game->player.unlock_rifle = false;

@@ -79,5 +79,9 @@ entities_t *load_map(entities_t *object_list)
             }
         }
     }
+    entities_t *tmp = NULL;
+    while((tmp = starset_get_next(object_list, "map"))) {
+        printf("%f %f\n", tmp->spot.x, tmp->spot.y);
+    }
     return (object_list);
 }
