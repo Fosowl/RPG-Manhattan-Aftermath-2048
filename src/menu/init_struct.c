@@ -21,6 +21,9 @@ int init_struct(game_t *game)
     game->menu->hover_menu = malloc(sizeof(hover_t));
     if (game->menu->hover_menu == NULL)
         return (84);
+    game->menu->how_to = malloc(sizeof(how_t));
+    if (game->menu->how_to == NULL)
+        return (84);
     malloc_inventory(game);
     return (0);
 }

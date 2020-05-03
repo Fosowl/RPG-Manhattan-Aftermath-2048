@@ -68,12 +68,15 @@ static int in_menu_loop(game_t *game, sfEvent event)
     if (check_click == 1) {
         sfSound_destroy(game->menu->menu_music);
         if (main_scene_load(game) == 0)
-            return (0);
+        return (0);
         return (1);
     } else if (check_click == 2) {
         sfSound_destroy(game->menu->menu_music);
         destroy_menu(game);
         return (2);
+    }
+    if (check_click == 4) {
+        how_to_play(game);
     }
     return (0);
 }
