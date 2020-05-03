@@ -35,9 +35,11 @@ static int in_pause_loop(game_t *game, sfEvent event)
     int check_click = 0;
     sfVector2i size = sfMouse_getPositionRenderWindow(game->screen->window);
 
-    if ((event.type == sfEvtMouseButtonPressed)
-        || (size.x >= 790 && size.x <= 1120 && size.y >= 350 && size.y <= 440)) {
-        check_click = check_pause_button(game);
+    while (sfRenderWindow_pollEvent(game->screen->window, &event)) {
+        if ((event.type == sfEvtMouseButtonReleased)
+        && (size.x >= 790 && size.x <= 1120 && size.y >= 350 && size.y <= 440)) {
+            check_click = check_pause_button(game);
+        }
     }
     if (sfKeyboard_isKeyPressed(sfKeyP)) {
         check_click = 1;
