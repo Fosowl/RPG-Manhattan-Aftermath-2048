@@ -25,7 +25,7 @@ int emulate_else_if(int *pass, int true_condition);
 void debug_log(char *text, void *adress);
 
 #define SWITCH_W int pass = 1;
-#define CASE_O if (emulate_else_if(&pass, 
+#define CASE_O if (emulate_else_if(&pass,
 #define CASE_C ))
 #define DEFAULT_W pass > 0 ? 0 :
 

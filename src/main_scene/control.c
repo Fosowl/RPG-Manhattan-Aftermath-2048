@@ -29,6 +29,10 @@ void player_controller(game_t *game)
     int r = 0;
     char *animation = NULL;
 
+    printf("\n\n>>>%d %d\n\n", game->player.save->collision_vector.x
+    , game->player.save->collision_vector.y);
+    if (game->player.save->collision)
+        printf(">>%s\n", game->player.save->collision->name);
     game->player.angle = point_toward_mouse(game->entities_list, game->window);
     if (press(sfKeyUp) || press(game->player.control.key_up))
         r = teleport_player_up(ALL);
