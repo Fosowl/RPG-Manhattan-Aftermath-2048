@@ -15,16 +15,18 @@ void init_items_for_start_of_game(inventory_t *inventory)
     inventory->contains[KNIFE].nb = 1;
     inventory->contains[BULLET_AK47].nb = 61;
     inventory->contains[BULLET_GUN].nb = 23;
-    inventory->contains[STEAK].nb = 0;
-    inventory->contains[WATER].nb = 0;
+    inventory->contains[STEAK].nb = 2;
+    inventory->contains[WATER].nb = 3;
     inventory->contains[APPLE].nb = 0;
     inventory->contains[CANNED].nb = 0;
-    inventory->contains[BANDAGE].nb = 0;
+    inventory->contains[BANDAGE].nb = 4;
     inventory->contains[MEDICAL_KIT].nb = 0;
 }
 
 void update_element(game_t *game)
 {
+    if (game->player.unlock_rifle == 1)
+        game->inventory->contains[AK47].nb = 1;
     new_value_contains(game->inventory);
     for (int i = 0; i != 40; i++)
         add_new_value(game->inventory, i);

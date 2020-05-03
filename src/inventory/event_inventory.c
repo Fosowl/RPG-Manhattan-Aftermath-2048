@@ -17,6 +17,7 @@ int event_move(game_t *game)
 {
     while (sfRenderWindow_pollEvent(game->window, &game->event)) {
         display_move(game);
+        check_care(game);
         sfRenderWindow_display(game->window);
         if (game->event.type == sfEvtClosed) {
             return (0);

@@ -87,6 +87,7 @@ void display_move(game_t *game)
     sfSprite_setPosition(game->inventory->move->sprite, position);
     sfRenderWindow_drawSprite(game->window, game->inventory->move->sprite,
                                                                         NULL);
+
     if (game->inventory->element[game->inventory->location].status == 0) {
         if (game->inventory->element[stock].destroy_info == 1) {
             sfTexture_destroy(game->inventory->element[stock].info->texture);

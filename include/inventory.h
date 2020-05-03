@@ -48,5 +48,6 @@ char *info_arms_option(inventory_t *inventory, int i);
 basic_object_t *init_info(inventory_t *inventory, int i);
 void option_for_type(inventory_t *inventory, int i);
 void check_nb_for_class(inventory_t *inventory, int i, int max);
+void check_care(game_t *game);
 
 #endif
