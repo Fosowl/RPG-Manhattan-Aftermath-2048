@@ -65,9 +65,8 @@ static int in_menu_loop(game_t *game, sfEvent event)
 {
     int check_click = 0;
 
-    if (event.type == sfEvtMouseButtonPressed) {
+    if (event.type == sfEvtMouseButtonPressed)
         check_click = check_press(game->screen->window);
-    }
     if (check_click == 1) {
         sfSound_stop(game->menu->menu_music);
         if (main_scene_load(game) == 0) {
@@ -75,14 +74,12 @@ static int in_menu_loop(game_t *game, sfEvent event)
         }
         return (1);
     } else if (check_click == 2) {
-        sfSound_stop(game->menu->menu_music);
         sfSound_destroy(game->menu->menu_music);
         destroy_menu(game);
         return (2);
     }
-    if (check_click == 4) {
+    if (check_click == 4)
         return (how_to_play(game, event));
-    }
     return (0);
 }
 

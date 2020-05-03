@@ -29,7 +29,7 @@ static sfSound *play_music_menu(char *path)
     sfSound *sound = sfSound_create();
 
     sfSound_setBuffer(sound, buffer);
-    sfSound_setLoop(sound, true);
+    sfSound_setLoop(sound, sfTrue);
     sfSound_setVolume(sound, 65);
     sfSound_play(sound);
     return (sound);
