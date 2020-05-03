@@ -34,15 +34,14 @@ void option_for_class(inventory_t *inventory, int i)
         else if (inventory->element[i].nb < 1)
             inventory->element[i].status = 0;
         break;
-    case 2:
-        check_nb_for_class(inventory, i, 10);
-        break;
     case 3:
         check_nb_for_class(inventory, i, 5);
         break;
     case 4:
         check_nb_for_class(inventory, i, 5);
         break;
+    default:
+        option_for_type(inventory, i);
     }
 }
 

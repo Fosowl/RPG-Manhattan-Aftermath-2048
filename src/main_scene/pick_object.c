@@ -56,7 +56,7 @@ void pick_item(game_t *game)
         return;
     if (compare(game->player.save->collision->name, "pick:ammo_rifle")) {
         game->player.nb_magazine_rifle += 1;
-        game->inventory->contains[BULLET_AK47].nb += 10;
+        game->inventory->contains[BULLET_AK47].nb += 30;
     }
     if (compare(game->player.save->collision->name, "pick:ammo_pistol")) {
         game->player.nb_magazine_gun += 1;

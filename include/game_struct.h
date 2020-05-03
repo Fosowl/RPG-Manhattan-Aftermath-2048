@@ -68,6 +68,14 @@ typedef struct hover_s {
     sfVector2f how_pos;
 } hover_t;
 
+typedef struct how_s {
+    sfTexture *how_bg_texture;
+    sfSprite *how_bg_sprite;
+    sfTexture *press_space_texture;
+    sfSprite *press_space_sprite;
+    sfVector2f press_space_pos;
+} how_t;
+
 typedef struct menu_s {
     sfTexture *menu_texture;
     sfSprite *menu_sprite;
@@ -85,6 +93,7 @@ typedef struct menu_s {
     sfSprite *how_sprite;
     sfVector2f how_pos;
     hover_t *hover_menu;
+    how_t *how_to;
 } menu_t;
 
 typedef struct dialog_s {

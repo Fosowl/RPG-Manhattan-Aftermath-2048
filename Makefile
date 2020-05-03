@@ -63,6 +63,7 @@ SRC_FILES	= 		main.c											\
 					menu/destroy_menu.c								\
 					menu/init_struct.c								\
 					menu/hover_display.c							\
+					menu/how_to_play.c								\
 					dialog/malloc_dialog.c							\
 					dialog/init_reply_dialog.c						\
 					dialog/parsing_reply.c							\

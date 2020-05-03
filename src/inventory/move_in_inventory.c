@@ -95,7 +95,6 @@ void display_move(game_t *game)
         }
     } else if (game->inventory->element[game->inventory->location].status != 0){
         stock = game->inventory->location;
-        printf("%d\n", game->inventory->location);
         sfRenderWindow_drawSprite(game->window,
         game->inventory->element[game->inventory->location].info->sprite, NULL);
     }

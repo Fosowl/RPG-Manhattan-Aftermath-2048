@@ -77,6 +77,9 @@ static int in_menu_loop(game_t *game, sfEvent event)
         destroy_menu(game);
         return (2);
     }
+    if (check_click == 4) {
+        how_to_play(game);
+    }
     return (0);
 }
 

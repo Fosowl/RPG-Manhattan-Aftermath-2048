@@ -46,5 +46,7 @@ void create_move(inventory_t *inventory);
 void display_move(game_t *game);
 char *info_arms_option(inventory_t *inventory, int i);
 basic_object_t *init_info(inventory_t *inventory, int i);
+void option_for_type(inventory_t *inventory, int i);
+void check_nb_for_class(inventory_t *inventory, int i, int max);
 
 #endif
