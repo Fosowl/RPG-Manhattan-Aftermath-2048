@@ -38,7 +38,7 @@ static entities_t *load_building(entities_t *entities)
 {
     entities_t *tmp = NULL;
 
-    entities = load_ground(entities, 40);
+    entities = load_ground(entities, 0);
     entities = load_map(entities);
     while ((tmp = (starset_get_next(entities, "map")))) {
         tmp->restitution = 100.0f;
