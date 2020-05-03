@@ -27,7 +27,7 @@ void play_music(char *path)
 int main_scene_loop(game_t *game, sfClock *timer)
 {
     game->window = game->screen->window;
-    game->delay = 100;
+    game->delay = 10;
     play_music("assets/audio/days_later.ogg");
     while (game->window) {
         if (!starset_running(game->window, &game->event))
