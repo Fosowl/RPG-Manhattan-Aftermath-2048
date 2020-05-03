@@ -93,8 +93,7 @@ void zombie_ai(entities_t **entities, player_t *player
         distance = starset_get_distance(tmp->spot, player->save->spot);
         if (distance < 100) {
             zombie_attack_player(tmp, &pass, player);
-        } else if (distance < 350 * player->noise && distance > 80*
-        player->noise) {
+        } else if (distance < 450 * player->noise && distance > 75) {
             starset_play_animation(tmp, tmp->name, "static", 6);
             starset_entities_move_to_other(*entities, tmp->name
             , player->save->name);

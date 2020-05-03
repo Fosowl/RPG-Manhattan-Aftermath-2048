@@ -47,6 +47,7 @@ static void init_menu_2(menu_t *menu)
     menu->how_sprite = sfSprite_create();
     sfSprite_setTexture(menu->how_sprite, menu->how_texture, sfTrue);
     sfSprite_setPosition(menu->how_sprite, menu->how_pos);
+    init_how_to_play(menu);
 }
 
 void init_menu(menu_t *menu)

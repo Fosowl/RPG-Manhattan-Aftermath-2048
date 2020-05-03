@@ -13,28 +13,48 @@
 
 int teleport_player_up(entities_t *entities, entities_t *save)
 {
-    starset_entities_teleport(entities, "player"
-    , save->spot.x, save->spot.y - save->speed);
+    entities_t *tmp = NULL;
+
+    for (tmp = entities; tmp != NULL; tmp = tmp->next) {
+        if (!(search("player", tmp->name) != -1)) {
+            tmp->spot.y += save->speed;
+        }
+    }
     return (1);
 }
 
 int teleport_player_down(entities_t *entities, entities_t *save)
 {
-    starset_entities_teleport(entities, "player"
-    , save->spot.x, save->spot.y + save->speed);
+    entities_t *tmp = NULL;
+
+    for (tmp = entities; tmp != NULL; tmp = tmp->next) {
+        if (!(search("player", tmp->name) != -1)) {
+            tmp->spot.y -= save->speed;
+        }
+    }
     return (1);
 }
 
 int teleport_player_left(entities_t *entities, entities_t *save)
 {
-    starset_entities_teleport(entities, "player"
-    , save->spot.x - save->speed, save->spot.y);
+    entities_t *tmp = NULL;
+
+    for (tmp = entities; tmp != NULL; tmp = tmp->next) {
+        if (!(search("player", tmp->name) != -1)) {
+            tmp->spot.x += save->speed;
+        }
+    }
     return (1);
 }
 
 int teleport_player_right(entities_t *entities, entities_t *save)
 {
-    starset_entities_teleport(entities, "player"
-    , save->spot.x + save->speed, save->spot.y);
+    entities_t *tmp = NULL;
+
+    for (tmp = entities; tmp != NULL; tmp = tmp->next) {
+        if (!(search("player", tmp->name) != -1)) {
+            tmp->spot.x -= save->speed;
+        }
+    }
     return (1);
 }

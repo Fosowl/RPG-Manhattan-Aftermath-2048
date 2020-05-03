@@ -9,21 +9,23 @@
 #include "menu.h"
 #include "scene.h"
 
-int check_press(sfEvent event)
+int check_press(sfRenderWindow *window)
 {
-    int x = event.mouseButton.x;
-    int y = event.mouseButton.y;
+    sfVector2i size = sfMouse_getPositionRenderWindow(window);
 
-    if (x >= 150 && x <= 544 && y >= 530 && y <= 624) {
+    if (size.x >= 150 && size.x <= 544 && size.y >= 530 &&
+    size.y <= 624) {
         return (1);
     }
-    if (x >= 1650 && x <= 1855 && y >= 100 && y <= 188) {
+    if (size.x >= 1650 && size.x <= 1855 && size.y >= 100 &&
+    size.y <= 188) {
         return (2);
     }
-    if (x >= 150 && x <= 545 && y >= 825 && y <= 925) {
+    if (size.x >= 150 && size.x <= 545 && size.y >= 825 &&
+    size.y <= 925) {
         return (3);
     }
-    if (x >= 1300 && x <= 1799 && y >= 675 && y <= 770) {
+    if (size.x >= 1300 && size.x <= 1799 && size.y >= 675 && size.y <= 770) {
         return (4);
     }
     return (0);
@@ -63,17 +65,21 @@ static int in_menu_loop(game_t *game, sfEvent event)
 {
     int check_click = 0;
 
-    if (event.type == sfEvtMouseButtonPressed)
-        check_click = check_press(event);
+    if (event.type == sfEvtMouseButtonPressed) {
+        check_click = check_press(game->screen->window);
+    }
     if (check_click == 1) {
-        sfSound_destroy(game->menu->menu_music);
-        if (main_scene_load(game) == 0)
+        if (main_scene_load(game) == 0) {
             return (0);
+        }
         return (1);
     } else if (check_click == 2) {
         sfSound_destroy(game->menu->menu_music);
         destroy_menu(game);
         return (2);
+    }
+    if (check_click == 4) {
+        return (how_to_play(game, event));
     }
     return (0);
 }
@@ -86,7 +92,7 @@ int menu_loop(game_t *game)
 
     init_screen(game->screen);
     init_menu(game->menu);
-    while (starset_running(game->screen->window, &event)) {
+    while (starset_running(game->screen->window, &event) && r != 9) {
         r = in_menu_loop(game, event);
         hover = hover_menu_text(game);
         if (r != 0)

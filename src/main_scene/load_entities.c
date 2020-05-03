@@ -14,7 +14,7 @@
 
 static void set_propreties(entities_t *entities)
 {
-    starset_entities_teleport(entities, "player", 400, 900);
+    starset_entities_teleport(entities, "player", 1920 / 2, 1080 / 2);
     starset_entities_teleport(entities, "sora", 1500, 300);
     starset_entities_get_propreties(entities, "player")->speed = 3;
     starset_entities_get_propreties(entities, "sora")->life = 300;
@@ -38,7 +38,7 @@ static entities_t *load_building(entities_t *entities)
 {
     entities_t *tmp = NULL;
 
-    entities = load_ground(entities, 10);
+    entities = load_ground(entities, 40);
     entities = load_map(entities);
     while ((tmp = (starset_get_next(entities, "map")))) {
         tmp->restitution = 100.0f;
