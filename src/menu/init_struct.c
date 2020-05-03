@@ -24,6 +24,9 @@ int init_struct(game_t *game)
     game->menu->how_to = malloc(sizeof(how_t));
     if (game->menu->how_to == NULL)
         return (84);
+    game->menu->pause_m = malloc(sizeof(pause_t));
+    if (game->menu->pause_m == NULL)
+        return (84);
     malloc_inventory(game);
     return (0);
 }

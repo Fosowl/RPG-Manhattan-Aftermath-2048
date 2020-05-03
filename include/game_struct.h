@@ -76,6 +76,18 @@ typedef struct how_s {
     sfVector2f press_space_pos;
 } how_t;
 
+typedef struct pause_s {
+    sfTexture *bg_texture;
+    sfSprite *bg_sprite;
+    sfVector2f bg_pos;
+    sfTexture *continue_texture;
+    sfSprite *continue_sprite;
+    sfVector2f continue_pos;
+    sfTexture *quit_game_texture;
+    sfSprite *quit_game_sprite;
+    sfVector2f quit_game_pos;
+} pause_t;
+
 typedef struct menu_s {
     sfTexture *menu_texture;
     sfSprite *menu_sprite;
@@ -94,6 +106,7 @@ typedef struct menu_s {
     sfVector2f how_pos;
     hover_t *hover_menu;
     how_t *how_to;
+    pause_t *pause_m;
 } menu_t;
 
 typedef struct screen_s {

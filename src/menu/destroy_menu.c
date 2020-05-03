@@ -9,6 +9,14 @@
 #include "game_struct.h"
 #include "menu.h"
 
+void destroy_how_to_play(how_t *how_to)
+{
+    sfSprite_destroy(how_to->how_bg_sprite);
+    sfTexture_destroy(how_to->how_bg_texture);
+    sfSprite_destroy(how_to->press_space_sprite);
+    sfTexture_destroy(how_to->press_space_texture);
+}
+
 void destroy_hover(hover_t *hover)
 {
     sfSprite_destroy(hover->play_sprite);
@@ -34,4 +42,5 @@ void destroy_menu(game_t *game)
     sfSprite_destroy(game->menu->how_sprite);
     sfTexture_destroy(game->menu->how_texture);
     destroy_hover(game->menu->hover_menu);
+    destroy_how_to_play(game->menu->how_to);
 }

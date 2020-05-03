@@ -12,6 +12,7 @@
 #include "render.h"
 #include "game_macro.h"
 #include "warlock.h"
+#include "menu.h"
 
 sfBool close_window_pause(sfRenderWindow *window, sfEvent *event)
 {
@@ -23,7 +24,7 @@ sfBool close_window_pause(sfRenderWindow *window, sfEvent *event)
     return (true);
 }
 
-sfBool check_pause(sfRenderWindow *window, sfEvent *event)
+sfBool check_pause(game_t *game, sfEvent *event)
 {
     sfBool on_pause = false;
     sfBool lock = true;
@@ -36,10 +37,10 @@ sfBool check_pause(sfRenderWindow *window, sfEvent *event)
             lock = false;
         if (lock == true)
             continue;
-        if (sfKeyboard_isKeyPressed(sfKeyP)) {
+        if (pause_loop(game) == 1) {
             on_pause = false;
         }
-        if (!close_window_pause(window, event))
+        if (!close_window_pause(game->window, event))
             return (false);
     }
     return (true);
@@ -53,7 +54,7 @@ sfBool manage_event(game_t *game)
         if (game->event.type == sfEvtClosed) {
             return (false);
         }
-        if (!check_pause(game->window, &game->event))
+        if (!check_pause(game, &game->event))
             return (false);
         if (!pause_inventory(game))
             return (false);

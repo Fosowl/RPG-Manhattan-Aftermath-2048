@@ -44,11 +44,12 @@ void internal__collision_physics(entities_t *entitie_1
     float impulse = -(1 + e) * normal * 0.17f;
 
     impulse /= 1 / entitie_1->mass + 1 / entitie_2->mass;
+    entitie_2->collision_vector.x = collision_vector.x;
+    entitie_2->collision_vector.y = collision_vector.y;
     if (collision_vector.x != 0 && collision_vector.y != 0) {
         internal__apply_impulse_law(collision_vector, entitie_1
         , entitie_2, impulse);
         if (normal > 0)
             return;
     }
-    entitie_1->collision_vector = collision_vector;
 }

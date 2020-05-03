@@ -54,7 +54,7 @@ char *check_origin_wall(char **map, int x, int y, char *origin)
         origin = "map:ground";
         break;
     case '6':
-        origin = "assets/inventory/info_steak.png"; //change
+        origin = "assets/inventory/info_steak.png";
         break;
     default:
         origin = check_origin_object(map, x, y, origin);

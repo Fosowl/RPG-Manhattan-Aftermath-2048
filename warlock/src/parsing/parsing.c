@@ -78,8 +78,6 @@ char *fusion(char *str, char *sticked, int place)
     return (tmp);
 }
 
-// sub-function of fusion
-
 void fusion_2(char *end_copy, char *str, char *sticked, int place)
 {
     for (int index = 0; sticked[index] != '\0'; index++, place++)

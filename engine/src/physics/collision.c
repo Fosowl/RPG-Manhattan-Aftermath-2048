@@ -59,6 +59,7 @@ void internal__collider_update(entities_t *entities, sfRenderWindow *window)
     sfVector2i collision_vector = (sfVector2i){0, 0};
 
     while (copy != NULL) {
+        copy->collision = NULL;
         if (internal__mouse_hover(copy, window) == true)
             copy->mouse_hover = true;
         for (entities_t *sub_copy = entities; sub_copy != NULL
@@ -66,7 +67,8 @@ void internal__collider_update(entities_t *entities, sfRenderWindow *window)
             if (compare_e(copy->name, sub_copy->name) == true)
                 continue;
             collision_vector = internal__entities_collide(copy, sub_copy);
-            if (collision_vector.x != 0 && collision_vector.y != 0)
+            if (collision_vector.x != 0 && collision_vector.y != 0 &&
+            !copy->collision)
                 copy->collision = sub_copy;
             if (copy->is_trigger != true && sub_copy->is_trigger != true)
                 internal__collision_physics(copy, sub_copy, collision_vector);
