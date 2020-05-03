@@ -9,6 +9,7 @@
 #include "game_struct.h"
 #include "warlock.h"
 #include "scene.h"
+#include <stdbool.h>
 
 char *read_map(void)
 {

@@ -9,6 +9,7 @@
 #include "dependancies.h"
 #include "game_struct.h"
 #include "menu.h"
+#include <stdbool.h>
 
 void init_menu_pos(menu_t *menu)
 {
