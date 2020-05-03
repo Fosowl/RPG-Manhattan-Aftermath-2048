@@ -8,10 +8,7 @@
 #include "dependancies.h"
 #include "game_struct.h"
 #include "warlock.h"
-
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
+#include "scene.h"
 
 char *read_map(void)
 {
@@ -30,65 +27,54 @@ char *read_map(void)
     return (buffer);
 }
 
+char *add_obj(int nb, char *origin)
+{
+    char *name = NULL;
+
+    name = append(origin, my_itoa(nb));
+    return (name);
+}
+
+entities_t *create_new_obj(entities_t *object_list, int x, int y, char **map)
+{
+    static int nb = 0;
+    char *origin = NULL;
+    char *name = NULL;
+    char *path = NULL;
+
+    origin = check_origin_ground(map, x, y);
+    if (origin == NULL)
+        return (NULL);
+    path = check_path_ground(map, x, y);
+    name = append(origin, my_itoa(nb));
+    object_list = starset_entities_add(object_list, path, name, true);
+    starset_entities_teleport(object_list, name, x * 150, y * 150);
+    if (map[y][x] == '5')
+        starset_entities_get_propreties(object_list, name)->is_trigger = true;
+    nb++;
+    return (object_list);
+}
+
+entities_t *check_entities(entities_t *object_list, int y, char **map)
+{
+    entities_t *a = NULL;
+
+    for (int x = 0; map[y][x] != '\0'; x++) {
+        a = create_new_obj(object_list, x, y, map);
+        if (a == NULL)
+            continue;
+        else
+            object_list = a;
+    }
+    return (object_list);
+}
+
 entities_t *load_map(entities_t *object_list)
 {
     char *stock_map = read_map();
     char **map = divide_array(stock_map, '\n');
-    char *name = NULL;
-    int nb = 0;
 
-    //GESTION ERREUR CHANGER DE NOM DU TXT
-
-    for (int y = 0; map[y] != NULL; y++) {
-        for (int x = 0; map[y][x] != '\0'; x++) {
-            nb++;
-            switch (map[y][x]) {
-                case '0':
-                name = append("map:border_left", my_itoa(nb));
-                object_list = starset_entities_add(object_list,
-                "assets/building/Walls/X.png", name, true);
-                starset_entities_teleport(object_list, name,
-                x * 150, y * 150);
-                break;
-                case '1':
-                name = append("map:down_wall", my_itoa(nb));
-                object_list = starset_entities_add(object_list,
-                "assets/building/Walls/4.png", name, true);
-                starset_entities_teleport(object_list, name,
-                x * 150, y * 150);
-                break;
-                case '2':
-                name = append("map:border_right", my_itoa(nb));
-                object_list = starset_entities_add(object_list,
-                "assets/building/Walls/1.png", name, true);
-                starset_entities_teleport(object_list, name,
-                x * 150, y * 150);
-                break;
-                case '3':
-                name = append("map:down_right", my_itoa(nb));
-                object_list = starset_entities_add(object_list,
-                "assets/building/Walls/3.png", name, true);
-                starset_entities_teleport(object_list, name,
-                x * 150, y * 150);
-                break;
-                case '4':
-                name = append("map:down_left", my_itoa(nb));
-                object_list = starset_entities_add(object_list,
-                "assets/building/Walls/Z.png", name, true);
-                starset_entities_teleport(object_list, name,
-                x * 150, y * 150);
-                break;
-                case '5':
-                name = append("map:ground", my_itoa(nb));
-                object_list = starset_entities_add(object_list,
-                "assets/building/Walls/W.png", name, true);
-                starset_entities_teleport(object_list, name,
-                x * 150, y * 150);
-                starset_entities_get_propreties
-                (object_list, name)->is_trigger = true;
-                break;
-            }
-        }
-    }
+    for (int y = 0; map[y] != NULL; y++)
+        object_list = check_entities(object_list, y, map);
     return (object_list);
 }

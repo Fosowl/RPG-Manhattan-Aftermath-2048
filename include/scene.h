@@ -147,4 +147,7 @@ void pick_item(game_t *game);
 
 void introduction_scene(game_t *game);
 
+char *check_path_ground(char **map, int x, int y);
+char *check_origin_ground(char **map, int x, int y);
+
 #endif /* !SCENE_H_ */
