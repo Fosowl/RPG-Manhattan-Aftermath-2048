@@ -45,4 +45,6 @@ sheet_t *internal__create_sheet(sfVector2u size);
 void internal__set_entities_value(entities_t *entitie
 , int new_id, char *name, sfBool fixed);
 
+int internal__test_class(char *name, char *check_name);
+
 #endif /* !INTERNAL_H_ */

@@ -27,7 +27,7 @@ void play_music(char *path)
 int main_scene_loop(game_t *game, sfClock *timer)
 {
     game->window = game->screen->window;
-    game->delay = 1000;
+    game->delay = 100;
     play_music("assets/audio/days_later.ogg");
     while (game->window) {
         if (!starset_running(game->window, &game->event))
@@ -50,7 +50,7 @@ void main_scene_update(game_t *game)
     update_value(game);
     move_dog(game->entities_list, game->player.save, game->girl->spot);
     update_object(game);
-    update_element(game);
+    //update_element(game);
     girl_ai(game);
     player_controller(game);
     player_switch_object(game->entities_list, game->player);
