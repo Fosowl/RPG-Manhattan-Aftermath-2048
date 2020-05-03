@@ -11,6 +11,7 @@
 #include <SFML/Graphics.h>
 #include <SFML/Graphics/RenderWindow.h>
 #include <SFML/Audio.h>
+#include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>

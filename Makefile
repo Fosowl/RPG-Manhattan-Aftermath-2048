@@ -64,6 +64,9 @@ SRC_FILES	= 		main.c											\
 					menu/init_struct.c								\
 					menu/hover_display.c							\
 					menu/how_to_play.c								\
+					pause_menu/pause_loop.c							\
+					pause_menu/init_pause.c							\
+					pause_menu/destroy_pause.c						\
 					main_scene/control_direction.c					\
 					main_scene/control.c							\
 					main_scene/dog_set.c							\
