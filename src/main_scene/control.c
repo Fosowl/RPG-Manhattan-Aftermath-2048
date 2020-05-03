@@ -31,13 +31,13 @@ void player_controller(game_t *game)
 
     game->player.angle = point_toward_mouse(game->entities_list, game->window);
     if (press(sfKeyUp) || press(game->player.control.key_up))
-        r = teleport_player_up(game->entities_list, game->player.save);
+        r = teleport_player_up(ALL);
     if (press(sfKeyDown) || press(game->player.control.key_down))
-        r = teleport_player_down(game->entities_list, game->player.save);
+        r = teleport_player_down(ALL);
     if (press(sfKeyLeft) || press(game->player.control.key_left))
-        r = teleport_player_left(game->entities_list, game->player.save);
+        r = teleport_player_left(ALL);
     if (press(sfKeyRight) || press(game->player.control.key_right))
-        r = teleport_player_right(game->entities_list, game->player.save);
+        r = teleport_player_right(ALL);
     r = attack_entities(game, &game->event, game->window);
     if (r == 0)
         animation = append(game->player.selected, ":static");

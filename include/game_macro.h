@@ -32,4 +32,6 @@
 #define ATTACK 2
 #define RELOAD 3
 
+#define ALL game->entities_list,game->player.save,game->entities_runtime
+
 #endif /* !MACRO_H_ */
