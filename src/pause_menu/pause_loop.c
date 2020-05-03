@@ -53,7 +53,6 @@ int pause_loop(game_t *game)
 {
     sfEvent event;
     int r = 0;
-    int hover = 0;
 
     init_pause(game->menu->pause_m);
     while (r == 0) {

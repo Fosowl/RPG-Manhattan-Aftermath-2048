@@ -9,7 +9,7 @@
 #include "menu.h"
 #include "scene.h"
 
-init_pos(pause_t *pause_m)
+void init_pos(pause_t *pause_m)
 {
     pause_m->bg_pos.x = 725;
     pause_m->bg_pos.y = 200;

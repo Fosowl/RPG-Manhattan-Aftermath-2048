@@ -70,11 +70,14 @@ entities_t *check_entities(entities_t *object_list, int y, char **map)
     return (object_list);
 }
 
-entities_t *load_map(entities_t *object_list)
+entities_t *load_map(entities_t *object_list, int *err)
 {
     char *stock_map = read_map();
-    char **map = divide_array(stock_map, '\n');
+    char **map = NULL;
 
+    if (stock_map == NULL)
+        return(NULL);
+    map = divide_array(stock_map, '\n');
     for (int y = 0; map[y] != NULL; y++)
         object_list = check_entities(object_list, y, map);
     return (object_list);

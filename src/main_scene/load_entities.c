@@ -37,9 +37,12 @@ static entities_t *load_object(entities_t *entities)
 static entities_t *load_building(entities_t *entities)
 {
     entities_t *tmp = NULL;
+    int err = 0;
 
     entities = load_ground(entities, 0);
-    entities = load_map(entities);
+    entities = load_map(entities, &err);
+    if (err == 1)
+        return ((entities_t *)-1);
     while ((tmp = (starset_get_next(entities, "map")))) {
         tmp->restitution = 100.0f;
     }
@@ -53,6 +56,8 @@ entities_t *load_entities_scene(int zombie, sfRenderWindow *window)
     sfRenderWindow_clear(window, sfBlack);
     draw_loading_text(window);
     entities = load_building(entities);
+    if (entities == NULL)
+        return (NULL);
     entities = load_object(entities);
     entities = create_zombie_scene(entities, zombie, window);
     entities = starset_entities_add(entities, PLAYER_PATH, "player", false);
