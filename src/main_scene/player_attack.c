@@ -26,7 +26,7 @@ static int limit_rate_reload(int wait)
     return (0);
 }
 
-static int switch_attack(game_t *game, int *r, sfRenderWindow *window)
+static int switch_attack(game_t *game, int *r)
 {
     char *animation = NULL;
 
@@ -53,8 +53,7 @@ static int switch_attack(game_t *game, int *r, sfRenderWindow *window)
     return (1);
 }
 
-int attack_entities(game_t *game, sfEvent *event
-, sfRenderWindow *window)
+int attack_entities(game_t *game, sfEvent *event)
 {
     static int r = 0;
     int switch_r = 0;
@@ -72,6 +71,6 @@ int attack_entities(game_t *game, sfEvent *event
         r = RELOAD;
         event->mouseButton.button = -1;
     }
-    switch_r = switch_attack(game, &r, window);
+    switch_r = switch_attack(game, &r);
     return (switch_r);
 }
