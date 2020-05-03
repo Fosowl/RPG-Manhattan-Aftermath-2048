@@ -16,7 +16,7 @@ static void game_over_ui(ui_t *ui, sfRenderWindow *window)
 {
     static int v = 0;
     sfTime delay;
-    sfClock *timer = NULL;
+    static sfClock *timer = NULL;
 
     if (!timer)
         timer = sfClock_create();
@@ -49,10 +49,9 @@ int update_value(game_t *game)
         game_over_ui(&game->ui, game->window);
         return (1);
     }
+    pick_item(game);
     return (0);
 }
-
-//game->entities_list = starset_entities_destroy(game->entities_list, tmp->name);
 
 static void update_second_bullet(entities_t *girl_bullet, int d_2)
 {

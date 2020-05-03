@@ -46,3 +46,12 @@ entities_t *load_pick_object(entities_t *entities, int nb)
     propeties_pick_object(entities);
     return (entities);
 }
+
+void pick_item(game_t *game)
+{
+    if (!game->player.save->collision)
+        return;
+    if (search("pick:", game->player.save->collision->name) != -1) {
+        game->player.save->collision->visible = false;
+    }
+}
