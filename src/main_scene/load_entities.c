@@ -15,7 +15,7 @@
 static void set_propreties(entities_t *entities)
 {
     starset_entities_teleport(entities, "player", 1920 / 2, 1080 / 2);
-    starset_entities_teleport(entities, "sora", 1500, 300);
+    starset_entities_teleport(entities, "sora", 3600, 400);
     starset_entities_get_propreties(entities, "player")->speed = 3;
     starset_entities_get_propreties(entities, "sora")->life = 300;
 }
