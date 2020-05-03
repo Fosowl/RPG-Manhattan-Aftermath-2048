@@ -78,10 +78,10 @@ int main_scene_load(game_t *game)
     load_value(game);
     load_value_2(game);
     create_case_element(game->inventory);
-    if (main_scene_loop(game, timer) == EXIT_SUCCESS) {
+    if (main_scene_loop(game, timer) == EXIT_CLOSE) {
         starset_entities_destroy_all(game->entities_list);
         return EXIT_CLOSE;
     }
     starset_entities_destroy_all(game->entities_list);
-    return EXIT_FAILURE;
+    return EXIT_SUCCESS;
 }

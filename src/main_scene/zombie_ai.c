@@ -73,7 +73,7 @@ static int handle_zombie_damage(entities_t **entities, entities_t *tmp
     if (tmp->life <= 5 && search("zombie", tmp->name) != -1)
         starset_entities_play_sound(tmp, tmp->name, "death", false);
     if (tmp->life <= 0 && search("zombie", tmp->name) != -1) {
-       * entities = starset_entities_destroy(*entities, tmp->name);
+        *entities = starset_entities_destroy(*entities, tmp->name);
         return (1);
     }
     return (0);

@@ -17,7 +17,7 @@ int main_scene_load(game_t *game);
 // main_scene.c
 
 int main_scene_loop(game_t *game, sfClock *timer);
-void main_scene_update(game_t *game);
+int main_scene_update(game_t *game);
 void play_music(char *path);
 
 // load_entities.c

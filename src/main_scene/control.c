@@ -41,9 +41,8 @@ void player_controller(game_t *game)
     r = attack_entities(game, &game->event, game->window);
     if (r == 0)
         animation = append(game->player.selected, ":static");
-    if (r == 1) {
+    if (r == 1)
         animation = append(game->player.selected, ":move");
-    }
     if (r == 0 || r == 1)
         starset_play_animation(game->entities_list, "player", animation, 3);
     free(animation);

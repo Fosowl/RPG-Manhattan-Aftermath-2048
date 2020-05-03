@@ -31,7 +31,7 @@ static int switch_attack(game_t *game, int *r, sfRenderWindow *window)
     char *animation = NULL;
 
     if (*r == ATTACK)
-        return(on_attack(game, animation, r));
+        return (on_attack(game, animation, r));
     if (*r == RELOAD) {
         animation = append(game->player.selected, ":reload");
         if (compare(game->player.selected, "rifle") &&

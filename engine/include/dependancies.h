@@ -56,7 +56,7 @@ void free_array(char **array);
 int emulate_else_if_e(int *pass, int true_condition);
 
 #define SWITCH_E int pass = 1;
-#define CASE_E__O if (emulate_else_if_e(&pass, 
+#define CASE_E__O if (emulate_else_if_e(&pass,
 #define CASE_E__C ))
 #define DEFAULT_E pass > 0 ? 0 :
 

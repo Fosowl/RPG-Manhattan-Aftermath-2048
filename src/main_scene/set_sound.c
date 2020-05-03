@@ -37,7 +37,7 @@ void set_player_sound(entities_t *entities)
     starset_add_entities_sound(player, "player", "heart", HEARTH_PATH);
     starset_add_entities_sound(player, "player", "pistol", PISTOL_SOUND_PATH);
     starset_add_entities_sound(player, "player", "rifle", RIFLE_SOUND_PATH);
-    starset_add_entities_sound(player, "player", "collide", BANG_SOUND);
+    starset_add_entities_sound(player, "player", "yes", YES_SOUND);
     starset_add_entities_sound(player, "player", "reload", RELOAD_SOUND);
     starset_add_entities_sound(player, "player", "knife", KNIFE_SOUND);
     starset_add_entities_sound(player, "player", "empty", EMPTY_SOUND);
@@ -56,7 +56,6 @@ void set_girl_sound(entities_t *entities)
 
     starset_add_entities_sound(player, "sora", "pain", PLAYER_PAIN_PATH);
     starset_add_entities_sound(player, "sora", "pistol", PISTOL_SOUND_PATH);
-    starset_add_entities_sound(player, "sora", "collide", BANG_SOUND);
     starset_set_sound_volume(player, "sora", "pain", 80);
     starset_set_sound_volume(player, "sora", "pistol", 90);
     starset_set_sound_volume(player, "sora", "collide", 70);
