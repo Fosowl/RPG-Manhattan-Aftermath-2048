@@ -52,6 +52,8 @@ entities_t *load_map(entities_t *object_list)
                 "assets/building/Walls/X.png", name, true);
                 starset_entities_teleport(object_list, name,
                 x * 150, y * 150);
+                starset_entities_get_propreties
+                (object_list, name)->restitution = 40.0;
                 break;
                 case '1':
                 name = append("map:down_wall", my_itoa(nb));
@@ -59,6 +61,8 @@ entities_t *load_map(entities_t *object_list)
                 "assets/building/Walls/4.png", name, true);
                 starset_entities_teleport(object_list, name,
                 x * 150, y * 150);
+                starset_entities_get_propreties
+                (object_list, name)->restitution = 40.0;
                 break;
                 case '2':
                 name = append("map:border_right", my_itoa(nb));
@@ -66,6 +70,8 @@ entities_t *load_map(entities_t *object_list)
                 "assets/building/Walls/1.png", name, true);
                 starset_entities_teleport(object_list, name,
                 x * 150, y * 150);
+                starset_entities_get_propreties
+                (object_list, name)->restitution = 40.0;
                 break;
                 case '3':
                 name = append("map:down_right", my_itoa(nb));
@@ -73,6 +79,8 @@ entities_t *load_map(entities_t *object_list)
                 "assets/building/Walls/3.png", name, true);
                 starset_entities_teleport(object_list, name,
                 x * 150, y * 150);
+                starset_entities_get_propreties
+                (object_list, name)->restitution = 40.0;
                 break;
                 case '4':
                 name = append("map:down_left", my_itoa(nb));
@@ -80,6 +88,17 @@ entities_t *load_map(entities_t *object_list)
                 "assets/building/Walls/Z.png", name, true);
                 starset_entities_teleport(object_list, name,
                 x * 150, y * 150);
+                starset_entities_get_propreties
+                (object_list, name)->restitution = 40.0;
+                break;
+                case '5':
+                name = append("map:ground", my_itoa(nb));
+                object_list = starset_entities_add(object_list,
+                "assets/building/Walls/W.png", name, true);
+                starset_entities_teleport(object_list, name,
+                x * 150, y * 150);
+                starset_entities_get_propreties
+                (object_list, name)->is_trigger = true;
                 break;
             }
         }
