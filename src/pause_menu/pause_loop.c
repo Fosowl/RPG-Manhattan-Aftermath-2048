@@ -9,12 +9,11 @@
 #include "menu.h"
 #include "scene.h"
 
-int check_pause_button(sfRenderWindow *window)
+int check_pause_button(game_t *game)
 {
-    sfVector2i size = sfMouse_getPositionRenderWindow(window);
+    sfVector2i size = sfMouse_getPositionRenderWindow(game->screen->window);
 
-    if (size.x >= 790 && size.x <= 1120 && size.y >= 350 &&
-    size.y <= 440) {
+    if (size.x >= 790 && size.x <= 1120 && size.y >= 350 && size.y <= 440) {
         return (1);
     }
     return (0);
@@ -34,9 +33,11 @@ void display_pause(game_t *game)
 static int in_pause_loop(game_t *game, sfEvent event)
 {
     int check_click = 0;
+    sfVector2i size = sfMouse_getPositionRenderWindow(game->screen->window);
 
-    if (event.type == sfEvtMouseButtonPressed) {
-        check_click = check_pause_button(game->screen->window);
+    if ((event.type == sfEvtMouseButtonPressed)
+        || (size.x >= 790 && size.x <= 1120 && size.y >= 350 && size.y <= 440)) {
+        check_click = check_pause_button(game);
     }
     if (sfKeyboard_isKeyPressed(sfKeyP)) {
         check_click = 1;
