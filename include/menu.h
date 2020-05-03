@@ -19,5 +19,6 @@ int hover_menu_text(game_t *game);
 void display_hover_menu(game_t *game, int hover);
 void init_hover(hover_t *hover);
 void init_hover_pos(hover_t *hover);
+int check_press(sfEvent event, sfRenderWindow *window);
 
 #endif /* !MENU_H_ */

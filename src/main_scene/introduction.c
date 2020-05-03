@@ -13,12 +13,12 @@
 #include "path.h"
 
 static void refresh_scene(sfSprite **sprite_load
-, sfRenderWindow *window)
+, sfRenderWindow *window, sfEvent *event)
 {
     int i = 0;
     sfBool lock = true;
 
-    while (i < 5) {
+    while (i < 5 && starset_running(window, event)) {
         sfRenderWindow_clear(window, sfBlack);
         sfRenderWindow_drawSprite(window, sprite_load[i], NULL);
         sfRenderWindow_display(window);
@@ -47,5 +47,5 @@ void introduction_scene(game_t *game)
     texture_load[4] = sfTexture_createFromFile(INTRO_5_PATH, NULL);
     for (int i = 0; i < 5; i++)
         sfSprite_setTexture(sprite_load[i], texture_load[i], false);
-    refresh_scene(&sprite_load, game->screen->window);
+    refresh_scene(&sprite_load, game->screen->window, &game->event);
 }

@@ -33,7 +33,7 @@ static int game_over_ui(ui_t *ui, sfRenderWindow *window)
     }
     if (v > 7)
         v = 0;
-    return ((pass >= 10) ? 1 : 0);
+    return ((pass >= 14) ? 1 : 0);
 }
 int update_value(game_t *game)
 {
