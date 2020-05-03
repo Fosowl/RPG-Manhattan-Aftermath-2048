@@ -53,7 +53,7 @@ int main_scene_update(game_t *game)
         return (1);
     move_dog(game->entities_list, game->player.save, game->girl->spot);
     update_object(game);
-    update_element(game);
+    //update_element(game);
     girl_ai(game);
     player_controller(game);
     player_switch_object(game->entities_list, game->player);

@@ -37,10 +37,19 @@ entities_t *load_map(entities_t *object_list)
     char *name = NULL;
     int nb = 0;
 
+<<<<<<< HEAD
 
 
 
     //GESTION ERREUR CHANGER DE NOM DU TXT
+=======
+    //GESTION ERREUR CHANGER DE NOM DU TXT
+    if (read_map() == NULL) {
+        error = 1;
+        return (object_list);
+    }
+    map = divide_array(stock_map, '\n');
+>>>>>>> 48a0e8741e21a5be25a4b6f96d379d8a62b7dc56
 
     for (int y = 0; map[y] != NULL; y++) {
         for (int x = 0; map[y][x] != '\0'; x++) {
