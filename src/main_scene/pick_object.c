@@ -59,6 +59,9 @@ void pick_item(game_t *game)
     if (compare(game->player.save->collision->name, "pick:ammo_pistol")) {
         game->player.nb_magazine_gun += 1;
     }
+    if (compare(game->player.save->collision->name, "pick:rifle")) {
+        game->player.unlock_rifle = true;
+    }
     if (search("pick:", game->player.save->collision->name) != -1) {
         game->player.save->collision->visible = false;
     }
