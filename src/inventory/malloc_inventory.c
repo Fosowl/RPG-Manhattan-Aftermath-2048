@@ -20,6 +20,9 @@ int malloc_element(inventory_t *inventory)
         inventory->element[i].object = malloc(sizeof(basic_object_t) * (40));
         if (inventory->element[i].object == NULL)
             return (84);
+        inventory->element[i].info = malloc(sizeof(basic_object_t) * (40));
+        if (inventory->element[i].info == NULL)
+            return (84);
         inventory->element[i].number = malloc(sizeof(sfText *) * (40));
         if (inventory->element[i].number == NULL)
             return (84);

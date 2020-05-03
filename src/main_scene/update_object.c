@@ -51,8 +51,6 @@ int update_value(game_t *game)
         return (1);
     }
     pick_item(game);
-    game->inventory->contains[AK47].nb = game->player.nb_magazine_rifle;
-    game->inventory->contains[GUN].nb = game->player.nb_magazine_gun;
     return (0);
 }
 

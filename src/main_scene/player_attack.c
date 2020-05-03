@@ -10,6 +10,7 @@
 #include "starset_engine.h"
 #include "game_macro.h"
 #include "warlock.h"
+#include "inventory.h"
 
 static int limit_rate_reload(int wait)
 {
@@ -36,10 +37,12 @@ static int switch_attack(game_t *game, int *r, sfRenderWindow *window)
         if (compare(game->player.selected, "rifle") &&
         game->player.nb_magazine_rifle > 0) {
             game->player.ammo_rifle = 30;
-            game->player.nb_magazine_rifle -= 1;
+            game->player.nb_magazine_rifle -= 10;
+            game->inventory->contains[BULLET_AK47].nb -= 10;
         } else if (game->player.nb_magazine_gun >= 0) {
             game->player.ammo_gun = 11;
             game->player.nb_magazine_gun -= 1;
+            game->inventory->contains[BULLET_GUN].nb -= 10;
         }
         *r = starset_play_animation(game->player.save, "player", animation, 1);
         game->player.noise = 1.3;
