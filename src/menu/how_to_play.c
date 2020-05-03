@@ -27,15 +27,26 @@ void init_how_to_play(menu_t *menu)
     menu->how_to->press_space_pos);
 }
 
-void how_to_play(game_t *game)
+int quit_menu(game_t *game, sfEvent event)
 {
-    sfEvent event;
-
-    while (!sfKeyboard_isKeyPressed(sfKeySpace)) {
-        sfRenderWindow_drawSprite(game->screen->window,
-        game->menu->how_to->how_bg_sprite, NULL);
-        sfRenderWindow_drawSprite(game->screen->window,
-        game->menu->how_to->press_space_sprite, NULL);
-        sfRenderWindow_display(game->screen->window);
+    while (sfRenderWindow_pollEvent(game->screen->window, &event)) {
+        if (event.type == sfEvtClosed)
+            return (9);
     }
+    return (0);
+}
+
+int how_to_play(game_t *game, sfEvent event)
+{
+    int i = 0;
+
+    while (!sfKeyboard_isKeyPressed(sfKeySpace) && i == 0) {
+        sfRenderWindow_drawSprite(game->screen->window,
+                                    game->menu->how_to->how_bg_sprite, NULL);
+        sfRenderWindow_drawSprite(game->screen->window,
+                                game->menu->how_to->press_space_sprite, NULL);
+        sfRenderWindow_display(game->screen->window);
+        i = quit_menu(game, event);
+    }
+    return (i);
 }
