@@ -64,13 +64,6 @@ SRC_FILES	= 		main.c											\
 					menu/init_struct.c								\
 					menu/hover_display.c							\
 					menu/how_to_play.c								\
-					dialog/malloc_dialog.c							\
-					dialog/init_reply_dialog.c						\
-					dialog/parsing_reply.c							\
-					dialog/create_dialog.c							\
-					dialog/event_dialog.c							\
-					dialog/display_dialog.c							\
-					dialog/destroy_dialog.c							\
 					main_scene/control_direction.c					\
 					main_scene/control.c							\
 					main_scene/dog_set.c							\

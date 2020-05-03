@@ -14,7 +14,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include "dialog.h"
 #include "game_struct.h"
 #include "warlock.h"
 #include "menu.h"

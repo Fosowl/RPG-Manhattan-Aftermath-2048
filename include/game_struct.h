@@ -96,19 +96,6 @@ typedef struct menu_s {
     how_t *how_to;
 } menu_t;
 
-typedef struct dialog_s {
-    char ***text;
-    basic_object_t *obj;
-    check_text_t *check;
-    sfText *script;
-    sfText *person;
-    int next;
-    int nb_text;
-    int nb;
-    int nb_speech;
-    int talk;
-} dialog_t;
-
 typedef struct screen_s {
     sfVideoMode mode;
     sfRenderWindow *window;
@@ -158,7 +145,6 @@ typedef struct ui_t {
 typedef struct game_s {
     screen_t *screen;
     menu_t *menu;
-    dialog_t *dialog;
     inventory_t *inventory;
     sfRenderWindow *window;
     sfEvent event;
