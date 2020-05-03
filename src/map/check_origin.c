@@ -20,7 +20,6 @@ char *check_origin_corner(char **map, int x, int y, char *origin)
     default:
         return (NULL);
     }
-    printf("4\n");
     return (origin);
 }
 
@@ -41,7 +40,6 @@ char *check_origin_object(char **map, int x, int y, char *origin)
         origin = check_origin_corner(map, x, y, origin);
         break;
     }
-    printf("3\n");
     return (origin);
 }
 
@@ -62,7 +60,6 @@ char *check_origin_wall(char **map, int x, int y, char *origin)
         origin = check_origin_object(map, x, y, origin);
         break;
     }
-    printf("2\n");
     return (origin);
 }
 
@@ -85,6 +82,5 @@ char *check_origin_ground(char **map, int x, int y)
         origin = check_origin_wall(map, x, y, origin);
         break;
     }
-    printf("1\n");
     return (origin);
 }
