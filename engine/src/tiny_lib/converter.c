@@ -18,8 +18,7 @@ long long my_atoi_e(char *str)
         if (str[i] < 48 || str[i] > 57)
             return (-84);
     }
-    for (; *str; str++)
-    {
+    for (; *str; str++) {
         if (*str >= '0' && *str <= '9') {
             val *= 10;
             val += *str - '0';

@@ -54,7 +54,7 @@ char *check_path_wall(char **map, int x, int y, char *path)
         path = "assets/building/Walls/W.png";
         break;
     case '6':
-        path = "assets/inventory/info_steak.png"; //change
+        path = "assets/inventory/info_steak.png";
         break;
     default:
         path = check_path_object(map, x, y, path);
