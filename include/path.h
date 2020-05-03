@@ -24,6 +24,8 @@
 #define INTRO_1_PATH "./assets/intro/intro_1.png"
 #define INTRO_2_PATH "./assets/intro/intro_2.png"
 #define INTRO_3_PATH "./assets/intro/intro_3.png"
+#define INTRO_4_PATH "./assets/intro/intro_4.png"
+#define INTRO_5_PATH "./assets/intro/intro_5.png"
 
 #define GRASS_1_PATH "./assets/ground/grass_1.png"
 #define GRASS_2_PATH "./assets/ground/grass_2.png"
