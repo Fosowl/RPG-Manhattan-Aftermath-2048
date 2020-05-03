@@ -91,6 +91,7 @@ typedef struct entities_t {
     struct entities_t *next;
     struct entities_t *back;
     struct entities_t *previous;
+    sfVector2i collision_vector;
 } entities_t;
 
 // UPDATE && SET

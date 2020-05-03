@@ -39,7 +39,7 @@ entities_t *load_map(entities_t *object_list, int *error)
 
     //GESTION ERREUR CHANGER DE NOM DU TXT
     if (read_map() == NULL) {
-        error = 1;
+        *error = 1;
         return (object_list);
     }
     map = divide_array(stock_map, '\n');

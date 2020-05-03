@@ -41,7 +41,7 @@ void internal__collision_physics(entities_t *entitie_1
     , entitie_2->spot);
     float e = (entitie_1->restitution < entitie_2->restitution
     ?entitie_1->restitution : entitie_2->restitution);
-    float impulse = -(1 + e) * normal * 0.18;
+    float impulse = -(1 + e) * normal * 0.17f;
 
     impulse /= 1 / entitie_1->mass + 1 / entitie_2->mass;
     if (collision_vector.x != 0 && collision_vector.y != 0) {
@@ -50,4 +50,5 @@ void internal__collision_physics(entities_t *entitie_1
         if (normal > 0)
             return;
     }
+    entitie_1->collision_vector = collision_vector;
 }
