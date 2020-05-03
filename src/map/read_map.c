@@ -37,9 +37,6 @@ entities_t *load_map(entities_t *object_list)
     char *name = NULL;
     int nb = 0;
 
-
-
-
     //GESTION ERREUR CHANGER DE NOM DU TXT
 
     for (int y = 0; map[y] != NULL; y++) {
