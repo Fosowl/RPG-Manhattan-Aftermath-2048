@@ -112,6 +112,7 @@ SRC_FILES	= 		main.c											\
 					inventory/create_info_inventory.c 	 			\
 					inventory/move_in_inventory.c 					\
 					inventory/info_inventory.c 						\
+					inventory/inventory_object_life.c 				\
 # test var
 
 TEST	 = tests/test.c
