@@ -51,6 +51,7 @@ int update_value(game_t *game)
     if (game->player.save->life <= 0) {
         return (game_over_ui(&game->ui, game->window));
     }
+    starset_entities_teleport(game->player.save, "player", 1920 / 2, 1080 / 2);
     pick_item(game);
     return (0);
 }

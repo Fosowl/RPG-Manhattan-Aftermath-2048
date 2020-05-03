@@ -50,7 +50,8 @@ entities_t *load_pick_object(entities_t *entities, int nb)
 
 void pick_item(game_t *game)
 {
-    if (!game->player.save->collision)
+    if (!game->player.save->collision ||
+    !game->player.save->collision->name)
         return;
     if (game->player.save->collision->visible == false)
         return;
