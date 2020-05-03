@@ -38,7 +38,7 @@ void player_controller(game_t *game)
         r = teleport_player_left(ALL);
     if (press(sfKeyRight) || press(game->player.control.key_right))
         r = teleport_player_right(ALL);
-    r = attack_entities(game, &game->event, game->window);
+    r = attack_entities(game, &game->event);
     if (r == 0)
         animation = append(game->player.selected, ":static");
     if (r == 1)

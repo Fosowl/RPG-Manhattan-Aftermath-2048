@@ -43,7 +43,7 @@ static void ammo_ui(game_t *game)
         , my_itoa(game->player.nb_magazine_gun));
     } else
         return;
-    show_ammo_ui(&a, game, &text_ui);
+    show_ammo_ui(&a, game, text_ui);
 }
 
 static void reload_ui(sfRenderWindow *window)

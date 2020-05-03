@@ -47,5 +47,5 @@ void introduction_scene(game_t *game)
     texture_load[4] = sfTexture_createFromFile(INTRO_5_PATH, NULL);
     for (int i = 0; i < 5; i++)
         sfSprite_setTexture(sprite_load[i], texture_load[i], false);
-    refresh_scene(&sprite_load, game->screen->window, &game->event);
+    refresh_scene(sprite_load, game->screen->window, &game->event);
 }
