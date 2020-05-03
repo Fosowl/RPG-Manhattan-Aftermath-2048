@@ -10,7 +10,7 @@
 
 #include "dependancies.h"
 
-#define LOG 1
+#define LOG 0
 
 typedef struct audio_t {
     char *name;
