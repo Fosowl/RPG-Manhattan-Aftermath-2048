@@ -67,7 +67,7 @@ static int in_menu_loop(game_t *game, sfEvent event)
         check_click = check_press(event);
     if (check_click == 1) {
         sfSound_destroy(game->menu->menu_music);
-        if (main_scene_load(game) == 0);
+        if (main_scene_load(game) == 0)
             return (0);
         return (1);
     } else if (check_click == 2) {

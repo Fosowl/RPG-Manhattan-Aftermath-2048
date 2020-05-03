@@ -19,6 +19,12 @@
 #define BLOOD_PATH "./assets/effect/blood.png"
 #define GAME_OVER_PATH "./assets/effect/game_over.png"
 
+// intro
+
+#define INTRO_1_PATH "./assets/intro/intro_1.png"
+#define INTRO_2_PATH "./assets/intro/intro_2.png"
+#define INTRO_3_PATH "./assets/intro/intro_3.png"
+
 #define GRASS_1_PATH "./assets/ground/grass_1.png"
 #define GRASS_2_PATH "./assets/ground/grass_2.png"
 #define GRASS_3_PATH "./assets/ground/grass_3.png"

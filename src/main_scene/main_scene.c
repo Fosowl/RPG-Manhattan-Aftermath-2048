@@ -34,8 +34,9 @@ int main_scene_loop(game_t *game, sfClock *timer)
             return EXIT_CLOSE;
         starset_entities_render_all(game->entities_runtime, game->window);
         starset_update_engine(game->entities_list, game->window, NULL);
-        if (main_scene_update(game) == 1)
+        if (main_scene_update(game) == 1) {
             break;
+        }
         sfRenderWindow_display(game->window);
         if (!manage_event(game))
             return EXIT_CLOSE;
@@ -62,6 +63,5 @@ int main_scene_update(game_t *game)
         handle_zombie_sound(game);
     }
     update_ui(game);
-
     return (0);
 }

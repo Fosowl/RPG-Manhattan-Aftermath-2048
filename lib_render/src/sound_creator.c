@@ -7,7 +7,6 @@
 
 #include "../include/render.h"
 
-
 sfSound *create_sound_from(char *path)
 {
     sfSoundBuffer *buffer = NULL;

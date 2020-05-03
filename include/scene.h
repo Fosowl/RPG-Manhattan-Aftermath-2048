@@ -139,4 +139,8 @@ entities_t *load_ground(entities_t *entities, int nb);
 entities_t *load_pick_object(entities_t *entities, int nb);
 void pick_item(game_t *game);
 
+// scene.h
+
+void introduction_scene(game_t *game);
+
 #endif /* !SCENE_H_ */
