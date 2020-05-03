@@ -39,7 +39,7 @@ entities_t *load_pick_object(entities_t *entities, int nb)
             , "pick:ammo_rifle", true);
         if (r == 1)
             entities = starset_entities_add(entities, PICK_KIT_PATH,
-             "pick:kit", true);
+            "pick:kit", true);
         if (r >= 2)
             entities = starset_entities_add(entities, PICK_AMMO_PISTOL_PATH
             , "pick:ammo_pistol", true);
@@ -64,8 +64,9 @@ void pick_item(game_t *game)
     }
     if (compare(game->player.save->collision->name, "pick:rifle")) {
         game->player.unlock_rifle = true;
+        starset_single_play_sound(game->player.save, "yes", false);
+        game->player.selected = fill("rifle");
     }
-    if (search("pick:", game->player.save->collision->name) != -1) {
+    if (search("pick:", game->player.save->collision->name) != -1)
         game->player.save->collision->visible = false;
-    }
 }

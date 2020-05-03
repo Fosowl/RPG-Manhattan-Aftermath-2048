@@ -27,14 +27,15 @@ void play_music(char *path)
 int main_scene_loop(game_t *game, sfClock *timer)
 {
     game->window = game->screen->window;
-    game->delay = 1000;
+    game->delay = 100;
     play_music("assets/audio/days_later.ogg");
     while (game->window) {
         if (!starset_running(game->window, &game->event))
             return EXIT_CLOSE;
         starset_entities_render_all(game->entities_runtime, game->window);
         starset_update_engine(game->entities_list, game->window, NULL);
-        main_scene_update(game);
+        if (main_scene_update(game) == 1)
+            break;
         sfRenderWindow_display(game->window);
         if (!manage_event(game))
             return EXIT_CLOSE;
@@ -45,12 +46,13 @@ int main_scene_loop(game_t *game, sfClock *timer)
     return EXIT_SUCCESS;
 }
 
-void main_scene_update(game_t *game)
+int main_scene_update(game_t *game)
 {
-    update_value(game);
+    if (update_value(game) == 1)
+        return (1);
     move_dog(game->entities_list, game->player.save, game->girl->spot);
     update_object(game);
-    update_element(game);
+    //update_element(game);
     girl_ai(game);
     player_controller(game);
     player_switch_object(game->entities_list, game->player);
@@ -60,4 +62,6 @@ void main_scene_update(game_t *game)
         handle_zombie_sound(game);
     }
     update_ui(game);
+
+    return (0);
 }

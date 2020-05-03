@@ -52,6 +52,7 @@ ENGINE_FILES	= core/calculation.c\
 				  core/get.c\
 				  core/dynamic_sound.c\
 				  core/move_by_id.c\
+				  core/sound_set.c\
 				  physics/math_vector.c\
 				  physics/math_misc.c\
 				  physics/collision.c\

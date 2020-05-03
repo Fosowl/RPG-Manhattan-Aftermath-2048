@@ -11,7 +11,7 @@
 
 //
 // animation for each weapon (pistol, knife, rifle, torch)
-// - static (not moving) 
+// - static (not moving)
 // - move (moving)
 // - attack (exept for torch)
 // - reload (only for pistol and rifle)

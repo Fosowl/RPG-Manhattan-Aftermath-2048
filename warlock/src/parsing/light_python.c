@@ -11,7 +11,7 @@ char *append(char *origin, char *added)
 {
     char *fusioned = NULL;
     int d = 0;
-    
+
     DEBUG_MODE == 1 ? debug_log("append() first arg", origin) : 0;
     DEBUG_MODE == 1 ? debug_log("append() second arg", added) : 0;
     fusioned = malloc(sizeof(char *) * (my_strlen(origin)

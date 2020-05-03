@@ -11,6 +11,7 @@
 //texture
 
 #define ZOMBIE_PATH "./assets/sheet_zombie.png"
+#define ZOMBIE_2_PATH "./assets/sheet_zombie_2.png"
 #define PLAYER_PATH "./assets/sheet_player.png"
 #define BULLET_PATH "./assets/effect/bullet.png"
 #define DOG_PATH "./assets/wolf.png"
@@ -40,8 +41,8 @@
 #define HEARTH_PATH "assets/audio/heart.ogg"
 #define PISTOL_SOUND_PATH "assets/audio/gun.ogg"
 #define RIFLE_SOUND_PATH "assets/audio/rifle.ogg"
-#define BANG_SOUND "assets/audio/bang.ogg"
 #define RELOAD_SOUND "assets/audio/reload.ogg"
+#define YES_SOUND "assets/audio/yeah.ogg"
 #define KNIFE_SOUND "assets/audio/knife.ogg"
 #define EMPTY_SOUND "./assets/audio/empty.ogg"
 #define WALK_GRASS_SOUND "./assets/audio/walk_grass.ogg"

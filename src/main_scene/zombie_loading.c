@@ -24,6 +24,18 @@ void update_zombie_loading(sfRenderWindow *window, int v, int max_v)
     sfRenderWindow_display(window);
 }
 
+static entities_t *random_zombie(entities_t *entities, char *name
+, sfSprite *prefab, sfSprite *prefab_2)
+{
+    if (rand() % 2 == 1)
+        entities = starset_entities_add_from_prefab(entities, prefab
+        , append("zombie:", name), false);
+    else
+        entities = starset_entities_add_from_prefab(entities, prefab_2
+    , append("zombie:", name), false);
+    return (entities);
+}
+
 entities_t *create_zombie_scene(entities_t *entities, int zombie
 , sfRenderWindow *window)
 {
@@ -32,13 +44,13 @@ entities_t *create_zombie_scene(entities_t *entities, int zombie
     char *name = NULL;
     sfVector2f *spawn;
     sfSprite *prefab = starset_create_prefab(ZOMBIE_PATH);
+    sfSprite *prefab_2 = starset_create_prefab(ZOMBIE_2_PATH);
 
     spawn = zombie_spawn_point(zombie);
     for (int i = 0; i < zombie; i++) {
         name = my_itoa(i);
         update_zombie_loading(window, i, zombie);
-        entities = starset_entities_add_from_prefab(entities, prefab
-        , append("zombie:", name), false);
+        random_zombie(entities, name, prefab, prefab_2);
         x = spawn[i].x;
         y = spawn[i].y;
         starset_entities_teleport(entities, name, x, y);

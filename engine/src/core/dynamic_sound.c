@@ -25,7 +25,7 @@ static void internal__apply_sound(audio_t *copy)
 }
 
 static void internal__set_binaural_effect(audio_t *audio,
- sfVector3f *vector)
+sfVector3f *vector)
 {
     audio_t *copy = audio;
 

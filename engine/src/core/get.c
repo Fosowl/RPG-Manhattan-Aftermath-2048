@@ -66,3 +66,20 @@ entities_t *starset_get_closest(entities_t *entities, char *name)
     }
     return (closest);
 }
+
+int internal__test_class(char *name, char *check_name)
+{
+    char **get = internal__get_class(check_name);
+    int full = 0;
+
+    if (compare_e(get[0], get[1]) && compare_e(name, get[0]))
+        full = 1;
+    else if ((compare_e(name, get[0]) ||
+    compare_e(name, get[1])))
+        full = 1;
+    if (full == 1) {
+        return (1);
+    }
+    free_array(get);
+    return (0);
+}
