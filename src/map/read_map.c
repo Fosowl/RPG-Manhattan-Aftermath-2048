@@ -30,19 +30,17 @@ char *read_map(void)
     return (buffer);
 }
 
-entities_t *load_map(entities_t *object_list, int *error)
+entities_t *load_map(entities_t *object_list)
 {
-    char *stock_map = NULL;
-    char **map = NULL;
+    char *stock_map = read_map();
+    char **map = divide_array(stock_map, '\n');
     char *name = NULL;
     int nb = 0;
 
-    if (read_map() == NULL) {
-        error = 1;
-        return (object_list);
-    }
-    stock_map = read_map();
-    map = divide_array(stock_map, '\n');
+
+
+
+    //GESTION ERREUR CHANGER DE NOM DU TXT
 
     for (int y = 0; map[y] != NULL; y++) {
         for (int x = 0; map[y][x] != '\0'; x++) {
