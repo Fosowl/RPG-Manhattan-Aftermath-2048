@@ -21,5 +21,6 @@ void init_hover(hover_t *hover);
 void init_hover_pos(hover_t *hover);
 void how_to_play(game_t *game);
 void init_how_to_play(menu_t *menu);
+void close_menu_screen(sfRenderWindow *window, sfEvent event);
 
 #endif /* !MENU_H_ */
