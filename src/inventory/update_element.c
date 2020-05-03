@@ -10,17 +10,17 @@
 
 void init_items_for_start_of_game(inventory_t *inventory)
 {
-    inventory->contains[AK47].nb = 1;
+    inventory->contains[AK47].nb = 0;
     inventory->contains[GUN].nb = 1;
     inventory->contains[KNIFE].nb = 1;
-    inventory->contains[BULLET_AK47].nb = 39;
-    inventory->contains[BULLET_GUN].nb = 29;
-    inventory->contains[STEAK].nb = 19;
-    inventory->contains[WATER].nb = 19;
-    inventory->contains[APPLE].nb = 19;
-    inventory->contains[CANNED].nb = 19;
-    inventory->contains[BANDAGE].nb = 19;
-    inventory->contains[MEDICAL_KIT].nb = 19;
+    inventory->contains[BULLET_AK47].nb = 61;
+    inventory->contains[BULLET_GUN].nb = 23;
+    inventory->contains[STEAK].nb = 0;
+    inventory->contains[WATER].nb = 0;
+    inventory->contains[APPLE].nb = 0;
+    inventory->contains[CANNED].nb = 0;
+    inventory->contains[BANDAGE].nb = 0;
+    inventory->contains[MEDICAL_KIT].nb = 0;
 }
 
 void update_element(game_t *game)
@@ -49,8 +49,23 @@ void nb_case_for_type(inventory_t *inventory, int i, int class)
 {
     if (class >= 3 && class <= 4)
         calc_nb_case(inventory, i, 5);
-    if (class == 2)
-        calc_nb_case(inventory, i, 10);
+    if (inventory->element[i].type == 4)
+        calc_nb_case(inventory, i, 30);
+    if (inventory->element[i].type == 5)
+        calc_nb_case(inventory, i, 11);
     if (class == 1)
         calc_nb_case(inventory, i, 1);
+}
+
+void option_for_type(inventory_t *inventory, int i)
+{
+    switch (inventory->element[i].type)
+    {
+    case 4:
+        check_nb_for_class(inventory, i, 30);
+        break;
+    case 5:
+        check_nb_for_class(inventory, i, 11);
+        break;
+    }
 }
