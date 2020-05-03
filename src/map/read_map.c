@@ -49,6 +49,8 @@ entities_t *create_new_obj(entities_t *object_list, int x, int y, char **map)
     name = append(origin, my_itoa(nb));
     object_list = starset_entities_add(object_list, path, name, true);
     starset_entities_teleport(object_list, name, x * 150, y * 150);
+    if (map[y][x] == '5')
+        starset_entities_get_propreties(object_list, name)->is_trigger = true;
     nb++;
     return (object_list);
 }
