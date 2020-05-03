@@ -16,7 +16,6 @@ static void refresh_scene(sfSprite **sprite_load
 , sfRenderWindow *window)
 {
     int i = 0;
-    sfBool on_pause = false;
     sfBool lock = true;
 
     while (i < 3) {

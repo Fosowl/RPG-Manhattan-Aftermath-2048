@@ -20,8 +20,7 @@ static int game_over_ui(ui_t *ui, sfRenderWindow *window)
     static sfClock *timer = NULL;
     static int pass = 0;
 
-    if (!timer)
-        timer = sfClock_create();
+    (!timer) ? timer = sfClock_create() : 0;
     ui->over_rect.top = v * ui->over_rect.height;
     sfSprite_setTextureRect(ui->over_sprite, ui->over_rect);
     sfSprite_setPosition(ui->over_sprite, ui->over_vector);
@@ -36,11 +35,9 @@ static int game_over_ui(ui_t *ui, sfRenderWindow *window)
         v = 0;
     return ((pass >= 10) ? 1 : 0);
 }
-
 int update_value(game_t *game)
 {
     static int ok = 0;
-    int r = 0;
 
     starset_reset_value(&game->player.noise, 5.0f, 1.0f);
     if (ok == 0) {
