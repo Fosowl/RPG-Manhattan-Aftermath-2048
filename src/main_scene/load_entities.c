@@ -51,7 +51,7 @@ entities_t *load_entities_scene(int zombie, sfRenderWindow *window)
     draw_loading_text(window);
     entities = load_building(entities);
     entities = load_object(entities);
-    entities = create_zombie_scene(entities, zombie, window);
+    //entities = create_zombie_scene(entities, zombie, window);
     entities = starset_entities_add(entities, PLAYER_PATH, "player", false);
     set_dog(entities);
     set_zombie_animation(entities);
