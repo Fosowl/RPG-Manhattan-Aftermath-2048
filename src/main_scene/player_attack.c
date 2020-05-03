@@ -33,10 +33,14 @@ static int switch_attack(game_t *game, int *r, sfRenderWindow *window)
         return(on_attack(game, animation, r));
     if (*r == RELOAD) {
         animation = append(game->player.selected, ":reload");
-        if (compare(game->player.selected, "rifle"))
+        if (compare(game->player.selected, "rifle") &&
+        game->player.nb_magazine_rifle > 0) {
             game->player.ammo_rifle = 30;
-        else
+            game->player.nb_magazine_rifle -= 1;
+        } else if (game->player.nb_magazine_gun >= 0) {
             game->player.ammo_gun = 11;
+            game->player.nb_magazine_gun -= 1;
+        }
         *r = starset_play_animation(game->player.save, "player", animation, 1);
         game->player.noise = 1.3;
         if (*r == 1 || limit_rate_reload(2100) == 1)

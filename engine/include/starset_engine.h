@@ -166,5 +166,7 @@ float starset_entitites_rotate_to_other(entities_t *entitie, char *name
 , char *name_other);
 void starset_move_from_angle(entities_t *entities, char *name, float angle
 , int speed);
+void starset_entities_teleport_by_id(entities_t *entities, int id
+, float x, float y);
 
 #endif /* !STARTSET_ENGINE_H_ */

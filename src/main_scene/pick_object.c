@@ -51,6 +51,14 @@ void pick_item(game_t *game)
 {
     if (!game->player.save->collision)
         return;
+    if (game->player.save->collision->visible == false)
+        return;
+    if (compare(game->player.save->collision->name, "pick:ammo_rifle")) {
+        game->player.nb_magazine_rifle += 1;
+    }
+    if (compare(game->player.save->collision->name, "pick:ammo_pistol")) {
+        game->player.nb_magazine_gun += 1;
+    }
     if (search("pick:", game->player.save->collision->name) != -1) {
         game->player.save->collision->visible = false;
     }
