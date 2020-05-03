@@ -11,7 +11,8 @@
 #include "warlock.h"
 #include "game_macro.h"
 
-int teleport_player_up(entities_t *entities, entities_t *save)
+int teleport_player_up(entities_t *entities, entities_t *save
+, entities_t *ground)
 {
     entities_t *tmp = NULL;
 
@@ -20,10 +21,14 @@ int teleport_player_up(entities_t *entities, entities_t *save)
             tmp->spot.y += save->speed;
         }
     }
+    for (tmp = ground; tmp != NULL; tmp = tmp->next) {
+        tmp->spot.y += save->speed;
+    }
     return (1);
 }
 
-int teleport_player_down(entities_t *entities, entities_t *save)
+int teleport_player_down(entities_t *entities, entities_t *save
+, entities_t *ground)
 {
     entities_t *tmp = NULL;
 
@@ -32,10 +37,14 @@ int teleport_player_down(entities_t *entities, entities_t *save)
             tmp->spot.y -= save->speed;
         }
     }
+    for (tmp = ground; tmp != NULL; tmp = tmp->next) {
+        tmp->spot.y -= save->speed;
+    }
     return (1);
 }
 
-int teleport_player_left(entities_t *entities, entities_t *save)
+int teleport_player_left(entities_t *entities, entities_t *save
+, entities_t *ground)
 {
     entities_t *tmp = NULL;
 
@@ -44,10 +53,14 @@ int teleport_player_left(entities_t *entities, entities_t *save)
             tmp->spot.x += save->speed;
         }
     }
+    for (tmp = ground; tmp != NULL; tmp = tmp->next) {
+        tmp->spot.x += save->speed;
+    }
     return (1);
 }
 
-int teleport_player_right(entities_t *entities, entities_t *save)
+int teleport_player_right(entities_t *entities, entities_t *save
+, entities_t *ground)
 {
     entities_t *tmp = NULL;
 
@@ -55,6 +68,9 @@ int teleport_player_right(entities_t *entities, entities_t *save)
         if (!(search("player", tmp->name) != -1)) {
             tmp->spot.x -= save->speed;
         }
+    }
+    for (tmp = ground; tmp != NULL; tmp = tmp->next) {
+        tmp->spot.x -= save->speed;
     }
     return (1);
 }

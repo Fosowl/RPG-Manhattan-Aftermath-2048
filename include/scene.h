@@ -52,10 +52,14 @@ void set_girl_sound(entities_t *entities);
 // control.c
 
 void player_controller(game_t *game);
-int teleport_player_up(entities_t *entities, entities_t *save);
-int teleport_player_down(entities_t *entities, entities_t *save);
-int teleport_player_left(entities_t *entities, entities_t *save);
-int teleport_player_right(entities_t *entities, entities_t *save);
+int teleport_player_up(entities_t *entities, entities_t *save
+, entities_t *ground);
+int teleport_player_down(entities_t *entities, entities_t *save
+, entities_t *ground);
+int teleport_player_left(entities_t *entities, entities_t *save
+, entities_t *ground);
+int teleport_player_right(entities_t *entities, entities_t *save
+, entities_t *ground);
 
 // toggle_object.c
 
