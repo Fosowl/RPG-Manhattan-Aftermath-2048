@@ -24,6 +24,7 @@ typedef struct check_text_s{
 typedef struct element_inventory_s {
     basic_object_t *init;
     basic_object_t *object;
+    basic_object_t *info;
     int status;
     int draw;
     sfText *number;
@@ -31,6 +32,7 @@ typedef struct element_inventory_s {
     int class;
     int nb;
     int destroy;
+    int destroy_info;
 } element_inventory_t;
 
 typedef struct contains_inventory_s {
@@ -47,6 +49,7 @@ typedef struct inventory_s {
     basic_object_t *button_all;
     basic_object_t *move;
     int button;
+    int location;
     contains_inventory_t *contains;
 } inventory_t;
 

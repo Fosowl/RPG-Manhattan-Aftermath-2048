@@ -11,6 +11,7 @@
 #include "path.h"
 #include "game_macro.h"
 #include "render.h"
+#include "inventory.h"
 
 static void propeties_pick_object(entities_t *entities)
 {
@@ -55,9 +56,11 @@ void pick_item(game_t *game)
         return;
     if (compare(game->player.save->collision->name, "pick:ammo_rifle")) {
         game->player.nb_magazine_rifle += 1;
+        game->inventory->contains[BULLET_AK47].nb += 10;
     }
     if (compare(game->player.save->collision->name, "pick:ammo_pistol")) {
         game->player.nb_magazine_gun += 1;
+        game->inventory->contains[BULLET_GUN].nb += 11;
     }
     if (compare(game->player.save->collision->name, "pick:rifle")) {
         game->player.unlock_rifle = true;

@@ -35,6 +35,7 @@ void create_case(inventory_t *inventory, int width)
                                                         460.5 + length, width);
         inventory->element[i].object = init_element(inventory, i,
                                                         461 + length, width);
+        inventory->element[i].info = init_info(inventory, i);
         length += 95;
         nb_element.x = 372 + length;
         sfText_setPosition(inventory->element[i].number, nb_element);

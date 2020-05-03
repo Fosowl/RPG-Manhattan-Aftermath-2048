@@ -44,5 +44,7 @@ void destroy_inventory(game_t *game);
 sfBool pause_inventory(game_t *game);
 void create_move(inventory_t *inventory);
 void display_move(game_t *game);
+char *info_arms_option(inventory_t *inventory, int i);
+basic_object_t *init_info(inventory_t *inventory, int i);
 
 #endif
