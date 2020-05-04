@@ -24,8 +24,8 @@ You must imperatively find your partner, time is short!
 
 ## Build & Execute
 
-```sh
-  make
+```
+  make re
  ./my_rpg
 ```
 
