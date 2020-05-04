@@ -3,28 +3,6 @@
 
 # MY RPG
 
-- **Binary name:** my_rpg
-- **Repository name:** MUL_my_rpg_2019
-- **Repository rights:** ramassage-tek, julie.anglais@epitech.eu, leo.soule@epitech.eu, martin.legrand@epitech.eu, wilfried.garcia@epitech.eu
-- **Language:** C
-- **Group Size:** 4
-- **Compilation:** via Makefile, including re, clean and fclean rules
-
-## Subject
-
-This project is a Tower Defense game.
-A Good example of this kind of games is Revenge of the titans.
-Your main challenge for this game will be to create nice andsmooth user interface and menus.
-
-Your game must follow the following rules:
-- The player is a builder who must defend his castle,
-- Enemy waves will regularly appear from one side ofthe playground,
-- The player must buy and place buildings on the play-ground grid to block/kill enemies,
-- Buildings can be offensive (towers attacking) or defen-sive (basic walls),
-- When the castle is reached by an enemy, it takes dam-ages
-- If the castle reaches 0 hit points the player loose.Having a pleasant user interface is one of the details that makes a good quality game,
-this project is the occasion for you to try your best on that topic.
-
 ## Intro
 
 We are in 2048, 10 years after the terrible chemical attack on Manhattan. Let me give you a short summary of this tragedy.
@@ -52,12 +30,5 @@ You must imperatively find your partner, time is short!
   make
  ./my_rpg
 ```
-
-## Requirements
-
-
-### Mandatory
-
-The following features aremandatory(if your project is missing one of them it will not be evaluated further):•the window can be closed using events,•the game manages the input from the mouse click and keyboard,•the game contains animated sprites rendered thanks to sprite sheets,•animations in your program are frame rate independent,•animations and movements in your program are timed by clocks.
 
 
