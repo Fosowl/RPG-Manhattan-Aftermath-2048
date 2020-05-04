@@ -25,8 +25,8 @@ void set_zombie_sound(entities_t *entities, int nb_zombie)
             starset_set_sound_volume(entities, str, "breath", 100);
         }
     }
-    starset_add_entities_sound(entities, "zombie", "death", ZOMBIE_DEATH_PATH);
-    starset_add_entities_sound(entities, "zombie", "pain", ZOMBIE_PAIN_PATH);
+    //starset_add_entities_sound(entities, "zombie", "death", ZOMBIE_DEATH_PATH);
+    //starset_add_entities_sound(entities, "zombie", "pain", ZOMBIE_PAIN_PATH);
 }
 
 void set_player_sound(entities_t *entities)
