@@ -117,7 +117,7 @@ TEST	 = tests/test.c
 
 CFLAGS	+= -I $(IDIR) -I $(LIB_I_DIR) -I $(RENDER_I_DIR) -I $(I_ENGINE_DIR) -Wall -Wextra -lm
 CFLAGS	+= -pedantic -fstack-protector-all
-CFLAGS	+= -lcsfml-window -lcsfml-graphics -lcsfml-audio -lcsfml-system -g3
+CFLAGS	+= -lcsfml-window -lcsfml-graphics -lcsfml-audio -lcsfml-system
 
 SRC		= $(addprefix $(SRC_DIR), $(SRC_FILES))
 
@@ -140,7 +140,7 @@ engine:
 	@cd $(ENGINE_DIR) ; make clean ; make
 
 debug:
-	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(RENDER) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS) -g3
+	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(RENDER) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS)
 	@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 	@echo -e "${_END}${_BOLD}${_IYELLOW}\033[5mDEBUG MODE READY !\033[0m${_END}"
 
@@ -157,7 +157,7 @@ f:
 	@echo -e "${_END}${_BOLD}${_IYELLOW}\033[5mFAST COMPIL DONE !\033[0m${_END}"
 
 sanitize:
-	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(RENDER) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS) -g3 -fsanitize=address
+	@gcc -o $(BIN_NAME) $(SRC) $(LIB) $(RENDER) $(ENGINE_DIR)/$(ENGINE_NAME) $(CFLAGS) -fsanitize=address
 	@printf "\e[1;32m<Linked> % 43s\n" $(SRC) | tr ' ' '.'
 	@echo -e "${_END}${_BOLD}${_IYELLOW}\033[5mADRESS SANITIZER MODE READY !\033[0m${_END}"
 

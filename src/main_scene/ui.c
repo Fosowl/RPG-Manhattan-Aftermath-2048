@@ -31,8 +31,8 @@ static void ammo_ui(game_t *game)
     ui_ammo_t a;
 
     a.s = sfRenderWindow_getSize(game->window);
-    a.p_ui[MAG] = (sfVector2f){a.s.x - (a.s.x / 6), a.s.y - (a.s.y / 5)};
-    a.p_ui[TOTAL] = (sfVector2f){a.s.x - (a.s.x / 6), a.s.y - (a.s.y/5) + 50};
+    a.p_ui[MAG] = (sfVector2f){a.s.x - (a.s.x / 4), a.s.y - (a.s.y / 4)};
+    a.p_ui[TOTAL] = (sfVector2f){a.s.x - (a.s.x / 4), a.s.y - (a.s.y/4) + 50};
     if (compare(game->player.selected, "rifle")) {
         a.str_mag = append("bullet left : ", my_itoa(game->player.ammo_rifle));
         a.str_total = append("magazine left : "
@@ -66,10 +66,10 @@ static void critical_ui(sfRenderWindow *window)
     sfVector2u screen_size = sfRenderWindow_getSize(window);
     sfVector2f spot;
 
-    spot.x = screen_size.x / 2;
+    spot.x = screen_size.x / 2 - 90;
     spot.y = screen_size.y / 2;
     if (!text_ui) {
-        text_ui = load_text("C R I T I C A L   L I F E", 70, spot, RED);
+        text_ui = load_text("C R I T I C A L   L I F E", 55, spot, RED);
     }
     sfRenderWindow_drawText(window, text_ui, NULL);
 }

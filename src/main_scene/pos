@@ -1,0 +1,12 @@
+weapon_strike.c:34:    , player->save->name);
+weapon_strike.c:37:    , player->save->spot) < 90 && closest != player->save) {
+set_sound.c:62:    sfSound_setPitch(player->audio->sound, 1.4);
+zombie_ai.c:36:    , player->save->spot);
+zombie_ai.c:38:        player->save->life -= 1;
+zombie_ai.c:93:        distance = starset_get_distance(tmp->spot, player->save->spot);
+zombie_ai.c:96:        } else if (distance < 450 * player->noise && distance > 75) {
+zombie_ai.c:99:            , player->save->name);
+zombie_ai.c:100:            starset_entities_rotate_to(tmp, tmp->name, player->save->spot);
+dog_set.c:40:    distance = starset_get_distance(dog->spot, player->spot);
+dog_set.c:44:        target.x = player->spot.x;
+dog_set.c:45:        target.y = player->spot.y;

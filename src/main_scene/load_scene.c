@@ -46,7 +46,7 @@ static void load_ui(ui_t *ui, sfRenderWindow *window)
     if (!ui->over_texture)
         put_error("failed to load texture !\n");
     ui->over_vector = (sfVector2f){(screen_size.x / 2) - 200
-    , (screen_size.y / 2) + 100};
+    , (screen_size.y / 2) + 30};
     sfSprite_setTexture(ui->over_sprite, ui->over_texture, 1);
     ui->over_rect.width = 414;
     ui->over_rect.height = 78;

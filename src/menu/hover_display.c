@@ -11,18 +11,18 @@
 
 int hover_menu_text(game_t *game)
 {
-    sfVector2i pos = sfMouse_getPositionRenderWindow(game->window);
+    sfVector2i pos = game->mouse_pos;
 
-    if (pos.x >= 150 && pos.x <= 544 && pos.y >= 530 && pos.y <= 624) {
+    if (pos.x >= 107 && pos.x <= 476 && pos.y >= 338 && pos.y <= 400) {
         return (1);
     }
-    if (pos.x >= 1650 && pos.x <= 1855 && pos.y >= 100 && pos.y <= 188) {
+    if (pos.x >= 716 && pos.x <= 890 && pos.y >= 314 && pos.y <= 375) {
         return (2);
     }
-    if (pos.x >= 150 && pos.x <= 545 && pos.y >= 825 && pos.y <= 925) {
+    if (pos.x >= 102 && pos.x <= 470 && pos.y >= 521 && pos.y <= 580) {
         return (3);
     }
-    if (pos.x >= 1300 && pos.x <= 1799 && pos.y >= 675 && pos.y <= 770) {
+    if (pos.x >= 700 && pos.x <= 1180 && pos.y >= 510 && pos.y <= 575) {
         return (4);
     }
     return (0);
@@ -30,14 +30,14 @@ int hover_menu_text(game_t *game)
 
 void init_hover_pos(hover_t *hover)
 {
-    hover->play_pos.x = 150;
-    hover->play_pos.y = 500;
-    hover->quit_pos.x = 1650;
-    hover->quit_pos.y = 75;
-    hover->load_pos.x = 140;
-    hover->load_pos.y = 795;
-    hover->how_pos.x = 1300;
-    hover->how_pos.y = 650;
+    hover->play_pos.x = 93.75;
+    hover->play_pos.y = 312.5;
+    hover->quit_pos.x = 700;
+    hover->quit_pos.y = 300;
+    hover->load_pos.x = 93;
+    hover->load_pos.y = 500;
+    hover->how_pos.x = 700;
+    hover->how_pos.y = 500; 
 }
 
 void init_hover(hover_t *hover)

@@ -13,14 +13,14 @@
 
 void init_menu_pos(menu_t *menu)
 {
-    menu->play_pos.x = 150;
-    menu->play_pos.y = 500;
-    menu->quit_pos.x = 1650;
-    menu->quit_pos.y = 75;
-    menu->load_pos.x = 150;
-    menu->load_pos.y = 800;
-    menu->how_pos.x = 1300;
-    menu->how_pos.y = 650;
+    menu->play_pos.x = 93.75;
+    menu->play_pos.y = 312;
+    menu->quit_pos.x = 700;
+    menu->quit_pos.y = 300;
+    menu->load_pos.x = 93.7;
+    menu->load_pos.y = 500; 
+    menu->how_pos.x = 700; 
+    menu->how_pos.y = 500;
     init_hover_pos(menu->hover_menu);
 }
 
@@ -75,8 +75,8 @@ void init_menu(menu_t *menu)
 
 void init_screen(screen_t *screen)
 {
-    screen->mode.width = 1920;
-    screen->mode.height = 1080;
+    screen->mode.width = 1200;
+    screen->mode.height = 675;
     screen->mode.bitsPerPixel = 32;
     screen->window = sfRenderWindow_create(screen->mode,
     "Manhattan Aftermath 2048", sfResize | sfClose, NULL);

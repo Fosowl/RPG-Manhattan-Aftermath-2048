@@ -11,21 +11,18 @@
 
 int check_press(sfRenderWindow *window)
 {
-    sfVector2i size = sfMouse_getPositionRenderWindow(window);
+    sfVector2i pos = sfMouse_getPositionRenderWindow(window);
 
-    if (size.x >= 150 && size.x <= 544 && size.y >= 530 &&
-    size.y <= 624) {
+    if (pos.x >= 107 && pos.x <= 476 && pos.y >= 338 && pos.y <= 400) {
         return (1);
     }
-    if (size.x >= 1650 && size.x <= 1855 && size.y >= 100 &&
-    size.y <= 188) {
+    if (pos.x >= 716 && pos.x <= 890 && pos.y >= 314 && pos.y <= 375) {
         return (2);
     }
-    if (size.x >= 150 && size.x <= 545 && size.y >= 825 &&
-    size.y <= 925) {
+    if (pos.x >= 102 && pos.x <= 470 && pos.y >= 521 && pos.y <= 580) {
         return (3);
     }
-    if (size.x >= 1300 && size.x <= 1799 && size.y >= 675 && size.y <= 770) {
+    if (pos.x >= 700 && pos.x <= 1180 && pos.y >= 510 && pos.y <= 575) {
         return (4);
     }
     return (0);
@@ -67,7 +64,7 @@ static int in_menu_loop(game_t *game, sfEvent event)
 
     if (event.type == sfEvtMouseButtonPressed)
         check_click = check_press(game->screen->window);
-    if (1 == 1) {
+    if (check_click == 1) {
         sfSound_stop(game->menu->menu_music);
         if (main_scene_load(game) == 0) {
             return (0);
@@ -92,6 +89,8 @@ int menu_loop(game_t *game)
     init_screen(game->screen);
     init_menu(game->menu);
     while (starset_running(game->screen->window, &event) && r != 9) {
+        game->window_pos = sfRenderWindow_getPosition(game->screen->window);
+        game->mouse_pos = sfMouse_getPositionRenderWindow(game->screen->window);
         r = in_menu_loop(game, event);
         hover = hover_menu_text(game);
         if (r != 0)

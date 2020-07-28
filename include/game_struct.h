@@ -160,6 +160,8 @@ typedef struct game_s {
     menu_t *menu;
     inventory_t *inventory;
     sfRenderWindow *window;
+    sfVector2i mouse_pos;
+    sfVector2i window_pos;
     sfEvent event;
     entities_t *entities_list;
     entities_t *entities_runtime;

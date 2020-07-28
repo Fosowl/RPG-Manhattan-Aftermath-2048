@@ -5,7 +5,7 @@
 ## Makefile
 ##
 
-MODE=DEBUG
+MODE=NORMAL
 
 # color codes
 _END=$'\x1b[0m'
@@ -79,7 +79,7 @@ ENGINE_FILES	= core/calculation.c\
 
 TEST	 = tests/test.c
 
-FLAGS	+=-I $(IDIR) -Wall -Wextra -lm -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio -g3
+FLAGS	+=-I $(IDIR) -Wall -Wextra -lm -lcsfml-graphics -lcsfml-window -lcsfml-system -lcsfml-audio 
 
 ENGINE		= $(addprefix $(ENGINE_DIR), $(ENGINE_FILES))
 
