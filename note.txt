@@ -1,0 +1,1 @@
+player pos set in load_entities.c line 17

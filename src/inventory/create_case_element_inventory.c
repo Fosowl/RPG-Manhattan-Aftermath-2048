@@ -32,9 +32,9 @@ void create_case(inventory_t *inventory, int width)
 
     for (; i != all; i++) {
         inventory->element[i].init = init_case_element(inventory, i,
-                                                        460.5 + length, width);
+                                                        160.5 + length, width);
         inventory->element[i].object = init_element(inventory, i,
-                                                        461 + length, width);
+                                                        161 + length, width);
         inventory->element[i].info = init_info(inventory, i);
         length += 95;
         nb_element.x = 372 + length;

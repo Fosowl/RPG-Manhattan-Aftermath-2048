@@ -11,12 +11,12 @@
 
 void init_pos(pause_t *pause_m)
 {
-    pause_m->bg_pos.x = 725;
-    pause_m->bg_pos.y = 200;
-    pause_m->continue_pos.x = 790;
-    pause_m->continue_pos.y = 350;
-    pause_m->quit_game_pos.x = 850;
-    pause_m->quit_game_pos.y = 550;
+    pause_m->bg_pos.x = 362.6;
+    pause_m->bg_pos.y = 100;
+    pause_m->continue_pos.x = 425;
+    pause_m->continue_pos.y = 235;
+    pause_m->quit_game_pos.x = 505;
+    pause_m->quit_game_pos.y = 375;
 }
 
 void init_pause(pause_t *pause_m)
