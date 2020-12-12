@@ -39,9 +39,8 @@ static entities_t *random_zombie(entities_t *entities, char *name
 entities_t *create_zombie_scene(entities_t *entities, int zombie
 , sfRenderWindow *window)
 {
-    int x = 0;
-    int y = 0;
     char *name = NULL;
+    entities_t *tmp = entities;
     sfVector2f *spawn;
     sfSprite *prefab = starset_create_prefab(ZOMBIE_PATH);
     sfSprite *prefab_2 = starset_create_prefab(ZOMBIE_2_PATH);
@@ -50,14 +49,12 @@ entities_t *create_zombie_scene(entities_t *entities, int zombie
     for (int i = 0; i < zombie; i++) {
         name = my_itoa(i);
         update_zombie_loading(window, i, zombie);
-        random_zombie(entities, name, prefab, prefab_2);
-        x = spawn[i].x;
-        y = spawn[i].y;
-        starset_entities_teleport(entities, name, x, y);
+        entities = random_zombie(entities, name, prefab, prefab_2);
+        tmp = starset_entities_get_propreties(entities
+                , append("zombie:", name));
+        tmp->spot.x = spawn[i].x;
+        tmp->spot.y = spawn[i].y;
     }
-    starset_entities_get_propreties(entities, "zombie:0")->spot.x = -5000000;
-    starset_entities_get_propreties(entities, "zombie:0")->visible = false;
-    starset_entities_get_propreties(entities, "zombie:0")->speed = 0;
     return (entities);
 }
 

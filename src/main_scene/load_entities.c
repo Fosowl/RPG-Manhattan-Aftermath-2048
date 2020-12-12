@@ -39,7 +39,7 @@ static entities_t *load_building(entities_t *entities)
     entities_t *tmp = NULL;
     int err = 0;
 
-    entities = load_ground(entities, 0);
+    entities = load_ground(entities, 60);
     entities = load_map(entities, &err);
     if (err == 1)
         return ((entities_t *)-1);

@@ -73,7 +73,7 @@ int main_scene_load(game_t *game)
 
     if (!game->entities_list)
         return EXIT_FAILURE;
-    srand(64886);
+    srand(time(NULL));
     introduction_scene(game);
     load_value(game);
     load_value_2(game);

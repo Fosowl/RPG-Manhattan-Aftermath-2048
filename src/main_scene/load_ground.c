@@ -35,7 +35,6 @@ entities_t *load_ground(entities_t *entities, int nb)
     entities_t *tmp = NULL;
 
     for (int i = 0; i < nb; i++) {
-        srand(i * 145);
         r = rand() % 4;
         entities = add_each_ground(r, entities);
     }
