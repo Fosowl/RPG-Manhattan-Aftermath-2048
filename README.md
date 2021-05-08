@@ -26,7 +26,8 @@ You must imperatively find your partner, time is short!
 
 ```
   make re
- ./my_rpg
+ ./my_rpg 2>/dev/null
 ```
+redirection of error output to ```/dev/null``` allow to reduce lag caused by audiolib error message.
 
 
